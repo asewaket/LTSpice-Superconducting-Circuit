@@ -1,0 +1,25 @@
+# macOS/editor metadata
+.DS_Store
+*~
+*.swp
+*.swo
+
+# MATLAB generated files
+*.asv
+*.m~
+slprj/
+codegen/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# LTspice/generated simulation outputs
+*.raw
+*.log
+
+# Local scratch/output folders
+tmp/
+temp/
+.cache/

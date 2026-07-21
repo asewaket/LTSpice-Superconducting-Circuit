@@ -1,0 +1,56 @@
+* Geometry-constrained 3-lane x 6-column four-probe R(T) model
+* Python forms the full-width four-probe voltage from the saved lane nodes.
+
+.include constrained_parameters.inc
+.param T=4.2 Iprobe=1u Rfloor=1e-6 Rcontact=1m
+.func sw(temp,tc,w) 0.5*(1+tanh((temp-tc)/w))
+.func Rseg(rn,tc,w,f) {Rfloor + rn*(f + (1-f)*sw(T,tc,w))}
+
+I1 0 src {Iprobe}
+Vprobe drain 0 0
+RsrcC src c0 {Rcontact}
+RsrcB src b0 {Rcontact}
+RsrcU src u0 {Rcontact}
+RdrnC c6 drain {Rcontact}
+RdrnB b6 drain {Rcontact}
+RdrnU u6 drain {Rcontact}
+
+* Five identical bulk segments plus one central bottleneck in each lane.
+Rc1 c0 c1 {Rseg((Rpath/gC)*(1-qC)/5,TcC,wTcC,fCbulk)}
+Rc2 c1 c2 {Rseg((Rpath/gC)*(1-qC)/5,TcC,wTcC,fCbulk)}
+Rc3 c2 c3 {Rseg((Rpath/gC)*qC,TcWc,wTcWc,fCweak)}
+Rc4 c3 c4 {Rseg((Rpath/gC)*(1-qC)/5,TcC,wTcC,fCbulk)}
+Rc5 c4 c5 {Rseg((Rpath/gC)*(1-qC)/5,TcC,wTcC,fCbulk)}
+Rc6 c5 c6 {Rseg((Rpath/gC)*(1-qC)/5,TcC,wTcC,fCbulk)}
+
+Rb1 b0 b1 {Rseg((Rpath/gB)*(1-qB)/5,TcB,wTcB,fBbulk)}
+Rb2 b1 b2 {Rseg((Rpath/gB)*(1-qB)/5,TcB,wTcB,fBbulk)}
+Rb3 b2 b3 {Rseg((Rpath/gB)*qB,TcWb,wTcWb,fBweak)}
+Rb4 b3 b4 {Rseg((Rpath/gB)*(1-qB)/5,TcB,wTcB,fBbulk)}
+Rb5 b4 b5 {Rseg((Rpath/gB)*(1-qB)/5,TcB,wTcB,fBbulk)}
+Rb6 b5 b6 {Rseg((Rpath/gB)*(1-qB)/5,TcB,wTcB,fBbulk)}
+
+Ru1 u0 u1 {Rseg((Rpath/gU)*(1-qU)/5,TcU,wTcU,fUbulk)}
+Ru2 u1 u2 {Rseg((Rpath/gU)*(1-qU)/5,TcU,wTcU,fUbulk)}
+Ru3 u2 u3 {Rseg((Rpath/gU)*qU,TcWu,wTcWu,fUweak)}
+Ru4 u3 u4 {Rseg((Rpath/gU)*(1-qU)/5,TcU,wTcU,fUbulk)}
+Ru5 u4 u5 {Rseg((Rpath/gU)*(1-qU)/5,TcU,wTcU,fUbulk)}
+Ru6 u5 u6 {Rseg((Rpath/gU)*(1-qU)/5,TcU,wTcU,fUbulk)}
+
+* One shared coupling value per interface; columns are not fitted independently.
+Rcb1 c1 b1 {RxyCB}
+Rcb2 c2 b2 {RxyCB}
+Rcb3 c3 b3 {RxyCB}
+Rcb4 c4 b4 {RxyCB}
+Rcb5 c5 b5 {RxyCB}
+Rbu1 b1 u1 {RxyBU}
+Rbu2 b2 u2 {RxyBU}
+Rbu3 b3 u3 {RxyBU}
+Rbu4 b4 u4 {RxyBU}
+Rbu5 b5 u5 {RxyBU}
+
+.step param T 4.20 0.10 -0.002
+.op
+.save V(c1) V(c5) V(b1) V(b5) V(u1) V(u5) V(c3) V(u3) I(Vprobe) I(RsrcC) I(RsrcB) I(RsrcU)
+.options plotwinsize=0
+.end

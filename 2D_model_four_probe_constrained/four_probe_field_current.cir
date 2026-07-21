@@ -1,0 +1,59 @@
+* Nonlinear four-probe field/current model at Tmap
+* Python forms the weighted four-probe voltage and differentiates it to dV/dI.
+
+.include constrained_parameters.inc
+.param B=0 Ibias=0 Rfloor=1e-6 Rcontact=1m
+.func sw(x,x0,w) 0.5*(1+tanh((x-x0)/w))
+.func iceff(ic0,bc,eta) {ic0*(eta+(1-eta)*max(0,1-(abs(B)/bc)**1.6))}
+.func isw(ic0,bc,eta) {(abs(Ibias)/iceff(ic0,bc,eta))**nI/(1+(abs(Ibias)/iceff(ic0,bc,eta))**nI)}
+.func state(tc,wt,bc,ic0,eta) {1-(1-sw(Tmap,tc,wt))*(1-sw(abs(B),Bnormal,wBnormal))*(1-isw(ic0,bc,eta))}
+.func Rnl(rn,f,tc,wt,bc,ic0,eta) {Rfloor+rn*(f+(1-f)*state(tc,wt,bc,ic0,eta))}
+
+I1 0 src {Ibias}
+Vprobe drain 0 0
+Vimon imon 0 {Ibias*1e6}
+RsrcC src c0 {Rcontact}
+RsrcB src b0 {Rcontact}
+RsrcU src u0 {Rcontact}
+RdrnC c6 drain {Rcontact}
+RdrnB b6 drain {Rcontact}
+RdrnU u6 drain {Rcontact}
+
+Rc1 c0 c1 {Rnl((Rpath/gC)*(1-qC)/5,fCbulk,TcC,wTcC,BcCbulk,IcCbulk,etaBulk)}
+Rc2 c1 c2 {Rnl((Rpath/gC)*(1-qC)/5,fCbulk,TcC,wTcC,BcCbulk,IcCbulk,etaBulk)}
+Rc3 c2 c3 {Rnl((Rpath/gC)*qC,fCweak,TcWc,wTcWc,BcCweak,IcCweak,etaCweak)}
+Rc4 c3 c4 {Rnl((Rpath/gC)*(1-qC)/5,fCbulk,TcC,wTcC,BcCbulk,IcCbulk,etaBulk)}
+Rc5 c4 c5 {Rnl((Rpath/gC)*(1-qC)/5,fCbulk,TcC,wTcC,BcCbulk,IcCbulk,etaBulk)}
+Rc6 c5 c6 {Rnl((Rpath/gC)*(1-qC)/5,fCbulk,TcC,wTcC,BcCbulk,IcCbulk,etaBulk)}
+
+Rb1 b0 b1 {Rnl((Rpath/gB)*(1-qB)/5,fBbulk,TcB,wTcB,BcBbulk,IcBbulk,etaBulk)}
+Rb2 b1 b2 {Rnl((Rpath/gB)*(1-qB)/5,fBbulk,TcB,wTcB,BcBbulk,IcBbulk,etaBulk)}
+Rb3 b2 b3 {Rnl((Rpath/gB)*qB,fBweak,TcWb,wTcWb,BcBweak,IcBweak,etaBweak)}
+Rb4 b3 b4 {Rnl((Rpath/gB)*(1-qB)/5,fBbulk,TcB,wTcB,BcBbulk,IcBbulk,etaBulk)}
+Rb5 b4 b5 {Rnl((Rpath/gB)*(1-qB)/5,fBbulk,TcB,wTcB,BcBbulk,IcBbulk,etaBulk)}
+Rb6 b5 b6 {Rnl((Rpath/gB)*(1-qB)/5,fBbulk,TcB,wTcB,BcBbulk,IcBbulk,etaBulk)}
+
+Ru1 u0 u1 {Rnl((Rpath/gU)*(1-qU)/5,fUbulk,TcU,wTcU,BcUbulk,IcUbulk,etaU)}
+Ru2 u1 u2 {Rnl((Rpath/gU)*(1-qU)/5,fUbulk,TcU,wTcU,BcUbulk,IcUbulk,etaU)}
+Ru3 u2 u3 {Rnl((Rpath/gU)*qU,fUweak,TcWu,wTcWu,BcUweak,IcUweak,etaU)}
+Ru4 u3 u4 {Rnl((Rpath/gU)*(1-qU)/5,fUbulk,TcU,wTcU,BcUbulk,IcUbulk,etaU)}
+Ru5 u4 u5 {Rnl((Rpath/gU)*(1-qU)/5,fUbulk,TcU,wTcU,BcUbulk,IcUbulk,etaU)}
+Ru6 u5 u6 {Rnl((Rpath/gU)*(1-qU)/5,fUbulk,TcU,wTcU,BcUbulk,IcUbulk,etaU)}
+
+Rcb1 c1 b1 {RxyCB}
+Rcb2 c2 b2 {RxyCB}
+Rcb3 c3 b3 {RxyCB}
+Rcb4 c4 b4 {RxyCB}
+Rcb5 c5 b5 {RxyCB}
+Rbu1 b1 u1 {RxyBU}
+Rbu2 b2 u2 {RxyBU}
+Rbu3 b3 u3 {RxyBU}
+Rbu4 b4 u4 {RxyBU}
+Rbu5 b5 u5 {RxyBU}
+
+.step param B -1.50 1.50 0.025
+.step param Ibias 0 5u 0.025u
+.op
+.save V(imon) V(c1) V(c5) V(b1) V(b5) V(u1) V(u5) I(Vprobe) I(RsrcC) I(RsrcB) I(RsrcU)
+.options plotwinsize=0
+.end

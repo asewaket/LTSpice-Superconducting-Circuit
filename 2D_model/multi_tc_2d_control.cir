@@ -1,0 +1,72 @@
+* 2D control: three identical lanes by six longitudinal segments
+* Each lane is 3x the calibrated 1D path, so three parallel lanes recover it.
+* Total resistance: V(src)/I(Vprobe)
+
+.param T=4.2 Iprobe=1u Rfloor=1e-6 M=3
+.param Rresidual=2.42371
+.param Rn1=6.94420 Rn2=4.74553 Rn3=18.17317
+.param Rn4=11.95118 Rn5=3.07969 Rn6=0.94131
+.param Tc1=1.60264 Tc2=1.35885 Tc3=1.01000
+.param Tc4=0.90456 Tc5=0.86000 Tc6=0.13420
+.param w1=0.27924 w2=0.05929 w3=0.11602
+.param w4=0.05247 w5=0.25793 w6=0.04627
+.param f1=0 f2=0 f3=0 f4=0 f5=0 f6=0
+.param Rcb=200 Rbu=300 Rcontact=1m
+
+.func sw(temp,tc,w) 0.5*(1+tanh((temp-tc)/w))
+.func Rseg(rn,tc,w,f) {Rfloor + rn*(f + (1-f)*sw(T,tc,w))}
+
+I1 0 src {Iprobe}
+Vprobe drain 0 0
+RsrcC src c0 {Rcontact}
+RsrcB src b0 {Rcontact}
+RsrcU src u0 {Rcontact}
+RdrnC c6 drain {Rcontact}
+RdrnB b6 drain {Rcontact}
+RdrnU u6 drain {Rcontact}
+
+RresC c0 c0r {M*Rresidual}
+RresB b0 b0r {M*Rresidual}
+RresU u0 u0r {M*Rresidual}
+
+Rc1 c0r c1 {Rseg(M*Rn1,Tc1,w1,f1)}
+Rc2 c1 c2 {Rseg(M*Rn2,Tc2,w2,f2)}
+Rc3 c2 c3 {Rseg(M*Rn3,Tc3,w3,f3)}
+Rc4 c3 c4 {Rseg(M*Rn4,Tc4,w4,f4)}
+Rc5 c4 c5 {Rseg(M*Rn5,Tc5,w5,f5)}
+Rc6 c5 c6 {Rseg(M*Rn6,Tc6,w6,f6)}
+
+Rb1 b0r b1 {Rseg(M*Rn1,Tc1,w1,f1)}
+Rb2 b1 b2 {Rseg(M*Rn2,Tc2,w2,f2)}
+Rb3 b2 b3 {Rseg(M*Rn3,Tc3,w3,f3)}
+Rb4 b3 b4 {Rseg(M*Rn4,Tc4,w4,f4)}
+Rb5 b4 b5 {Rseg(M*Rn5,Tc5,w5,f5)}
+Rb6 b5 b6 {Rseg(M*Rn6,Tc6,w6,f6)}
+
+Ru1 u0r u1 {Rseg(M*Rn1,Tc1,w1,f1)}
+Ru2 u1 u2 {Rseg(M*Rn2,Tc2,w2,f2)}
+Ru3 u2 u3 {Rseg(M*Rn3,Tc3,w3,f3)}
+Ru4 u3 u4 {Rseg(M*Rn4,Tc4,w4,f4)}
+Ru5 u4 u5 {Rseg(M*Rn5,Tc5,w5,f5)}
+Ru6 u5 u6 {Rseg(M*Rn6,Tc6,w6,f6)}
+
+Rcb0 c0r b0r {Rcb}
+Rcb1 c1 b1 {Rcb}
+Rcb2 c2 b2 {Rcb}
+Rcb3 c3 b3 {Rcb}
+Rcb4 c4 b4 {Rcb}
+Rcb5 c5 b5 {Rcb}
+Rcb6 c6 b6 {Rcb}
+Rbu0 b0r u0r {Rbu}
+Rbu1 b1 u1 {Rbu}
+Rbu2 b2 u2 {Rbu}
+Rbu3 b3 u3 {Rbu}
+Rbu4 b4 u4 {Rbu}
+Rbu5 b5 u5 {Rbu}
+Rbu6 b6 u6 {Rbu}
+
+.step param T 4.20 0.10 -0.002
+.op
+.save V(src) V(c1) V(c5) V(b1) V(b5) V(u1) V(u5) I(Vprobe) I(RsrcC) I(RsrcB) I(RsrcU)
+.options plotwinsize=0
+.end

@@ -1,0 +1,64 @@
+* Strained 1T'-MoTe2: calibrated 1D phenomenological multi-Tc model
+* Parameters were fitted to t_superconducting_onset_1p8K.png.
+* Plot V(sense)/I(Vprobe) to obtain the two-terminal resistance.
+*
+* Interpretation:
+*   Six series regions lose different resistance contributions at different
+*   local transition midpoints. Rresidual represents contacts and/or channel
+*   regions that remain normal. This is an equivalent-circuit fit, not a
+*   microscopic model or a unique spatial reconstruction.
+
+.param T=4.2
+.param Iprobe=1u
+.param Rfloor=1e-6
+.param Rresidual=2.42371
+
+* Resistance contributions removed through the six local transitions (ohm).
+.param Rn1=6.94420
+.param Rn2=4.74553
+.param Rn3=18.17317
+.param Rn4=11.95118
+.param Rn5=3.07969
+.param Rn6=0.94131
+
+* Local transition midpoints (kelvin), ordered from highest to lowest.
+.param Tc1=1.60264
+.param Tc2=1.35885
+.param Tc3=1.01000
+.param Tc4=0.90456
+.param Tc5=0.86000
+.param Tc6=0.13420
+
+* Transition widths (kelvin). Larger values describe broader local/weak-link
+* transitions rather than a sharper homogeneous superconducting transition.
+.param w1=0.27924
+.param w2=0.05929
+.param w3=0.11602
+.param w4=0.05247
+.param w5=0.25793
+.param w6=0.04627
+
+* The total R(T) fit determines each resistance drop, Rn*(1-f), but cannot
+* separately identify Rn and f. Set f=0 to avoid an unsupported decomposition;
+* the measured low-temperature remainder is carried by Rresidual.
+.param f1=0 f2=0 f3=0 f4=0 f5=0 f6=0
+
+.func sw(temp,tc,w) 0.5*(1+tanh((temp-tc)/w))
+.func Rseg(rn,tc,w,f) {Rfloor + rn*(f + (1-f)*sw(T,tc,w))}
+
+I1 0 in {Iprobe}
+Vprobe in sense 0
+
+Rres sense n0 {Rresidual}
+R1 n0 n1 {Rseg(Rn1,Tc1,w1,f1)}
+R2 n1 n2 {Rseg(Rn2,Tc2,w2,f2)}
+R3 n2 n3 {Rseg(Rn3,Tc3,w3,f3)}
+R4 n3 n4 {Rseg(Rn4,Tc4,w4,f4)}
+R5 n4 n5 {Rseg(Rn5,Tc5,w5,f5)}
+R6 n5 0  {Rseg(Rn6,Tc6,w6,f6)}
+
+.step param T 4.20 0.10 -0.002
+.op
+.save V(sense) I(Vprobe)
+.options plotwinsize=0
+.end

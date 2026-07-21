@@ -1,0 +1,69 @@
+* Final 2D model: strain-contrast lanes plus temperature-dependent weak links
+
+.param T=4.2 Iprobe=1u Rfloor=1e-6 Rcontact=1m
+.param Rn1=6.94420 Rn2=4.74553 Rn3=18.17317
+.param Rn4=11.95118 Rn5=3.07969 Rn6=0.94131
+.param Rsum={Rn1+Rn2+Rn3+Rn4+Rn5+Rn6}
+.param MC=2.845 MB=3.00 MU=3.10
+.param NC={Rsum/(1.35*Rn1+1.25*Rn2+0.82*Rn3+0.88*Rn4+0.75*Rn5+0.70*Rn6)}
+.param NB={Rsum/(0.65*Rn1+0.80*Rn2+1.25*Rn3+1.20*Rn4+0.80*Rn5+0.70*Rn6)}
+.param NU={Rsum/(0.70*Rn1+0.80*Rn2+0.90*Rn3+1.00*Rn4+1.50*Rn5+1.60*Rn6)}
+.param RresC=4.00 RresB=5.20 RresU=22.50
+.param Rcb=180 Rbu=300
+
+.func sw(temp,tc,w) 0.5*(1+tanh((temp-tc)/w))
+.func Rseg(rn,tc,w,f) {Rfloor + rn*(f + (1-f)*sw(T,tc,w))}
+.func Rweak(rn,tc,w,f) {Rfloor + rn*(f + (1-f)*sw(T,tc,w))}
+
+I1 0 src {Iprobe}
+Vprobe drain 0 0
+RsrcC src c0 {Rcontact}
+RsrcB src b0 {Rcontact}
+RsrcU src u0 {Rcontact}
+RdrnC c6 drain {Rcontact}
+RdrnB b6 drain {Rcontact}
+RdrnU u6 drain {Rcontact}
+RresC0 c0 c0r {RresC}
+RresB0 b0 b0r {RresB}
+RresU0 u0 u0r {RresU}
+
+Rc1 c0r c1 {Rseg(MC*NC*1.35*Rn1,1.70,0.25,0.00)}
+Rc2 c1 c2 {Rseg(MC*NC*1.25*Rn2,1.42,0.07,0.00)}
+Rc3 c2 c3 {Rseg(MC*NC*0.82*Rn3,1.06,0.15,0.00)}
+Rc4 c3 c4 {Rseg(MC*NC*0.88*Rn4,0.94,0.08,0.00)}
+Rc5 c4 c5 {Rseg(MC*NC*0.75*Rn5,0.88,0.22,0.05)}
+Rc6 c5 c6 {Rseg(MC*NC*0.70*Rn6,0.14,0.05,0.10)}
+Rb1 b0r b1 {Rseg(MB*NB*0.65*Rn1,1.50,0.28,0.00)}
+Rb2 b1 b2 {Rseg(MB*NB*0.80*Rn2,1.30,0.08,0.03)}
+Rb3 b2 b3 {Rseg(MB*NB*1.25*Rn3,1.03,0.13,0.00)}
+Rb4 b3 b4 {Rseg(MB*NB*1.20*Rn4,0.92,0.08,0.00)}
+Rb5 b4 b5 {Rseg(MB*NB*0.80*Rn5,0.82,0.20,0.10)}
+Rb6 b5 b6 {Rseg(MB*NB*0.70*Rn6,0.13,0.05,0.15)}
+Ru1 u0r u1 {Rseg(MU*NU*0.70*Rn1,1.15,0.30,0.55)}
+Ru2 u1 u2 {Rseg(MU*NU*0.80*Rn2,1.00,0.15,0.55)}
+Ru3 u2 u3 {Rseg(MU*NU*0.90*Rn3,0.72,0.18,0.45)}
+Ru4 u3 u4 {Rseg(MU*NU*1.00*Rn4,0.55,0.15,0.40)}
+Ru5 u4 u5 {Rseg(MU*NU*1.50*Rn5,0.35,0.12,0.35)}
+Ru6 u5 u6 {Rseg(MU*NU*1.60*Rn6,0.16,0.06,0.40)}
+
+* Fixed end coupling and selected superconducting transverse weak links.
+Rcb0 c0r b0r {Rcb}
+Rcb1 c1 b1 {Rcb}
+Rcb2 c2 b2 {Rweak(240,1.32,0.12,0.35)}
+Rcb3 c3 b3 {Rweak(180,0.98,0.08,0.12)}
+Rcb4 c4 b4 {Rweak(220,0.88,0.10,0.20)}
+Rcb5 c5 b5 {Rcb}
+Rcb6 c6 b6 {Rcb}
+Rbu0 b0r u0r {Rbu}
+Rbu1 b1 u1 {Rbu}
+Rbu2 b2 u2 {Rbu}
+Rbu3 b3 u3 {Rweak(420,0.65,0.12,0.40)}
+Rbu4 b4 u4 {Rweak(500,0.42,0.12,0.55)}
+Rbu5 b5 u5 {Rbu}
+Rbu6 b6 u6 {Rbu}
+
+.step param T 4.20 0.10 -0.002
+.op
+.save V(src) V(c1) V(c5) V(b1) V(b5) V(u1) V(u5) I(Vprobe) I(RsrcC) I(RsrcB) I(RsrcU)
+.options plotwinsize=0
+.end
