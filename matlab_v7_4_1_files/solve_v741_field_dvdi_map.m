@@ -116,6 +116,16 @@ for row = 1:Ny
     end
 end
 
+for row = 1:Ny-1
+    for col = 1:Nx
+        if net.link.activeY(row,col)
+            Iy(row,col) = gy(row,col) * (v(row,col) - v(row+1,col));
+        end
+    end
+end
+
+end
+
 function f = weak_switched_fraction(net, params, swX, swY)
 
 if ~(isfield(params, 'weakLinkMaskX') && isfield(params, 'weakLinkMaskY'))
@@ -131,16 +141,6 @@ if nWeak == 0
     return;
 end
 f = (nnz(swX & weakX) + nnz(swY & weakY)) ./ nWeak;
-
-end
-
-for row = 1:Ny-1
-    for col = 1:Nx
-        if net.link.activeY(row,col)
-            Iy(row,col) = gy(row,col) * (v(row,col) - v(row+1,col));
-        end
-    end
-end
 
 end
 
