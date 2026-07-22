@@ -23,6 +23,7 @@ fullFieldOpts = make_v73_field_options(expField);
 fullFieldOpts.version = opts.version;
 screenFieldOpts = make_screening_field_options_v743(fullFieldOpts, expField, opts);
 cases = make_v743_wij_ablation_cases(opts);
+scoreCsvPath = fullfile(outDir, 'AS006_v7_4_3_wij_ablation_scores.csv');
 
 fprintf('\nRunning v7.4.3 controlled W_ij ablation sweep for %s\n', device);
 fprintf('Film force: %s\n', spec.filmForceLabel);
@@ -48,40 +49,57 @@ fprintf('Reference full-model normal-state calibration scale: %.4g\n', ...
     referenceFullNormalScale);
 fprintf('Conductance-preserving ablations use the full-model scale from the same gammaW/pW family.\n');
 
-sweepRows = repmat(empty_row_v743(), 2 .* numel(cases), 1);
-rowIdx = 0;
-
-for k = 1:numel(cases)
-    caseInfo = cases(k);
-    for mode = ["shape","conductance"]
-        rowIdx = rowIdx + 1;
-        fprintf('\nCase %d/%d, %s calibration: %s\n', ...
-            k, numel(cases), char(mode), char(caseInfo.name));
-
-        normalScaleForMode = NaN;
-        if mode == "conductance"
-            normalScaleForMode = normal_scale_for_case_v743(caseInfo, ...
-                fullScaleTable, referenceFullNormalScale);
-        end
-        [netCase, paramsCase, weak] = build_v743_wij_case(netPDE, spec, ...
-            baseParamsUncal, caseInfo, opts, mode, normalScaleForMode);
-        fieldScreen = solve_v741_field_dvdi_map(netCase, spec, paramsCase, ...
-            screenFieldOpts, weak);
-        fieldScreen.version = sprintf('v7.4.3 %s screening', mode);
-
-        shapeScore = compute_v742_weaklink_feature_score(fieldScreen, ...
-            expField, opts.shapeScore);
-        conductanceScore = compute_v743_conductance_score(fieldScreen, ...
-            expField, opts.conductanceScore);
-
-        sweepRows(rowIdx) = make_sweep_row_v743(spec, caseInfo, weak, ...
-            mode, shapeScore, conductanceScore);
+expectedRows = 2 .* numel(cases);
+sweepTable = table();
+if opts.reuseExistingScreeningTable && exist(scoreCsvPath, 'file') == 2
+    candidateTable = readtable(scoreCsvPath);
+    if height(candidateTable) == expectedRows
+        fprintf('Reusing existing screening score table:\n%s\n', scoreCsvPath);
+        sweepTable = candidateTable;
+    else
+        fprintf('Existing screening score table has %d rows, expected %d; recomputing.\n', ...
+            height(candidateTable), expectedRows);
     end
 end
 
-sweepTable = struct2table(sweepRows);
-sweepTable = sortrows(sweepTable, {'calibrationMode','shapeScore'});
-writetable(sweepTable, fullfile(outDir, 'AS006_v7_4_3_wij_ablation_scores.csv'));
+if isempty(sweepTable)
+    sweepRows = repmat(empty_row_v743(), expectedRows, 1);
+    rowIdx = 0;
+
+    for k = 1:numel(cases)
+        caseInfo = cases(k);
+        for mode = ["shape","conductance"]
+            rowIdx = rowIdx + 1;
+            fprintf('\nCase %d/%d, %s calibration: %s\n', ...
+                k, numel(cases), char(mode), char(caseInfo.name));
+
+            normalScaleForMode = NaN;
+            if mode == "conductance"
+                normalScaleForMode = normal_scale_for_case_v743(caseInfo, ...
+                    fullScaleTable, referenceFullNormalScale);
+            end
+            [netCase, paramsCase, weak] = build_v743_wij_case(netPDE, spec, ...
+                baseParamsUncal, caseInfo, opts, mode, normalScaleForMode);
+            fieldScreen = solve_v741_field_dvdi_map(netCase, spec, paramsCase, ...
+                screenFieldOpts, weak);
+            fieldScreen.version = sprintf('v7.4.3 %s screening', mode);
+
+            shapeScore = compute_v742_weaklink_feature_score(fieldScreen, ...
+                expField, opts.shapeScore);
+            conductanceScore = compute_v743_conductance_score(fieldScreen, ...
+                expField, opts.conductanceScore);
+
+            sweepRows(rowIdx) = make_sweep_row_v743(spec, caseInfo, weak, ...
+                mode, shapeScore, conductanceScore);
+        end
+    end
+
+    sweepTable = struct2table(sweepRows);
+    sweepTable = sortrows(sweepTable, {'calibrationMode','shapeScore'});
+    writetable(sweepTable, scoreCsvPath);
+else
+    sweepTable = sortrows(sweepTable, {'calibrationMode','shapeScore'});
+end
 
 hSweep = plot_v743_wij_ablation_summary(sweepTable);
 export_chapter_figure(hSweep, outDir, 'AS006_v7_4_3_wij_ablation_summary');

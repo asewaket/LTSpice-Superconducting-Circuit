@@ -28,6 +28,11 @@ opts.seedOffset = 7430;
 % shortcut.  The best case is re-run on the full experimental grid.
 opts.screenBCount = 9;
 
+% If the screening score CSV already exists with the expected number of
+% rows, reuse it.  This is useful when a run completed the expensive
+% screening loop but failed later during figure export.
+opts.reuseExistingScreeningTable = true;
+
 % W-only transport convention.  The weak-link transparency changes normal
 % conductance and critical current together; Tc and residual fields are not
 % changed by this ablation.
