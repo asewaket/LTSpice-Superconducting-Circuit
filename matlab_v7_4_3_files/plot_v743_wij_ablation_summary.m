@@ -26,7 +26,7 @@ plot_topology_summary(sweepTable, 'conductanceScore');
 title('best conductance-preserving score by W_{ij} topology');
 
 sgtitle('v7.4.3 controlled AS006 weak-link transparency ablation');
-apply_light_figure_style(h);
+apply_v743_summary_light_style(h);
 
 end
 
@@ -66,5 +66,45 @@ set(gca, 'XTick', 1:numel(topologies), 'XTickLabel', topologies);
 xtickangle(30);
 ylabel('best score, lower is better');
 grid on;
+
+end
+
+function apply_v743_summary_light_style(h)
+%APPLY_V743_SUMMARY_LIGHT_STYLE Local style guard for thesis-ready output.
+%
+% Keep this local to avoid depending on whichever apply_light_figure_style.m
+% happens to be first on MATLAB's global path.
+
+set(h, 'Color', 'w');
+axList = findall(h, 'Type', 'axes');
+
+for k = 1:numel(axList)
+    ax = axList(k);
+    set(ax, ...
+        'Color', 'w', ...
+        'XColor', 'k', ...
+        'YColor', 'k', ...
+        'GridColor', [0.72 0.72 0.72], ...
+        'MinorGridColor', [0.86 0.86 0.86], ...
+        'LineWidth', 1.0, ...
+        'FontSize', 11, ...
+        'Box', 'on');
+    grid(ax, 'on');
+
+    ax.Title.Color = 'k';
+    ax.XLabel.Color = 'k';
+    ax.YLabel.Color = 'k';
+
+end
+
+legList = findall(h, 'Type', 'legend');
+for k = 1:numel(legList)
+    set(legList(k), 'Color', 'w', 'TextColor', 'k', 'EdgeColor', [0.35 0.35 0.35]);
+end
+
+textList = findall(h, 'Type', 'text');
+for k = 1:numel(textList)
+    set(textList(k), 'Color', 'k');
+end
 
 end
