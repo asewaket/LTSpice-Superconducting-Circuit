@@ -29,6 +29,7 @@ predicted four-probe `R(T)` behavior with experimental transport trends.
 | `matlab_v6_1_files/` | Raman representation, mode, reference, and coupling sensitivity tests. |
 | `matlab_v6_2_files/` | Robustness and family-level summaries for selected Raman variants. |
 | `matlab_v6_3_files/` | Out-of-plane/A4g Raman mode-ablation tests for transport relevance. |
+| `matlab_v7_2_2_files/` | PDE-informed AS006 nonlinear `dV/dI(I,T)` scaffold with local `Ic` switching diagnostics and experimental top/bottom nonlinear cuts. |
 | `2D_model/` | LTspice 2D network progression and plotting scripts. |
 | `2D_model_four_probe_constrained/` | Constrained three-lane four-probe LTspice model with scoring utilities. |
 | Root `*.m` files | Physics-informed domain/percolation model sweeps and plotting helpers. |
@@ -53,6 +54,13 @@ For the root-level physics-informed domain/percolation sweep:
 
 ```matlab
 run_physics_informed_case_sweep
+```
+
+For the v7.2.2 AS006 nonlinear `dV/dI(I,T)` scaffold:
+
+```matlab
+cd matlab_v7_2_2_files
+run_v722_as006_nonlinear_maps
 ```
 
 Each iteration folder has its own `README.md` with more detailed notes,
