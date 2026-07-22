@@ -32,6 +32,7 @@ predicted four-probe `R(T)` behavior with experimental transport trends.
 | `matlab_v7_2_2_files/` | PDE-informed AS006 nonlinear `dV/dI(I,T)` scaffold with local `Ic` switching diagnostics and experimental top/bottom nonlinear cuts. |
 | `matlab_v7_3_files/` | AS006 out-of-plane magnetic-field `dV/dI(I,B)` scaffold with field-dependent `Tc`, `Ic`, flux-flow-like response, and experiment/model residual maps. |
 | `matlab_v7_4_1_files/` | AS006 weak-link/Josephson-like bottleneck extension with low-`Ic` link subsets, sharper current switching, and magnetic-field `dV/dI(I,B)` diagnostics. |
+| `matlab_v7_4_2_files/` | Focused AS006 weak-link ablation sweep that ranks sparse lanes, hotspots, contact-edge bottlenecks, and mixed cases using a low-bias-weighted field score. |
 | `2D_model/` | LTspice 2D network progression and plotting scripts. |
 | `2D_model_four_probe_constrained/` | Constrained three-lane four-probe LTspice model with scoring utilities. |
 | Root `*.m` files | Physics-informed domain/percolation model sweeps and plotting helpers. |
@@ -77,6 +78,13 @@ For the v7.4.1 AS006 weak-link/Josephson-like bottleneck field scaffold:
 ```matlab
 cd matlab_v7_4_1_files
 run_v741_as006_weaklink_field_maps
+```
+
+For the v7.4.2 focused AS006 weak-link ablation sweep:
+
+```matlab
+cd matlab_v7_4_2_files
+run_v742_as006_weaklink_ablation_sweep
 ```
 
 Each iteration folder has its own `README.md` with more detailed notes,
