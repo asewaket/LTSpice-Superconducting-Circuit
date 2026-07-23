@@ -35,6 +35,8 @@ predicted four-probe `R(T)` behavior with experimental transport trends.
 | `matlab_v7_4_2_files/` | Focused AS006 weak-link ablation sweep that ranks sparse lanes, hotspots, contact-edge bottlenecks, and mixed cases using a low-bias-weighted field score. |
 | `matlab_v7_4_3_files/` | Controlled AS006 weak-link-transparency `W_ij` ablation that holds geometry/PDE/Raman/disorder fixed, compares full/no/uniform/shuffled/boundary-off/central-lane cases, and reports both shape-controlled and conductance-preserving calibration conventions. |
 | `matlab_v7_4_4_files/` | AS006 physical-bottleneck `W_ij` sweep that keeps the v7.4.3 controls but strengthens the topology hypotheses: coverage-boundary lanes, contact-relaxation halos, current-crowding near probes/source/drain, tear-like lanes, and anisotropic transparency. |
+| `matlab_v7_4_5_files/` | Runtime-cleaned physical-bottleneck `W_ij` sweep: screening is separated from best-case field-map export, summary plots stay light-themed, and conductance scores use log scaling when needed. |
+| `matlab_v7_4_6_files/` | Gap-tied weak-link scaffold: local `Ic` is derived from `Tc` and `Rn` using an Ambegaokar-Baratoff-like gap scale with compact `alpha_gap`, transparency, and weak-link-fraction sweeps. |
 | `2D_model/` | LTspice 2D network progression and plotting scripts. |
 | `2D_model_four_probe_constrained/` | Constrained three-lane four-probe LTspice model with scoring utilities. |
 | Root `*.m` files | Physics-informed domain/percolation model sweeps and plotting helpers. |
@@ -101,6 +103,22 @@ For the v7.4.4 physical-bottleneck `W_ij` sweep:
 ```matlab
 cd matlab_v7_4_4_files
 run_v744_as006_physical_bottleneck_sweep
+```
+
+For the v7.4.5 runtime-cleaned physical-bottleneck sweep:
+
+```matlab
+cd matlab_v7_4_5_files
+run_v745_as006_physical_bottleneck_sweep
+% Optional after screening:
+run_v745_as006_best_maps_only
+```
+
+For the v7.4.6 gap-tied weak-link sweep:
+
+```matlab
+cd matlab_v7_4_6_files
+run_v746_as006_gap_weaklink_sweep
 ```
 
 Each iteration folder has its own `README.md` with more detailed notes,
