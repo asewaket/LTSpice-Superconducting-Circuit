@@ -1,0 +1,7 @@
+caseName,S_full,S_ablation,sigma_seed_eff,Z_ablation,interpretation
+full,NaN,NaN,0.02,NaN,reference model
+no_weak_links,NaN,NaN,0.02,NaN,tests whether weak links are needed at all
+uniform_weak_links,NaN,NaN,0.02,NaN,tests whether average weak-link strength is enough
+shuffled_weak_links,NaN,NaN,0.02,NaN,tests whether weak-link spatial registration matters
+boundary_or_crack_off,NaN,NaN,0.02,NaN,tests device-specific boundary/crack contribution
+central_lane,NaN,NaN,0.02,NaN,tests 2D bypass/current redistribution

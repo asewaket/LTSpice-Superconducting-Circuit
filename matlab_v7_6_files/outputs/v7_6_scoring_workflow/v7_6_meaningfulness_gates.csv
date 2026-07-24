@@ -1,0 +1,7 @@
+gate,criterion,requiredForPhysicalClaim
+multi_seed_improvement,"candidate improves median score across disorder seeds",1
+both_probe_pairs_or_asymmetry_explained,"candidate helps both pairs or explicitly improves A_probe mismatch",1
+reasonable_parameter_variation,"candidate remains competitive under bounded prior/sensitivity sweeps",1
+held_out_data,"candidate improves data not used for tuning, e.g. selected dV/dI linecuts",1
+ablation_Z_larger_than_noise,"Z_ablation = (S_ablation - S_full)/sigma_seed is meaningfully positive",1
+registration_uncertainty_test,"improvement exceeds Raman registration/digitization uncertainty",1

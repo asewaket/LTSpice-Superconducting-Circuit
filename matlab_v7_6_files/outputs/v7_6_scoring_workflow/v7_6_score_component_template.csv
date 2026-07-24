@@ -1,0 +1,6 @@
+component,definition,weight,includeInCoreScore
+primary_RT_chi2,"weighted chi-square over available device/probe/temperature points",1,1
+secondary_transition_metrics,"Tonset, low-T residual R/RN, and 90-10 transition breadth",0.6,1
+probe_pair_asymmetry,"|R_4-10 - R_3-9| / mean(R_4-10, R_3-9), when both pairs exist",0.6,1
+nonlinear_dVdI_linecuts,"selected measured dV/dI(I) linecuts only; no full B raster in core score",0.4,1
+complexity_penalty,"parameter-count penalty plus AICc/BIC bookkeeping",1,1
