@@ -37,6 +37,7 @@ predicted four-probe `R(T)` behavior with experimental transport trends.
 | `matlab_v7_4_4_files/` | AS006 physical-bottleneck `W_ij` sweep that keeps the v7.4.3 controls but strengthens the topology hypotheses: coverage-boundary lanes, contact-relaxation halos, current-crowding near probes/source/drain, tear-like lanes, and anisotropic transparency. |
 | `matlab_v7_4_5_files/` | Runtime-cleaned physical-bottleneck `W_ij` sweep: screening is separated from best-case field-map export, summary plots stay light-themed, and conductance scores use log scaling when needed. |
 | `matlab_v7_4_6_files/` | Gap-tied weak-link scaffold: local `Ic` is derived from `Tc` and `Rn` using an Ambegaokar-Baratoff-like gap scale with compact `alpha_gap`, transparency, and weak-link-fraction sweeps. |
+| `matlab_v7_5_files/` | Literature-prior / competing-hypotheses framework that documents which MoTe2, gap, weak-link, percolation, and field-oscillation references constrain the semi-phenomenological model and which claims remain out of scope. |
 | `2D_model/` | LTspice 2D network progression and plotting scripts. |
 | `2D_model_four_probe_constrained/` | Constrained three-lane four-probe LTspice model with scoring utilities. |
 | Root `*.m` files | Physics-informed domain/percolation model sweeps and plotting helpers. |
@@ -119,6 +120,13 @@ For the v7.4.6 gap-tied weak-link sweep:
 ```matlab
 cd matlab_v7_4_6_files
 run_v746_as006_gap_weaklink_sweep
+```
+
+For the v7.5 literature-prior and competing-hypotheses audit:
+
+```matlab
+cd matlab_v7_5_files
+run_v75_literature_prior_audit
 ```
 
 Each iteration folder has its own `README.md` with more detailed notes,
