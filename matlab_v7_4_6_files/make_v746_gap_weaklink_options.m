@@ -66,6 +66,24 @@ opts.runFullFieldMaps = false;
 opts.fullMapCalibrationModes = ["shape","conductance"];
 opts.reuseExistingScreeningTable = true;
 
+% v7.7 multi-seed scoring can override these values through globals while
+% leaving the standalone v7.4.6 run unchanged.
+opts.seedOverride = NaN;
+opts.outputSubdirSuffix = '';
+global V77_SEED_OVERRIDE V77_OUTPUT_SUFFIX V77_REUSE_EXISTING_SCREENING V77_RUN_FULL_FIELD_MAPS
+if ~isempty(V77_SEED_OVERRIDE)
+    opts.seedOverride = V77_SEED_OVERRIDE;
+end
+if ~isempty(V77_OUTPUT_SUFFIX)
+    opts.outputSubdirSuffix = char(string(V77_OUTPUT_SUFFIX));
+end
+if ~isempty(V77_REUSE_EXISTING_SCREENING)
+    opts.reuseExistingScreeningTable = logical(V77_REUSE_EXISTING_SCREENING);
+end
+if ~isempty(V77_RUN_FULL_FIELD_MAPS)
+    opts.runFullFieldMaps = logical(V77_RUN_FULL_FIELD_MAPS);
+end
+
 % Transport convention.  Rn still carries transparency. Ic is replaced by
 % the gap-derived AB-like value after Rn is updated, so do not also multiply
 % Ic by W a second time.

@@ -1,0 +1,7 @@
+gate,required,explanation,passCount,totalMechanisms
+screening rank,0,"Mechanism is in the best rank fraction of current real candidate ledgers.",2,6
+multi-seed robustness,1,"Requires at least three true disorder seeds; single-seed ledgers are not enough.",0,6
+held-out diagnostic,1,"Uses conductance-preserving/field/linecut diagnostic available from v7.4.x outputs.",6,6
+probe-pair/asymmetry,1,"AS006 has two probe pairs, so asymmetry must be represented, not ignored.",6,6
+ablation Z significance,1,"Requires |Z_ablation| >= threshold relative to seed variability.",0,6
+physical claim,1,"All required gates pass.",0,6

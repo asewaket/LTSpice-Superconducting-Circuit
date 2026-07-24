@@ -7,16 +7,22 @@
 % current-crowding near probes/source/drain, tear-like channels, and
 % anisotropic transparency are tested explicitly.
 
-clear;
+if ~exist('V77_KEEP_WORKSPACE', 'var') || ~V77_KEEP_WORKSPACE
+    clear;
+end
 clc;
 
 projectDir = add_v745_paths();
-outDir = fullfile(projectDir, 'outputs', 'v7_4_5_as006_physical_bottleneck');
+opts = make_v745_bottleneck_options();
+outDirName = 'v7_4_5_as006_physical_bottleneck';
+if isfield(opts, 'outputSubdirSuffix') && strlength(string(opts.outputSubdirSuffix)) > 0
+    outDirName = sprintf('%s_%s', outDirName, char(opts.outputSubdirSuffix));
+end
+outDir = fullfile(projectDir, 'outputs', outDirName);
 if ~exist(outDir, 'dir')
     mkdir(outDir);
 end
 
-opts = make_v745_bottleneck_options();
 device = opts.device;
 spec = make_device_spec(device);
 modelParams = make_shared_model_params();
@@ -43,6 +49,9 @@ pde = solve_v7_pde_mechanics(spec, pdeOpts);
     modelParams, pde, pdeOpts);
 
 seed = spec.randomSeed + pdeOpts.transport.seedOffset;
+if isfield(opts, 'seedOverride') && ~isempty(opts.seedOverride) && isfinite(opts.seedOverride)
+    seed = opts.seedOverride;
+end
 baseParamsUncal = assign_link_parameters(netPDE, spec, modelParams, seed, ...
     'v7_4_5_physical_bottleneck_base');
 

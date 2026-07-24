@@ -7,16 +7,22 @@
 % Ambegaokar-Baratoff-like scale rather than assigned as an independent
 % random current scale.
 
-clear;
+if ~exist('V77_KEEP_WORKSPACE', 'var') || ~V77_KEEP_WORKSPACE
+    clear;
+end
 clc;
 
 projectDir = add_v746_paths();
-outDir = fullfile(projectDir, 'outputs', 'v7_4_6_as006_gap_weaklink');
+opts = make_v746_gap_weaklink_options();
+outDirName = 'v7_4_6_as006_gap_weaklink';
+if isfield(opts, 'outputSubdirSuffix') && strlength(string(opts.outputSubdirSuffix)) > 0
+    outDirName = sprintf('%s_%s', outDirName, char(opts.outputSubdirSuffix));
+end
+outDir = fullfile(projectDir, 'outputs', outDirName);
 if ~exist(outDir, 'dir')
     mkdir(outDir);
 end
 
-opts = make_v746_gap_weaklink_options();
 device = opts.device;
 spec = make_device_spec(device);
 modelParams = make_shared_model_params();
@@ -42,6 +48,9 @@ pde = solve_v7_pde_mechanics(spec, pdeOpts);
     modelParams, pde, pdeOpts);
 
 seed = spec.randomSeed + pdeOpts.transport.seedOffset;
+if isfield(opts, 'seedOverride') && ~isempty(opts.seedOverride) && isfinite(opts.seedOverride)
+    seed = opts.seedOverride;
+end
 baseParamsUncal = assign_link_parameters(netPDE, spec, modelParams, seed, ...
     'v7_4_6_gap_weaklink_base');
 

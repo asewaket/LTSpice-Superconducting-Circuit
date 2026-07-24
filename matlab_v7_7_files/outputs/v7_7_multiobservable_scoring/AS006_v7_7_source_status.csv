@@ -1,0 +1,5 @@
+version,role,scoreFile,loaded,rowCount,note
+v7.4.3,controlled_Wij_ablation,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_3_files/outputs/v7_4_3_as006_wij_ablation/AS006_v7_4_3_wij_ablation_scores.csv,0,0,missing; regenerate this v7.4.x sweep if you want it included
+v7.4.4,physical_bottleneck_Wij,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_4_files/outputs/v7_4_4_as006_physical_bottleneck/AS006_v7_4_4_physical_bottleneck_scores.csv,0,0,missing; regenerate this v7.4.x sweep if you want it included
+v7.4.5,runtime_cleaned_physical_bottleneck_Wij,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_5_files/outputs/v7_4_5_as006_physical_bottleneck/AS006_v7_4_5_physical_bottleneck_scores.csv,1,110,loaded
+v7.4.6,gap_tied_weak_links,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink/AS006_v7_4_6_gap_weaklink_scores.csv,1,154,loaded
