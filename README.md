@@ -41,6 +41,7 @@ predicted four-probe `R(T)` behavior with experimental transport trends.
 | `matlab_v7_6_files/` | Multi-observable scoring scaffold: explicit `R(T)` chi-square over available probe pairs, transition-metric penalties, probe-asymmetry scoring, optional nonlinear linecut validation, complexity bookkeeping, and ablation `Z`-scores relative to seed variability. |
 | `matlab_v7_7_files/` | Real-output multi-observable scoring layer that reads v7.4.x candidate ledgers, ranks mechanisms, reports seed robustness and ablation-significance gates, and separates screening evidence from physical claims. |
 | `matlab_v7_7_1_files/` | Mechanism-evidence report built on v7.7 ledgers: reports multi-observable score, seed-to-seed variability, ablation `Z`-scores, both-probe survival, and whether each mechanism beats central-lane and no-weak-link baselines. |
+| `matlab_v8_0/` | Canonical release-oriented orchestration path. Phase 2 reuses the v7.4.6 physics engine without copying it, adds frozen configs/manifests/wrappers, and gates all later fitting on reproducing the AS006 v7.4.6 score ledger. Phase 3 adds the frozen AS006 10-seed evidence campaign; Phase 4 adds identifiability, parameter-basin, and pruning diagnostics. |
 | `2D_model/` | LTspice 2D network progression and plotting scripts. |
 | `2D_model_four_probe_constrained/` | Constrained three-lane four-probe LTspice model with scoring utilities. |
 | Root `*.m` files | Physics-informed domain/percolation model sweeps and plotting helpers. |
@@ -151,6 +152,34 @@ For the v7.7.1 mechanism-evidence report:
 ```matlab
 cd matlab_v7_7_1_files
 run_v771_mechanism_evidence_report
+```
+
+For the v8.0 canonical release-orchestration scaffold:
+
+```matlab
+cd matlab_v8_0
+run_v800_release
+```
+
+For the v8.0 Phase 3 AS006 multi-seed evidence campaign:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase3_as006_multiseed
+```
+
+For the v8.0 Phase 4 identifiability/pruning diagnostics:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase4_identifiability_pruning
+```
+
+For the v8.0 Phase 5 reduced six-device transfer plan:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase5_transfer_plan
 ```
 
 Each iteration folder has its own `README.md` with more detailed notes,

@@ -1,0 +1,43 @@
+model_version: v8.0-phase4
+source: Phase 3 AS006 seed ledgers
+
+input:
+  phase3_ledger_glob: outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_*_scores.csv
+  expected_final_seed_count: 10
+  allow_partial_ledgers: true
+
+protected_controls:
+  - no weak links
+  - uniform weak links
+  - shuffled weak links
+  - central-lane / 1D-like
+
+diagnostic_controls:
+  - anisotropic control
+
+identifiability:
+  top_rank_threshold: 1
+  top_two_rank_threshold: 2
+  provisional_top_two_rate: 0.5
+  final_top_two_rate: 0.3
+  final_win_rate: 0.2
+  baseline_beat_probability: 0.8
+  parameter_basin_score_tolerance: 0.02
+  min_near_best_parameter_signatures: 2
+  min_top_two_rate_for_transfer_primary: 0.3
+
+pruning_policy:
+  no_final_pruning_before_full_phase3: true
+  retain_controls_even_when_bad: true
+  keep_diagnostic_controls_out_of_transfer_primary_set: true
+  demote_zero_top_two_support_even_when_baselines_pass: true
+  prefer_simpler_mechanism_when_scores_tie: true
+
+outputs:
+  folder: outputs/v8_0_phase4_identifiability_pruning
+  candidate_scores: AS006_v8_0_phase4_candidate_scores.csv
+  seed_mode_winners: AS006_v8_0_phase4_seed_mode_winners.csv
+  mechanism_identifiability: AS006_v8_0_phase4_mechanism_identifiability.csv
+  parameter_basin: AS006_v8_0_phase4_parameter_basin.csv
+  pruning_decisions: AS006_v8_0_phase4_pruning_decisions.csv
+  figure_base: AS006_v8_0_phase4_identifiability_pruning

@@ -33,6 +33,7 @@ end
 clear run_v800_release
 clear run_v800_phase3_as006_multiseed
 clear run_v800_phase4_identifiability_pruning
+clear run_v800_phase5_transfer_plan
 clear v800.default_config
 clear v800.run_as006_v746_reproduction
 clear v800.phase3_config
@@ -41,5 +42,7 @@ clear v800.build_as006_multiseed_report
 clear v800.phase4_config
 clear v800.build_phase4_identifiability_report
 clear v800.plot_phase4_pruning_summary
+clear v800.phase5_config
+clear v800.build_phase5_transfer_plan
 
 end

@@ -1,0 +1,43 @@
+model_version: v8.0-phase5
+source: Phase 4 AS006 pruning decisions
+
+input:
+  phase4_pruning_decisions: outputs/v8_0_phase4_identifiability_pruning/AS006_v8_0_phase4_pruning_decisions.csv
+
+transfer_primary:
+  - combined physical bottleneck
+  - contact-relaxed weak links
+  - crack/tunnel-like weak links
+
+required_controls:
+  - no weak links
+  - uniform weak links
+  - shuffled weak links
+  - central-lane / 1D-like
+
+diagnostic_controls:
+  - anisotropic control
+
+diagnostic_hold:
+  - boundary/SNS-inspired constriction
+
+devices:
+  - AS001
+  - AS002
+  - AS003
+  - AS004
+  - AS005
+  - AS006
+
+validation_policy:
+  no_new_physics_classes: true
+  no_device_specific_weak_link_retuning: true
+  include_leave_one_device_out: true
+  keep_required_controls: true
+  report_device_failures_explicitly: true
+
+outputs:
+  folder: outputs/v8_0_phase5_transfer_plan
+  candidate_set: AS006_v8_0_phase5_transfer_candidate_set.csv
+  device_plan: AS006_v8_0_phase5_device_plan.csv
+  validation_gates: AS006_v8_0_phase5_validation_gates.csv
