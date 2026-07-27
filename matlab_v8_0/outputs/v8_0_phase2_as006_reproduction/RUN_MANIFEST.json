@@ -1,0 +1,27 @@
+{
+  "model_version": "v8.0-phase2",
+  "physics_source_version": "v7.4.6",
+  "device": "AS006",
+  "commit_sha": "0b1796cbaf338161d2664aee9c9d1cf14e308e80",
+  "generated_at": "20260724T215348",
+  "output_dir": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase2_as006_reproduction",
+  "generated_score_file": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_reproduction/AS006_v7_4_6_gap_weaklink_scores.csv",
+  "v8_score_file": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase2_as006_reproduction/AS006_v8_0_phase2_reproduction_scores.csv",
+  "reference_score_file": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink/AS006_v7_4_6_gap_weaklink_scores.csv",
+  "seed_override": null,
+  "output_suffix": "v800_reproduction",
+  "run_full_field_maps": false,
+  "reuse_existing_screening_tables": false,
+  "reproduction_gate": {
+    "name": "v7.4.6 AS006 score-ledger reproduction",
+    "referencePath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink/AS006_v7_4_6_gap_weaklink_scores.csv",
+    "generatedPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_reproduction/AS006_v7_4_6_gap_weaklink_scores.csv",
+    "tolerance": 1E-9,
+    "referenceAvailable": true,
+    "generatedAvailable": true,
+    "maxAbsScoreDifference": 0,
+    "rowCountMatch": true,
+    "status": "PASS",
+    "message": "Generated v8 reproduction ledger matches the v7.4.6 reference within tolerance."
+  }
+}

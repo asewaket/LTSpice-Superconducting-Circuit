@@ -1,0 +1,26 @@
+model_version: v8.0-phase3
+source: v7.6/v7.7 scoring rules
+
+objective_terms:
+  primary_RT: enabled
+  transition_metrics: enabled
+  probe_asymmetry: enabled when both probe pairs exist
+  heldout_diagnostic: enabled
+  nonlinear_linecuts: optional fixed validation only
+  complexity_penalty: enabled
+  ablation_Z: enabled when seed variability is available
+
+claim_gates:
+  min_seed_count: 10
+  min_abs_ablation_Z: 2.0
+  beat_no_weak_link_probability: 0.8
+  beat_central_lane_probability: 0.8
+  min_both_probe_survival_rate: 0.8
+  probe_asymmetry_tolerance: 0.02
+  require_both_calibration_conventions: true
+  require_parameter_basin_not_single_point: true
+
+not_core_objective:
+  - full magnetic-field raster fitting
+  - fluxoid period fitting
+  - vortex trajectory fitting

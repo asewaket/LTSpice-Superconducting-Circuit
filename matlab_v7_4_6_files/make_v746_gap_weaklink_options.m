@@ -71,6 +71,7 @@ opts.reuseExistingScreeningTable = true;
 opts.seedOverride = NaN;
 opts.outputSubdirSuffix = '';
 global V77_SEED_OVERRIDE V77_OUTPUT_SUFFIX V77_REUSE_EXISTING_SCREENING V77_RUN_FULL_FIELD_MAPS
+global V800_ALPHA_GAP_VALUES V800_GAMMAW_VALUES V800_PW_VALUES
 if ~isempty(V77_SEED_OVERRIDE)
     opts.seedOverride = V77_SEED_OVERRIDE;
 end
@@ -82,6 +83,15 @@ if ~isempty(V77_REUSE_EXISTING_SCREENING)
 end
 if ~isempty(V77_RUN_FULL_FIELD_MAPS)
     opts.runFullFieldMaps = logical(V77_RUN_FULL_FIELD_MAPS);
+end
+if ~isempty(V800_ALPHA_GAP_VALUES)
+    opts.alphaGap.values = V800_ALPHA_GAP_VALUES;
+end
+if ~isempty(V800_GAMMAW_VALUES)
+    opts.gammaW_values = V800_GAMMAW_VALUES;
+end
+if ~isempty(V800_PW_VALUES)
+    opts.pW_values = V800_PW_VALUES;
 end
 
 % Transport convention.  Rn still carries transparency. Ic is replaced by

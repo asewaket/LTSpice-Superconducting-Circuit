@@ -1,0 +1,10 @@
+mechanism,seedCountGate,beatsNoWeakGate,beatsCentralLaneGate,ablationZGate,probeAsymmetryGate,bothCalibrationModeGate,parameterBasinGate,advanceGate
+combined physical bottleneck,1,1,1,1,1,1,1,1
+crack/tunnel-like weak links,1,1,1,1,1,1,1,1
+contact-relaxed weak links,1,1,1,1,1,1,1,1
+anisotropic control,1,1,1,1,1,1,0,0
+boundary/SNS-inspired constriction,1,1,1,1,1,1,1,1
+shuffled weak links,1,1,1,1,0,1,0,0
+uniform weak links,1,1,1,1,1,1,0,0
+no weak links,1,0,1,0,1,0,0,0
+central-lane / 1D-like,1,0,0,1,0,0,0,0

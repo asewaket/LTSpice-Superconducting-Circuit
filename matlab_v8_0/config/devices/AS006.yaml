@@ -1,0 +1,18 @@
+device: AS006
+phase2_role: reproduction_gate_device
+physics_source_version: v7.4.6
+
+fixed_inputs:
+  geometry: Hall-bar device specification from make_device_spec('AS006')
+  source_drain: from device specification
+  voltage_probes:
+    - top_4_10
+    - bottom_3_9
+  stressor_coverage: from device specification
+  normal_state_resistance: from existing calibration path
+  field_current_data: ASD092 dVdI(I,B) import when available
+
+phase2_gate:
+  reference_ledger: ../../../matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink/AS006_v7_4_6_gap_weaklink_scores.csv
+  reproduction_output_suffix: v800_reproduction
+  score_tolerance: 1.0e-9

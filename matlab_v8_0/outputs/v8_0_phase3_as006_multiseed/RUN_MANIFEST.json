@@ -1,0 +1,175 @@
+{
+  "model_version": "v8.0-phase3",
+  "phase": "Phase 3 AS006 multi-seed evidence campaign",
+  "commit_sha": "0b1796cbaf338161d2664aee9c9d1cf14e308e80",
+  "generated_at": "20260727T081449",
+  "config": {
+    "modelVersion": "v8.0-phase3",
+    "physicsSourceVersion": "v7.4.6",
+    "device": "AS006",
+    "repoRoot": "/Users/asewaket/Documents/LTSpice Superconducting Circuit",
+    "rootDir": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0",
+    "outputDir": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed",
+    "ledgerDir": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers",
+    "manifestFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/RUN_MANIFEST.json",
+    "statusFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_seed_run_status.csv",
+    "candidateScoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_candidate_scores.csv",
+    "mechanismReportFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_mechanism_report.csv",
+    "gateReportFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_gate_report.csv",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505,
+      606,
+      707,
+      808,
+      909,
+      1010
+    ],
+    "alphaGapValues": [
+      3.3,
+      3.7,
+      4.1
+    ],
+    "gammaWValues": [
+      0.05,
+      0.1,
+      0.2,
+      0.4,
+      0.7
+    ],
+    "pWValues": [
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "runFullFieldMaps": false,
+    "reuseExistingScreeningTables": false,
+    "sourceVersion": "v7.4.6",
+    "sourceRole": "gap_tied_weak_links_phase3_seed",
+    "sourceScript": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+    "sourceOutputBase": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs",
+    "gates": {
+      "minSeedCount": 10,
+      "minPassProbability": 0.8,
+      "minAbsZ": 2,
+      "probeAsymmetryTolerance": 0.02,
+      "requireBothCalibrationModes": true,
+      "seedSigmaFloor": 0.005,
+      "minBothProbeSurvivalRate": 0.8,
+      "basinScoreTolerance": 0.02,
+      "minBasinParameterPoints": 2
+    },
+    "baselines": {
+      "noWeak": "no weak links",
+      "centralLane": "central-lane / 1D-like"
+    }
+  },
+  "campaign_status": [
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 101,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_101/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_101_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 202,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_202/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_202_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 303,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_303/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_303_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 404,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_404/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_404_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 505,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_505/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_505_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 606,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_606/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_606_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 707,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_707/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_707_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 808,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_808/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_808_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 909,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_909/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_909_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    },
+    {
+      "sourceVersion": "v7.4.6",
+      "seed": 1010,
+      "scriptPath": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/run_v746_as006_gap_weaklink_sweep.m",
+      "scoreFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v7_4_6_files/outputs/v7_4_6_as006_gap_weaklink_v800_phase3_seed_1010/AS006_v7_4_6_gap_weaklink_scores.csv",
+      "ledgerFile": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/seed_ledgers/AS006_v8_0_phase3_seed_1010_scores.csv",
+      "loaded": true,
+      "rowCount": 490,
+      "note": "seed ledger written"
+    }
+  ],
+  "mechanism_report_file": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_mechanism_report.csv",
+  "gate_report_file": "/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase3_as006_multiseed/AS006_v8_0_phase3_gate_report.csv"
+}

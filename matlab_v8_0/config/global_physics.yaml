@@ -1,0 +1,32 @@
+model_version: v8.0-phase3
+physics_source_version: v7.4.6
+scope_file: ../MODEL_SCOPE.md
+device_family: MoTe2 Hall-bar weak-link network
+
+local_superconductivity:
+  Tc_rule: Tc0 + DeltaTc * H_i + correlated_disorder
+  mechanical_prior: geometry/PDE/Raman prior H_i
+  disorder: correlated Gaussian field
+
+gap_and_weak_links:
+  alpha_gap_prior_mean: 3.7
+  alpha_gap_prior_sigma: 0.4
+  alpha_gap_values: [3.3, 3.7, 4.1]
+  Rn_effective_rule: Rn_eff = Rn / W_ij
+  Ic_scale_rule: Ic_AB_0 = pi * Delta0 / (2 e Rn_eff)
+  Delta0_rule: Delta0 = 0.5 * alpha_gap * kB * Tc
+  link_classes:
+    - bulk
+    - boundary_sns_inspired_constriction
+    - contact_relaxed
+    - crack_tunnel_like
+    - anisotropic_control
+
+excluded_core_physics:
+  - topological superconductivity
+  - Josephson phase dynamics
+  - vortex trajectories
+  - flux quantization
+  - microscopic pairing symmetry
+  - heating and hysteretic dynamics
+  - unique local strain inversion
