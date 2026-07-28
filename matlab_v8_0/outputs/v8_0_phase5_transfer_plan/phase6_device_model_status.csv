@@ -1,0 +1,7 @@
+device,final_model_status,final_evidence_status,claim_limit
+AS001,mechanistically_unresolved,mixed/unresolved,mixed probe evidence prevents categorical assignment
+AS002,M0star_sufficient,local-like/threshold,local/control sufficiency does not prove weak links absent
+AS003,M0star_sufficient,control-limit support,local/control sufficiency does not prove weak links absent
+AS004,mechanistically_unresolved,mechanistically unresolved,structured tendency remains unresolved because protected topology is competitive
+AS005,structured_supported,crack-associated structured interpretation,structured claim depends on primary-only transport plus crack context
+AS006,structured_supported,strong structured-connectivity support,strongest device-level structured claim; not microscopic/topological proof

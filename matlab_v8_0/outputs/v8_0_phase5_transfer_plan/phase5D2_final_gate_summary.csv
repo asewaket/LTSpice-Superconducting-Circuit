@@ -1,0 +1,10 @@
+component,outcome,note
+In-family recovery,pass,Phase 5C positive-control recovery is frozen.
+Label policy,pass,Mixed synthetic cases are treated as structured/intermediate.
+Label-free uncertainty,pass,5D.1b uses case-specific sigmaDeltaS.
+Nuisance profiling,pass,M0* nuisance profile and boundary diagnostics are frozen.
+Operating-point search,pass,5D.1b ROC tables establish no feasible threshold.
+Feasible universal classifier,fail,No threshold simultaneously satisfies the predeclared FPR and strong-TPR targets.
+Scientific limitation established,pass,Normalized R(T) alone is insufficient for universal categorical classification.
+Validation seeds preserved,pass,validation_seeds_consumed=false
+Evidence-synthesis handoff,pass,Phase 5D.2 freezes policy for hierarchical six-device synthesis.

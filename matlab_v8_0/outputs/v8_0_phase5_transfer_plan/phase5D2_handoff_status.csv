@@ -1,0 +1,9 @@
+item,status,note
+phase5D2_closure,pass_result_freeze,"Phase 5D.2 freezes the negative calibration result and evidence policy."
+feasible_operating_point_primary_only,false,"No further threshold or nuisance tuning is allowed in Phase 5D."
+feasible_operating_point_primary_secondary,false,"No further threshold or nuisance tuning is allowed in Phase 5D."
+deployable_universal_classifier,false,"Use continuous score context, not categorical Z classification."
+validation_required,false,"Independent validation is not run without a feasible calibration rule."
+next_phase,hierarchical_six_device_model_freeze,"Proceed to multi-evidence device synthesis and final hierarchy freeze."
+future_optional_phase,full_shape_RT_classifier,"Deferred; trigger only after hierarchical model freeze."
+evidence_synthesis_ready,pass,"Device conclusions are framed as evidence synthesis."

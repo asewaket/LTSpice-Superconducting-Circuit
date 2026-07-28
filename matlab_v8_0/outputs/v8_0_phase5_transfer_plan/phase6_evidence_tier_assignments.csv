@@ -1,0 +1,7 @@
+device,evidence_tier,geometry_class,directional_preference
+AS001,mixed_probe,control_or_weakly_structured,near_tie
+AS002,primary_only,threshold_half_encapsulated,near_tie
+AS003,control_limit,fully_encapsulated_control,near_tie
+AS004,mixed_probe,intermediate_half_coverage,near_tie
+AS005,auxiliary_supported,crack_associated,structured_direction
+AS006,paired_probe_and_heldout,strong_structured_AS006,structured_direction

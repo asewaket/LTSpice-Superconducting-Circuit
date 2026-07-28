@@ -1,0 +1,9 @@
+item,status,note
+phase6_hierarchy_freeze,pass,"Hierarchical six-device evidence and model freeze generated."
+all_phase6_gates,pass,"All Phase 6 gates pass."
+device_model_statuses_frozen,true,"Every device has a frozen model status."
+evidence_tiers_frozen,true,"Every device has a frozen evidence tier."
+retuning_prohibited,true,"No calibration, classifier, threshold, weak-link, or device-specific retuning is allowed."
+validation_seeds_consumed,false,"Deferred universal-classifier validation seeds remain unused."
+next_phase,phase7_raman_mechanical_prior_robustness,"Test Raman/mechanical spatial priors without reopening Phase 6 classifications."
+future_optional_phase,full_shape_RT_classifier_deferred,"Trigger only after final hierarchy freeze if explicitly rescoped."

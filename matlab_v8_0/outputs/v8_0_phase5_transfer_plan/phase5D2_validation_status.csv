@@ -1,0 +1,6 @@
+item,status,note
+validation_status,not_run,No feasible calibration operating point exists.
+validation_seeds,1001-1080,Reserved independent validation block.
+validation_seeds_consumed,false,Seeds are preserved for a materially revised evidence model.
+reason,no_feasible_calibration_operating_point,Running validation would test a rule already known not to satisfy calibration targets.
+future_use,materially_revised_evidence_model_only,Use reserved seeds only after adding genuinely new observables or a materially revised model.

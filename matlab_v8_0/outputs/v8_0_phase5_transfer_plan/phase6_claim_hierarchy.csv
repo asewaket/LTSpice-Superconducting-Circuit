@@ -1,0 +1,6 @@
+claim_level,status,claim_text
+framework_level,supported,"One shared 2D superconducting-network architecture organizes the six-device series."
+device_level,supported_with_qualifiers,"Local heterogeneity is sufficient for some devices; structured connectivity is supported for the strongest cases."
+limitation,frozen,"Normalized R(T) alone cannot universally distinguish M0star from structured connectivity under the frozen nuisance family."
+excluded_claim,excluded,"The model does not uniquely reconstruct microscopic domains, local strain, Josephson phase dynamics, topology, or pairing symmetry."
+future_optional_phase,deferred,"Full-shape R(T) classifier is deferred until after the hierarchical model freeze."

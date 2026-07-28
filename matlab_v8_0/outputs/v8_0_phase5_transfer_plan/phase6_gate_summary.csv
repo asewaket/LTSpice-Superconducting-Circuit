@@ -1,0 +1,8 @@
+component,outcome,note
+Frozen inputs traceable,pass,"All required Phase 5 inputs exist and are read-only."
+No calibration retuning,pass,"Phase 6 consumes frozen outputs only."
+All devices assigned model status,pass,"Every device has a model status and evidence tier."
+Contextual scores not categorical labels,pass,"DeltaS/Z are retained as evidence context and detection-limit markers."
+Conflicting evidence retained,pass,"AS001 and AS004 remain unresolved rather than forced into a classifier label."
+Final claim hierarchy frozen,pass,"Framework, device-level, limitation, and excluded claims are explicit."
+Deferred classifier outside roadmap,pass,"Full-shape R(T) classifier remains deferred."

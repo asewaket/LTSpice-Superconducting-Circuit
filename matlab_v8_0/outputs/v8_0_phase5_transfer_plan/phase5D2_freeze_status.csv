@@ -1,0 +1,13 @@
+item,status,note
+in_family_identifiability,pass,"Phase 5C in-family synthetic recovery remains frozen."
+mixed_label_policy,pass,"M0 is unstructured; M1, M2, and mixed are structured/intermediate."
+misspecification_robustness,fail,"Phase 5C misspecification failure is retained as the reason for 5D."
+calibration_engine,pass,"5D.1b completed calibration, ROC, sigma, nuisance, and penalty-sensitivity reports."
+label_free_sigmaDeltaS,pass,"sigmaDeltaS is case-specific and label-free."
+nuisance_profiling,pass,"M0* nuisance profile and boundary-occupancy ledgers are archived."
+operating_point_search,pass,"Threshold ROC was evaluated for primary-only and paired-probe evidence tiers."
+feasible_operating_point_primary_only,false,"Primary-only evidence has no threshold satisfying the predeclared targets."
+feasible_operating_point_primary_secondary,false,"Paired-probe evidence has no threshold satisfying the predeclared targets."
+deployable_universal_classifier,false,"No threshold simultaneously satisfies the predeclared FPR and strong-TPR targets."
+phase5D1b_closure,pass_as_negative_result,"5D.1b is frozen as a scientific limitation, not implementation failure."
+validation_seeds_consumed,false,"Independent validation seeds remain preserved."

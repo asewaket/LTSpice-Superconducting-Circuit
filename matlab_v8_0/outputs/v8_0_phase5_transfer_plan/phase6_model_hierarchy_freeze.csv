@@ -1,0 +1,5 @@
+model_level,definition,complexity_K,protected_controls,freeze_policy
+M0star,"local-Tc heterogeneity plus frozen nuisance envelope",0,"geometry-only Tc, bulk gap reference, no weak links, uniform/shuffled protected controls","May be sufficient when structured connectivity is not independently supported."
+M1,"local heterogeneity plus structured boundary/contact/crack connectivity",1,"M0star and protected spatial controls","Structured support requires evidence beyond contextual Z alone."
+M2,"local heterogeneity plus full combined physical bottleneck structure",2,"M0star, M1, protected controls, central-lane/1D-like controls","M2 is reserved for strongest combined bottleneck evidence."
+prohibited_retuning,"no new weak-link class, force-law flexibility, threshold tuning, or device-specific coefficient fitting",NaN,"all frozen Phase 5 controls","Phase 6 is synthesis, not optimization."

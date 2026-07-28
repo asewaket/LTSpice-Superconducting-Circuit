@@ -1,0 +1,13 @@
+policy_class,item,interpretation
+allowed,report_DeltaS_and_Z_continuously,"DeltaS and Z may be reported as continuous directional evidence."
+allowed,report_S_M0star_S_M1_and_S_M2,"Frozen score components may be reported as contextual model-comparison quantities."
+allowed,compare_directional_model_preference,"DeltaS < 0 means structured candidates score better than M0*; DeltaS > 0 means M0* scores better."
+allowed,identify_strongly_separated_limiting_cases,"Large absolute score separation may support qualitative limiting-case discussion."
+allowed,show_uncertainty_and_nuisance_overlap,"The 5D.1b ROC and sigma tables should be used to qualify uncertainty."
+allowed,qualify_by_probe_availability,"Primary-only and paired-probe evidence tiers must remain distinct."
+not_allowed,universal_categorical_classification_from_normalized_RT,"No universal Z threshold met the predeclared calibration targets."
+not_allowed,interpret_unresolved_as_M0,"Unresolved means insufficient separation, not local-Tc proof."
+not_allowed,claim_connectivity_absent_from_M0_preference,"M0* preference does not prove absence of structured connectivity."
+not_allowed,classify_M1_versus_M2_from_RT_alone,"M1/M2 distinctions require evidence beyond normalized R(T)."
+not_allowed,claim_validated_sensitivity_or_specificity,"Independent validation was not run because no feasible calibration operating point exists."
+deferred,future_optional_full_shape_RT_classifier,"Deferred until after hierarchical model freeze; trigger only if a new evidence model is explicitly scoped."
