@@ -476,6 +476,30 @@ device conclusions as multi-evidence synthesis. The working model statuses are
 The deferred full-shape `R(T)` classifier remains outside the active roadmap
 unless it is explicitly rescoped after the hierarchical freeze.
 
+`run_v800_phase7_raman_mechanical_prior_robustness` starts Phase 7A: the
+Raman/mechanical prior robustness audit. It consumes the frozen Phase 6
+hierarchy plus the Phase 5 data manifest and writes:
+
+- `phase7_scope_policy.csv`;
+- `phase7_frozen_input_manifest.csv`;
+- `phase7_prior_evidence_manifest.csv`;
+- `phase7_perturbation_scenarios.csv`;
+- `phase7_device_prior_robustness.csv`;
+- `phase7_gate_summary.csv`;
+- `phase7_handoff_status.csv`;
+- `phase7_raman_mechanical_prior_robustness_summary.png`;
+- `phase7_raman_mechanical_prior_robustness_summary.pdf`.
+
+Phase 7A is not a relabeling phase. It declares Raman registration,
+mesh-resolution, prior-weight, and crack-mask perturbation scenarios, then
+audits which frozen device conclusions depend most strongly on mechanical or
+geometry priors. Device statuses remain the Phase 6 statuses:
+`M0star_sufficient`, `structured_supported`, or `mechanistically_unresolved`.
+No classifier threshold, nuisance bound, weak-link class, or device-specific
+parameter may be changed in Phase 7. Quantitative Raman/mechanical rescoring is
+deferred to a later Phase 7B only if registered maps and transforms are
+available.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
