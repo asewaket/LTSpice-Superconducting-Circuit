@@ -6,11 +6,14 @@ if ~exist(cfg.outputDir, 'dir')
 end
 
 scope = build_scope();
-nuisanceFamily = build_nuisance_family();
+nuisanceFamily = build_nuisance_family(cfg);
 scoreDifferencePlan = build_score_difference_plan();
 syntheticSplit = build_synthetic_split(cfg);
 boundarySweep = build_boundary_sweep(cfg);
 successCriteria = build_success_criteria(cfg);
+decisionHierarchy = build_decision_hierarchy();
+executionOutputSchema = build_execution_output_schema(cfg);
+sourceProvenance = build_source_provenance(cfg);
 handoffArchive = build_handoff_archive(cfg);
 
 writetable(scope, cfg.phase5D.scopeFile);
@@ -19,6 +22,9 @@ writetable(scoreDifferencePlan, cfg.phase5D.scoreDifferencePlanFile);
 writetable(syntheticSplit, cfg.phase5D.syntheticSplitFile);
 writetable(boundarySweep, cfg.phase5D.boundarySweepFile);
 writetable(successCriteria, cfg.phase5D.successCriteriaFile);
+writetable(decisionHierarchy, cfg.phase5D.decisionHierarchyFile);
+writetable(executionOutputSchema, cfg.phase5D.executionOutputSchemaFile);
+writetable(sourceProvenance, cfg.phase5D.sourceProvenanceFile);
 writetable(handoffArchive, cfg.phase5D.handoffArchiveFile);
 
 out = struct();
@@ -29,6 +35,9 @@ out.scoreDifferencePlan = scoreDifferencePlan;
 out.syntheticSplit = syntheticSplit;
 out.boundarySweep = boundarySweep;
 out.successCriteria = successCriteria;
+out.decisionHierarchy = decisionHierarchy;
+out.executionOutputSchema = executionOutputSchema;
+out.sourceProvenance = sourceProvenance;
 out.handoffArchive = handoffArchive;
 out.paths = struct();
 out.paths.scope = cfg.phase5D.scopeFile;
@@ -37,6 +46,9 @@ out.paths.scoreDifferencePlan = cfg.phase5D.scoreDifferencePlanFile;
 out.paths.syntheticSplit = cfg.phase5D.syntheticSplitFile;
 out.paths.boundarySweep = cfg.phase5D.boundarySweepFile;
 out.paths.successCriteria = cfg.phase5D.successCriteriaFile;
+out.paths.decisionHierarchy = cfg.phase5D.decisionHierarchyFile;
+out.paths.executionOutputSchema = cfg.phase5D.executionOutputSchemaFile;
+out.paths.sourceProvenance = cfg.phase5D.sourceProvenanceFile;
 out.paths.handoffArchive = cfg.phase5D.handoffArchiveFile;
 end
 
@@ -69,7 +81,7 @@ description = [
 scope = table(phase, item, status, description);
 end
 
-function nuisance = build_nuisance_family()
+function nuisance = build_nuisance_family(cfg)
 parameter = [
     "Tc_mean_shift_K"
     "Tc_distribution_width_K"
@@ -107,8 +119,23 @@ penalty_policy = [
     "penalize outside-prior disorder"
     ];
 included_in_M0star = true(numel(parameter), 1);
-nuisance = table(parameter, role, initial_bounds, penalty_policy, ...
-    included_in_M0star);
+bounds = cfg.phase5D.nuisanceBounds;
+lower_bound = NaN(numel(parameter), 1);
+upper_bound = NaN(numel(parameter), 1);
+units = strings(numel(parameter), 1);
+penalty_scale = NaN(numel(parameter), 1);
+for k = 1:numel(parameter)
+    idx = bounds.parameter == parameter(k);
+    if any(idx)
+        firstIdx = find(idx, 1, 'first');
+        lower_bound(k) = bounds.lower_bound(firstIdx);
+        upper_bound(k) = bounds.upper_bound(firstIdx);
+        units(k) = bounds.units(firstIdx);
+        penalty_scale(k) = bounds.penalty_scale(firstIdx);
+    end
+end
+nuisance = table(parameter, role, lower_bound, upper_bound, units, ...
+    penalty_scale, initial_bounds, penalty_policy, included_in_M0star);
 end
 
 function plan = build_score_difference_plan()
@@ -210,6 +237,106 @@ predeclared_before_validation = true(numel(criterion), 1);
 criteria = table(criterion, target, required, predeclared_before_validation);
 end
 
+function hierarchy = build_decision_hierarchy()
+step = [1; 2; 3; 4];
+decision = [
+    "source_validity"
+    "structured_vs_M0star"
+    "M1_vs_M2"
+    "evidence_tier_label"
+    ];
+allowed_outcomes = [
+    "calibration_only; independent_validation"
+    "M0star_supported; structured_supported; unresolved"
+    "M1_supported; M2_supported; unresolved; not_applicable"
+    "primary_only_lower_confidence; paired_probe_higher_confidence"
+    ];
+rule = [
+    "Use Phase 5C misspecification cases only for calibration design, not final validation proof."
+    "Make the local-versus-structured decision before any M1/M2 label is trusted."
+    "Evaluate M1 versus M2 only after structured support passes the calibrated Z threshold."
+    "Apply stricter reporting language to primary-only classifications."
+    ];
+hierarchy = table(step, decision, allowed_outcomes, rule);
+end
+
+function schema = build_execution_output_schema(cfg)
+file_name = [
+    string(file_name_only(cfg.phase5D.nuisanceProfileLedgerFile))
+    string(file_name_only(cfg.phase5D.deltaSDistributionFile))
+    string(file_name_only(cfg.phase5D.calibratedThresholdsFile))
+    string(file_name_only(cfg.phase5D.boundaryDetectionCurvesFile))
+    string(file_name_only(cfg.phase5D.calibrationGateFile))
+    string(file_name_only(cfg.phase5D.validationGateFile))
+    string(file_name_only(cfg.phase5D.realDeviceReclassificationFile))
+    ];
+stage = [
+    "calibration"
+    "calibration"
+    "calibration"
+    "calibration_and_validation"
+    "calibration"
+    "independent_validation"
+    "post_validation_application"
+    ];
+required_columns = [
+    "profile_id,split_name,seed,nuisance_parameter,value,penalty,source_commit_sha"
+    "comparison,split_name,evidence_tier,seed,deltaS,sigmaDeltaS,Z,selected_state"
+    "evidence_tier,comparison,Zcrit,unresolved_margin,nuisance_penalty_policy,source_commit_sha"
+    "split_name,evidence_tier,lambda_W,P_structured,P_unresolved,P_M0star,case_count"
+    "gate,required,status,evidence,note"
+    "gate,required,status,evidence,note"
+    "device,evidence_tier,M0star_score,structured_score,deltaS,Z,classification,confidence_note"
+    ];
+freeze_policy = [
+    "schema frozen before calibration execution"
+    "schema frozen before calibration execution"
+    "schema frozen before independent validation"
+    "schema frozen before calibration execution"
+    "calibration and validation gates stay separate"
+    "calibration and validation gates stay separate"
+    "real-device classifications are generated only after validation gates"
+    ];
+schema = table(file_name, stage, required_columns, freeze_policy);
+end
+
+function provenance = build_source_provenance(cfg)
+commitSha = string(v800.git_commit_sha(cfg.repoRoot));
+[trackedStatusCode, trackedStatusText] = system(sprintf( ...
+    'git -C "%s" status --porcelain --untracked-files=no', cfg.repoRoot));
+trackedStatusText = string(strtrim(trackedStatusText));
+trackedTreeClean = trackedStatusCode == 0 && strlength(trackedStatusText) == 0;
+[fullStatusCode, fullStatusText] = system(sprintf( ...
+    'git -C "%s" status --porcelain', cfg.repoRoot));
+fullStatusText = string(strtrim(fullStatusText));
+source_tree_clean = fullStatusCode == 0 && strlength(fullStatusText) == 0;
+item = [
+    "source_commit_sha"
+    "tracked_tree_clean"
+    "source_tree_clean"
+    "calibration_seed_range"
+    "validation_seed_range"
+    "source_provenance_policy"
+    ];
+value = [
+    commitSha
+    string(trackedTreeClean)
+    string(source_tree_clean)
+    string(sprintf('%d-%d', cfg.phase5D.calibrationSeeds(1), cfg.phase5D.calibrationSeeds(end)))
+    string(sprintf('%d-%d', cfg.phase5D.validationSeeds(1), cfg.phase5D.validationSeeds(end)))
+    "Commit source/config first; rerun 5C/5D from that source; commit generated artifacts separately."
+    ];
+note = [
+    "Commit used by MATLAB when the plan was generated."
+    "Ignores untracked generated artifacts."
+    "Strict check includes untracked files and should be true in a clean checkout."
+    "May be used to tune nuisance bounds and thresholds."
+    "Must not be inspected while tuning calibration settings."
+    "The artifact commit need not be embedded in files generated before that commit exists."
+    ];
+provenance = table(item, value, note);
+end
+
 function archive = build_handoff_archive(cfg)
 files = [
     artifact("phase5C_label_mapping_policy", cfg.phase5C.labelPolicyFile)
@@ -244,4 +371,9 @@ end
 
 function a = artifact(name, pathValue)
 a = struct('name', string(name), 'path', string(pathValue));
+end
+
+function name = file_name_only(pathValue)
+[~, base, ext] = fileparts(pathValue);
+name = [base ext];
 end

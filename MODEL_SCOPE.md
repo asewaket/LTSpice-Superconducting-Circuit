@@ -65,6 +65,8 @@ The Phase 5C misspecification failures must be preserved as diagnostic failures.
 
 Phase 5D is therefore restricted to uncertainty and significance calibration: define a nuisance-aware `M0*` family, estimate score-difference uncertainty, set unresolved decision thresholds, and validate the frozen calibrated rule on independent synthetic perturbations. The Phase 5C misspecification set may be used to design Phase 5D, but it must not be reused as the final post-calibration validation set.
 
+The Phase 5D decision hierarchy is fixed: first decide `M0* supported`, `structured supported`, or `unresolved`; only after structured support is significant may the workflow distinguish `M1` from `M2`.
+
 ## Explicitly excluded questions
 
 The core v8 model must not attempt to establish:

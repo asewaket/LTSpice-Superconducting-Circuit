@@ -13,5 +13,8 @@ fprintf('Score-difference plan: %s\n', out.paths.scoreDifferencePlan);
 fprintf('Calibration/validation split: %s\n', out.paths.syntheticSplit);
 fprintf('Boundary sweep: %s\n', out.paths.boundarySweep);
 fprintf('Success criteria: %s\n', out.paths.successCriteria);
+fprintf('Decision hierarchy: %s\n', out.paths.decisionHierarchy);
+fprintf('Execution output schema: %s\n', out.paths.executionOutputSchema);
+fprintf('Source provenance checkpoint: %s\n', out.paths.sourceProvenance);
 fprintf('5C handoff archive: %s\n', out.paths.handoffArchive);
 end

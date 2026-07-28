@@ -291,6 +291,9 @@ without changing any Phase 5C result. It writes:
 - `phase5D_calibration_validation_split.csv`;
 - `phase5D_boundary_strength_sweep_plan.csv`;
 - `phase5D_success_criteria.csv`;
+- `phase5D_decision_hierarchy.csv`;
+- `phase5D_execution_output_schema.csv`;
+- `phase5D_source_provenance_checkpoint.csv`;
 - `phase5D_phase5C_frozen_handoff_archive.csv`.
 
 Phase 5D must define a nuisance-aware `M0*` envelope, calibrate score
@@ -298,6 +301,27 @@ differences rather than only winning labels, and predeclare unresolved
 thresholds before evaluating an independent validation set. The current 5C
 misspecification set is retained as the diagnostic set that revealed the
 calibration problem; it is not the final post-calibration proof set.
+
+The Phase 5D planning checkpoint freezes numeric nuisance bounds before
+calibration execution. It also freezes the decision hierarchy:
+
+```text
+source validity
+structured versus M0*
+M1 versus M2 only after structured support
+evidence-tier label
+```
+
+The execution-output schema is fixed before calibration starts and separates
+calibration gates from independent validation gates:
+
+- `phase5D_nuisance_profile_ledger.csv`;
+- `phase5D_deltaS_distribution.csv`;
+- `phase5D_calibrated_thresholds.csv`;
+- `phase5D_boundary_detection_curves.csv`;
+- `phase5D_calibration_gate_results.csv`;
+- `phase5D_validation_gate_results.csv`;
+- `phase5D_real_device_reclassification.csv`.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
