@@ -491,14 +491,38 @@ hierarchy plus the Phase 5 data manifest and writes:
 - `phase7_raman_mechanical_prior_robustness_summary.pdf`.
 
 Phase 7A is not a relabeling phase. It declares Raman registration,
-mesh-resolution, prior-weight, and crack-mask perturbation scenarios, then
-audits which frozen device conclusions depend most strongly on mechanical or
-geometry priors. Device statuses remain the Phase 6 statuses:
+prior-weight, spatial-shuffle, boundary-mask, and crack-mask perturbation
+scenarios, then audits which frozen device conclusions depend most strongly on
+mechanical or geometry priors. Device statuses remain the Phase 6 statuses:
 `M0star_sufficient`, `structured_supported`, or `mechanistically_unresolved`.
 No classifier threshold, nuisance bound, weak-link class, or device-specific
 parameter may be changed in Phase 7. Quantitative Raman/mechanical rescoring is
 deferred to a later Phase 7B only if registered maps and transforms are
 available.
+
+`run_v800_phase7B_geometry_mask_robustness` runs the feasible Phase 7B-G
+geometry/mechanical-mask robustness layer without requiring a registered Raman
+field. It writes:
+
+- `phase7B_frozen_input_manifest.csv`;
+- `phase7B_prior_variant_ledger.csv`;
+- `phase7B_geometry_mask_sensitivity.csv`;
+- `phase7B_crack_mask_sensitivity.csv`;
+- `phase7B_raman_registration_sensitivity.csv`;
+- `phase7B_shuffled_prior_control.csv`;
+- `phase7B_device_robustness_annotations.csv`;
+- `phase7B_gate_summary.csv`;
+- `phase7B_handoff_status.csv`;
+- `phase7B_geometry_mask_robustness_summary.png`;
+- `phase7B_geometry_mask_robustness_summary.pdf`.
+
+Phase 7B-G evaluates AS005 crack-mask dependence and AS004/AS006 boundary-prior
+sensitivity as robustness annotations only. It also records Raman registration
+robustness as `not_run` when registered coordinate transforms are unavailable.
+The correct output for a prior-sensitive device is an annotation such as
+`high_crack_prior_dependency`, not a rewritten Phase 6 model label. Broad
+network mesh convergence, solver tolerances, disorder seeds, normalization
+windows, and numerical reproducibility are deferred to Phase 8.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
