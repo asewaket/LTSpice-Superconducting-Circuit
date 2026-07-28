@@ -5,6 +5,7 @@ if ~exist(cfg.outputDir, 'dir')
     mkdir(cfg.outputDir);
 end
 
+preRunStatus = v800.git_tree_status(cfg.repoRoot);
 scope = build_scope();
 nuisanceFamily = build_nuisance_family(cfg);
 scoreDifferencePlan = build_score_difference_plan();
@@ -13,8 +14,8 @@ boundarySweep = build_boundary_sweep(cfg);
 successCriteria = build_success_criteria(cfg);
 decisionHierarchy = build_decision_hierarchy();
 executionOutputSchema = build_execution_output_schema(cfg);
-sourceProvenance = build_source_provenance(cfg);
-handoffArchive = build_handoff_archive(cfg);
+sourceProvenance = build_source_provenance(cfg, preRunStatus);
+handoffArchive = build_handoff_archive(cfg, preRunStatus);
 
 writetable(scope, cfg.phase5D.scopeFile);
 writetable(nuisanceFamily, cfg.phase5D.nuisanceFamilyFile);
@@ -38,6 +39,7 @@ out.successCriteria = successCriteria;
 out.decisionHierarchy = decisionHierarchy;
 out.executionOutputSchema = executionOutputSchema;
 out.sourceProvenance = sourceProvenance;
+out.preRunStatus = preRunStatus;
 out.handoffArchive = handoffArchive;
 out.paths = struct();
 out.paths.scope = cfg.phase5D.scopeFile;
@@ -300,36 +302,33 @@ freeze_policy = [
 schema = table(file_name, stage, required_columns, freeze_policy);
 end
 
-function provenance = build_source_provenance(cfg)
-commitSha = string(v800.git_commit_sha(cfg.repoRoot));
-[trackedStatusCode, trackedStatusText] = system(sprintf( ...
-    'git -C "%s" status --porcelain --untracked-files=no', cfg.repoRoot));
-trackedStatusText = string(strtrim(trackedStatusText));
-trackedTreeClean = trackedStatusCode == 0 && strlength(trackedStatusText) == 0;
-[fullStatusCode, fullStatusText] = system(sprintf( ...
-    'git -C "%s" status --porcelain', cfg.repoRoot));
-fullStatusText = string(strtrim(fullStatusText));
-source_tree_clean = fullStatusCode == 0 && strlength(fullStatusText) == 0;
+function provenance = build_source_provenance(cfg, preRunStatus)
 item = [
     "source_commit_sha"
-    "tracked_tree_clean"
-    "source_tree_clean"
+    "source_pre_run_tracked_clean"
+    "source_pre_run_untracked_clean"
+    "source_pre_run_clean"
+    "artifact_tree_clean_after_run"
     "calibration_seed_range"
     "validation_seed_range"
     "source_provenance_policy"
     ];
 value = [
-    commitSha
-    string(trackedTreeClean)
-    string(source_tree_clean)
+    preRunStatus.commit_sha
+    string(preRunStatus.tracked_clean)
+    string(preRunStatus.untracked_clean)
+    string(preRunStatus.source_pre_run_clean)
+    "not_evaluated_at_start"
     string(sprintf('%d-%d', cfg.phase5D.calibrationSeeds(1), cfg.phase5D.calibrationSeeds(end)))
     string(sprintf('%d-%d', cfg.phase5D.validationSeeds(1), cfg.phase5D.validationSeeds(end)))
     "Commit source/config first; rerun 5C/5D from that source; commit generated artifacts separately."
     ];
 note = [
     "Commit used by MATLAB when the plan was generated."
-    "Ignores untracked generated artifacts."
-    "Strict check includes untracked files and should be true in a clean checkout."
+    "Captured before Phase 5D writes planning outputs."
+    "Captured before Phase 5D writes planning outputs."
+    "True only when tracked and untracked checks are clean at run start."
+    "A run that writes outputs normally leaves artifacts dirty afterward; this is not a source provenance failure."
     "May be used to tune nuisance bounds and thresholds."
     "Must not be inspected while tuning calibration settings."
     "The artifact commit need not be embedded in files generated before that commit exists."
@@ -337,7 +336,7 @@ note = [
 provenance = table(item, value, note);
 end
 
-function archive = build_handoff_archive(cfg)
+function archive = build_handoff_archive(cfg, preRunStatus)
 files = [
     artifact("phase5C_label_mapping_policy", cfg.phase5C.labelPolicyFile)
     artifact("phase5C_synthetic_manifest", cfg.phase5C.syntheticManifestFile)
@@ -353,7 +352,6 @@ files = [
 rows = repmat(struct('artifact', "", 'path', "", 'exists', false, ...
     'bytes', NaN, 'modified_datenum', NaN, 'commit_sha', "", ...
     'freeze_policy', ""), numel(files), 1);
-commitSha = v800.git_commit_sha(cfg.repoRoot);
 for k = 1:numel(files)
     info = dir(files(k).path);
     rows(k).artifact = files(k).name;
@@ -363,7 +361,7 @@ for k = 1:numel(files)
         rows(k).bytes = info.bytes;
         rows(k).modified_datenum = info.datenum;
     end
-    rows(k).commit_sha = string(commitSha);
+    rows(k).commit_sha = preRunStatus.commit_sha;
     rows(k).freeze_policy = "Phase 5C is frozen; misspecification failures motivate Phase 5D calibration.";
 end
 archive = struct2table(rows);

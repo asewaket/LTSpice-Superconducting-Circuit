@@ -323,6 +323,13 @@ calibration gates from independent validation gates:
 - `phase5D_validation_gate_results.csv`;
 - `phase5D_real_device_reclassification.csv`.
 
+`phase5D_source_provenance_checkpoint.csv` records source cleanliness at the
+start of the planning run, before Phase 5D writes output files. The key fields
+are `source_commit_sha`, `source_pre_run_tracked_clean`,
+`source_pre_run_untracked_clean`, and `source_pre_run_clean`. End-of-run
+artifact dirtiness is expected when outputs are written into the checkout and
+is not treated as a source provenance failure.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
