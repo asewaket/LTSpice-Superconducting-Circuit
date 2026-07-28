@@ -1,0 +1,9 @@
+scenario_id,category,registration_shift_px,mesh_scale_factor,prior_weight_scale,note
+nominal,reference,0,1,1,Reference prior; no retuning or relabeling.
+registration_shift_low,raman_registration,1,1,1,Small Raman/probe registration displacement.
+registration_shift_high,raman_registration,4,1,1,Larger registration displacement stress test.
+coarse_mesh,mesh_resolution,0,2,1,Coarser mesh/support-mask test.
+fine_mesh,mesh_resolution,0,0.5,1,Finer mesh/support-mask test.
+prior_blind,prior_weight,0,1,0,Remove spatial prior as a confidence/context sensitivity check.
+prior_amplified,prior_weight,0,1,1.5,Amplify spatial prior as an over-weighting sensitivity check.
+crack_mask_removed,geometry_mask,0,1,0.5,AS005 auxiliary crack-context dependency check.

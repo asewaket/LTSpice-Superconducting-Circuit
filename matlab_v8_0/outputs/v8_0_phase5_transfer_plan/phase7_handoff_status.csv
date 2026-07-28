@@ -1,0 +1,6 @@
+item,status,note
+phase7A_scope_freeze,pass,"Raman/mechanical prior robustness scope and perturbation policy are written."
+phase6_classifications_preserved,pass,"Phase 7A does not reopen frozen Phase 6 model statuses."
+quantitative_prior_rescore,not_run,"Next step is optional execution against registered Raman/mechanical maps if available."
+retuning_prohibited,true,"No classifier thresholds, nuisance terms, or mechanism classes may be adjusted."
+next_phase7_step,phase7B_registered_prior_stress_test,"Run only if quantitative Raman/mechanical maps and registration transforms are available."

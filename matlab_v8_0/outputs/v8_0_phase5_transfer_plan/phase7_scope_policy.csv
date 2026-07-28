@@ -1,0 +1,7 @@
+item,status,note
+phase_objective,active,"Audit robustness of Phase 6 conclusions to Raman registration, mechanical prior, and mesh-resolution assumptions."
+phase6_status_freeze,required,"Phase 7 may annotate confidence but may not relabel frozen Phase 6 device statuses."
+classifier_retuning,false,"No weak-link class, score threshold, nuisance envelope, or classifier parameter may be tuned in Phase 7."
+status_relabeling,false,"Device-level M0star_sufficient, structured_supported, and mechanistically_unresolved labels remain frozen."
+allowed_outputs,contextual,"Allowed outputs are prior-sensitivity flags, robustness notes, and a handoff plan for any later spatial-prior test."
+prohibited_outputs,categorical_classifier,"Do not convert Raman/mechanical priors into a universal categorical mechanism classifier."

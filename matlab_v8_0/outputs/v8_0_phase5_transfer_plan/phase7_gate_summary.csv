@@ -1,0 +1,7 @@
+component,outcome,note
+Frozen Phase 6 inputs available,pass,"Phase 7 starts from the committed Phase 6 hierarchy outputs."
+No Phase 6 relabeling,pass,"All robustness rows preserve frozen device statuses."
+No classifier retuning,pass,"Raman/mechanical priors are context checks, not new thresholds."
+Prior perturbation grid declared,pass,"Registration, mesh, prior-weight, and crack-mask scenarios are predeclared."
+Raman availability documented,pass,"Unavailable quantitative Raman inputs are recorded as availability limits."
+Quantitative prior rescore,not_run,"Phase 7A starts the audit; no spatial-prior rescore has been executed yet."

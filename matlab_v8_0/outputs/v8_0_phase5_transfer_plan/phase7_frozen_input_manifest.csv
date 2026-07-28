@@ -1,0 +1,7 @@
+artifact_id,path,required,purpose,exists,frozen_use
+phase6_six_device_evidence_matrix,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_six_device_evidence_matrix.csv,1,frozen six-device evidence context,1,read_only_no_relabeling
+phase6_device_model_status,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_device_model_status.csv,1,frozen device model statuses,1,read_only_no_relabeling
+phase6_evidence_tier_assignments,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_evidence_tier_assignments.csv,1,frozen evidence tiers,1,read_only_no_relabeling
+phase6_handoff_status,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_handoff_status.csv,1,retuning and next-phase policy,1,read_only_no_relabeling
+phase5_data_manifest,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase5_data_manifest.csv,0,Raman and field-data availability hints,1,read_only_no_relabeling
+phase5D2_interpretation_policy,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase5D2_interpretation_policy.csv,1,allowed/prohibited score-use policy,1,read_only_no_relabeling
