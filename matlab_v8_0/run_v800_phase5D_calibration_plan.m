@@ -1,10 +1,13 @@
-function out = run_v800_phase5D_calibration_plan()
+function out = run_v800_phase5D_calibration_plan(sessionProv)
 %RUN_V800_PHASE5D_CALIBRATION_PLAN Write the frozen Phase 5D plan.
 
 rootDir = add_v800_paths();
 
 cfg = v800.phase5_config(rootDir);
-out = v800.build_phase5D_calibration_plan(cfg);
+if nargin < 1
+    sessionProv = [];
+end
+out = v800.build_phase5D_calibration_plan(cfg, sessionProv);
 
 fprintf('v8.0 Phase 5D calibration plan prepared.\n');
 fprintf('Scope: %s\n', out.paths.scope);

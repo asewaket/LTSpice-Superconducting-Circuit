@@ -72,5 +72,7 @@ clear v800.plot_phase5C_synthetic_recovery_summary
 clear run_v800_phase5D_calibration_plan
 clear v800.build_phase5D_calibration_plan
 clear v800.git_tree_status
+clear v800.capture_source_provenance
+clear run_v800_phase5C_phase5D_artifact_generation
 
 end

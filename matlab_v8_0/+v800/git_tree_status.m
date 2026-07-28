@@ -8,6 +8,16 @@ end
 statusInfo = struct();
 statusInfo.commit_sha = string(v800.git_commit_sha(repoRoot));
 
+[treeCode, treeText] = system(sprintf( ...
+    'git -C "%s" rev-parse HEAD^{tree}', repoRoot));
+treeText = string(strtrim(treeText));
+statusInfo.tree_status_code = treeCode;
+if treeCode == 0
+    statusInfo.tree_sha = treeText;
+else
+    statusInfo.tree_sha = "unknown";
+end
+
 [trackedCode, trackedText] = system(sprintf( ...
     'git -C "%s" status --porcelain --untracked-files=no', repoRoot));
 trackedText = string(strtrim(trackedText));

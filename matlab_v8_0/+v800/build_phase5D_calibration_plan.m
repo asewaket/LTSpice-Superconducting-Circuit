@@ -1,11 +1,19 @@
-function out = build_phase5D_calibration_plan(cfg)
+function out = build_phase5D_calibration_plan(cfg, sessionProv)
 %BUILD_PHASE5D_CALIBRATION_PLAN Predeclare Phase 5D calibration artifacts.
+
+if nargin < 2 || isempty(sessionProv)
+    sessionProv = v800.capture_source_provenance( ...
+        cfg.repoRoot, "standalone_phase5D_run");
+else
+    sessionProv.provenance_scope = "combined_phase5C_phase5D_session";
+end
+
+phaseEntryStatus = v800.git_tree_status(cfg.repoRoot);
 
 if ~exist(cfg.outputDir, 'dir')
     mkdir(cfg.outputDir);
 end
 
-preRunStatus = v800.git_tree_status(cfg.repoRoot);
 scope = build_scope();
 nuisanceFamily = build_nuisance_family(cfg);
 scoreDifferencePlan = build_score_difference_plan();
@@ -14,8 +22,9 @@ boundarySweep = build_boundary_sweep(cfg);
 successCriteria = build_success_criteria(cfg);
 decisionHierarchy = build_decision_hierarchy();
 executionOutputSchema = build_execution_output_schema(cfg);
-sourceProvenance = build_source_provenance(cfg, preRunStatus);
-handoffArchive = build_handoff_archive(cfg, preRunStatus);
+sourceProvenance = build_source_provenance(cfg, sessionProv, ...
+    phaseEntryStatus);
+handoffArchive = build_handoff_archive(cfg, sessionProv);
 
 writetable(scope, cfg.phase5D.scopeFile);
 writetable(nuisanceFamily, cfg.phase5D.nuisanceFamilyFile);
@@ -39,7 +48,8 @@ out.successCriteria = successCriteria;
 out.decisionHierarchy = decisionHierarchy;
 out.executionOutputSchema = executionOutputSchema;
 out.sourceProvenance = sourceProvenance;
-out.preRunStatus = preRunStatus;
+out.sessionProvenance = sessionProv;
+out.phaseEntryStatus = phaseEntryStatus;
 out.handoffArchive = handoffArchive;
 out.paths = struct();
 out.paths.scope = cfg.phase5D.scopeFile;
@@ -302,32 +312,56 @@ freeze_policy = [
 schema = table(file_name, stage, required_columns, freeze_policy);
 end
 
-function provenance = build_source_provenance(cfg, preRunStatus)
+function provenance = build_source_provenance(cfg, sessionProv, phaseEntryStatus)
 item = [
-    "source_commit_sha"
-    "source_pre_run_tracked_clean"
-    "source_pre_run_untracked_clean"
-    "source_pre_run_clean"
+    "artifact_session_source_commit_sha"
+    "artifact_session_source_tree_sha"
+    "artifact_session_pre_run_tracked_clean"
+    "artifact_session_pre_run_untracked_clean"
+    "artifact_session_pre_run_clean"
+    "artifact_session_started_at"
+    "provenance_scope"
+    "phase5D_entry_commit_sha"
+    "phase5D_entry_tracked_clean"
+    "phase5D_entry_untracked_clean"
+    "phase5D_entry_clean"
+    "phase5D_entry_dirty_reason"
     "artifact_tree_clean_after_run"
     "calibration_seed_range"
     "validation_seed_range"
     "source_provenance_policy"
     ];
 value = [
-    preRunStatus.commit_sha
-    string(preRunStatus.tracked_clean)
-    string(preRunStatus.untracked_clean)
-    string(preRunStatus.source_pre_run_clean)
+    sessionProv.source_commit_sha
+    sessionProv.source_tree_sha
+    string(sessionProv.session_pre_run_tracked_clean)
+    string(sessionProv.session_pre_run_untracked_clean)
+    string(sessionProv.session_pre_run_clean)
+    sessionProv.session_started_at
+    sessionProv.provenance_scope
+    phaseEntryStatus.commit_sha
+    string(phaseEntryStatus.tracked_clean)
+    string(phaseEntryStatus.untracked_clean)
+    string(phaseEntryStatus.source_pre_run_clean)
+    phase5D_dirty_reason(phaseEntryStatus, sessionProv)
     "not_evaluated_at_start"
     string(sprintf('%d-%d', cfg.phase5D.calibrationSeeds(1), cfg.phase5D.calibrationSeeds(end)))
     string(sprintf('%d-%d', cfg.phase5D.validationSeeds(1), cfg.phase5D.validationSeeds(end)))
     "Commit source/config first; rerun 5C/5D from that source; commit generated artifacts separately."
     ];
 note = [
-    "Commit used by MATLAB when the plan was generated."
-    "Captured before Phase 5D writes planning outputs."
-    "Captured before Phase 5D writes planning outputs."
-    "True only when tracked and untracked checks are clean at run start."
+    "Commit captured before the artifact-generation session wrote outputs."
+    "Git tree object captured before the artifact-generation session wrote outputs."
+    "Tracked cleanliness captured before Phase 5C/5D artifact generation."
+    "Untracked cleanliness captured before Phase 5C/5D artifact generation."
+    "True only when tracked and untracked checks were clean at session start."
+    "Timestamp for the immutable provenance snapshot."
+    "Standalone phase run or combined Phase 5C/5D artifact session."
+    "Commit visible at Phase 5D entry."
+    "Tracked cleanliness at Phase 5D entry, after any earlier phase in the same session."
+    "Untracked cleanliness at Phase 5D entry, after any earlier phase in the same session."
+    "True only when Phase 5D itself begins from a clean tree."
+    "Explains why phase-entry cleanliness may differ from session-start cleanliness."
     "A run that writes outputs normally leaves artifacts dirty afterward; this is not a source provenance failure."
     "May be used to tune nuisance bounds and thresholds."
     "Must not be inspected while tuning calibration settings."
@@ -336,7 +370,17 @@ note = [
 provenance = table(item, value, note);
 end
 
-function archive = build_handoff_archive(cfg, preRunStatus)
+function reason = phase5D_dirty_reason(phaseEntryStatus, sessionProv)
+if phaseEntryStatus.source_pre_run_clean
+    reason = "none";
+elseif sessionProv.provenance_scope == "combined_phase5C_phase5D_session"
+    reason = "Phase 5C artifacts regenerated or created earlier in the same controlled session";
+else
+    reason = "standalone Phase 5D entry tree was dirty before Phase 5D wrote outputs";
+end
+end
+
+function archive = build_handoff_archive(cfg, sessionProv)
 files = [
     artifact("phase5C_label_mapping_policy", cfg.phase5C.labelPolicyFile)
     artifact("phase5C_synthetic_manifest", cfg.phase5C.syntheticManifestFile)
@@ -361,7 +405,7 @@ for k = 1:numel(files)
         rows(k).bytes = info.bytes;
         rows(k).modified_datenum = info.datenum;
     end
-    rows(k).commit_sha = preRunStatus.commit_sha;
+    rows(k).commit_sha = sessionProv.source_commit_sha;
     rows(k).freeze_policy = "Phase 5C is frozen; misspecification failures motivate Phase 5D calibration.";
 end
 archive = struct2table(rows);

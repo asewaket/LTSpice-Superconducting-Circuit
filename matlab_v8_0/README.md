@@ -324,11 +324,31 @@ calibration gates from independent validation gates:
 - `phase5D_real_device_reclassification.csv`.
 
 `phase5D_source_provenance_checkpoint.csv` records source cleanliness at the
-start of the planning run, before Phase 5D writes output files. The key fields
-are `source_commit_sha`, `source_pre_run_tracked_clean`,
-`source_pre_run_untracked_clean`, and `source_pre_run_clean`. End-of-run
-artifact dirtiness is expected when outputs are written into the checkout and
-is not treated as a source provenance failure.
+start of the planning run when Phase 5D is run alone. For artifact freezing,
+use `run_v800_phase5C_phase5D_artifact_generation`, which captures provenance
+once before either Phase 5C or Phase 5D writes output files, verifies that the
+session begins from a clean source tree, and writes the shared session snapshot
+into both `phase5C_source_provenance_checkpoint.csv` and
+`phase5D_source_provenance_checkpoint.csv`.
+
+The provenance checkpoint separates two cleanliness concepts. The
+`artifact_session_*` fields describe the source state before the combined
+Phase 5C/5D artifact-generation session began:
+
+```text
+artifact_session_source_commit_sha
+artifact_session_source_tree_sha
+artifact_session_pre_run_tracked_clean
+artifact_session_pre_run_untracked_clean
+artifact_session_pre_run_clean
+artifact_session_started_at
+```
+
+The `phase5D_entry_*` fields describe the repository state when Phase 5D
+itself begins. In a correct combined artifact run, `phase5D_entry_clean` may be
+false because Phase 5C regenerated or created outputs earlier in the same
+controlled session. That is recorded as phase-entry artifact dirtiness, not as
+a failure of the source checkout.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not

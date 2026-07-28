@@ -1,10 +1,19 @@
-function out = run_phase5C_synthetic_recovery(cfg)
+function out = run_phase5C_synthetic_recovery(cfg, sessionProv)
 %RUN_PHASE5C_SYNTHETIC_RECOVERY Test whether scoring recovers known mechanisms.
+
+if nargin < 2 || isempty(sessionProv)
+    sessionProv = v800.capture_source_provenance( ...
+        cfg.repoRoot, "standalone_phase5C_run");
+else
+    sessionProv.provenance_scope = "combined_phase5C_phase5D_session";
+end
 
 if ~exist(cfg.outputDir, 'dir')
     mkdir(cfg.outputDir);
 end
 
+sourceProvenance = build_source_provenance(sessionProv, ...
+    "phase5C_entry_clean_not_separately_evaluated");
 labelPolicy = build_label_policy(cfg);
 manifest = build_synthetic_manifest(cfg);
 scoreLedger = score_synthetic_cases(cfg, manifest);
@@ -23,6 +32,7 @@ writetable(labelPolicy, cfg.phase5C.labelPolicyFile);
 writetable(scoreLedger, cfg.phase5C.scoreLedgerFile);
 writetable(recoveryMatrix, cfg.phase5C.recoveryMatrixFile);
 writetable(recoverySummary, cfg.phase5C.recoverySummaryFile);
+writetable(sourceProvenance, cfg.phase5C.sourceProvenanceFile);
 writetable(handoffStatus, cfg.phase5C.handoffStatusFile);
 writetable(misspecManifest, cfg.phase5C.misspecManifestFile);
 writetable(misspecScoreLedger, cfg.phase5C.misspecScoreLedgerFile);
@@ -46,6 +56,7 @@ out.manifest = manifest;
 out.scoreLedger = scoreLedger;
 out.recoveryMatrix = recoveryMatrix;
 out.recoverySummary = recoverySummary;
+out.sourceProvenance = sourceProvenance;
 out.misspecManifest = misspecManifest;
 out.misspecScoreLedger = misspecScoreLedger;
 out.misspecSummary = misspecSummary;
@@ -59,6 +70,7 @@ out.paths.labelPolicy = cfg.phase5C.labelPolicyFile;
 out.paths.scoreLedger = cfg.phase5C.scoreLedgerFile;
 out.paths.recoveryMatrix = cfg.phase5C.recoveryMatrixFile;
 out.paths.recoverySummary = cfg.phase5C.recoverySummaryFile;
+out.paths.sourceProvenance = cfg.phase5C.sourceProvenanceFile;
 out.paths.handoffStatus = cfg.phase5C.handoffStatusFile;
 out.paths.misspecManifest = cfg.phase5C.misspecManifestFile;
 out.paths.misspecScoreLedger = cfg.phase5C.misspecScoreLedgerFile;
@@ -67,6 +79,40 @@ out.paths.misspecGates = cfg.phase5C.misspecGateFile;
 out.paths.gates = cfg.phase5C.gateResultFile;
 out.paths.figurePng = [cfg.phase5C.figureBaseFile '.png'];
 out.paths.figurePdf = [cfg.phase5C.figureBaseFile '.pdf'];
+end
+
+function provenance = build_source_provenance(sessionProv, phaseEntryNote)
+item = [
+    "artifact_session_source_commit_sha"
+    "artifact_session_source_tree_sha"
+    "artifact_session_pre_run_tracked_clean"
+    "artifact_session_pre_run_untracked_clean"
+    "artifact_session_pre_run_clean"
+    "artifact_session_started_at"
+    "provenance_scope"
+    "phase5C_entry_note"
+    ];
+value = [
+    sessionProv.source_commit_sha
+    sessionProv.source_tree_sha
+    string(sessionProv.session_pre_run_tracked_clean)
+    string(sessionProv.session_pre_run_untracked_clean)
+    string(sessionProv.session_pre_run_clean)
+    sessionProv.session_started_at
+    sessionProv.provenance_scope
+    string(phaseEntryNote)
+    ];
+note = [
+    "Commit captured before the artifact-generation session wrote outputs."
+    "Git tree object captured before the artifact-generation session wrote outputs."
+    "Tracked cleanliness captured before Phase 5C/5D artifact generation."
+    "Untracked cleanliness captured before Phase 5C/5D artifact generation."
+    "True only when tracked and untracked checks were clean at session start."
+    "Timestamp for the immutable provenance snapshot."
+    "Standalone phase run or combined Phase 5C/5D artifact session."
+    "Phase 5C is first in the combined session, so session-start state is the relevant entry state."
+    ];
+provenance = table(item, value, note);
 end
 
 function manifest = build_synthetic_manifest(cfg)
