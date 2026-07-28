@@ -60,5 +60,8 @@ clear run_v800_phase5B_secondary_validation
 clear v800.run_phase5B_secondary_validation
 clear v800.score_probe_asymmetry
 clear v800.plot_phase5B_secondary_summary
+clear run_v800_phase5B1_activation_law_validation
+clear v800.run_phase5B1_activation_law_validation
+clear v800.plot_phase5B1_activation_summary
 
 end

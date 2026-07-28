@@ -6,10 +6,20 @@ if ~exist(cfg.outputDir, 'dir')
 end
 
 freezeManifest = build_freeze_manifest(cfg);
-rtManifest = readtable(cfg.phase5A.rtManifestFile, 'TextType', 'string');
-frozenBasin = readtable(cfg.phase5A.frozenBasinFile, 'TextType', 'string');
-primaryLedger = readtable(cfg.phase5A.frozenTransferLedgerFile, 'TextType', 'string');
-primarySummary = readtable(cfg.phase5A.summaryFile, 'TextType', 'string');
+rtManifest = read_phase5_table(cfg.phase5A.rtManifestFile);
+frozenBasin = read_phase5_table(cfg.phase5A.frozenBasinFile);
+primaryLedger = read_phase5_table(cfg.phase5A.frozenTransferLedgerFile);
+primarySummary = read_phase5_table(cfg.phase5A.summaryFile);
+
+require_table_vars(rtManifest, ["device"; "primary_probe"; "secondary_probe"; ...
+    "secondary_status"], cfg.phase5A.rtManifestFile);
+require_table_vars(frozenBasin, ["track"; "role"; "mechanism"; "caseName"; ...
+    "calibrationMode"; "alpha_gap"; "gammaW"; "pW"; "seed"], ...
+    cfg.phase5A.frozenBasinFile);
+require_table_vars(primaryLedger, ["device"; "run_status"; "model_level"; ...
+    "mechanism"; "caseName"; "total_LevelA_score"], ...
+    cfg.phase5A.frozenTransferLedgerFile);
+require_table_vars(primarySummary, ["device"; "status"], cfg.phase5A.summaryFile);
 
 secondaryManifest = build_secondary_manifest(rtManifest);
 secondaryLedger = build_secondary_ledger(cfg, secondaryManifest, frozenBasin);
@@ -57,6 +67,120 @@ out.paths.activationPlan = cfg.phase5B.activationPlanFile;
 out.paths.gateResults = cfg.phase5B.gateResultFile;
 out.paths.figurePng = [cfg.phase5B.figureBaseFile '.png'];
 out.paths.figurePdf = [cfg.phase5B.figureBaseFile '.pdf'];
+end
+
+function T = read_phase5_table(filePath)
+headerNames = read_csv_header(filePath);
+validHeaderNames = matlab.lang.makeValidName(cellstr(headerNames));
+validHeaderNames = matlab.lang.makeUniqueStrings(validHeaderNames);
+
+try
+    opts = detectImportOptions(filePath, 'FileType', 'text', 'Delimiter', ',');
+    try
+        opts.VariableNamingRule = 'preserve';
+    catch
+    end
+    if isprop(opts, 'VariableNamesLine')
+        opts.VariableNamesLine = 1;
+    end
+    if isprop(opts, 'DataLines')
+        opts.DataLines = [2 Inf];
+    end
+    opts.VariableNames = validHeaderNames;
+    T = readtable(filePath, opts);
+catch
+    try
+        T = readtable(filePath, 'ReadVariableNames', false, ...
+            'HeaderLines', 1, 'TextType', 'string');
+    catch
+        T = read_phase5_table_fallback(filePath);
+    end
+end
+T.Properties.VariableNames = validHeaderNames;
+T = drop_repeated_header_row(T, headerNames);
+T = coerce_table_columns(T);
+end
+
+function headerNames = read_csv_header(filePath)
+fid = fopen(filePath, 'r');
+if fid < 0
+    error('v8:phase5BReadFailed', 'Could not open %s.', char(filePath));
+end
+cleanup = onCleanup(@() fclose(fid));
+line = fgetl(fid);
+if ~ischar(line) && ~isstring(line)
+    error('v8:phase5BEmptyTable', 'File %s has no header line.', char(filePath));
+end
+line = erase(string(line), char(65279));
+headerNames = split(line, ',').';
+headerNames = strtrim(headerNames);
+end
+
+function T = read_phase5_table_fallback(filePath)
+C = readcell(filePath, 'Delimiter', ',');
+if size(C, 1) < 1
+    T = table();
+    return;
+end
+headerNames = string(C(1, :));
+headerNames = erase(headerNames, char(65279));
+headerNames = strtrim(headerNames);
+validHeaderNames = matlab.lang.makeValidName(cellstr(headerNames));
+validHeaderNames = matlab.lang.makeUniqueStrings(validHeaderNames);
+T = cell2table(C(2:end, :), 'VariableNames', validHeaderNames);
+end
+
+function T = drop_repeated_header_row(T, headerNames)
+if height(T) < 1 || width(T) ~= numel(headerNames)
+    return;
+end
+firstRow = strings(1, width(T));
+for k = 1:width(T)
+    val = T{1, k};
+    if iscell(val)
+        val = val{1};
+    end
+    firstRow(k) = string(val);
+end
+if all(strcmp(strtrim(firstRow), strtrim(headerNames)))
+    T(1, :) = [];
+end
+end
+
+function T = coerce_table_columns(T)
+for k = 1:width(T)
+    name = T.Properties.VariableNames{k};
+    col = T.(name);
+    if iscell(col)
+        if all(cellfun(@(x) isempty(x) || ischar(x) || isstring(x) || ...
+                (isnumeric(x) && isscalar(x)) || islogical(x), col))
+            textVals = strings(size(col));
+            for i = 1:numel(col)
+                textVals(i) = string(col{i});
+            end
+            numericVals = str2double(textVals);
+            nonempty = strlength(strtrim(textVals)) > 0 & ~ismissing(textVals);
+            if any(nonempty) && all(isfinite(numericVals(nonempty)) | strcmpi(textVals(nonempty), "NaN"))
+                T.(name) = numericVals;
+            else
+                T.(name) = textVals;
+            end
+        end
+    elseif ischar(col)
+        T.(name) = string(cellstr(col));
+    end
+end
+end
+
+function require_table_vars(T, requiredVars, filePath)
+present = string(T.Properties.VariableNames);
+missing = requiredVars(~ismember(requiredVars, present));
+if ~isempty(missing)
+    error('v8:phase5BMissingColumns', ...
+        'File %s is missing required columns: %s. Present columns: %s', ...
+        char(filePath), strjoin(cellstr(missing), ', '), ...
+        strjoin(cellstr(present), ', '));
+end
 end
 
 function freeze = build_freeze_manifest(cfg)
@@ -152,6 +276,7 @@ for iDevice = 1:height(manifest)
         rows(rowIdx).model_level = model_level_for(string(basin.mechanism(iBasin)));
         rows(rowIdx).complexity_K = complexity_for(rows(rowIdx).model_level);
         rows(rowIdx).parameter_basin_id = string(basin.parameter_basin_id(iBasin));
+        rows(rowIdx).caseName = string(basin.caseName(iBasin));
         rows(rowIdx).calibration_mode = string(basin.calibrationMode(iBasin));
         rows(rowIdx).alpha_gap = basin.alpha_gap(iBasin);
         rows(rowIdx).gammaW = basin.gammaW(iBasin);
@@ -320,10 +445,14 @@ for k = 1:numel(devices)
     rows(k).test = "within_half_encapsulated";
     rows(k).withheld_device = withheld;
     trainDevices = devices(devices ~= withheld);
-    [selectedLevel, trainScore] = best_level_for_devices(cfg, trainDevices, primaryLedger);
+    [selectedLevel, selectedMechanism, selectedCaseName, trainScore] = ...
+        best_tuple_for_devices(cfg, trainDevices, primaryLedger);
     rows(k).selected_model = selectedLevel;
+    rows(k).selected_mechanism = selectedMechanism;
+    rows(k).selected_caseName = selectedCaseName;
     rows(k).training_mean_score = trainScore;
-    [valScore, controlScore] = validation_score_for_level(cfg, withheld, selectedLevel, primaryLedger);
+    [valScore, controlScore] = validation_score_for_tuple(cfg, withheld, ...
+        selectedLevel, selectedMechanism, selectedCaseName, primaryLedger);
     rows(k).validation_score = valScore;
     rows(k).best_control_score = controlScore;
     rows(k).margin_vs_controls = controlScore - valScore;
@@ -334,8 +463,11 @@ end
 row = numel(devices) + 1;
 rows(row).test = "control_null_consistency";
 rows(row).withheld_device = "AS001_AS003";
-[selectedLevel, trainScore] = best_level_for_devices(cfg, cfg.phase5B.controlDevices(:), primaryLedger);
+[selectedLevel, selectedMechanism, selectedCaseName, trainScore] = ...
+    best_tuple_for_devices(cfg, cfg.phase5B.controlDevices(:), primaryLedger);
 rows(row).selected_model = selectedLevel;
+rows(row).selected_mechanism = selectedMechanism;
+rows(row).selected_caseName = selectedCaseName;
 rows(row).training_mean_score = trainScore;
 rows(row).validation_score = trainScore;
 rows(row).best_control_score = trainScore;
@@ -346,29 +478,42 @@ rows(row).note = "AS001/AS003 should prefer the local-Tc/control limit.";
 heldout = struct2table(rows);
 end
 
-function [level, score] = best_level_for_devices(cfg, devices, ledger)
-levels = ["M0"; "M1"; "M2"];
-scores = NaN(numel(levels), 1);
-for i = 1:numel(levels)
+function [level, mechanism, caseName, score] = best_tuple_for_devices(cfg, devices, ledger)
+if ~all(ismember({'caseName','model_level'}, ledger.Properties.VariableNames))
+    error('v8:phase5BMissingCaseName', ...
+        'Phase 5B strict heldout requires rerunning Phase 5A with caseName and model_level in the ledger.');
+end
+idx = ledger.run_status == "scored" & ismember(ledger.model_level, ["M0"; "M1"; "M2"]);
+keys = unique(strcat(ledger.model_level(idx), "|", ledger.mechanism(idx), "|", ledger.caseName(idx)), 'stable');
+scores = NaN(numel(keys), 1);
+for i = 1:numel(keys)
+    parts = split(keys(i), "|");
     vals = NaN(numel(devices), 1);
     for k = 1:numel(devices)
-        [vals(k), ~] = validation_score_for_level(cfg, devices(k), levels(i), ledger);
+        [vals(k), ~] = validation_score_for_tuple(cfg, devices(k), ...
+            parts(1), parts(2), parts(3), ledger);
     end
     scores(i) = finite_mean(vals);
 end
 [score, local] = min(scores);
 if isfinite(score)
-    level = levels(local);
+    parts = split(keys(local), "|");
+    level = parts(1);
+    mechanism = parts(2);
+    caseName = parts(3);
 else
     level = "unresolved";
+    mechanism = "";
+    caseName = "";
 end
 end
 
-function [levelScore, bestControl] = validation_score_for_level(cfg, device, level, ledger)
+function [levelScore, bestControl] = validation_score_for_tuple(cfg, device, level, mechanism, caseName, ledger)
 idx = ledger.device == device & ledger.run_status == "scored";
-levelIdx = idx & model_level_mask(ledger.mechanism, level);
-if any(levelIdx)
-    levelScore = min(ledger.total_LevelA_score(levelIdx)) + ...
+tupleIdx = idx & ledger.model_level == level & ledger.mechanism == mechanism & ...
+    ledger.caseName == caseName;
+if any(tupleIdx)
+    levelScore = finite_mean(ledger.total_LevelA_score(tupleIdx)) + ...
         cfg.phase5B.complexityPenaltyLambda .* complexity_for(level);
 else
     levelScore = NaN;
@@ -385,8 +530,8 @@ function activationPlan = build_activation_plan(cfg)
 rows = repmat(struct('model', "", 'formula', "", 'purpose', "", ...
     'status', ""), 2, 1);
 rows(1).model = "abrupt_geometry_only_activation";
-rows(1).formula = "lambda_W = lambda_B * B_d";
-rows(1).purpose = "Binary half-coverage activation; AS002 tests whether this is too abrupt.";
+rows(1).formula = "lambda_W = lambda_B * B_d + lambda_C * C_d";
+rows(1).purpose = "Binary half-coverage plus global crack activation; AS002 tests whether this is too abrupt.";
 rows(1).status = "planned_for_global_law_fit";
 rows(2).model = "film_force_modulated_activation";
 rows(2).formula = "lambda_W = lambda_B * B_d * (abs(F_f)/F0)^q + lambda_C * C_d";
@@ -766,6 +911,7 @@ row.track = "";
 row.model_level = "";
 row.complexity_K = NaN;
 row.parameter_basin_id = "";
+row.caseName = "";
 row.calibration_mode = "";
 row.alpha_gap = NaN;
 row.gammaW = NaN;
@@ -820,6 +966,8 @@ row = struct();
 row.test = "";
 row.withheld_device = "";
 row.selected_model = "";
+row.selected_mechanism = "";
+row.selected_caseName = "";
 row.training_mean_score = NaN;
 row.validation_score = NaN;
 row.best_control_score = NaN;

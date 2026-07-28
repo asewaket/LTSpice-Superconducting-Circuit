@@ -74,7 +74,9 @@ for iDevice = 1:height(manifest)
         rows(rowIdx).mechanism = string(basin.mechanism(iBasin));
         rows(rowIdx).role = string(basin.role(iBasin));
         rows(rowIdx).track = string(basin.track(iBasin));
+        rows(rowIdx).model_level = model_level_for(string(basin.mechanism(iBasin)));
         rows(rowIdx).parameter_basin_id = string(basin.parameter_basin_id(iBasin));
+        rows(rowIdx).caseName = string(basin.caseName(iBasin));
         rows(rowIdx).alpha_gap = basin.alpha_gap(iBasin);
         rows(rowIdx).gammaW = basin.gammaW(iBasin);
         rows(rowIdx).pW = basin.pW(iBasin);
@@ -95,9 +97,9 @@ for iDevice = 1:height(manifest)
                 model.T, model.R, cfg.phase5A.score);
 
             rows(rowIdx).RN_exp = rtScore.RN_exp;
-            rows(rowIdx).RN_model_precalibration = model.RN_model_precalibration;
+            rows(rowIdx).RN_model_case = model.RN_model_case;
             rows(rowIdx).calibration_factor = rows(rowIdx).RN_exp ./ ...
-                max(rows(rowIdx).RN_model_precalibration, eps);
+                max(rows(rowIdx).RN_model_case, eps);
             rows(rowIdx).RT_curve_score = rtScore.RT_curve_score;
             rows(rowIdx).onset_score = rtScore.onset_score;
             rows(rowIdx).width_score = rtScore.width_score;
@@ -156,7 +158,7 @@ end
 model = struct();
 model.T = rt.T;
 model.R = rt.R4p.(primary);
-model.RN_model_precalibration = normal_state_probe_resistance(netCase, ...
+model.RN_model_case = normal_state_probe_resistance(netCase, ...
     state.spec, paramsCase, primary, cfg.phase5A.Iprobe_A);
 model.note = "solver-generated small-signal R(T) with frozen Phase 4 parameters";
 end
@@ -277,17 +279,17 @@ if ~isfield(expRT, 'available') || ~expRT.available
     return;
 end
 primary = char(primaryProbe);
-if isfield(expRT, 'pairData') && isfield(expRT.pairData, 'available') && ...
+if isfield(expRT, 'R') && isfield(expRT.R, 'main_4p')
+    curve.available = true;
+    curve.T = expRT.T;
+    curve.R = expRT.R.main_4p;
+    curve.note = "Level A publication main_4p mapped to declared primary probe";
+elseif isfield(expRT, 'pairData') && isfield(expRT.pairData, 'available') && ...
         expRT.pairData.available && isfield(expRT.pairData.R, primary)
     curve.available = true;
     curve.T = expRT.pairData.T;
     curve.R = expRT.pairData.R.(primary);
-    curve.note = "explicit primary probe channel";
-elseif isfield(expRT, 'R') && isfield(expRT.R, 'main_4p')
-    curve.available = true;
-    curve.T = expRT.T;
-    curve.R = expRT.R.main_4p;
-    curve.note = "publication main_4p mapped to declared primary probe";
+    curve.note = "fallback explicit primary probe channel; publication main_4p unavailable";
 else
     curve.note = "primary R(T) channel unavailable";
 end
@@ -373,21 +375,26 @@ for k = 1:numel(cfg.devices)
         rows(k).note = "No training devices scored after withholding.";
         continue;
     end
-    tracks = unique(ledger.track(trainIdx), 'stable');
-    meanScores = NaN(numel(tracks), 1);
-    for i = 1:numel(tracks)
-        meanScores(i) = finite_mean(ledger.total_LevelA_score(trainIdx & ledger.track == tracks(i)));
+    tuples = unique(strcat(ledger.track(trainIdx), "|", ledger.caseName(trainIdx)), 'stable');
+    meanScores = NaN(numel(tuples), 1);
+    for i = 1:numel(tuples)
+        parts = split(tuples(i), "|");
+        tupleIdx = trainIdx & ledger.track == parts(1) & ledger.caseName == parts(2);
+        meanScores(i) = finite_mean(ledger.total_LevelA_score(tupleIdx));
     end
     [rows(k).training_mean_score, bestIdx] = min(meanScores);
-    rows(k).selected_track = tracks(bestIdx);
+    selectedParts = split(tuples(bestIdx), "|");
+    rows(k).selected_track = selectedParts(1);
+    rows(k).selected_caseName = selectedParts(2);
     valIdx = ledger.device == withheld & ledger.track == rows(k).selected_track & ...
+        ledger.caseName == rows(k).selected_caseName & ...
         ledger.run_status == "scored";
     rows(k).validation_available = any(valIdx);
     if any(valIdx)
-        rows(k).validation_margin_vs_controls = max(ledger.margin_vs_required_controls(valIdx));
+        rows(k).validation_margin_vs_controls = finite_mean(ledger.margin_vs_required_controls(valIdx));
         rows(k).validation_pass = rows(k).validation_margin_vs_controls > 0;
         rows(k).status = ternary(rows(k).validation_pass, "pass", "fail");
-        rows(k).note = "Withheld primary R(T) scored.";
+        rows(k).note = "Withheld primary R(T) scored using training-selected track/case tuple across seeds.";
     else
         rows(k).status = "incomplete";
         rows(k).note = "Withheld device has no selected-track score.";
@@ -486,14 +493,16 @@ row.calibration_mode = "";
 row.mechanism = "";
 row.role = "";
 row.track = "";
+row.model_level = "";
 row.parameter_basin_id = "";
+row.caseName = "";
 row.alpha_gap = NaN;
 row.gammaW = NaN;
 row.pW = NaN;
 row.seed = NaN;
 row.phase4_evidence_score = NaN;
 row.RN_exp = NaN;
-row.RN_model_precalibration = NaN;
+row.RN_model_case = NaN;
 row.calibration_factor = NaN;
 row.RT_curve_score = NaN;
 row.onset_score = NaN;
@@ -538,6 +547,7 @@ row.withheld_device = "";
 row.training_device_count = 0;
 row.available_training_device_count = 0;
 row.selected_track = "";
+row.selected_caseName = "";
 row.training_mean_score = NaN;
 row.validation_available = false;
 row.validation_margin_vs_controls = NaN;
@@ -553,6 +563,19 @@ row.required = false;
 row.status = "";
 row.evidence = "";
 row.note = "";
+end
+
+function level = model_level_for(mechanism)
+mechanism = string(mechanism);
+if any(mechanism == ["geometry-only Tc"; "no weak links"; "bulk gap reference"])
+    level = "M0";
+elseif any(mechanism == ["contact-relaxed weak links"; "crack/tunnel-like weak links"])
+    level = "M1";
+elseif mechanism == "combined physical bottleneck"
+    level = "M2";
+else
+    level = "protected_control";
+end
 end
 
 function y = finite_mean(x)

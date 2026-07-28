@@ -97,6 +97,8 @@ cfg.pWValues = [0.05 0.10 0.20 0.30];
 cfg.runFullFieldMaps = false;
 cfg.reuseExistingScreeningTables = false;
 
+phase3Cfg = v800.phase3_config(rootDir);
+
 cfg.phase5A.enabled = true;
 cfg.phase5A.description = 'Frozen-basin primary R(T) transfer across AS001-AS006';
 cfg.phase5A.rtManifestFile = fullfile(cfg.outputDir, 'phase5_rt_manifest.csv');
@@ -114,7 +116,8 @@ cfg.phase5A.figureBaseFile = fullfile(cfg.outputDir, ...
     'phase5_levelA_rt_transfer_summary');
 cfg.phase5A.parameterBasinScoreTolerance = 0.02;
 cfg.phase5A.maxBasinRowsPerTrack = 10;
-cfg.phase5A.commonSeeds = 101:110;
+cfg.phase5A.commonSeeds = phase3Cfg.seeds;
+cfg.phase5A.primaryDataSourcePolicy = 'publication_main_4p_for_Level_A';
 cfg.phase5A.maxTemperaturePoints = 120;
 cfg.phase5A.Iprobe_A = 1e-8;
 cfg.phase5A.score.rtScoreGridPoints = 160;
@@ -154,5 +157,36 @@ cfg.phase5B.halfEncapsulatedDevices = ["AS002"; "AS004"; "AS006"];
 cfg.phase5B.controlDevices = ["AS001"; "AS003"];
 cfg.phase5B.crackDevices = "AS005";
 cfg.phase5B.structuredRegimeDevices = ["AS004"; "AS005"; "AS006"];
+
+cfg.phase5B1.enabled = true;
+cfg.phase5B1.description = 'Global activation-law validation for half-encapsulated transfer';
+cfg.phase5B1.baselineArchiveFile = fullfile(cfg.outputDir, ...
+    'phase5B1_frozen_5B_baseline_archive.csv');
+cfg.phase5B1.deviceActivationFile = fullfile(cfg.outputDir, ...
+    'phase5B1_device_activation_inputs.csv');
+cfg.phase5B1.fitLedgerFile = fullfile(cfg.outputDir, ...
+    'phase5B1_activation_fit_ledger.csv');
+cfg.phase5B1.heldoutFile = fullfile(cfg.outputDir, ...
+    'phase5B1_activation_heldout_validation.csv');
+cfg.phase5B1.secondaryPreservationFile = fullfile(cfg.outputDir, ...
+    'phase5B1_secondary_preservation.csv');
+cfg.phase5B1.gateResultFile = fullfile(cfg.outputDir, ...
+    'phase5B1_activation_gate_results.csv');
+cfg.phase5B1.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase5B1_activation_law_summary');
+cfg.phase5B1.F0_N_per_m = 40;
+cfg.phase5B1.lambdaMax = 1;
+cfg.phase5B1.lambdaBGrid = 0:0.05:1;
+cfg.phase5B1.lambdaCGrid = 0:0.05:1;
+cfg.phase5B1.qGrid = [0.5 0.75 1.0 1.25 1.5 2.0 2.5 3.0];
+cfg.phase5B1.lambdaLowerBound = 0;
+cfg.phase5B1.lambdaUpperBound = 1;
+cfg.phase5B1.qLowerBound = 0.5;
+cfg.phase5B1.qUpperBound = 3.0;
+cfg.phase5B1.qComplexityPenalty = cfg.phase5B.complexityPenaltyLambda;
+cfg.phase5B1.halfEncapsulatedForce_N_per_m = table( ...
+    ["AS002"; "AS004"; "AS006"], [-3; -20; -40], ...
+    'VariableNames', {'device','film_force_N_per_m'});
+cfg.phase5B1.crackDevice = "AS005";
 
 end

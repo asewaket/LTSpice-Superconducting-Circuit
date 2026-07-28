@@ -67,6 +67,7 @@ end
 
 basin = struct2table(rows);
 basin = sortrows(basin, {'seed','role','track','phase4_evidence_score'});
+assert_matched_seed_coverage(basin, seeds);
 end
 
 function rows = append_track(rows, scores, mechanism, mode, role, track, tol, maxRows, seeds)
@@ -160,4 +161,20 @@ row.pW = NaN;
 row.seed = NaN;
 row.phase4_evidence_score = NaN;
 row.selection_note = "";
+end
+
+function assert_matched_seed_coverage(basin, requestedSeeds)
+requestedSeeds = sort(requestedSeeds(:));
+tracks = unique(basin.track, 'stable');
+for k = 1:numel(tracks)
+    idx = basin.track == tracks(k);
+    trackSeeds = sort(unique(basin.seed(idx)));
+    if ~isequal(trackSeeds(:), requestedSeeds(:))
+        error('v8:phase5ASeedMismatch', ...
+            ['Phase 5A seed coverage mismatch for track "%s". ', ...
+            'Expected [%s], found [%s].'], ...
+            char(tracks(k)), num2str(requestedSeeds(:).'), ...
+            num2str(trackSeeds(:).'));
+    end
+end
 end

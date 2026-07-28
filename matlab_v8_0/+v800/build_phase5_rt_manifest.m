@@ -46,19 +46,19 @@ if isempty(expRT) || ~isfield(expRT, 'available') || ~expRT.available
 end
 
 primaryProbe = char(primaryProbe);
-if isfield(expRT, 'pairData') && isfield(expRT.pairData, 'available') && ...
+if isfield(expRT, 'R') && isfield(expRT.R, 'main_4p')
+    curve.available = true;
+    curve.T = expRT.T;
+    curve.R = expRT.R.main_4p;
+    curve.source = string(expRT.sourceFile);
+    curve.note = "Level A publication main_4p curve mapped to declared primary probe";
+elseif isfield(expRT, 'pairData') && isfield(expRT.pairData, 'available') && ...
         expRT.pairData.available && isfield(expRT.pairData.R, primaryProbe)
     curve.available = true;
     curve.T = expRT.pairData.T;
     curve.R = expRT.pairData.R.(primaryProbe);
     curve.source = string(expRT.pairData.sourceFile);
-    curve.note = "explicit primary probe channel";
-elseif isfield(expRT, 'R') && isfield(expRT.R, 'main_4p')
-    curve.available = true;
-    curve.T = expRT.T;
-    curve.R = expRT.R.main_4p;
-    curve.source = string(expRT.sourceFile);
-    curve.note = "publication main_4p curve mapped to declared primary probe";
+    curve.note = "fallback explicit primary probe channel; publication main_4p unavailable";
 else
     curve.note = "no usable main_4p or explicit primary probe channel";
 end

@@ -167,8 +167,12 @@ Phase 5A scores only declared primary R(T) curves:
 - AS005 top_4_10 / R1;
 - AS006 top_4_10 / R1.
 
-Secondary probes are held out for Level B. Missing field maps are Level C
-availability notes, not exclusions from Level A transfer.
+Level A uses the curated publication `main_4p` R(T) curve as the common
+six-device evidence layer and maps it to the declared primary probe. Explicit
+top/bottom pair traces are reserved for Level B, except as a fallback when a
+publication curve is unavailable. Secondary probes are held out for Level B.
+Missing field maps are Level C availability notes, not exclusions from Level A
+transfer.
 
 `run_v800_phase5B_secondary_validation` freezes the Phase 5A artifacts and
 tests the two-regime interpretation with held-out secondary probes. It does not
@@ -188,6 +192,26 @@ M0 is local-Tc/control-like, M1 is geometry-activated boundary/contact/crack
 connectivity, and M2 is the full combined bottleneck. The goal is to test
 whether AS001-AS003 reduce to a local-Tc/control-like regime while AS004-AS006
 retain connectivity support on independent probe evidence.
+
+Held-out validation is strict after Phase 5A regeneration: training selects the
+model level, mechanism, and exact `caseName` parameter tuple, then the withheld
+device is evaluated on that same tuple across the common Phase 3 seed list.
+
+`run_v800_phase5B1_activation_law_validation` is the next nested validation
+layer. It archives the current Phase 5A/5B baseline, then tests two compact
+global weak-link activation laws for the half-encapsulated AS002/AS004/AS006
+series:
+
+- binary geometry activation, `lambda_W = lambda_B B_d + lambda_C C_d`;
+- force-modulated activation,
+  `lambda_W = clip(lambda_B B_d (abs(F_f,d)/F0)^q + lambda_C C_d)`.
+
+The bounds are frozen in `+v800/phase5_config.m`: `0 <= lambda_B <= 1`,
+`0 <= lambda_C <= 1`, `0.5 <= q <= 3`, and `F0 = 40 N/m`. Phase 5B.1 does not
+fit per-device `lambda_W` values. It uses the frozen Level-A solver ledger as a
+response surface, with local M0 rows at `lambda_W = 0` and solved weak-link rows
+as nonzero-amplitude anchors. This is a compact activation-law validation layer,
+not a retrospective rewrite of Phase 5B.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not

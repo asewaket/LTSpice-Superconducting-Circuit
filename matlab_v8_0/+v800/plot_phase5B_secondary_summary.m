@@ -10,7 +10,7 @@ h = figure('Name', 'v8.0 Phase 5B secondary and hierarchy summary', ...
 tiledlayout(2, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
 
 nexttile;
-plot_secondary_heatmap(secondaryLedger);
+plot_secondary_heatmap(cfg, secondaryLedger, evidence);
 title('secondary score by device and mechanism');
 
 nexttile;
@@ -32,7 +32,7 @@ saveas(h, [cfg.phase5B.figureBaseFile '.png']);
 saveas(h, [cfg.phase5B.figureBaseFile '.pdf']);
 end
 
-function plot_secondary_heatmap(T)
+function plot_secondary_heatmap(cfg, T, evidence)
 idx = T.run_status == "scored";
 if ~any(idx)
     text(0.5, 0.5, 'no scored secondary probes', ...
@@ -40,7 +40,7 @@ if ~any(idx)
     axis off;
     return;
 end
-D = unique(T.device, 'stable');
+D = cfg.devices(:);
 M = unique(T.mechanism(idx), 'stable');
 Z = NaN(numel(D), numel(M));
 for i = 1:numel(D)
@@ -58,6 +58,21 @@ set(gca, 'Color', [0.88 0.88 0.88], 'XTick', 1:numel(M), ...
     'Tag', 'phase5B_heatmap_axes');
 xtickangle(30);
 ylabel('device');
+for i = 1:numel(D)
+    eidx = evidence.device == D(i);
+    isNA = false;
+    if any(eidx)
+        status = string(evidence.secondary_probe_status(find(eidx, 1, 'first')));
+        isNA = status == "not_applicable";
+    else
+        isNA = ~any(idx & T.device == D(i));
+    end
+    if isNA
+        text(max(1, ceil(numel(M) ./ 2)), i, 'N/A', ...
+            'HorizontalAlignment', 'center', 'FontWeight', 'bold', ...
+            'Color', [0.15 0.15 0.15]);
+    end
+end
 end
 
 function plot_preferred_models(T)
