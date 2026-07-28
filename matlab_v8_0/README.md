@@ -425,6 +425,57 @@ classification, interpreting unresolved as M0, claiming structured
 connectivity is absent from unresolved cases, or assigning M1/M2 from
 normalized `R(T)` alone.
 
+`run_v800_phase5D2_result_freeze` freezes that negative calibration outcome
+and writes the evidence-policy and six-device context artifacts:
+
+- `phase5D2_result_freeze_status.csv`;
+- `phase5D2_freeze_status.csv`;
+- `phase5D2_interpretation_policy.csv`;
+- `phase5D2_validation_status.csv`;
+- `phase5D2_frozen_input_manifest.csv`;
+- `phase5D2_real_device_score_context.csv`;
+- `phase5D2_device_evidence_synthesis.csv`;
+- `phase5D2_final_gate_summary.csv`;
+- `phase5D2_handoff_status.csv`;
+- `phase5D2_result_freeze_summary.png`;
+- `phase5D2_result_freeze_summary.pdf`.
+
+This runner does not tune `Zcrit`, alter the `M0*` nuisance family, change
+penalties, consume validation seeds, or assign automatic categorical labels to
+real devices. It records that normalized `R(T)` can provide directional score
+context but cannot support a universal nuisance-robust classifier under the
+predeclared operating-point targets. The next phase is the hierarchical
+six-device model freeze and multi-evidence synthesis.
+
+The real-device score-context table reports `S_M0star`, `S_M1`, `S_M2`,
+`DeltaS`, reference `sigmaDeltaS`, and contextual `Z` values from frozen
+inputs. These quantities describe directional score preference and detection
+limits; they are not validated categorical labels.
+
+`run_v800_phase6_hierarchical_evidence_freeze` starts Phase 6: the
+hierarchical six-device evidence and model freeze. It consumes frozen Phase 5A,
+5B, 5B.1, 5B.2, 5C, and 5D.2 artifacts and writes:
+
+- `phase6_model_hierarchy_freeze.csv`;
+- `phase6_frozen_input_manifest.csv`;
+- `phase6_six_device_evidence_matrix.csv`;
+- `phase6_device_model_status.csv`;
+- `phase6_evidence_tier_assignments.csv`;
+- `phase6_claim_hierarchy.csv`;
+- `phase6_gate_summary.csv`;
+- `phase6_handoff_status.csv`;
+- `phase6_hierarchical_evidence_freeze_summary.png`;
+- `phase6_hierarchical_evidence_freeze_summary.pdf`.
+
+Phase 6 is not a classifier-calibration or optimization phase. It freezes the
+M0*/M1/M2 hierarchy, separates model status from evidence tier, and records
+device conclusions as multi-evidence synthesis. The working model statuses are
+`M0star_sufficient`, `structured_supported`, and
+`mechanistically_unresolved`; evidence tiers include `paired_probe_and_heldout`,
+`primary_only`, `control_limit`, `mixed_probe`, and `auxiliary_supported`.
+The deferred full-shape `R(T)` classifier remains outside the active roadmap
+unless it is explicitly rescoped after the hierarchical freeze.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
