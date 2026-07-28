@@ -6,16 +6,21 @@ This document defines the fitting scope for the final v8 optimization campaign. 
 
 ## Primary question
 
-Does a spatially structured weak-link transparency field improve the explanation of measured transport beyond local-Tc heterogeneity alone, a uniform weak-link distribution, and a one-dimensional current path?
+Can one shared two-dimensional superconducting-network framework identify, for each device, whether local-Tc heterogeneity is sufficient, structured connectivity is required, or the available measurements cannot distinguish the two?
 
-The core test is therefore comparative. A structured weak-link model is useful only if it beats the relevant null models under the same geometry, local superconducting-scale construction, disorder policy, calibration convention, and scoring rules.
+The core test is therefore hierarchical and comparative. A structured weak-link model is useful for a given device only if it beats the relevant null models under the same geometry, local superconducting-scale construction, disorder policy, calibration convention, and scoring rules. The final objective is not to force one AS006-derived weak-link law to beat controls on every device; it is to select the minimum supported level:
+
+- `M0`: local-Tc heterogeneity with `W_ij = 1`;
+- `M1`: local-Tc heterogeneity plus geometry-activated structured connectivity;
+- `M2`: local-Tc heterogeneity plus the full combined bottleneck structure.
 
 ## Secondary questions
 
 1. Which spatial weak-link class is supported most consistently across observables and seeds?
 2. Is the result robust to disorder realization, Raman registration uncertainty, and mesh resolution?
-3. Does one global rule set transfer across AS001-AS006 without device-specific weak-link retuning?
-4. Which conclusions concern local superconductivity, and which conclusions concern connectivity?
+3. Does one global rule set provide descriptive value without device-specific weak-link retuning, and where does strict held-out transfer fail?
+4. Which conclusions concern local superconductivity, which concern connectivity, and which are unresolved under the available observables?
+5. Can synthetic datasets generated from known `M0`, `M1`, and `M2` mechanisms be recovered by the same scoring workflow?
 
 ## In-scope model ingredients
 
@@ -46,7 +51,19 @@ Every mechanism claim must be compared against:
 - central-lane or one-dimensional current-path control;
 - the simplest structured weak-link class that can explain the same observables.
 
-The preferred model is the simplest model that passes the validation gates, not necessarily the model with the lowest single score.
+The preferred model is the simplest model that passes the validation gates, not necessarily the model with the lowest single score. Primary-only classifications carry lower evidence confidence than classifications supported by independent probe-pair evidence.
+
+## Phase 5C Freeze And 5D Handoff
+
+Phase 5C is frozen as a synthetic identifiability result, not as a calibrated experimental classifier. Its label policy is fixed:
+
+- `M0` is unstructured;
+- `M1` and `M2` are structured;
+- `mixed` has exact-recovery target `M1` and binary class `structured`.
+
+The Phase 5C misspecification failures must be preserved as diagnostic failures. They show that broadened or shifted local-Tc-only responses can be falsely promoted to structured connectivity, and that weak structured cases can be classified too confidently as local-like. These failures are not a reason to add a new mechanism class or retune Phase 5C.
+
+Phase 5D is therefore restricted to uncertainty and significance calibration: define a nuisance-aware `M0*` family, estimate score-difference uncertainty, set unresolved decision thresholds, and validate the frozen calibrated rule on independent synthetic perturbations. The Phase 5C misspecification set may be used to design Phase 5D, but it must not be reused as the final post-calibration validation set.
 
 ## Explicitly excluded questions
 

@@ -1,0 +1,4 @@
+split_name,seed_range,purpose,reuse_policy
+calibration,101-160,"select nuisance bounds, penalties, unresolved threshold, and Zcrit",may tune calibration
+independent_validation,1001-1080,"evaluate frozen calibrated decision rule",no tuning after evaluation begins
+phase5C_misspecification_archive,1-40,"diagnostic set that motivated Phase 5D; not final proof after calibration",do not reuse as final validation set

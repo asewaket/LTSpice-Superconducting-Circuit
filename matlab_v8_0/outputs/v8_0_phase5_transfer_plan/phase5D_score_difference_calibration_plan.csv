@@ -1,0 +1,5 @@
+comparison,score_difference,uncertainty_sources,decision_rule
+structured_vs_M0star,S_structured_min - S_M0star,disorder seeds; measurement noise; normalization; interpolation; nuisance parameters; registration,use Z score and unresolved band
+M1_vs_M2,S_M1 - S_M2,disorder seeds; measurement noise; secondary-probe availability,report exact level only when separation is significant
+M0star_vs_M1,S_M0star - S_M1,M0* nuisance envelope; disorder seeds; normalization,candidate support only outside unresolved band
+M0star_vs_M2,S_M0star - S_M2,M0* nuisance envelope; disorder seeds; normalization,candidate support only outside unresolved band

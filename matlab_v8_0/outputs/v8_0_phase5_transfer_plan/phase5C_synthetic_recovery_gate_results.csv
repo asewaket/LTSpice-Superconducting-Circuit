@@ -1,0 +1,7 @@
+gate,required,status,evidence,note
+synthetic_cases_scored,1,pass,4 evidence configurations scored.,"Phase 5C uses generated synthetic data with known labels."
+two_probe_structured_vs_M0_recovery,1,pass,two-probe noisy/disordered structured-vs-M0 recovery = 1.000.,"Real-device mechanism claims require acceptable synthetic recovery."
+primary_only_marked_lower_confidence,1,pass,2 primary-only configs marked lower evidence tier.,"Primary-only real-device classifications must carry lower confidence."
+M1_M2_identifiability_reported,1,pass,median M1/M2 exact recovery = 0.984.,"M1/M2 may remain unresolved even when structured-vs-M0 is useful."
+revised_finish_line_supported,0,pass,12 recovery-matrix rows written for final hierarchical framing.,"5C tests hierarchical classification, not universal force-law transfer."
+misspecification_challenge_recorded,1,fail,3/5 misspecification gates pass.,"Compact out-of-family challenge is archived separately from in-family recovery."

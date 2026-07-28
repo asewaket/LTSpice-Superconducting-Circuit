@@ -1,0 +1,8 @@
+criterion,target,required,predeclared_before_validation
+false_structured_promotion_M0star,<= 0.15,1,1
+confident_M0star_for_weak_structured,<= 0.15,1,1
+near_boundary_unresolved_behavior,unresolved should dominate ambiguous near-boundary cases,1,1
+strong_structured_detection,high detection rate for strong structured cases,1,1
+two_probe_improvement,paired probes improve or tie primary-only detection,1,1
+M1_M2_recovery_not_collapsed,M0* nuisance expansion must not absorb clear M1/M2 cases,1,1
+independent_validation_consistency,frozen calibration performs similarly on new seeds and perturbations,1,1

@@ -1,0 +1,5 @@
+true_model,exact_recovery_target,binary_recovery_class,policy_note
+M0,M0,unstructured,local-Tc/control limit
+M1,M1,structured,geometry-activated structured connectivity
+M2,M2,structured,full combined bottleneck structure
+mixed,M1,structured,intermediate case contains structured-connectivity contribution

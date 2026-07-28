@@ -1,0 +1,8 @@
+gate,required,status,evidence,note
+phase5B1_baseline_frozen,1,pass,"7/7 Phase 5B.1 baseline files found.","5B.2 is interpretive consolidation and does not replace strict heldout."
+joint_force_beats_binary,1,pass,"force 0.2946 vs binary 0.2994.","Full-series law must improve on binary activation after penalties."
+joint_force_beats_protected_alternatives,1,pass,"force 0.2946 vs best protected 0.3254.","Protected alternatives include M0, uniform, shuffled, and central lane."
+strict_heldout_protected_survival,1,fail,"1/3 strict heldout folds beat protected controls.","This is the predeclared stopping rule inherited from 5B.1."
+secondary_preservation_remains_intact,1,pass,"3/3 secondary preservation rows pass.","Secondary probes remain independent heldout evidence."
+no_AS004_specific_coefficient,1,pass,"AS004 is diagnosed by S(lambda_W), not tuned independently.","No AS004-specific activation parameter is introduced."
+phase5B2_final_shared_force_law_attempt,0,pass,"5B.2 predeclares this as the final shared film-force law consolidation.","If gates fail, the conclusion is mixed/limited transfer, not another retuning round."

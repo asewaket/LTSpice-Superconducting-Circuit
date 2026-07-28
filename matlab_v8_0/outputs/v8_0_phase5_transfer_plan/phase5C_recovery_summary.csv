@@ -1,0 +1,5 @@
+evidence_config,case_count,exact_recovery_rate,structured_vs_M0_recovery_rate,M0_recovery_rate,M1_vs_M2_exact_rate,primary_only_confidence,mechanistic_claim_scope
+primary_only,320,0.99375,0.99375,1,0.9875,lower_evidence_tier,structured_vs_unstructured_informative
+primary_secondary,320,1,1,1,1,two_probe_evidence_tier,structured_vs_unstructured_informative
+primary_noise,320,0.953125,0.984375,0.95,0.94375,lower_evidence_tier,structured_vs_unstructured_informative
+primary_secondary_noise_disorder,320,0.9875,1,1,0.98125,two_probe_evidence_tier,structured_vs_unstructured_informative

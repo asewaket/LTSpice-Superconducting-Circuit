@@ -1,0 +1,7 @@
+item,status,evidence,next_phase_action,note
+in_family_recovery,pass,"min exact recovery = 0.9531; min structured-vs-M0 recovery = 0.9844.",use_as_code_and_hierarchy_validation,"In-family synthetic recovery is frozen as the Phase 5C positive control."
+label_consistency,pass,"M0 is unstructured; M1, M2, and mixed are structured/intermediate.",keep_mapping_fixed,"The mixed-label binary gate correction is frozen before Phase 5D."
+misspecification_robustness,fail,"3/5 misspecification gates pass; failed gates remain diagnostic.",calibrate_uncertainty_and_nuisance_tolerance,"Failed misspecification gates motivate Phase 5D and should not be tuned away inside 5C."
+frozen_misspecification_dataset,pass,"400 misspecification cases with fixed seeds and perturbations archived.",use_for_design_not_final_validation,"The current challenge set revealed the calibration problem and is not the final post-calibration proof set."
+phase5C_closure,pass,"Phase 5C closes with successful in-family identifiability and failed misspecification robustness.",freeze_phase5C_move_to_phase5D,"No Phase 5C classifier or threshold changes should be made to force misspecification gates to pass."
+required_next_phase,action_required,"Broadened M0 responses can be promoted to structured; weak structured cases can be overconfidently M0.",uncertainty_and_significance_calibration,"Phase 5D should define M0*, score-difference uncertainty, unresolved decisions, and independent validation."

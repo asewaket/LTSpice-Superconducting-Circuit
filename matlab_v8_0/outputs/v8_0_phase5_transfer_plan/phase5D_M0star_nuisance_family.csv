@@ -1,0 +1,8 @@
+parameter,role,initial_bounds,penalty_policy,included_in_M0star
+Tc_mean_shift_K,local-Tc nuisance,predeclare from calibration set,penalize distance from zero shift,1
+Tc_distribution_width_K,local-Tc nuisance,predeclare from calibration set,penalize excessive broadening,1
+residual_normal_shunt,non-mechanistic conduction floor,predeclare from calibration set,penalize large shunt,1
+normalization_window_shift,measurement normalization nuisance,predeclare from calibration set,penalize deviation from nominal normalization,1
+temperature_offset_K,temperature-axis nuisance,predeclare from calibration set,penalize temperature-axis drift,1
+probe_registration_shift,registration nuisance,predeclare from calibration set,penalize large registration displacement,1
+disorder_amplitude_scale,disorder nuisance,predeclare from calibration set,penalize outside-prior disorder,1

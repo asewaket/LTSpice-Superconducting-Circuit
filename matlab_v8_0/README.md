@@ -213,6 +213,92 @@ response surface, with local M0 rows at `lambda_W = 0` and solved weak-link rows
 as nonzero-amplitude anchors. This is a compact activation-law validation layer,
 not a retrospective rewrite of Phase 5B.
 
+`run_v800_phase5B2_full_series_activation_consolidation` closes the shared
+film-force activation attempt by fitting one coefficient set to the complete
+AS002/AS004/AS006 half-encapsulated series. It excludes the crack coefficient
+from this half-series analysis and fits only `{lambda_B, q}` for:
+
+```text
+lambda_W,d = lambda_B * (abs(F_f,d) / F0)^q
+```
+
+Phase 5B.2 reports both the frozen strict 5B.1 held-out result and the
+full-series interpretive fit. It also writes a joint comparison against M0,
+binary activation, uniform weak links, shuffled weak links, and central-lane
+controls; an `AS004` `S(lambda_W)` profile; and seed-wise activation-coefficient
+uncertainty intervals. The predeclared stopping rule is that the shared
+film-force law is retained only if it beats binary activation, beats protected
+alternatives overall, at least two of three strict 5B.1 held-out folds beat
+protected controls, and secondary preservation remains intact. If this fails,
+the conclusion is limited or mixed transfer rather than another retuning round.
+
+Phase 5B.2 is closed as a mixed/limited transfer result. The force-modulated
+law can remain as a descriptive ordering diagnostic, but robust quantitative
+transfer is determined by the strict held-out evidence. No additional
+film-force-law flexibility should be introduced after this point.
+
+`run_v800_phase5C_synthetic_recovery` starts the revised final validation path:
+synthetic mechanism recovery. It generates primary and optional secondary
+normalized R(T) curves from known M0, M1, M2, and mixed generators, adds
+realistic noise, normalization uncertainty, and disorder, then runs the same
+nested M0/M1/M2 scoring procedure without exposing the true label. It writes:
+
+- `phase5C_synthetic_recovery_manifest.csv`;
+- `phase5C_label_mapping_policy.csv`;
+- `phase5C_synthetic_score_ledger.csv`;
+- `phase5C_recovery_matrix.csv`;
+- `phase5C_recovery_summary.csv`;
+- `phase5C_misspecification_manifest.csv`;
+- `phase5C_misspecification_score_ledger.csv`;
+- `phase5C_misspecification_summary.csv`;
+- `phase5C_misspecification_gate_results.csv`;
+- `phase5C_handoff_status.csv`;
+- `phase5C_synthetic_recovery_gate_results.csv`.
+
+Phase 5C is the methodological gate for the final hierarchical model. The
+real-device classifications should be treated as mechanistically informative
+only if the synthetic study shows that the available observables can recover
+structured versus unstructured connectivity at an acceptable rate. Primary-only
+classifications are explicitly lower-confidence evidence; M1 versus M2 may
+remain unresolved even when structured versus M0 is recoverable.
+
+The binary label policy is explicit and shared across exact recovery and gates:
+`M0` is unstructured, while `M1`, `M2`, and `mixed` are
+structured/intermediate. Phase 5C also includes a compact misspecification
+challenge with shifted or broadened M0 curves, extra normal shunt, weak
+near-boundary structured activation, probe/registration displacement, and
+outside-prior disorder. These misspecified cases primarily test robust
+M0-versus-structured discrimination and unresolved near-boundary behavior, not
+exact M1-versus-M2 recovery.
+
+Phase 5C should be frozen even when the misspecification robustness gates fail.
+That failure is the intended handoff to Phase 5D, not a reason to tune the 5C
+classifier against the same challenge cases. The final 5C handoff status is:
+
+```text
+in_family_recovery: pass
+label_consistency: pass
+misspecification_robustness: fail
+required_next_phase: uncertainty_and_nuisance_calibration
+```
+
+`run_v800_phase5D_calibration_plan` prepares the Phase 5D calibration scope
+without changing any Phase 5C result. It writes:
+
+- `phase5D_calibration_scope.csv`;
+- `phase5D_M0star_nuisance_family.csv`;
+- `phase5D_score_difference_calibration_plan.csv`;
+- `phase5D_calibration_validation_split.csv`;
+- `phase5D_boundary_strength_sweep_plan.csv`;
+- `phase5D_success_criteria.csv`;
+- `phase5D_phase5C_frozen_handoff_archive.csv`.
+
+Phase 5D must define a nuisance-aware `M0*` envelope, calibrate score
+differences rather than only winning labels, and predeclare unresolved
+thresholds before evaluating an independent validation set. The current 5C
+misspecification set is retained as the diagnostic set that revealed the
+calibration problem; it is not the final post-calibration proof set.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
@@ -229,5 +315,7 @@ reproducibility work:
 - fixed train/validation manifests;
 - six-device hierarchy;
 - leave-one-device-out validation;
+- synthetic mechanism recovery;
+- score uncertainty and significance calibration;
 - Raman-registration and mesh robustness;
-- final release manifests and tests.
+- final hierarchical release manifests and tests.

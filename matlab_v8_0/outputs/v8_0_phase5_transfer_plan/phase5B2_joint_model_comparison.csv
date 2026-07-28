@@ -1,0 +1,7 @@
+model,joint_raw_score,complexity_K,extra_penalty,joint_penalized_score,status_note
+force-modulated activation,0.264630235706621,2,0.01,0.294630235706621,lower joint score is better
+binary activation,0.289352169697536,1,0,0.299352169697536,lower joint score is better
+central-lane / 1D-like,0.325419182372404,0,0,0.325419182372404,lower joint score is better
+shuffled weak links,0.330275942030459,0,0,0.330275942030459,lower joint score is better
+uniform weak links,0.337802714879447,0,0,0.337802714879447,lower joint score is better
+local Tc / M0,0.337802714879455,0,0,0.337802714879455,lower joint score is better

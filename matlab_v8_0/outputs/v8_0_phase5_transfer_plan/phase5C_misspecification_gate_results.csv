@@ -1,0 +1,6 @@
+gate,required,status,evidence,note
+misspec_cases_scored,1,pass,2 misspecification evidence configurations scored.,Out-of-family and near-boundary synthetic cases are compact robustness checks.
+M0_not_systematically_promoted,1,fail,max M0 false-structured rate = 0.725.,Misspecified M0 cases should not be systematically promoted to structured.
+weak_structured_can_be_unresolved,1,pass,max weak-structured unresolved rate = 0.125.,Near-boundary structured cases should be allowed to become unresolved.
+weak_structured_not_confidently_M0,1,fail,max weak-structured confident-M0 rate = 0.325.,Near-boundary structured cases should not be confidently misclassified as M0.
+two_probe_improves_primary,1,pass,two-probe minus primary structured recovery = 0.000.,Two probes should improve or tie robust binary classification.

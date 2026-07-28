@@ -1,0 +1,9 @@
+lambda_W,target_observable,primary_expected_behavior,two_probe_expected_behavior
+0,"P(structured), P(unresolved), P(M0star)",M0star supported or unresolved; low false structured,M0star supported or unresolved; low false structured
+0.02,"P(structured), P(unresolved), P(M0star)",mostly unresolved near boundary,more structured support than primary-only when detectable
+0.05,"P(structured), P(unresolved), P(M0star)",mostly unresolved near boundary,more structured support than primary-only when detectable
+0.1,"P(structured), P(unresolved), P(M0star)",mostly unresolved near boundary,more structured support than primary-only when detectable
+0.2,"P(structured), P(unresolved), P(M0star)",increasing structured support with calibrated confidence,higher structured detection than primary-only
+0.4,"P(structured), P(unresolved), P(M0star)",increasing structured support with calibrated confidence,higher structured detection than primary-only
+0.7,"P(structured), P(unresolved), P(M0star)",increasing structured support with calibrated confidence,higher structured detection than primary-only
+1,"P(structured), P(unresolved), P(M0star)",increasing structured support with calibrated confidence,higher structured detection than primary-only

@@ -1,0 +1,7 @@
+phase,item,status,description
+Phase 5D,objective,predeclared,"Calibrate nuisance tolerance, score uncertainty, and unresolved decisions for the M0/M1/M2 hierarchy."
+Phase 5D,frozen_input,predeclared,"Use Phase 5C in-family and misspecification outputs as frozen diagnostic inputs."
+Phase 5D,forbidden_action,predeclared,"Do not retune Phase 5C thresholds or classifier rules to make its misspecification panel pass."
+Phase 5D,primary_decision,predeclared,"Classify support for structured connectivity versus M0* using score separation relative to uncertainty."
+Phase 5D,evidence_tiers,predeclared,"Primary-only and paired-probe classifications are calibrated separately."
+Phase 5D,final_validation_policy,predeclared,"Final performance must be evaluated on independent validation seeds and perturbations, not the Phase 5C challenge set."

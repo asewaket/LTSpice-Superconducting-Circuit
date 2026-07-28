@@ -1,0 +1,3 @@
+evidence_config,case_count,M0_false_structured_rate,weak_structured_unresolved_rate,weak_structured_confident_M0_rate,structured_binary_recovery_rate,primary_only_confidence,classification_note
+misspec_primary_only,200,0.725,0.125,0.325,0.891666666666667,lower_evidence_tier,misspecified cases test robust binary classification and unresolved near-boundary behavior
+misspec_primary_secondary,200,0.6375,0.05,0.325,0.891666666666667,two_probe_evidence_tier,misspecified cases test robust binary classification and unresolved near-boundary behavior
