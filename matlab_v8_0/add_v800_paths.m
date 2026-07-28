@@ -44,5 +44,21 @@ clear v800.build_phase4_identifiability_report
 clear v800.plot_phase4_pruning_summary
 clear v800.phase5_config
 clear v800.build_phase5_transfer_plan
+clear v800.run_phase5_transfer_campaign
+clear v800.plot_phase5_transfer_summary
+clear v800.build_phase5_data_manifest
+clear v800.score_rt_transfer
+clear v800.score_probe_transfer
+clear v800.score_nonlinear_transfer
+clear run_v800_phase5A_frozen_rt_transfer
+clear v800.run_phase5A_frozen_rt_transfer
+clear v800.build_phase5_rt_manifest
+clear v800.select_phase5A_frozen_basin
+clear v800.score_normalized_rt
+clear v800.plot_phase5A_rt_transfer_summary
+clear run_v800_phase5B_secondary_validation
+clear v800.run_phase5B_secondary_validation
+clear v800.score_probe_asymmetry
+clear v800.plot_phase5B_secondary_summary
 
 end

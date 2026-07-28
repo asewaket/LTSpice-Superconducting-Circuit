@@ -71,7 +71,11 @@ opts.reuseExistingScreeningTable = true;
 opts.seedOverride = NaN;
 opts.outputSubdirSuffix = '';
 global V77_SEED_OVERRIDE V77_OUTPUT_SUFFIX V77_REUSE_EXISTING_SCREENING V77_RUN_FULL_FIELD_MAPS
+global V800_DEVICE_OVERRIDE V800_TOPOLOGY_FILTER
 global V800_ALPHA_GAP_VALUES V800_GAMMAW_VALUES V800_PW_VALUES
+if ~isempty(V800_DEVICE_OVERRIDE)
+    opts.device = char(string(V800_DEVICE_OVERRIDE));
+end
 if ~isempty(V77_SEED_OVERRIDE)
     opts.seedOverride = V77_SEED_OVERRIDE;
 end
@@ -92,6 +96,11 @@ if ~isempty(V800_GAMMAW_VALUES)
 end
 if ~isempty(V800_PW_VALUES)
     opts.pW_values = V800_PW_VALUES;
+end
+if ~isempty(V800_TOPOLOGY_FILTER)
+    opts.topologyFilter = string(V800_TOPOLOGY_FILTER);
+else
+    opts.topologyFilter = strings(0, 1);
 end
 
 % Transport convention.  Rn still carries transparency. Ic is replaced by

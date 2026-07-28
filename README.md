@@ -182,6 +182,13 @@ cd matlab_v8_0
 run_v800_phase5_transfer_plan
 ```
 
+For the v8.0 Phase 5 transfer campaign/gate report:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase5_transfer_campaign
+```
+
 Each iteration folder has its own `README.md` with more detailed notes,
 expected outputs, and caveats.
 

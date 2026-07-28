@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Phase 5 is the six-device transfer phase. It tests whether the reduced v8 rule
-set selected from AS006 can transfer across AS001-AS006 without device-specific
-weak-link retuning.
+Phase 5 is the hierarchical six-device transfer phase. It tests whether the
+reduced v8 rule set selected from AS006 can transfer across AS001-AS006 without
+device-specific weak-link retuning.
 
 Phase 5 does not introduce new physics. It starts from the Phase 4 retained
 mechanisms and required controls.
@@ -60,6 +60,19 @@ Phase 5 should advance only if:
 - the global parameter rules remain shared across devices;
 - failures are reported as device-specific limitations, not hidden by retuning.
 
+## Evidence Levels
+
+Level A is the common six-device R(T) transfer layer. Every device with a mapped
+four-probe R(T) curve contributes normalized curve and transition-metric
+evidence.
+
+Level B is the probe-pair/asymmetry and selected nonlinear layer. It is active
+only where second-probe or I-dependent traces are mapped.
+
+Level C is the full dV/dI(I,B) nonlinear validation layer. AS006 is currently
+the nonlinear anchor because it has the mapped field-sweep data used by the
+v7.4.6 scorer.
+
 ## Deliverables
 
 Phase 5 begins with a transfer plan:
@@ -69,5 +82,16 @@ Phase 5 begins with a transfer plan:
 - validation gate table;
 - manifest linking back to Phase 4 decisions.
 
-The expensive six-device simulations should be implemented only after this plan
-is reviewed.
+The executable Phase 5 campaign then writes:
+
+- `phase5_data_manifest.csv`, the observable-availability authority;
+- device run-status table, including explicit unavailable-data rows;
+- per-device transfer score ledger;
+- per-device primary-vs-control summary;
+- leave-one-device-out survival table;
+- gate-result table;
+- transfer summary figure.
+
+The Level A R(T) transfer layer is expected to score all six devices. Missing
+field maps are carried as Level C availability notes, not as exclusions from
+Phase 5.

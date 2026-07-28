@@ -35,9 +35,51 @@ validation_policy:
   include_leave_one_device_out: true
   keep_required_controls: true
   report_device_failures_explicitly: true
+  required_evidence_device_fraction: 0.80
+  evidence_levels:
+    level_a: R(T) transfer across all six devices
+    level_b: probe-pair and selected nonlinear transfer where available
+    level_c: full dV/dI(I,B) validation for AS006/current mapped field devices
+
+execution:
+  run_device_sweeps: false
+  allow_cached_anchor_evidence: true
+  scorer_requires_mapped_field_dvdi: true
+  current_mapped_field_devices:
+    - AS006
+  topology_filter:
+    - combined
+    - contact_relaxation
+    - tear_lane
+    - none
+    - uniform
+    - shuffled
+    - central_lane
 
 outputs:
   folder: outputs/v8_0_phase5_transfer_plan
   candidate_set: AS006_v8_0_phase5_transfer_candidate_set.csv
   device_plan: AS006_v8_0_phase5_device_plan.csv
   validation_gates: AS006_v8_0_phase5_validation_gates.csv
+  data_manifest: phase5_data_manifest.csv
+  device_run_status: AS006_v8_0_phase5_device_run_status.csv
+  transfer_scores: AS006_v8_0_phase5_transfer_scores.csv
+  device_summary: AS006_v8_0_phase5_device_summary.csv
+  leave_one_device_out: AS006_v8_0_phase5_leave_one_device_out.csv
+  gate_results: AS006_v8_0_phase5_gate_results.csv
+  figure_base: AS006_v8_0_phase5_transfer_summary
+  levelA_rt_manifest: phase5_rt_manifest.csv
+  levelA_frozen_basin_set: phase5_frozen_basin_set.csv
+  levelA_frozen_transfer_ledger: phase5_frozen_transfer_ledger.csv
+  levelA_device_summary: phase5_levelA_device_summary.csv
+  levelA_leave_one_device_out: phase5_levelA_leave_one_device_out.csv
+  levelA_gate_results: phase5_levelA_gate_results.csv
+  levelA_figure_base: phase5_levelA_rt_transfer_summary
+  phase5B_frozen_phase5A_archive: phase5B_frozen_phase5A_archive.csv
+  phase5B_secondary_probe_manifest: phase5B_secondary_probe_manifest.csv
+  phase5B_secondary_probe_ledger: phase5B_secondary_probe_ledger.csv
+  phase5B_device_evidence_table: phase5B_device_evidence_table.csv
+  phase5B_class_heldout_validation: phase5B_class_heldout_validation.csv
+  phase5B_activation_law_plan: phase5B_activation_law_plan.csv
+  phase5B_hierarchical_gate_results: phase5B_hierarchical_gate_results.csv
+  phase5B_figure_base: phase5B_secondary_hierarchy_summary

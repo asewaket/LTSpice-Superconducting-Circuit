@@ -14,7 +14,10 @@ gy = safe_conductance(Ry, net.link.activeY);
 v = solve_network_linear(net, gx, gy, Iprobe);
 R = extract_all_probe_resistances(net, spec, v, Iprobe);
 
-if isfield(R, 'top_4_10')
+if isfield(spec, 'normalCalibrationProbe') && ...
+        isfield(R, char(spec.normalCalibrationProbe))
+    Rnow = R.(char(spec.normalCalibrationProbe));
+elseif isfield(R, 'top_4_10')
     Rnow = R.top_4_10;
 else
     names = fieldnames(R);
@@ -32,4 +35,3 @@ else
 end
 
 end
-

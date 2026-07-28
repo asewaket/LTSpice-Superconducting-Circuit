@@ -14,15 +14,12 @@ plot_mode_bars(mechanismSummary, 'meanRank', 'mean rank, lower is better');
 title('mean rank by mechanism and mode');
 
 nexttile;
-plot_mode_bars(mechanismSummary, 'topTwoRate', 'top-two rate');
+plot_top_two_support(mechanismSummary);
 title('top-two support');
-ylim([0 1]);
 
 nexttile;
-plot_mode_bars(mechanismSummary, 'probabilityBeatsNoWeak', ...
-    'P(beats no weak links)');
-title('baseline improvement');
-ylim([0 1]);
+plot_baseline_margin(mechanismSummary);
+title('baseline improvement magnitude');
 
 nexttile;
 plot_decision_counts(pruningDecisions);
@@ -57,6 +54,79 @@ bar(Y);
 set(gca, 'XTick', 1:numel(mechanisms), 'XTickLabel', mechanisms);
 xtickangle(30);
 ylabel(ylab);
+legend(cellstr(modes), 'Location', 'best');
+grid on;
+end
+
+function plot_top_two_support(T)
+if isempty(T)
+    text(0.5, 0.5, 'no data', 'HorizontalAlignment', 'center');
+    return;
+end
+
+mechanisms = unique(T.mechanism, 'stable');
+modes = unique(T.calibrationMode, 'stable');
+Y = NaN(numel(mechanisms), numel(modes));
+for i = 1:numel(mechanisms)
+    for j = 1:numel(modes)
+        idx = T.mechanism == mechanisms(i) & T.calibrationMode == modes(j);
+        if any(idx)
+            Y(i, j) = T.topTwoRate(find(idx, 1, 'first'));
+        end
+    end
+end
+
+bar(Y);
+hold on;
+groupWidth = min(0.8, numel(modes) / (numel(modes) + 1.5));
+for j = 1:numel(modes)
+    x = (1:numel(mechanisms)) - groupWidth / 2 + ...
+        (2 * j - 1) * groupWidth / (2 * numel(modes));
+    zeroIdx = isfinite(Y(:, j)) & Y(:, j) == 0;
+    plot(x(zeroIdx), 0.025 * ones(sum(zeroIdx), 1), 'kx', ...
+        'LineWidth', 1.0, 'MarkerSize', 5, 'HandleVisibility', 'off');
+end
+hold off;
+
+set(gca, 'XTick', 1:numel(mechanisms), 'XTickLabel', mechanisms);
+xtickangle(30);
+ylabel('fraction of seeds ranked 1 or 2');
+legend(cellstr(modes), 'Location', 'best');
+ylim([0 1]);
+grid on;
+end
+
+function plot_baseline_margin(T)
+if isempty(T)
+    text(0.5, 0.5, 'no data', 'HorizontalAlignment', 'center');
+    return;
+end
+
+isBaseline = T.mechanism == "no weak links" | ...
+    T.mechanism == "central-lane / 1D-like";
+T = T(~isBaseline, :);
+if isempty(T)
+    text(0.5, 0.5, 'no candidate data', 'HorizontalAlignment', 'center');
+    return;
+end
+
+mechanisms = unique(T.mechanism, 'stable');
+modes = unique(T.calibrationMode, 'stable');
+Y = NaN(numel(mechanisms), numel(modes));
+for i = 1:numel(mechanisms)
+    for j = 1:numel(modes)
+        idx = T.mechanism == mechanisms(i) & T.calibrationMode == modes(j);
+        if any(idx)
+            Y(i, j) = -T.meanDeltaVsNoWeak(find(idx, 1, 'first'));
+        end
+    end
+end
+
+bar(Y);
+yline(0, 'k-', 'LineWidth', 0.8);
+set(gca, 'XTick', 1:numel(mechanisms), 'XTickLabel', mechanisms);
+xtickangle(30);
+ylabel('candidate mean score gain vs no weak links');
 legend(cellstr(modes), 'Location', 'best');
 grid on;
 end

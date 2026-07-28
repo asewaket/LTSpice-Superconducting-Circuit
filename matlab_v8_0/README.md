@@ -33,6 +33,20 @@ cd matlab_v8_0
 out = run_v800_phase5_transfer_plan
 ```
 
+Phase 5 transfer campaign report:
+
+```matlab
+cd matlab_v8_0
+out = run_v800_phase5_transfer_campaign
+```
+
+When additional devices have mapped dV/dI(I,B) field files, fresh v7.4.6
+reduced sweeps can be requested with:
+
+```matlab
+out = run_v800_phase5_transfer_campaign(true)
+```
+
 ## Phase 2 scope
 
 This folder consolidates the model into a release-oriented structure:
@@ -136,6 +150,49 @@ The transfer-primary AS006 set is:
 
 Boundary/SNS-inspired constriction is kept only as a diagnostic hold unless a
 later validation phase promotes it.
+
+`run_v800_phase5_transfer_campaign` now defaults to the Phase 5A frozen-basin
+primary R(T) transfer campaign. It writes `phase5_rt_manifest.csv` as the
+primary/secondary-probe authority, `phase5_frozen_basin_set.csv` as the frozen
+AS006 Phase 4 basin set, and `phase5_frozen_transfer_ledger.csv` as the
+solver-generated Level A evidence table. The same path is available explicitly
+as `run_v800_phase5A_frozen_rt_transfer`.
+
+Phase 5A scores only declared primary R(T) curves:
+
+- AS001 top_4_10 / R1;
+- AS002 top_4_10 / R1;
+- AS003 bottom_3_9 / R2;
+- AS004 top_4_10 / R1;
+- AS005 top_4_10 / R1;
+- AS006 top_4_10 / R1.
+
+Secondary probes are held out for Level B. Missing field maps are Level C
+availability notes, not exclusions from Level A transfer.
+
+`run_v800_phase5B_secondary_validation` freezes the Phase 5A artifacts and
+tests the two-regime interpretation with held-out secondary probes. It does not
+change Level A weights, primary probes, protected controls, or AS006 frozen
+basins. It writes:
+
+- `phase5B_frozen_phase5A_archive.csv`;
+- `phase5B_secondary_probe_manifest.csv`;
+- `phase5B_secondary_probe_ledger.csv`;
+- `phase5B_device_evidence_table.csv`;
+- `phase5B_class_heldout_validation.csv`;
+- `phase5B_activation_law_plan.csv`;
+- `phase5B_hierarchical_gate_results.csv`.
+
+Phase 5B compares nested levels M0/M1/M2 with a small complexity penalty:
+M0 is local-Tc/control-like, M1 is geometry-activated boundary/contact/crack
+connectivity, and M2 is the full combined bottleneck. The goal is to test
+whether AS001-AS003 reduce to a local-Tc/control-like regime while AS004-AS006
+retain connectivity support on independent probe evidence.
+
+The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
+AS006. Missing field maps are therefore Level C availability notes, not
+exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
+incomplete until Level B/C scorers are activated with mapped data.
 
 ## Canonical boundaries
 

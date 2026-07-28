@@ -14,7 +14,9 @@ clc;
 
 projectDir = add_v746_paths();
 opts = make_v746_gap_weaklink_options();
-outDirName = 'v7_4_6_as006_gap_weaklink';
+device = opts.device;
+scoreBaseName = sprintf('%s_v7_4_6_gap_weaklink', upper(char(device)));
+outDirName = sprintf('v7_4_6_%s_gap_weaklink', lower(char(device)));
 if isfield(opts, 'outputSubdirSuffix') && strlength(string(opts.outputSubdirSuffix)) > 0
     outDirName = sprintf('%s_%s', outDirName, char(opts.outputSubdirSuffix));
 end
@@ -23,7 +25,6 @@ if ~exist(outDir, 'dir')
     mkdir(outDir);
 end
 
-device = opts.device;
 spec = make_device_spec(device);
 modelParams = make_shared_model_params();
 pdeOpts = make_v7_pde_options(spec);
@@ -32,7 +33,7 @@ fullFieldOpts = make_v73_field_options(expField);
 fullFieldOpts.version = opts.version;
 screenFieldOpts = make_screening_field_options_v746(fullFieldOpts, expField, opts);
 cases = make_v746_gap_weaklink_cases(opts);
-scoreCsvPath = fullfile(outDir, 'AS006_v7_4_6_gap_weaklink_scores.csv');
+scoreCsvPath = fullfile(outDir, [scoreBaseName '_scores.csv']);
 
 fprintf('\nRunning v7.4.6 gap weak-link gap-tied W_ij ablation sweep for %s\n', device);
 fprintf('Film force: %s\n', spec.filmForceLabel);
@@ -121,7 +122,7 @@ else
 end
 
 hSweep = plot_v746_gap_weaklink_summary(sweepTable);
-export_chapter_figure(hSweep, outDir, 'AS006_v7_4_6_gap_weaklink_summary');
+export_chapter_figure(hSweep, outDir, [scoreBaseName '_summary']);
 
 bestShape = best_case_row(sweepTable, "shape", "shapeScore");
 bestConductance = best_case_row(sweepTable, "conductance", "conductanceScore");
@@ -151,18 +152,18 @@ if opts.runFullFieldMaps
     hShape = plot_v741_as006_field_summary(spec, fieldBestShape, expField, ...
         score_wrapper(shapeScoreFull, 'shape'));
     export_chapter_figure(hShape, outDir, ...
-        sprintf('AS006_v7_4_6_best_shape_%s_field_maps', char(bestShape.caseName)));
+        sprintf('%s_best_shape_%s_field_maps', scoreBaseName, char(bestShape.caseName)));
 
     hCond = plot_v741_as006_field_summary(spec, fieldBestConductance, expField, ...
         score_wrapper(condScoreFull, 'conductance'));
     export_chapter_figure(hCond, outDir, ...
-        sprintf('AS006_v7_4_6_best_conductance_%s_field_maps', char(bestConductance.caseName)));
+        sprintf('%s_best_conductance_%s_field_maps', scoreBaseName, char(bestConductance.caseName)));
 else
     fprintf('\nSkipping full 121x121 field maps because opts.runFullFieldMaps = false.\n');
     fprintf('Set opts.runFullFieldMaps = true in make_v746_gap_weaklink_options.m to export full maps for the best cases.\n');
 end
 
-save(fullfile(outDir, 'AS006_v7_4_6_gap_weaklink.mat'), ...
+save(fullfile(outDir, [scoreBaseName '.mat']), ...
     'spec', 'modelParams', 'pdeOpts', 'opts', 'fullFieldOpts', ...
     'screenFieldOpts', 'cases', 'netGeometry', 'netPDE', 'pde', 'pdeMap', ...
     'baseParamsUncal', 'fullReference', 'paramsFullRef', 'weakFullRef', ...

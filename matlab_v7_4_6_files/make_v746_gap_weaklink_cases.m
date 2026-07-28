@@ -67,4 +67,13 @@ for k = 1:n
     cases(k).alphaGap = rows{k,8};
 end
 
+if isfield(opts, 'topologyFilter') && ~isempty(opts.topologyFilter)
+    keep = false(numel(cases), 1);
+    filter = string(opts.topologyFilter);
+    for k = 1:numel(cases)
+        keep(k) = any(string(cases(k).topology) == filter);
+    end
+    cases = cases(keep);
+end
+
 end
