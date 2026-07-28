@@ -6,7 +6,8 @@ if ~exist(cfg.outputDir, 'dir')
     mkdir(cfg.outputDir);
 end
 
-h = figure('Name', 'v8.0 Phase 5D.1 M0star calibration summary', ...
+phaseLabel = phase5D_label(cfg);
+h = figure('Name', char("v8.0 " + phaseLabel + " M0star calibration summary"), ...
     'Color', 'w', 'Position', [120 120 1550 900]);
 tiledlayout(2, 3, 'TileSpacing', 'compact', 'Padding', 'compact');
 
@@ -32,13 +33,21 @@ title('calibration state by true group');
 
 nexttile;
 plot_gate_status(gates);
-title('Phase 5D.1 gates');
+title(phaseLabel + " gates");
 
-sgtitle('v8.0 Phase 5D.1 nuisance-aware calibration');
+sgtitle("v8.0 " + phaseLabel + " nuisance-aware calibration");
 apply_light_style(h);
 
 saveas(h, [cfg.phase5D.calibrationSummaryFigureBaseFile '.png']);
 saveas(h, [cfg.phase5D.calibrationSummaryFigureBaseFile '.pdf']);
+end
+
+function label = phase5D_label(cfg)
+label = "Phase 5D.1";
+if isfield(cfg, 'phase5D') && isfield(cfg.phase5D, 'revisionTag') && ...
+        strlength(string(cfg.phase5D.revisionTag)) > 0
+    label = string(cfg.phase5D.revisionTag);
+end
 end
 
 function plot_nuisance_profile_counts(T)

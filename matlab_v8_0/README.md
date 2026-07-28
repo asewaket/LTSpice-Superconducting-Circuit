@@ -319,6 +319,8 @@ calibration gates from independent validation gates:
 - `phase5D_deltaS_distribution.csv`;
 - `phase5D_calibrated_thresholds.csv`;
 - `phase5D_boundary_detection_curves.csv`;
+- `phase5D_nuisance_boundary_occupancy.csv`;
+- `phase5D_calibration_selection_ledger.csv`;
 - `phase5D_calibration_gate_results.csv`;
 - `phase5D_validation_gate_results.csv`;
 - `phase5D_real_device_reclassification.csv`.
@@ -353,18 +355,75 @@ a failure of the source checkout.
 `run_v800_phase5D1_calibrate_m0star` begins Phase 5D execution. It uses only
 the frozen calibration seed block `101-160` to build the nuisance-expanded
 `M0*` profile grid, compute `Delta S = S_structured - S_M0star`, estimate
-`sigmaDeltaS`, select the predeclared evidence-tier `Zcrit` thresholds, and
-write the calibration-only execution artifacts:
+`sigmaDeltaS` by case-specific perturbation/resampling without true-label
+pooling, jointly select the nuisance-penalty weight and evidence-tier `Zcrit`
+thresholds, and write the calibration-only execution artifacts:
 
 - `phase5D_nuisance_profile_ledger.csv`;
 - `phase5D_deltaS_distribution.csv`;
 - `phase5D_calibrated_thresholds.csv`;
 - `phase5D_boundary_detection_curves.csv`;
+- `phase5D_nuisance_boundary_occupancy.csv`;
+- `phase5D_calibration_selection_ledger.csv`;
 - `phase5D_calibration_gate_results.csv`;
 - `phase5D_calibration_summary.png`;
 - `phase5D_calibration_summary.pdf`.
 
+The Phase 5D.1 refinement keeps the uncertainty rule deployable on real
+devices: `sigmaDeltaS` is a robust spread over resampled versions of the same
+case, including measurement noise, normalization-window variation,
+temperature-offset variation, and probe-registration variation. It is never
+pooled by synthetic `true_group`. The calibration search first protects the
+false-structured and confident-M0* error constraints, then favors stronger
+structured detection and conservative tie-breaking. The original pointwise
+two-probe gate is retained as an audit note and replaced by a documented
+aggregate two-probe criterion before any validation seeds are used.
+
 Validation seeds `1001-1080` are intentionally not touched by this runner.
+
+`run_v800_phase5D1b_calibration_revision` is the versioned Phase 5D.1b
+calibration revision. It preserves the 5D.1a artifacts by writing
+`phase5D1b_*` files, keeps the same mechanism classes, and uses only the
+calibration seed block. Seeds `101-140` tune nuisance penalties and
+evidence-tier thresholds; seeds `141-160` are reserved for an internal
+calibration check. It additionally writes:
+
+- `phase5D1b_operating_point_feasibility.csv`;
+- `phase5D1b_threshold_ROC_by_evidence_tier.csv`;
+- `phase5D1b_sigmaDeltaS_audit.csv`;
+- `phase5D1b_uncertainty_component_decomposition.csv`;
+- `phase5D1b_nuisance_penalty_sensitivity.csv`;
+- `phase5D1b_internal_calibration_check.csv`.
+
+The 5D.1b feasibility table explicitly records whether any threshold can
+simultaneously satisfy the false-structured, strong-structured sensitivity,
+and weak-structured collapse constraints before moving toward validation.
+The observed 5D.1b result is a negative calibration result: no feasible
+operating point exists for either primary-only or paired-probe normalized
+`R(T)` evidence under the frozen `M0*` nuisance family and predeclared targets.
+Phase 5D.1b should therefore be frozen as a scientific stopping point rather
+than tuned further.
+
+`phase5D_handoff_status.csv` records the closure policy:
+
+```text
+calibration_engine: pass
+label_free_sigmaDeltaS: pass
+operating_point_analysis: pass
+deployable_universal_classifier: fail
+phase5D1_closure: pass_as_negative_result
+independent_validation: not_run
+validation_seeds_consumed: false
+next_phase: evidence_synthesis_and_hierarchical_freeze
+```
+
+Phase 5D.2 is consequently reinterpreted as a result freeze, not a classifier
+freeze. Allowed uses are continuous `DeltaS`/`Z` reporting, uncertainty
+visualization, directional preferences, detection-limit discussion, and
+evidence-tier qualification. Prohibited uses are universal categorical
+classification, interpreting unresolved as M0, claiming structured
+connectivity is absent from unresolved cases, or assigning M1/M2 from
+normalized `R(T)` alone.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not

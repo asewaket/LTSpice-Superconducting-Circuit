@@ -11,6 +11,8 @@ fprintf('Nuisance ledger: %s\n', out.paths.nuisanceProfileLedger);
 fprintf('Delta-S distribution: %s\n', out.paths.deltaSDistribution);
 fprintf('Calibrated thresholds: %s\n', out.paths.calibratedThresholds);
 fprintf('Boundary curves: %s\n', out.paths.boundaryDetectionCurves);
+fprintf('Nuisance boundary occupancy: %s\n', out.paths.nuisanceBoundaryOccupancy);
+fprintf('Calibration selection ledger: %s\n', out.paths.calibrationSelectionLedger);
 fprintf('Calibration gates: %s\n', out.paths.calibrationGates);
 fprintf('Figure: %s\n', out.paths.figurePng);
 end
