@@ -1,0 +1,9 @@
+item,value,note
+artifact_session_source_commit_sha,7bf859df21a4aadfa49c4a8e1e0846eccbe2991b,"Commit captured before the artifact-generation session wrote outputs."
+artifact_session_source_tree_sha,d473d0784b77002a82b2beadaea7a114f12f7181,"Git tree object captured before the artifact-generation session wrote outputs."
+artifact_session_pre_run_tracked_clean,true,"Tracked cleanliness captured before Phase 5C/5D artifact generation."
+artifact_session_pre_run_untracked_clean,true,"Untracked cleanliness captured before Phase 5C/5D artifact generation."
+artifact_session_pre_run_clean,true,"True only when tracked and untracked checks were clean at session start."
+artifact_session_started_at,20260728T102857,"Timestamp for the immutable provenance snapshot."
+provenance_scope,combined_phase5C_phase5D_session,"Standalone phase run or combined Phase 5C/5D artifact session."
+phase5C_entry_note,phase5C_entry_clean_not_separately_evaluated,"Phase 5C is first in the combined session, so session-start state is the relevant entry state."

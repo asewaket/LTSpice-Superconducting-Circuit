@@ -1,0 +1,5 @@
+step,decision,allowed_outcomes,rule
+1,source_validity,calibration_only; independent_validation,"Use Phase 5C misspecification cases only for calibration design, not final validation proof."
+2,structured_vs_M0star,M0star_supported; structured_supported; unresolved,"Make the local-versus-structured decision before any M1/M2 label is trusted."
+3,M1_vs_M2,M1_supported; M2_supported; unresolved; not_applicable,"Evaluate M1 versus M2 only after structured support passes the calibrated Z threshold."
+4,evidence_tier_label,primary_only_lower_confidence; paired_probe_higher_confidence,"Apply stricter reporting language to primary-only classifications."

@@ -1,0 +1,8 @@
+file_name,stage,required_columns,freeze_policy
+phase5D_nuisance_profile_ledger.csv,calibration,"profile_id,split_name,seed,nuisance_parameter,value,penalty,source_commit_sha",schema frozen before calibration execution
+phase5D_deltaS_distribution.csv,calibration,"comparison,split_name,evidence_tier,seed,deltaS,sigmaDeltaS,Z,selected_state",schema frozen before calibration execution
+phase5D_calibrated_thresholds.csv,calibration,"evidence_tier,comparison,Zcrit,unresolved_margin,nuisance_penalty_policy,source_commit_sha",schema frozen before independent validation
+phase5D_boundary_detection_curves.csv,calibration_and_validation,"split_name,evidence_tier,lambda_W,P_structured,P_unresolved,P_M0star,case_count",schema frozen before calibration execution
+phase5D_calibration_gate_results.csv,calibration,"gate,required,status,evidence,note",calibration and validation gates stay separate
+phase5D_validation_gate_results.csv,independent_validation,"gate,required,status,evidence,note",calibration and validation gates stay separate
+phase5D_real_device_reclassification.csv,post_validation_application,"device,evidence_tier,M0star_score,structured_score,deltaS,Z,classification,confidence_note",real-device classifications are generated only after validation gates
