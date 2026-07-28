@@ -350,6 +350,22 @@ false because Phase 5C regenerated or created outputs earlier in the same
 controlled session. That is recorded as phase-entry artifact dirtiness, not as
 a failure of the source checkout.
 
+`run_v800_phase5D1_calibrate_m0star` begins Phase 5D execution. It uses only
+the frozen calibration seed block `101-160` to build the nuisance-expanded
+`M0*` profile grid, compute `Delta S = S_structured - S_M0star`, estimate
+`sigmaDeltaS`, select the predeclared evidence-tier `Zcrit` thresholds, and
+write the calibration-only execution artifacts:
+
+- `phase5D_nuisance_profile_ledger.csv`;
+- `phase5D_deltaS_distribution.csv`;
+- `phase5D_calibrated_thresholds.csv`;
+- `phase5D_boundary_detection_curves.csv`;
+- `phase5D_calibration_gate_results.csv`;
+- `phase5D_calibration_summary.png`;
+- `phase5D_calibration_summary.pdf`.
+
+Validation seeds `1001-1080` are intentionally not touched by this runner.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain
