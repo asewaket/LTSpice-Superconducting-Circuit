@@ -18,5 +18,6 @@ fprintf('Device robustness annotations: %s\n', ...
     out.paths.deviceRobustnessAnnotations);
 fprintf('Gate summary: %s\n', out.paths.gateSummary);
 fprintf('Handoff status: %s\n', out.paths.handoffStatus);
+fprintf('Source provenance: %s\n', out.paths.sourceProvenance);
 fprintf('Figure: %s\n', out.paths.figurePng);
 end

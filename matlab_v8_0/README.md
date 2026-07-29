@@ -513,6 +513,7 @@ field. It writes:
 - `phase7B_device_robustness_annotations.csv`;
 - `phase7B_gate_summary.csv`;
 - `phase7B_handoff_status.csv`;
+- `phase7B_source_provenance_checkpoint.csv`;
 - `phase7B_geometry_mask_robustness_summary.png`;
 - `phase7B_geometry_mask_robustness_summary.pdf`.
 
@@ -523,6 +524,32 @@ The correct output for a prior-sensitive device is an annotation such as
 `high_crack_prior_dependency`, not a rewritten Phase 6 model label. Broad
 network mesh convergence, solver tolerances, disorder seeds, normalization
 windows, and numerical reproducibility are deferred to Phase 8.
+
+Phase 7B-G closes Phase 7 when no defensible registered Raman transform is
+available. The closure policy is:
+
+```text
+phase7A_scope_audit = pass
+phase7B_geometry_mask_robustness = pass
+phase6_labels_preserved = true
+classifier_retuning_performed = false
+quantitative_raman_prior_rescore = not_run
+raman_rescore_reason = no_defensible_registered_spatial_transform
+raman_role = qualitative_independent_mechanical_context
+phase7_closure = pass_with_registered_raman_unavailable
+next_phase = phase8_numerical_robustness
+```
+
+The device-level claim impacts are frozen as robustness annotations:
+
+- AS005: structured interpretation is strongly crack-prior dependent; crack-off
+  approaches a near-tie.
+- AS006: structured interpretation is boundary-prior sensitive but remains
+  robust under declared variants.
+- AS004: directional preference is boundary-prior sensitive; mechanistic status
+  remains unresolved.
+- AS001-AS003: no material status sensitivity under declared geometry-prior
+  variants.
 
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not

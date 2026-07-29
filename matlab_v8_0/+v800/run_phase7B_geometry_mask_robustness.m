@@ -5,6 +5,7 @@ if ~exist(cfg.outputDir, 'dir')
     mkdir(cfg.outputDir);
 end
 
+sourceProvenance = build_source_provenance(cfg);
 inputs = load_phase7B_inputs(cfg);
 frozenInputManifest = build_frozen_input_manifest(cfg);
 priorVariantLedger = build_prior_variant_ledger(cfg, inputs);
@@ -36,6 +37,7 @@ writetable(deviceRobustnessAnnotations, ...
     cfg.phase7B.deviceRobustnessAnnotationFile);
 writetable(gateSummary, cfg.phase7B.gateSummaryFile);
 writetable(handoffStatus, cfg.phase7B.handoffStatusFile);
+writetable(sourceProvenance, cfg.phase7B.sourceProvenanceFile);
 
 try
     h = v800.plot_phase7B_geometry_mask_robustness(cfg, ...
@@ -59,6 +61,7 @@ out.shuffledPriorControl = shuffledPriorControl;
 out.deviceRobustnessAnnotations = deviceRobustnessAnnotations;
 out.gateSummary = gateSummary;
 out.handoffStatus = handoffStatus;
+out.sourceProvenance = sourceProvenance;
 out.figure = h;
 out.paths = struct();
 out.paths.frozenInputManifest = cfg.phase7B.frozenInputManifestFile;
@@ -72,8 +75,44 @@ out.paths.deviceRobustnessAnnotations = ...
     cfg.phase7B.deviceRobustnessAnnotationFile;
 out.paths.gateSummary = cfg.phase7B.gateSummaryFile;
 out.paths.handoffStatus = cfg.phase7B.handoffStatusFile;
+out.paths.sourceProvenance = cfg.phase7B.sourceProvenanceFile;
 out.paths.figurePng = [cfg.phase7B.figureBaseFile '.png'];
 out.paths.figurePdf = [cfg.phase7B.figureBaseFile '.pdf'];
+end
+
+function provenance = build_source_provenance(cfg)
+sourceStatus = v800.git_tree_status(cfg.repoRoot);
+item = [
+    "phase"
+    "source_commit_sha"
+    "source_tree_sha"
+    "source_pre_run_tracked_clean"
+    "source_pre_run_untracked_clean"
+    "source_pre_run_clean"
+    "provenance_scope"
+    "source_provenance_policy"
+    ];
+value = [
+    "phase7B_geometry_mask_robustness"
+    sourceStatus.commit_sha
+    sourceStatus.tree_sha
+    string(sourceStatus.tracked_clean)
+    string(sourceStatus.untracked_clean)
+    string(sourceStatus.tracked_clean && sourceStatus.untracked_clean)
+    "standalone_phase7B_run"
+    "Commit source/config first; rerun Phase 7B from that source; commit generated artifacts separately."
+    ];
+note = [
+    "Phase 7B-G geometry/mechanical-mask robustness."
+    "Git commit captured before this runner writes outputs."
+    "Git tree object captured before this runner writes outputs."
+    "Tracked-source cleanliness before output generation."
+    "Untracked-source/artifact cleanliness before output generation."
+    "True only when the source checkout is clean before this run writes outputs."
+    "Standalone Phase 7B artifact-generation checkpoint."
+    "The artifact commit need not be embedded in files generated before that commit exists."
+    ];
+provenance = table(item, value, note);
 end
 
 function inputs = load_phase7B_inputs(cfg)
@@ -207,6 +246,7 @@ for k = 1:numel(devices)
     rows(k).shuffled_prior_change = max_abs_or_nan(shuffledRows.score_change);
     rows(k).phase7_robustness_annotation = device_annotation(cfg, ...
         device, phase6Status, rows(k));
+    rows(k).phase7_claim_impact = claim_impact(device);
 end
 annotations = struct2table(rows);
 end
@@ -263,14 +303,34 @@ hasFail = any(gates.outcome == "fail");
 rows = [
     status_row("phase7B_geometry_mask_robustness", logical_status(~hasFail), ...
     "Geometry/crack/boundary prior sensitivity artifacts are generated.")
+    status_row("phase7A_scope_audit", "pass", ...
+    "Phase 7A established scope, perturbation policy, and label-protection rules.")
     status_row("phase6_labels_protected", "true", ...
     "Frozen Phase 6 labels remain the only model-status labels.")
+    status_row("classifier_retuning_performed", "false", ...
+    "No classifier threshold, nuisance term, mechanism class, or device-specific parameter is changed.")
     status_row("quantitative_raman_prior_rescore", "not_run", ...
     "Registered spatial transform unavailable for a defensible Raman rescore.")
+    status_row("raman_rescore_reason", ...
+    "no_defensible_registered_spatial_transform", ...
+    "Line scans or comparative maps are not promoted to a device-registered 2D prior.")
     status_row("raman_role", "qualitative_independent_mechanical_context", ...
     "Raman remains context unless registration prerequisites are met.")
+    status_row("AS005_claim_impact", "high_crack_prior_dependency", ...
+    "Structured interpretation is strongly crack-prior dependent; crack-off approaches near-tie.")
+    status_row("AS006_claim_impact", ...
+    "boundary_prior_sensitive_but_structured_status_preserved", ...
+    "Structured interpretation is boundary-prior sensitive but remains robust under declared variants.")
+    status_row("AS004_claim_impact", "unresolved_boundary_prior_sensitive", ...
+    "Directional preference is boundary-prior sensitive; mechanistic status remains unresolved.")
+    status_row("AS001_AS003_claim_impact", ...
+    "no_material_geometry_prior_status_sensitivity", ...
+    "AS001-AS003 show no material status sensitivity under declared geometry-prior variants.")
     status_row("phase7_complete", logical_status(~hasFail), ...
     "Phase 7 can close if Raman registration remains unavailable after this geometry/mask audit.")
+    status_row("phase7_closure", ...
+    "pass_with_registered_raman_unavailable", ...
+    "Phase 7 closes as geometry/mask robustness pass with quantitative Raman rescore unavailable.")
     status_row("next_phase", "phase8_numerical_robustness", ...
     "Mesh, solver tolerances, disorder seeds, normalization windows, and reproducibility move to Phase 8.")
     ];
@@ -439,6 +499,21 @@ else
 end
 end
 
+function text = claim_impact(device)
+switch string(device)
+    case "AS005"
+        text = "Structured interpretation is strongly crack-prior dependent; transport-only preference approaches near-tie when crack mask is removed.";
+    case "AS006"
+        text = "Structured interpretation is boundary-prior sensitive but remains robust under declared boundary variants.";
+    case "AS004"
+        text = "Directional preference is boundary-prior sensitive; mechanistic status remains unresolved.";
+    case {"AS001", "AS002", "AS003"}
+        text = "No material status sensitivity under declared geometry-prior variants.";
+    otherwise
+        text = "No additional claim impact recorded.";
+end
+end
+
 function value = max_abs_or_nan(x)
 if isempty(x)
     value = NaN;
@@ -519,4 +594,5 @@ row.crack_mask_sensitivity = NaN;
 row.boundary_prior_sensitivity = NaN;
 row.shuffled_prior_change = NaN;
 row.phase7_robustness_annotation = "";
+row.phase7_claim_impact = "";
 end
