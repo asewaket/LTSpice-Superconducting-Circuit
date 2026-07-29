@@ -1,0 +1,9 @@
+item,value,note
+phase,phase9_final_model_packaging,Phase 9 final model packaging and claim freeze.
+source_commit_sha,717c5025c53e183017eacdbf8987360f5b55d570,Git commit captured before this runner writes outputs.
+source_tree_sha,c341077d982acc00a7ca4520c0bb6b9c75501b3e,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,false,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,false,True only when the checkout is clean before this run writes outputs.
+provenance_scope,final_model_packaging_no_retuning,Read-only packaging of frozen Phase 5D2/6/7B/8 outputs.
+source_provenance_policy,Commit Phase 9 source/config first; rerun packaging from that source; commit generated artifacts separately.,The artifact commit need not be embedded in files generated before that commit exists.

@@ -1,0 +1,8 @@
+rank,evidence_class,source,interpretation_rule
+1,direct_transport_evidence,"normalized R(T); paired probe responses; nonlinear I,T,B evidence where available","primary physical evidence but not a universal automatic classifier"
+2,transfer_and_control_evidence,"Phase 5A primary transfer; Phase 5B secondary evidence; Phase 5B.1 held-out tests; Phase 5B.2 force-law comparisons","tests whether shared rules transfer without link-by-link refitting"
+3,synthetic_identifiability_evidence,"Phase 5C in-family recovery and misspecification challenge","validates scorer structure while preserving out-of-family caveat"
+4,detection_limit_evidence,"Phase 5D2 contextual DeltaS/Z and infeasible universal operating point","sets confidence limits and prevents automatic categorical labels"
+5,mechanical_context_evidence,"stressor geometry; half-coverage boundary; AS005 crack; qualitative Raman context","mechanical evidence qualifies, but does not alone override transport"
+6,robustness_evidence,"Phase 7 geometry/mask sensitivity and Phase 8 frozen-context numerical replay","records status preservation and sensitivity annotations"
+7,hierarchy_rule,"no single evidence source overrides the full hierarchy automatically","final device status is a multi-evidence synthesis"

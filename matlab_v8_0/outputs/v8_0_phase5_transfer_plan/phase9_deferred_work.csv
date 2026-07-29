@@ -1,0 +1,6 @@
+item,status,trigger,note
+full_shape_RT_classifier,deferred,materially different future classifier study,Not needed for v8 final model packaging.
+registered_raman_transport_prior,unavailable,defensible device-to-model spatial transform,Raman remains qualitative until registration is available.
+full_multiphysics_mechanical_transport_model,future_work,new multiphysics scope and data support,Outside semi-phenomenological v8.
+phase_sensitive_Josephson_model,outside_current_scope,new phase-sensitive measurements,Phase dynamics are excluded from v8.
+full_transport_numerical_recomputation,optional_future_validation,dedicated expensive recomputation campaign,Phase 8B used frozen-context replay.

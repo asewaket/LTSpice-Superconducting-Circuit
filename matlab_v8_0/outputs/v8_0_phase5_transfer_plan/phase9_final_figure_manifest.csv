@@ -1,0 +1,6 @@
+figure_id,path,source_status,purpose,exists
+final_phase9_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase9_final_model_package_summary.png,generated_in_phase9,"Final model hierarchy, device conclusions, contextual DeltaS/Z, and gates.",1
+phase6_hierarchy_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_hierarchical_evidence_freeze_summary.png,frozen_input,"Six-device hierarchy and contextual score evidence.",1
+phase5D2_result_freeze_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase5D2_result_freeze_summary.png,frozen_input,"No feasible universal classifier operating point.",1
+phase7B_geometry_mask_robustness_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase7B_geometry_mask_robustness_summary.png,frozen_input,"Mechanical-prior and mask robustness annotations.",1
+phase8B_numerical_replay_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase8B_numerical_replay_summary.png,frozen_input,"Frozen-context numerical replay and status stability.",1

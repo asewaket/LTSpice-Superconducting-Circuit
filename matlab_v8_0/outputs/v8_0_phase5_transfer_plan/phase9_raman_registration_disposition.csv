@@ -1,0 +1,12 @@
+item,value,note
+phase7_gate_table_height,9,Rows read from the Phase 7B gate-summary table.
+phase7_gate_table_width,3,Columns read from the Phase 7B gate-summary table.
+phase7_gate_table_variables,component|outcome|note,MATLAB variable names detected for the Phase 7B gate-summary table.
+registration_status,not_run,Phase 7B registration-robustness gate outcome.
+missing_registration_handled,pass,Phase 7B explicit missing-registration handling gate outcome.
+raman_rows_insufficient,true,True when every Raman-registration row records insufficient registered data.
+quantitative_raman_prior_rescore,not_run,Final Phase 9 disposition for quantitative Raman prior rescore.
+raman_rescore_reason,no_defensible_registered_spatial_transform,Reason for Raman prior rescore disposition.
+raman_role,qualitative_independent_mechanical_context,Final role of Raman evidence in the v8 model package.
+core_gates_passed,true,True when non-registration Phase 7B core gates pass.
+registration_accepted,true,True when Phase 9 accepts the Phase 7B Raman disposition.
