@@ -695,36 +695,40 @@ diagnostic = table(item, value, note);
 end
 
 function tf = raman_rows_are_insufficient(T)
-tf = ~isempty(T) && ...
-    any(string(T.Properties.VariableNames) == "completion_status");
+status = table_column(T, "completion_status");
+tf = ~isempty(status);
 if tf
-    status = string(T.completion_status);
     tf = all(status == "insufficient_registered_data");
 end
 end
 
 function outcome = gate_outcome(T, componentName, defaultOutcome)
 outcome = string(defaultOutcome);
-if isempty(T) || ~all(ismember(["component", "outcome"], ...
-        string(T.Properties.VariableNames)))
+component = table_column(T, "component");
+outcomes = table_column(T, "outcome");
+if isempty(component) || isempty(outcomes)
     return;
 end
-idx = string(T.component) == string(componentName);
+idx = component == string(componentName);
 if any(idx)
-    outcome = string(T.outcome(find(idx, 1, 'first')));
+    outcome = outcomes(find(idx, 1, 'first'));
 end
 end
 
 function tf = all_required_present(T, requiredColumn)
-tf = ~isempty(T) && any(string(T.Properties.VariableNames) == string(requiredColumn));
+values = table_column(T, requiredColumn);
+tf = ~isempty(values);
 if tf && string(requiredColumn) == "outcome"
-    tf = all(string(T.outcome) == "pass");
+    tf = all(values == "pass");
 end
 end
 
 function tf = has_spec_value(T, key, expectedValue)
-idx = T.item == string(key);
-tf = any(idx) && any(T.value(idx) == string(expectedValue));
+items = table_column(T, "item");
+values = table_column(T, "value");
+idx = items == string(key);
+tf = ~isempty(items) && ~isempty(values) && ...
+    any(idx) && any(values(idx) == string(expectedValue));
 end
 
 function [bytes, modifiedDatenum] = manifest_file_metadata(paths)
@@ -741,38 +745,69 @@ end
 
 function value = lookup_string(T, keyColumn, keyValue, valueColumn, defaultValue)
 value = string(defaultValue);
-if isempty(T) || ~all(ismember([string(keyColumn), string(valueColumn)], ...
-        string(T.Properties.VariableNames)))
+keys = table_column(T, keyColumn);
+values = table_column(T, valueColumn);
+if isempty(keys) || isempty(values)
     return;
 end
-idx = string(T.(char(keyColumn))) == string(keyValue);
+idx = keys == string(keyValue);
 if any(idx)
-    value = string(T.(char(valueColumn))(find(idx, 1, 'first')));
+    value = values(find(idx, 1, 'first'));
 end
 end
 
 function value = lookup_double(T, keyColumn, keyValue, valueColumn, defaultValue)
 value = defaultValue;
-if isempty(T) || ~all(ismember([string(keyColumn), string(valueColumn)], ...
-        string(T.Properties.VariableNames)))
+keys = table_column(T, keyColumn);
+values = table_column(T, valueColumn);
+if isempty(keys) || isempty(values)
     return;
 end
-idx = string(T.(char(keyColumn))) == string(keyValue);
+idx = keys == string(keyValue);
 if any(idx)
-    raw = T.(char(valueColumn))(find(idx, 1, 'first'));
+    raw = values(find(idx, 1, 'first'));
     value = double(raw);
 end
 end
 
 function value = lookup_value(T, itemName, defaultValue)
 value = string(defaultValue);
-if isempty(T) || ~all(ismember(["item", "value"], string(T.Properties.VariableNames)))
+items = table_column(T, "item");
+values = table_column(T, "value");
+if isempty(items) || isempty(values)
     return;
 end
-idx = string(T.item) == string(itemName);
+idx = items == string(itemName);
 if any(idx)
-    value = string(T.value(find(idx, 1, 'first')));
+    value = values(find(idx, 1, 'first'));
 end
+end
+
+function values = table_column(T, requestedName)
+values = strings(0, 1);
+if isempty(T)
+    return;
+end
+
+varNames = string(T.Properties.VariableNames);
+requested = normalize_table_name(requestedName);
+idx = find(normalize_table_name(varNames) == requested, 1, 'first');
+
+if isempty(idx) && ~isempty(T.Properties.VariableDescriptions)
+    descriptions = string(T.Properties.VariableDescriptions);
+    idx = find(normalize_table_name(descriptions) == requested, 1, 'first');
+end
+
+if isempty(idx)
+    return;
+end
+
+raw = T.(char(varNames(idx)));
+values = string(raw);
+end
+
+function out = normalize_table_name(name)
+out = lower(regexprep(string(name), '[^A-Za-z0-9]+', ''));
 end
 
 function status = logical_status(tf)
