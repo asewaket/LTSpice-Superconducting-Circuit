@@ -26,7 +26,9 @@ nexttile;
 plot_gate_summary(gates);
 title('Phase 7B-G gates');
 
-sgtitle('v8.0 Phase 7B-G geometry/mechanical-mask robustness');
+titleHandle = sgtitle( ...
+    'v8.0 Phase 7B-G geometry/mechanical-mask robustness');
+set(titleHandle, 'Color', 'k', 'FontWeight', 'bold');
 apply_light_style(h);
 
 saveas(h, [cfg.phase7B.figureBaseFile '.png']);
@@ -61,10 +63,23 @@ if ~isempty(geomT)
         geomT.score_change(boundaryIdx), 90, 'filled', ...
         'DisplayName', 'AS004/AS006 boundary');
 end
-yline(0, 'k-');
+yline(0, 'k-', 'HandleVisibility', 'off');
 hold off;
 set(gca, 'XTick', [1 2], 'XTickLabel', ["crack", "boundary"]);
 xlim([0.5 2.5]);
+allY = [];
+if ~isempty(crackT)
+    allY = [allY; crackT.score_change(crackT.prior_data_available)];
+end
+if ~isempty(geomT)
+    allY = [allY; geomT.score_change(boundaryIdx)];
+end
+if ~isempty(allY)
+    yMax = max([0; allY]);
+    yMin = min([0; allY]);
+    pad = max(0.015, 0.15 * (yMax - yMin));
+    ylim([yMin - pad, yMax + pad]);
+end
 ylabel('\DeltaS_{variant-reference}');
 legend('Location', 'best');
 grid on;
@@ -130,7 +145,8 @@ for k = 1:numel(axList)
     set(ax, 'Color', 'w', 'XColor', 'k', 'YColor', 'k', ...
         'GridColor', [0.72 0.72 0.72], ...
         'MinorGridColor', [0.86 0.86 0.86], ...
-        'LineWidth', 1.0, 'FontSize', 10, 'Box', 'on');
+        'LineWidth', 1.0, 'FontSize', 10, 'Box', 'on', ...
+        'TickLabelInterpreter', 'none');
     ax.Title.Color = 'k';
     ax.XLabel.Color = 'k';
     ax.YLabel.Color = 'k';
