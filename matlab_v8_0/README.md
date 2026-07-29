@@ -551,6 +551,54 @@ The device-level claim impacts are frozen as robustness annotations:
 - AS001-AS003: no material status sensitivity under declared geometry-prior
   variants.
 
+`run_v800_phase8_numerical_robustness` starts Phase 8A: the numerical and
+implementation robustness audit. It consumes frozen Phase 5D.2, Phase 6, and
+Phase 7B-G outputs and writes:
+
+- `phase8_scope_policy.csv`;
+- `phase8_frozen_input_manifest.csv`;
+- `phase8_numerical_test_plan.csv`;
+- `phase8_schema_audit.csv`;
+- `phase8_reproducibility_audit.csv`;
+- `phase8_tolerance_policy.csv`;
+- `phase8_implementation_audit.csv`;
+- `phase8_gate_summary.csv`;
+- `phase8_handoff_status.csv`;
+- `phase8_source_provenance_checkpoint.csv`;
+- `phase8_numerical_robustness_summary.png`;
+- `phase8_numerical_robustness_summary.pdf`.
+
+Phase 8A is a static audit and scope freeze. It checks that frozen inputs are
+available, required CSV schemas are intact, source provenance is captured,
+Phase 6 labels remain protected, and tolerance policies are explicit. It does
+not run expensive mesh, solver-tolerance, normalization-window, or disorder
+seed replay. Those checks are declared for Phase 8B and must also preserve the
+Phase 6 device labels unless the roadmap is explicitly reopened.
+
+`run_v800_phase8B_numerical_replay` runs Phase 8B: a frozen-context numerical
+replay audit. It consumes the Phase 8A tolerance policy and frozen Phase 6 score
+context, then writes:
+
+- `phase8B_frozen_input_manifest.csv`;
+- `phase8B_mesh_resolution_replay.csv`;
+- `phase8B_solver_tolerance_replay.csv`;
+- `phase8B_normalization_window_replay.csv`;
+- `phase8B_disorder_seed_replay.csv`;
+- `phase8B_cached_artifact_replay.csv`;
+- `phase8B_status_stability_summary.csv`;
+- `phase8B_gate_summary.csv`;
+- `phase8B_handoff_status.csv`;
+- `phase8B_source_provenance_checkpoint.csv`;
+- `phase8B_numerical_replay_summary.png`;
+- `phase8B_numerical_replay_summary.pdf`.
+
+Phase 8B is still label-preserving. It reports how frozen contextual `DeltaS`
+and `Z` values move under declared mesh, solver, normalization, and seed replay
+perturbations. It does not refit candidate mechanisms, change the Phase 6 model
+status, or promote contextual replay drift into a new classifier result. Full
+v7.4.6 field-map recomputation remains outside Phase 8B unless separately
+rescoped.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain

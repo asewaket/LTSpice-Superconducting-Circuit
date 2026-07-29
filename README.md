@@ -189,6 +189,20 @@ cd matlab_v8_0
 run_v800_phase5_transfer_campaign
 ```
 
+For the v8.0 Phase 8A numerical/implementation robustness audit:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase8_numerical_robustness
+```
+
+For the v8.0 Phase 8B frozen-context numerical replay audit:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase8B_numerical_replay
+```
+
 Each iteration folder has its own `README.md` with more detailed notes,
 expected outputs, and caveats.
 
