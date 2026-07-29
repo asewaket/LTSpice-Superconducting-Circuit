@@ -599,6 +599,33 @@ status, or promote contextual replay drift into a new classifier result. Full
 v7.4.6 field-map recomputation remains outside Phase 8B unless separately
 rescoped.
 
+`run_v800_phase9_final_model_packaging` starts Phase 9: final model packaging
+and claim freeze. It consumes frozen Phase 5D.2, Phase 6, Phase 7B-G, and Phase
+8A/8B artifacts as read-only inputs, then writes:
+
+- `phase9_frozen_input_manifest.csv`;
+- `phase9_final_model_specification.csv`;
+- `phase9_final_device_conclusion_ledger.csv`;
+- `phase9_evidence_hierarchy.csv`;
+- `phase9_claim_hierarchy.csv`;
+- `phase9_model_limitations.csv`;
+- `phase9_final_figure_manifest.csv`;
+- `phase9_final_table_manifest.csv`;
+- `phase9_deferred_work.csv`;
+- `phase9_gate_summary.csv`;
+- `phase9_handoff_status.csv`;
+- `phase9_source_provenance_checkpoint.csv`;
+- `phase9_final_model_package_summary.png`;
+- `phase9_final_model_package_summary.pdf`.
+
+Phase 9 is packaging only. It freezes the v8 model definition, six-device
+hierarchy, evidence qualifications, permitted/prohibited claims, limitations,
+and deferred-work ledger. It does not rescore transport curves, modify
+thresholds, reopen nuisance calibration, add mechanism classes, or change any
+Phase 6 device status. If source provenance is required to pass, commit the
+Phase 9 source/config changes first, rerun Phase 9 from that source, then commit
+the generated artifacts separately.
+
 The v7.4.6 field-map scorer currently has mapped dV/dI(I,B) data only for
 AS006. Missing field maps are therefore Level C availability notes, not
 exclusions from Level A transfer. Probe/asymmetry and nonlinear gates remain

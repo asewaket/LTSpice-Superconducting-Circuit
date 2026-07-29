@@ -203,6 +203,13 @@ cd matlab_v8_0
 run_v800_phase8B_numerical_replay
 ```
 
+For the v8.0 Phase 9 final model packaging and claim freeze:
+
+```matlab
+cd matlab_v8_0
+run_v800_phase9_final_model_packaging
+```
+
 Each iteration folder has its own `README.md` with more detailed notes,
 expected outputs, and caveats.
 
