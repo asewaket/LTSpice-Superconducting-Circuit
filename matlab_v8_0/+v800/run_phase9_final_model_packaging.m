@@ -145,9 +145,9 @@ function T = read_optional_table(pathValue)
 if exist(pathValue, 'file')
     try
         T = readtable(pathValue, 'TextType', 'string', ...
-            'VariableNamingRule', 'preserve');
+            'VariableNamingRule', 'preserve', 'Delimiter', ',');
     catch
-        T = readtable(pathValue, 'TextType', 'string');
+        T = readtable(pathValue, 'TextType', 'string', 'Delimiter', ',');
     end
 else
     T = table();
@@ -662,6 +662,9 @@ end
 function diagnostic = build_phase7_registration_diagnostic(inputs)
 disposition = phase7_registration_disposition(inputs);
 item = [
+    "phase7_gate_table_height"
+    "phase7_gate_table_width"
+    "phase7_gate_table_variables"
     "registration_status"
     "missing_registration_handled"
     "raman_rows_insufficient"
@@ -672,6 +675,9 @@ item = [
     "registration_accepted"
     ];
 value = [
+    string(height(inputs.phase7BGates))
+    string(width(inputs.phase7BGates))
+    strjoin(string(inputs.phase7BGates.Properties.VariableNames), "|")
     disposition.registration_status
     disposition.missing_registration_handled
     string(disposition.raman_rows_insufficient)
@@ -682,6 +688,9 @@ value = [
     string(disposition.registration_accepted)
     ];
 note = [
+    "Rows read from the Phase 7B gate-summary table."
+    "Columns read from the Phase 7B gate-summary table."
+    "MATLAB variable names detected for the Phase 7B gate-summary table."
     "Phase 7B registration-robustness gate outcome."
     "Phase 7B explicit missing-registration handling gate outcome."
     "True when every Raman-registration row records insufficient registered data."
