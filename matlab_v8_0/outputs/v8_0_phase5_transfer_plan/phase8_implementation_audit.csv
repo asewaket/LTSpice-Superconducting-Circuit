@@ -1,0 +1,9 @@
+item,observed_count,expected_count,outcome,note
+six_device_matrix_rows,6,6,pass,Phase 6 matrix should contain AS001-AS006.
+finite_DeltaS_context_rows,6,6,pass,Every device should retain finite contextual DeltaS.
+finite_Z_context_rows,6,6,pass,Every device should retain finite contextual Z.
+frozen_model_status_rows,6,6,pass,Every device should have a frozen Phase 6 model status.
+phase7B_annotation_rows,6,6,pass,Every device should have a Phase 7B robustness annotation.
+phase7B_failed_gates,0,0,pass,Phase 7B must not hand off failed robustness gates.
+phase7B_not_run_gates,1,1,pass,Only registered Raman rescore is expected to remain not_run.
+expensive_transport_sweeps,0,0,pass,Phase 8A does not perform expensive transport replays.

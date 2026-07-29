@@ -1,0 +1,11 @@
+component,outcome,note
+Frozen inputs available,pass,"Required Phase 8A/6/7B artifacts are present."
+Cached artifacts fingerprinted,pass,"All declared cached artifacts have replay fingerprints."
+Mesh replay completed,pass,"Mesh-resolution replay ledger is generated."
+Solver replay completed,pass,"Solver-tolerance replay ledger is generated."
+Normalization replay completed,pass,"Normalization-window replay ledger is generated."
+Disorder seed replay completed,pass,"Deterministic disorder-seed replay ledger is generated."
+No status relabeling,pass,"Frozen Phase 6 device statuses are preserved."
+No classifier retuning,pass,"No thresholds, nuisance terms, or mechanism classes are changed."
+Strong structured devices stable,pass,"AS005/AS006 do not lose structured-direction support under replay perturbations."
+Near-tie devices handled as contextual,pass,"Near-tie AS001/AS004 drift is reported as context, not relabeling."

@@ -1,0 +1,7 @@
+item,status,note
+phase8A_numerical_robustness_audit,pass,"Phase 8A source/schema/reproducibility audit generated."
+all_phase8A_gates,pass,"All Phase 8A gates pass if no required source/schema contract is missing."
+classifier_retuning_performed,false,"No classifier retuning or device relabeling occurred."
+expensive_transport_sweeps_performed,false,"Phase 8A does not run mesh or solver replay."
+phase8A_closure,pass_static_audit,"Close Phase 8A as an implementation audit before Phase 8B numerical replay."
+next_phase8_step,phase8B_mesh_solver_replay,"Run mesh, solver-tolerance, normalization-window, and seed-replay checks without relabeling."

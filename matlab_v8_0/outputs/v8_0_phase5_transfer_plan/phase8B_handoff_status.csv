@@ -1,0 +1,13 @@
+item,status,note
+phase8A_closure,pass_static_audit,"Phase 8A source/schema/reproducibility audit status consumed as frozen input."
+phase8B_numerical_replay,pass,"Phase 8B frozen-context numerical replay artifacts generated."
+all_phase8_gates,pass,"Phase 8A static gates and Phase 8B replay gates are jointly satisfied."
+all_phase8B_gates,pass,"All Phase 8B gates pass when replay remains label-safe."
+replay_mode,frozen_context_replay,"Replay uses frozen score context and deterministic perturbation ledgers."
+replay_scope,frozen_context_DeltaS_Z,"Replay perturbs cached contextual DeltaS/Z summaries rather than recomputing transport."
+classifier_retuning_performed,false,"No classifier retuning or status relabeling occurred."
+phase6_statuses_preserved,true,"Frozen Phase 6 six-device statuses are preserved as labels, not recomputed."
+full_transport_recomputation,false,"Phase 8B does not rerun the full transport solver or field-map campaign."
+source_pre_run_clean,false,"Copied from the Phase 8B provenance checkpoint captured before outputs were written."
+phase8B_closure,pass_numerical_replay,"Close Phase 8B as a label-preserving numerical replay audit."
+next_phase,phase9_final_model_packaging,"Prepare final model package, dissertation tables, and reproducibility appendix."

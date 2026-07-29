@@ -1,0 +1,7 @@
+item,status,note
+phase_objective,active,"Audit numerical and implementation robustness after Phase 6/7 labels are frozen."
+classifier_retuning,false,"No threshold, mechanism class, nuisance term, or device-specific parameter may be tuned in Phase 8."
+status_relabeling,false,"Phase 8 may report numerical fragility but may not relabel Phase 6 device statuses."
+expensive_transport_sweeps,false,"Phase 8A is a source/schema/reproducibility audit; transport reruns are deferred to Phase 8B."
+allowed_outputs,audit_and_handoff,"Allowed outputs are tolerance policy, schema checks, reproducibility checks, and a declared numerical test plan."
+prohibited_outputs,new_physics_or_classifier,"Do not add new weak-link physics, force-law terms, Raman transforms, or universal classifier thresholds."

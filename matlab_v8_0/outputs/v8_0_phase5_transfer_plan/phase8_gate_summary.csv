@@ -1,0 +1,8 @@
+component,outcome,note
+Frozen inputs available,pass,"Required Phase 5D2/6/7B artifacts are present."
+Schema contract satisfied,pass,"Required CSV columns are present."
+No classifier retuning,pass,"Phase 8A does not change thresholds, classes, or nuisance terms."
+No status relabeling,pass,"Phase 8A preserves frozen Phase 6 device statuses."
+Implementation audit passed,pass,"Device rows, contextual scores, and Phase 7B handoff are internally coherent."
+Reproducibility audit passed,pass,"Static reproducibility checks pass; runtime replay is explicitly deferred."
+Expensive transport sweeps deferred,pass,"Mesh/solver/normalization replay is declared for Phase 8B."

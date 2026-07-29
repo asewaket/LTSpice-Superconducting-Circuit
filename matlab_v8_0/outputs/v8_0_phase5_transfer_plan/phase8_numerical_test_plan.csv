@@ -1,0 +1,9 @@
+test_id,test_class,status,note
+schema_contract,implementation,completed_in_phase8A,Verify required CSV columns for frozen Phase 5D2/6/7B artifacts.
+source_provenance_checkpoint,implementation,completed_in_phase8A,Capture source commit/tree before Phase 8 writes outputs.
+frozen_label_invariance,implementation,completed_in_phase8A,Confirm Phase 7B preserved all frozen Phase 6 labels.
+mesh_resolution_sweep,mesh,declared_for_phase8B,Compare mesh sizes against 121x121 reference.
+solver_tolerance_sweep,solver,declared_for_phase8B,Repeat selected cases across solver absolute/relative tolerance settings.
+normalization_window_sweep,scoring,declared_for_phase8B,Shift normalization windows without changing mechanism labels or thresholds.
+disorder_seed_replay,reproducibility,declared_for_phase8B,Replay frozen AS006 seed ledgers and six-device contextual scores.
+cached_artifact_replay,reproducibility,declared_for_phase8B,Compare regenerated numeric tables against committed artifact checksums.

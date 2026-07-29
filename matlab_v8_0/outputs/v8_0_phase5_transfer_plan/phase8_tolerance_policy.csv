@@ -1,0 +1,7 @@
+item,tolerance_class,absolute_tolerance,relative_tolerance,note
+score_ledger_replay,strict_numeric,1e-09,0,"Numeric score ledgers should replay to strict absolute tolerance."
+DeltaS_context,contextual_numeric,0.0001,0,"DeltaS drift below this value is context-stable and cannot relabel devices."
+Z_context,contextual_numeric,0.001,0,"Z drift below this value is context-stable and cannot relabel devices."
+device_status,categorical,0,0,"No automatic Phase 6 status change is allowed in Phase 8."
+figure_layout,visual,NaN,NaN,"Figure regeneration is checked by content files, not pixel identity."
+csv_schema,contract,0,0,"Required columns must be present exactly as declared."

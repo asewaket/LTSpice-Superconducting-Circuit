@@ -1,0 +1,7 @@
+item,outcome,note
+required_artifacts_exist,pass,All required frozen inputs are present.
+phase7B_source_pre_run_clean_available,pass,Previous phase provenance records whether its source checkout was clean.
+phase7_closure_allows_phase8,pass,Phase 7 handoff points to numerical robustness.
+frozen_phase6_labels_preserved,pass,Phase 7B annotation table preserves every frozen Phase 6 status.
+phase8_source_pre_run_captured,pass,Phase 8 captures git commit/tree before writing outputs.
+matlab_runtime_replay,not_run,MATLAB transport replay is deferred to Phase 8B because Phase 8A is a static audit.

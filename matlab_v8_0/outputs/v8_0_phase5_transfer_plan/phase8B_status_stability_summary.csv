@@ -1,0 +1,7 @@
+device,final_model_status,baseline_DeltaS,baseline_direction,max_abs_deltaS_drift,max_abs_Z_drift,direction_change_count,strong_structured_device,expected_near_tie_device,frozen_status_preserved,status_stability,note
+AS001,mechanistically_unresolved,-0.0235825070255738,structured_direction,0.008,0.2,3,0,1,1,context_drift_reported,Replay drift exceeds context-report threshold but does not justify relabeling.
+AS002,M0star_sufficient,0.032156854108136,M0star_direction,0.006,0.15,0,0,0,1,context_drift_reported,Replay drift exceeds context-report threshold but does not justify relabeling.
+AS003,M0star_sufficient,0.00501930572189299,near_tie,0.004,0.1,0,0,0,1,stable,Replay perturbations preserve contextual direction and frozen status.
+AS004,mechanistically_unresolved,-0.009142548957498,near_tie,0.012,0.3,1,0,1,1,near_tie_context_sensitive,Direction can move inside near-tie band; frozen unresolved interpretation remains appropriate.
+AS005,structured_supported,-0.12061186753391,structured_direction,0.015,0.375,0,1,0,1,context_drift_reported,Replay drift exceeds context-report threshold but does not justify relabeling.
+AS006,structured_supported,-0.188002252409301,structured_direction,0.018,0.45,0,1,0,1,context_drift_reported,Replay drift exceeds context-report threshold but does not justify relabeling.

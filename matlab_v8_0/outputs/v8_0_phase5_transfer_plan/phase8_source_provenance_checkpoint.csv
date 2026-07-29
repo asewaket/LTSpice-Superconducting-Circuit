@@ -1,0 +1,9 @@
+item,value,note
+phase,phase8_numerical_robustness,Phase 8 numerical and implementation robustness.
+source_commit_sha,a77bee7d5acb8f9155d608bbec52902c4b01c9e7,Git commit captured before this runner writes outputs.
+source_tree_sha,02e9f240253fae53c7e2b238db0de71b2a09932f,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,false,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,false,True only when the source checkout is clean before this run writes outputs.
+provenance_scope,standalone_phase8_run,Standalone Phase 8 artifact-generation checkpoint.
+source_provenance_policy,Commit source/config first; rerun Phase 8 from that source; commit generated artifacts separately.,The artifact commit need not be embedded in files generated before that commit exists.
