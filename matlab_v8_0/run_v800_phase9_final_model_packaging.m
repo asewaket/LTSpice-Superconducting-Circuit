@@ -3,6 +3,8 @@ function out = run_v800_phase9_final_model_packaging()
 
 rootDir = fileparts(mfilename('fullpath'));
 addpath(rootDir);
+rehash;
+clear('v800.run_phase9_final_model_packaging');
 
 cfg = v800.phase5_config(rootDir);
 out = v800.run_phase9_final_model_packaging(cfg);
