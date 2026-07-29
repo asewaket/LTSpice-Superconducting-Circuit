@@ -706,6 +706,10 @@ function outcome = gate_outcome(T, componentName, defaultOutcome)
 outcome = string(defaultOutcome);
 component = table_column(T, "component");
 outcomes = table_column(T, "outcome");
+if (isempty(component) || isempty(outcomes)) && width(T) >= 2
+    component = table_column_by_index(T, 1);
+    outcomes = table_column_by_index(T, 2);
+end
 if isempty(component) || isempty(outcomes)
     return;
 end
@@ -803,6 +807,16 @@ if isempty(idx)
 end
 
 raw = T.(char(varNames(idx)));
+values = string(raw);
+end
+
+function values = table_column_by_index(T, columnIndex)
+values = strings(0, 1);
+if isempty(T) || width(T) < columnIndex
+    return;
+end
+
+raw = T.(char(T.Properties.VariableNames(columnIndex)));
 values = string(raw);
 end
 
