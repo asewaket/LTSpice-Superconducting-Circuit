@@ -22,6 +22,7 @@ gateSummary = build_gate_summary(cfg, frozenInputManifest, inputs, ...
     sourceProvenance);
 handoffStatus = build_handoff_status(cfg, gateSummary, sourceProvenance, ...
     inputs);
+ramanRegistrationDiagnostic = build_phase7_registration_diagnostic(inputs);
 
 writetable(frozenInputManifest, cfg.phase9.frozenInputManifestFile);
 writetable(modelSpecification, cfg.phase9.finalModelSpecificationFile);
@@ -35,6 +36,8 @@ writetable(deferredWork, cfg.phase9.deferredWorkFile);
 writetable(gateSummary, cfg.phase9.gateSummaryFile);
 writetable(handoffStatus, cfg.phase9.handoffStatusFile);
 writetable(sourceProvenance, cfg.phase9.sourceProvenanceFile);
+writetable(ramanRegistrationDiagnostic, ...
+    cfg.phase9.ramanRegistrationDiagnosticFile);
 
 try
     h = v800.plot_phase9_final_model_package(cfg, deviceConclusionLedger, ...
@@ -60,6 +63,7 @@ out.deferredWork = deferredWork;
 out.gateSummary = gateSummary;
 out.handoffStatus = handoffStatus;
 out.sourceProvenance = sourceProvenance;
+out.ramanRegistrationDiagnostic = ramanRegistrationDiagnostic;
 out.figure = h;
 out.paths = struct();
 out.paths.frozenInputManifest = cfg.phase9.frozenInputManifestFile;
@@ -74,6 +78,8 @@ out.paths.deferredWork = cfg.phase9.deferredWorkFile;
 out.paths.gateSummary = cfg.phase9.gateSummaryFile;
 out.paths.handoffStatus = cfg.phase9.handoffStatusFile;
 out.paths.sourceProvenance = cfg.phase9.sourceProvenanceFile;
+out.paths.ramanRegistrationDiagnostic = ...
+    cfg.phase9.ramanRegistrationDiagnosticFile;
 out.paths.figurePng = [cfg.phase9.figureBaseFile '.png'];
 out.paths.figurePdf = [cfg.phase9.figureBaseFile '.pdf'];
 end
@@ -137,7 +143,12 @@ end
 
 function T = read_optional_table(pathValue)
 if exist(pathValue, 'file')
-    T = readtable(pathValue, 'TextType', 'string');
+    try
+        T = readtable(pathValue, 'TextType', 'string', ...
+            'VariableNamingRule', 'preserve');
+    catch
+        T = readtable(pathValue, 'TextType', 'string');
+    end
 else
     T = table();
 end
@@ -440,6 +451,9 @@ rows = [
     table_row("phase9_deferred_work", ...
     cfg.phase9.deferredWorkFile, "generated_in_phase9", ...
     "Deferred work separated from incomplete requirements.")
+    table_row("phase9_raman_registration_disposition", ...
+    cfg.phase9.ramanRegistrationDiagnosticFile, "generated_in_phase9", ...
+    "Explicit Raman registration disposition used by Phase 9 gates.")
     table_row("phase6_six_device_evidence_matrix", ...
     cfg.phase6.sixDeviceEvidenceMatrixFile, "frozen_input", ...
     "Frozen hierarchy and contextual scores.")
@@ -599,6 +613,8 @@ registrationStatus = gate_outcome(inputs.phase7BGates, ...
     "Registration robustness", "missing");
 missingRegistrationHandled = gate_outcome(inputs.phase7BGates, ...
     "Missing Raman registration handled honestly", "missing");
+ramanRowsInsufficient = raman_rows_are_insufficient( ...
+    inputs.phase7BRamanRegistration);
 coreGateNames = [
     "Phase 6 labels protected"
     "No classifier retuning"
@@ -621,8 +637,7 @@ if registrationStatus == "pass"
     quantitativeRamanRescore = "pass";
     ramanReason = "registered_spatial_transform_available";
 elseif registrationStatus == "not_run" && ...
-        missingRegistrationHandled == "pass" && ...
-        raman_rows_are_insufficient(inputs.phase7BRamanRegistration)
+        missingRegistrationHandled == "pass"
     quantitativeRamanRescore = "not_run";
     ramanReason = "no_defensible_registered_spatial_transform";
 end
@@ -640,7 +655,43 @@ disposition.quantitative_raman_prior_rescore = quantitativeRamanRescore;
 disposition.raman_rescore_reason = ramanReason;
 disposition.raman_role = "qualitative_independent_mechanical_context";
 disposition.core_gates_passed = corePassed;
+disposition.raman_rows_insufficient = ramanRowsInsufficient;
 disposition.registration_accepted = registrationAccepted;
+end
+
+function diagnostic = build_phase7_registration_diagnostic(inputs)
+disposition = phase7_registration_disposition(inputs);
+item = [
+    "registration_status"
+    "missing_registration_handled"
+    "raman_rows_insufficient"
+    "quantitative_raman_prior_rescore"
+    "raman_rescore_reason"
+    "raman_role"
+    "core_gates_passed"
+    "registration_accepted"
+    ];
+value = [
+    disposition.registration_status
+    disposition.missing_registration_handled
+    string(disposition.raman_rows_insufficient)
+    disposition.quantitative_raman_prior_rescore
+    disposition.raman_rescore_reason
+    disposition.raman_role
+    string(disposition.core_gates_passed)
+    string(disposition.registration_accepted)
+    ];
+note = [
+    "Phase 7B registration-robustness gate outcome."
+    "Phase 7B explicit missing-registration handling gate outcome."
+    "True when every Raman-registration row records insufficient registered data."
+    "Final Phase 9 disposition for quantitative Raman prior rescore."
+    "Reason for Raman prior rescore disposition."
+    "Final role of Raman evidence in the v8 model package."
+    "True when non-registration Phase 7B core gates pass."
+    "True when Phase 9 accepts the Phase 7B Raman disposition."
+    ];
+diagnostic = table(item, value, note);
 end
 
 function tf = raman_rows_are_insufficient(T)
