@@ -1,0 +1,8 @@
+item,value,note
+release_name,v8.0 final model package,Human-readable release name.
+release_scope,reproducible release dossier; no retuning,Phase 10 performs packaging and verification only.
+model_retuning,false,No model retuning is performed in Phase 10.
+device_status_changes,false,Phase 10 preserves the Phase 9 final device ledger.
+phase9_closure,pass_final_model_packaging,Phase 9 final packaging closure consumed by Phase 10.
+raman_registration_disposition,not_run,Registered Raman prior remains unavailable and qualitative.
+release_caveat,source_pre_run_clean may be false if untracked artifacts exist before generation,Tracked-source cleanliness is recorded separately from full untracked cleanliness.

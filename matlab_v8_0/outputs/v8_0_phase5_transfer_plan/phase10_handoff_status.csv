@@ -1,0 +1,10 @@
+item,status,note
+phase10_reproducible_release,pass,"Final reproducible v8 release dossier generated."
+phase10_all_gates,pass,"Includes full clean-checkout provenance."
+phase10_closure,pass_reproducible_release,"Release closure ignores no scientific gate; full untracked cleanliness may be caveated."
+release_name,v8.0 final model package,"Frozen release name."
+model_retuning_performed,false,"No model retuning occurred."
+device_status_changes,false,"No device status was changed."
+source_commit_sha,48fbfb8f888e1654cbfddff7addde4ea55adf8a6,"Source commit used to generate Phase 10 release artifacts."
+source_pre_run_clean,true,"Full clean-checkout state before Phase 10 wrote outputs."
+next_phase,release_tag_or_archive,"Optional next step: tag, archive, or export the frozen v8 release."

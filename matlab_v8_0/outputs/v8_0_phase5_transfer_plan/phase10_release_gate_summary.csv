@@ -1,0 +1,9 @@
+gate,outcome,note
+Phase 9 final packaging consumed,pass,"Phase 10 consumes a passing Phase 9 final model package."
+Phase 9 scientific gates pass,pass,"All Phase 9 gates except the clean-source provenance gate pass."
+Phase 8B numerical replay available,pass,"Phase 8B frozen numerical replay gate summary is available and passing."
+Release manifest complete,pass,"Every required release artifact exists."
+Artifact checksums computed,pass,"SHA-256 checksums were computed for every release artifact."
+No retuning or relabeling,pass,"Phase 10 does not change model parameters, thresholds, or device labels."
+Tracked source provenance clean,pass,"Tracked files were clean before Phase 10 wrote outputs."
+Full clean checkout provenance,pass,"Passes only if no untracked artifacts existed before Phase 10."

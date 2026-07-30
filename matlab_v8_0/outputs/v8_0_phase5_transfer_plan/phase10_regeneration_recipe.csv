@@ -1,0 +1,7 @@
+step_index,step_id,command,note
+1,checkout_source,git checkout v8-roadmap,"Use the pushed v8-roadmap branch or a specific recorded commit SHA."
+2,enter_matlab_directory,cd('<repo>/matlab_v8_0'),"Set MATLAB working directory to the v8 MATLAB folder."
+3,refresh_matlab_cache,clear all; rehash toolboxcache,"Avoid stale package-function state before release generation."
+4,run_final_model_packaging,out9 = run_v800_phase9_final_model_packaging,"Regenerates the final model package from frozen upstream artifacts."
+5,run_release_dossier,out10 = run_v800_phase10_reproducible_release,"Regenerates Phase 10 checksums, release gates, and release summary."
+6,verify_release_gates,read phase10_release_gate_summary.csv and phase10_handoff_status.csv,"Scientific closure can pass even when full untracked cleanliness is caveated."

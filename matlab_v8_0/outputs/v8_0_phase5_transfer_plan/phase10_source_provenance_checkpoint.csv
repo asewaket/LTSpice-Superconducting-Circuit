@@ -1,0 +1,9 @@
+item,value,note
+phase,phase10_reproducible_v8_release,Phase 10 final reproducible-release dossier.
+source_commit_sha,48fbfb8f888e1654cbfddff7addde4ea55adf8a6,Git commit captured before this runner writes outputs.
+source_tree_sha,48121918a8a894bdc3111b223e97d1edd3463087,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when the checkout is clean before this run writes outputs.
+provenance_scope,release_dossier_no_retuning,Read-only packaging of frozen Phase 9 artifacts and release instructions.
+source_provenance_policy,Commit Phase 10 source/config first; run release dossier generation; commit generated release artifacts separately.,The artifact commit need not be embedded in files generated before that commit exists.
