@@ -1,0 +1,9 @@
+item,value,note
+phase,phase12A_raman_registration_feasibility,"Phase 12A Raman registration feasibility and mechanical-input definition."
+source_commit_sha,0aa3c24dc1e1002d1184285390ecc08f68ce808e,"Git commit captured before this runner writes outputs."
+source_tree_sha,7ce24b164982b980a6dbecc9c36890fe294c3299,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when the checkout is clean before this run writes outputs."
+provenance_scope,registration_feasibility_no_transport_relabeling,"No transport retuning, no v8 status changes, no quantitative Raman coupling."
+source_provenance_policy,Commit Phase 12A source first; rerun from clean source; commit generated artifacts separately.,"Phase 12A artifacts are downstream of frozen Phase 11 architecture."

@@ -1,0 +1,8 @@
+item,status,note
+phase12A_raman_registration_feasibility,pass,"Raman registration feasibility and mechanical-input definition generated."
+phase12A_closure,pass_registration_feasibility,"Phase 12A closes as registration feasibility, not a transport-coupled model."
+quantitative_raman_transport_coupling,blocked,"No registered quantitative Raman transform is frozen."
+mechanical_proxy_ready_for_12B,pass,"Phase 12B may build reduced geometry fields without using Raman as a 2D constraint."
+transport_status_changes,false,"Frozen v8/Phase 11 device conclusions are unchanged."
+source_commit_sha,0aa3c24dc1e1002d1184285390ecc08f68ce808e,"Source commit used to generate Phase 12A artifacts."
+next_phase,phase12B_reduced_mechanical_forward_model,"Build reduced mechanical proxy equations before comparing Raman observables."

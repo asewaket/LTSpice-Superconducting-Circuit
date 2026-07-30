@@ -1,0 +1,10 @@
+gate,outcome,note
+Phase 11 architecture consumed,pass,Phase 12A starts from frozen Phase 11 schemas and manifests.
+Registration status explicit for Raman hint devices,pass,Every Raman-hint device receives a Phase 12A registration row.
+Registration vocabulary restricted,pass,Statuses use the predeclared Phase 12A vocabulary.
+No invented coordinate transforms,pass,No affine/nonlinear scan-to-device transform is fabricated.
+Quantitative Raman transport coupling blocked,pass,Unregistered Raman remains qualitative independent context.
+No 2D field expanded from line scan,pass,A line or device-level association is not promoted to a 2D field.
+Mechanical input roles defined,pass,Reduced geometry/mechanical proxy roles are declared per device.
+Frozen transport conclusions protected,pass,Phase 12A does not alter v8/Phase 11 transport conclusions.
+Tracked source provenance clean,pass,Tracked source files were clean before Phase 12A wrote outputs.
