@@ -1,0 +1,4 @@
+observable,independent_axes,dependent_quantity,units,data_layer,normalization_policy,interpolation_policy,device_scope,schema_status
+raman_spectrum,scan_x; scan_y; wavenumber_cm_minus_1,intensity,um_or_pixel; cm^-1; arbitrary,raw,no transport-model normalization in Phase 11,spectral preprocessing must be declared before model use,AS002/AS005/AS006 hints,registration_required
+raman_shift_proxy,scan_x; scan_y,relative_shift_or_proxy,unitless_or_cm^-1,processed,proxy maps are qualitative until registration is defensible,spatial interpolation forbidden without transform manifest,historical v5-v7 scripts,qualitative_context
+registered_raman_map,device_x; device_y,registered_raman_feature,device_length_unit,processed,not available in frozen v8 release,requires explicit affine/nonlinear transform and residual audit,not currently accepted,not_ready

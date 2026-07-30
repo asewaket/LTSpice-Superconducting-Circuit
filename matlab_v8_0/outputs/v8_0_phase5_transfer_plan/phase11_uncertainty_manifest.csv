@@ -1,0 +1,8 @@
+uncertainty_source,units,uncertainty_description,phase11_policy
+temperature_axis,K,calibration offset; sweep history; interpolation grid,record source axis and any resampling in downstream fits
+resistance_axis,ohm,contact resistance; normal-state normalization; shunt paths,retain raw R and normalized R as separate fields
+current_bias,A,excitation amplitude; zero-current reduction for pair files,record current selected for low-bias R(T) reductions
+magnetic_field,T,field direction; remanence; assumed temperature,field-sweep files require explicit direction metadata
+probe_registration,device coordinate,contact assignment and probe-pair mapping uncertainty,do not merge top/bottom probes without declared mapping
+raman_registration,device coordinate,scan-to-device transform and residual uncertainty,quantitative use blocked until transform manifest exists
+geometry_masks,device coordinate,crack/boundary mask dilation and displacement,future perturbation ledgers must preserve raw mask provenance

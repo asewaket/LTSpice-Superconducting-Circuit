@@ -1,0 +1,5 @@
+observable,independent_axes,dependent_quantity,units,data_layer,normalization_policy,interpolation_policy,device_scope,schema_status
+R_T_main_4p,temperature_K,four_probe_resistance_ohm,K; ohm,raw_or_publication_csv,normalized only for scoring; raw retained as authority,monotonic temperature interpolation only for comparison grids,AS001-AS006,required_for_device_context
+R1_T_top_4_10,temperature_K,top_probe_resistance_ohm,K; ohm,raw_pair_or_reduced_dVdI,low-bias pair curves kept separate from main_4p,near-zero-current reduction allowed only when source is I-sweep,devices with pairData,secondary_probe_context
+R2_T_bottom_3_9,temperature_K,bottom_probe_resistance_ohm,K; ohm,raw_pair_or_reduced_dVdI,low-bias pair curves kept separate from main_4p,near-zero-current reduction allowed only when source is I-sweep,devices with pairData,secondary_probe_context
+transition_metrics,temperature_K; normalized_R,onset_width_lowT_metrics,K; unitless,processed,metrics derive from declared R(T) normalization policy,fixed grid for metrics only; raw data remains unmodified,AS001-AS006 when R(T) exists,derived_context

@@ -1,0 +1,7 @@
+device,primary_probe,primary_experimental_channel,secondary_probe,secondary_status,probe_pair_convention,coordinate_convention,phase11_policy
+AS001,top_4_10,R1,bottom_3_9,available_held_out,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here
+AS002,top_4_10,R1,bottom_3_9,not_applicable,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here
+AS003,bottom_3_9,R2,top_4_10,not_applicable,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here
+AS004,top_4_10,R1,bottom_3_9,available_held_out,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here
+AS005,top_4_10,R1,bottom_3_9,not_applicable,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here
+AS006,top_4_10,R1,bottom_3_9,available_held_out,top_4_10 and bottom_3_9 are retained as separate observables,device-local; no cross-device geometric registration assumed,probe mappings may be consumed by future models but not relabeled here

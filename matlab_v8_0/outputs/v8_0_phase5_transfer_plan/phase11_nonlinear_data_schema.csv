@@ -1,0 +1,4 @@
+observable,independent_axes,dependent_quantity,units,data_layer,normalization_policy,interpolation_policy,device_scope,schema_status
+I_V,current_A; temperature_K_optional,voltage_V,A; K; V,raw,no universal normalization frozen in Phase 11,no interpolation before source-specific schema validation,available_if_identified,future_predictive_input
+dVdI_I_T,current_A; temperature_K,differential_resistance_ohm,A; K; ohm,raw_grid_or_processed_grid,optional RN normalization must record RN estimator,grid interpolation only after axes and current polarity are declared,currently AS006 loader-backed,schema_ready_limited_scope
+dVdI_I_B,current_A; magnetic_field_T,differential_resistance_ohm,A; T; ohm,raw_grid_or_processed_grid,optional RN normalization must record RN estimator,field direction and assumed temperature must be explicit,currently AS006 loader-backed,schema_ready_limited_scope

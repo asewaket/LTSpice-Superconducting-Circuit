@@ -1,0 +1,9 @@
+gate,outcome,note
+Phase 10 release boundary consumed,pass,"Phase 11 starts after the clean v8.0 release artifact freeze."
+Device observable manifest complete,pass,"AS001-AS006 all appear in the multimodal manifest."
+Observable schemas written,pass,"Transport, nonlinear, Raman, geometry, and uncertainty schemas are present."
+Probe mapping explicit,pass,"Primary and secondary probe mappings are declared per device."
+Registration availability explicit,pass,"Raman registration unavailable states are recorded rather than inferred."
+Raw/processed separation declared,pass,"Raw and processed data roles are distinct in the manifest."
+No v8 status changes or retuning,pass,"Phase 11 is a data architecture phase only."
+Tracked source provenance clean,pass,"Tracked source files were clean before Phase 11 wrote outputs."

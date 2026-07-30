@@ -1,0 +1,7 @@
+device,raman_hint_available,registered_raman_available,registration_status,transform_manifest,residual_error_policy,geometry_registration_status,phase11_policy
+AS001,0,0,not_applicable_no_raman_hint,not_available,required before quantitative Raman-to-transport use,geometry_control_context,Raman remains qualitative context until transform and residuals are archived
+AS002,1,0,not_run_no_defensible_transform,not_available,required before quantitative Raman-to-transport use,geometry_control_context,Raman remains qualitative context until transform and residuals are archived
+AS003,0,0,not_applicable_no_raman_hint,not_available,required before quantitative Raman-to-transport use,geometry_control_context,Raman remains qualitative context until transform and residuals are archived
+AS004,0,0,not_applicable_no_raman_hint,not_available,required before quantitative Raman-to-transport use,geometry_mechanical_context_required,Raman remains qualitative context until transform and residuals are archived
+AS005,1,0,not_run_no_defensible_transform,not_available,required before quantitative Raman-to-transport use,geometry_mechanical_context_required,Raman remains qualitative context until transform and residuals are archived
+AS006,1,0,not_run_no_defensible_transform,not_available,required before quantitative Raman-to-transport use,geometry_mechanical_context_required,Raman remains qualitative context until transform and residuals are archived

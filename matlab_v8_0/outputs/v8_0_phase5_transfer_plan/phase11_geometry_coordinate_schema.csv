@@ -1,0 +1,4 @@
+observable,independent_axes,dependent_quantity,units,data_layer,normalization_policy,interpolation_policy,device_scope,schema_status
+device_frame,x; y,device_coordinate,normalized_device_length_or_um,declared_coordinate_system,"origin/contact convention must be stated per device",geometry masks may be resampled to model mesh only after recording rule,AS001-AS006,required
+contact_pairs,contact_id; x; y,electrical_contact_location,device_length_unit,declared,"top_4_10 and bottom_3_9 remain explicit probe pairs",no coordinate inference from label alone,AS001-AS006,required
+crack_boundary_masks,x; y; mask_name,geometry_or_mechanical_mask,unitless,processed_context,"masks are context/priors, not automatic classifier labels",mask perturbations must record displacement and dilation policy,AS004-AS006 emphasis,contextual_prior

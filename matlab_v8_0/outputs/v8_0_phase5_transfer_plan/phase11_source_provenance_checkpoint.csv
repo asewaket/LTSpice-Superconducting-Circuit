@@ -1,0 +1,9 @@
+item,value,note
+phase,phase11_multimodal_data_architecture,Phase 11 multimodal observable and schema architecture.
+source_commit_sha,36786e6337d2f54e0ea3adffccd0fe5baccd2afc,Git commit captured before this runner writes outputs.
+source_tree_sha,687ca3a67409ea026ef413c46f01c9a8f0afdf22,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when the checkout is clean before this run writes outputs.
+provenance_scope,data_architecture_no_retuning,Schema/manifest phase; no transport refit or joint forward model.
+source_provenance_policy,Run Phase 11 on a Phase 11 branch after the v8.0 release tag; do not modify frozen v8 labels.,Generated artifacts should be committed separately from source changes.
