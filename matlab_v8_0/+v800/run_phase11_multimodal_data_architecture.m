@@ -182,6 +182,16 @@ for k = 1:numel(cfg.devices)
     hasRaman = bool_field(data, "has_raman") || ...
         strlength(lookup_device_value(inputs.phase7Prior, device, ...
         "raman_status", "")) > 0;
+    primaryProbe = lookup_struct_value(rt, "primary_probe", "");
+    secondaryProbe = lookup_struct_value(rt, "secondary_probe", "");
+    primaryLoaded = bool_field(rt, "primary_curve_loaded") || hasRT;
+    secondaryLoaded = hasSecondary || ...
+        lookup_struct_value(rt, "secondary_status", "") == ...
+        "available_held_out";
+    topLoaded = (primaryProbe == "top_4_10" && primaryLoaded) || ...
+        (secondaryProbe == "top_4_10" && secondaryLoaded);
+    bottomLoaded = (primaryProbe == "bottom_3_9" && primaryLoaded) || ...
+        (secondaryProbe == "bottom_3_9" && secondaryLoaded);
 
     rows(k).device = device;
     rows(k).frozen_v8_conclusion = first_nonempty([
@@ -197,13 +207,13 @@ for k = 1:numel(cfg.devices)
         lookup_struct_value(context, "evidence_tier", "")
         "unassigned"
         ]);
-    rows(k).primary_probe = lookup_struct_value(rt, "primary_probe", "");
-    rows(k).secondary_probe = lookup_struct_value(rt, "secondary_probe", "");
+    rows(k).primary_probe = primaryProbe;
+    rows(k).secondary_probe = secondaryProbe;
     rows(k).has_RT = hasRT;
-    rows(k).has_R1_RT = hasRT;
-    rows(k).has_R2_RT = hasSecondary;
-    rows(k).has_primary_RT = bool_field(rt, "primary_curve_loaded") || hasRT;
-    rows(k).has_secondary_RT = hasSecondary;
+    rows(k).has_R1_RT = topLoaded;
+    rows(k).has_R2_RT = bottomLoaded;
+    rows(k).has_primary_RT = primaryLoaded;
+    rows(k).has_secondary_RT = secondaryLoaded;
     rows(k).has_IV = hasIV;
     rows(k).has_dVdI_IT = hasDvdIIT;
     rows(k).has_dVdI_IB = hasDvdIIB;
