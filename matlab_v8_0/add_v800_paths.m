@@ -83,5 +83,11 @@ clear v800.plot_phase6_hierarchical_evidence_summary
 clear v800.git_tree_status
 clear v800.capture_source_provenance
 clear run_v800_phase5C_phase5D_artifact_generation
+clear run_v800_phase10_reproducible_release
+clear v800.run_phase10_reproducible_release
+clear v800.plot_phase10_reproducible_release
+clear run_v800_phase11_multimodal_data_architecture
+clear v800.run_phase11_multimodal_data_architecture
+clear v800.plot_phase11_multimodal_architecture_summary
 
 end
