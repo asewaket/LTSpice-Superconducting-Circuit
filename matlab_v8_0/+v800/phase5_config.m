@@ -530,6 +530,28 @@ cfg.phase9.allowDeviceStatusChanges = false;
 cfg.phase9.allowMechanismExpansion = false;
 cfg.phase9.nextPhase = 'phase10_reproducible_v8_release';
 
+cfg.phase10.releaseManifestFile = fullfile(cfg.outputDir, ...
+    'phase10_release_manifest.csv');
+cfg.phase10.artifactChecksumFile = fullfile(cfg.outputDir, ...
+    'phase10_artifact_checksums.csv');
+cfg.phase10.regenerationRecipeFile = fullfile(cfg.outputDir, ...
+    'phase10_regeneration_recipe.csv');
+cfg.phase10.releaseNotesFile = fullfile(cfg.outputDir, ...
+    'phase10_release_notes.csv');
+cfg.phase10.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase10_release_gate_summary.csv');
+cfg.phase10.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase10_handoff_status.csv');
+cfg.phase10.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase10_source_provenance_checkpoint.csv');
+cfg.phase10.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase10_reproducible_release_summary');
+cfg.phase10.releaseName = 'v8.0 final model package';
+cfg.phase10.releaseScope = 'reproducible release dossier; no retuning';
+cfg.phase10.allowModelRetuning = false;
+cfg.phase10.allowDeviceStatusChanges = false;
+cfg.phase10.allowArtifactMutation = false;
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
