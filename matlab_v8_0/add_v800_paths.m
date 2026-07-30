@@ -89,5 +89,8 @@ clear v800.plot_phase10_reproducible_release
 clear run_v800_phase11_multimodal_data_architecture
 clear v800.run_phase11_multimodal_data_architecture
 clear v800.plot_phase11_multimodal_architecture_summary
+clear run_v800_phase12A_raman_registration_feasibility
+clear v800.run_phase12A_raman_registration_feasibility
+clear v800.plot_phase12A_raman_registration_feasibility
 
 end
