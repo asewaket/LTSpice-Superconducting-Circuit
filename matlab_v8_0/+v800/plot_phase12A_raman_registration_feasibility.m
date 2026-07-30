@@ -93,6 +93,17 @@ counts = [
     sum(T.transport_coupling_allowed)
     ];
 bar(counts, 'FaceColor', [0.25 0.55 0.85]);
+hold on;
+zeroIdx = counts == 0;
+if any(zeroIdx)
+    scatter(find(zeroIdx), repmat(0.45, sum(zeroIdx), 1), 90, ...
+        'x', 'LineWidth', 2, 'MarkerEdgeColor', [0.70 0.05 0.05]);
+    for k = find(zeroIdx).'
+        text(k, 0.58, "none", 'HorizontalAlignment', 'center', ...
+            'Color', [0.70 0.05 0.05], 'FontWeight', 'bold');
+    end
+end
+hold off;
 set(gca, 'XTick', 1:numel(labels), 'XTickLabel', labels);
 xtickangle(25);
 ylabel('device count');
