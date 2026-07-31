@@ -402,6 +402,8 @@ for k = 1:numel(devices)
     rows(k).coverage_transfer_proxy = coverage;
     rows(k).boundary_gradient_proxy = boundary;
     rows(k).crack_relaxation_proxy = crack;
+    rows(k).mechanical_proxy_present = any(abs([coverage, boundary, crack]) ...
+        > 1e-12);
     rows(k).dominant_mechanical_context = dominant_context( ...
         coverage, boundary, crack);
     rows(k).mechanical_trend_hypothesis = trend_hypothesis(device);
@@ -556,9 +558,9 @@ end
 function row = empty_summary_row()
 row = struct('device', "", 'device_role', "", ...
     'coverage_transfer_proxy', NaN, 'boundary_gradient_proxy', NaN, ...
-    'crack_relaxation_proxy', NaN, 'dominant_mechanical_context', "", ...
-    'mechanical_trend_hypothesis', "", 'transport_label_status', "", ...
-    'raman_quantitative_status', "");
+    'crack_relaxation_proxy', NaN, 'mechanical_proxy_present', false, ...
+    'dominant_mechanical_context', "", 'mechanical_trend_hypothesis', "", ...
+    'transport_label_status', "", 'raman_quantitative_status', "");
 end
 
 function row = row_for_device(T, device)
@@ -708,9 +710,20 @@ end
 end
 
 function context = dominant_context(coverage, boundary, crack)
-[~, idx] = max([coverage, boundary, crack]);
+components = [coverage, boundary, crack];
 labels = ["coverage_transfer", "boundary_gradient", "crack_relaxation"];
-context = labels(idx);
+tol = 1e-12;
+maxAmp = max(components);
+if maxAmp <= tol
+    context = "none_control";
+    return;
+end
+winners = find(abs(components - maxAmp) <= tol);
+if numel(winners) > 1
+    context = "mixed_tied";
+else
+    context = labels(winners);
+end
 end
 
 function text = trend_hypothesis(device)
