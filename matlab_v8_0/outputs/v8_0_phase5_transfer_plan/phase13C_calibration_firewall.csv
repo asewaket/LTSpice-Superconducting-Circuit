@@ -1,0 +1,8 @@
+item,status,allowed,note
+constitutive_form_retuned,false,0,Phase 13C consumes the Phase 13A form unchanged.
+device_specific_mechanism_parameters_added,false,0,Only shared constitutive/nuisance parameters may be optimized.
+phase6_labels_used_as_targets,false,0,Frozen interpretation labels are comparison-only.
+raman_predictions_used_as_transport_targets,false,0,Raman remains qualitative independent context.
+probe_independent_refit_allowed,false,0,Both probes share the same network state.
+automatic_probe_fallback_allowed,false,0,AS003 and all devices retain Phase 11 probe mapping.
+prediction_failures_discarded,false,0,Prediction failure must be reported rather than hidden.

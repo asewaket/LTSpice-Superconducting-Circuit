@@ -1,0 +1,8 @@
+metric,weight,normalization,used_for_primary_score,predeclared_before_prediction,note
+full_curve_normalized_residual,0.3,temperature_grid_normalized_curve_distance,1,1,Full curve residual contributes but cannot dominate the score.
+T90,0.12,temperature_uncertainty_scaled,1,1,Transition upper-tail location metric.
+T50,0.12,temperature_uncertainty_scaled,1,1,Transition midpoint metric.
+T10,0.12,temperature_uncertainty_scaled,1,1,Transition lower-tail location metric.
+width_T90_T10,0.12,width_uncertainty_scaled,1,1,Broadening metric.
+low_temperature_residual_fraction,0.12,normalized_resistance_uncertainty_scaled,1,1,Residual floor metric.
+probe_asymmetry,0.1,paired_probe_uncertainty_scaled,1,1,Only evaluated where both probes exist; no independent probe refit.

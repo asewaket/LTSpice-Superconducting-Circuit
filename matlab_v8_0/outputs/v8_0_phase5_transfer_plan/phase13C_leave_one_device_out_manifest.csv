@@ -1,0 +1,7 @@
+heldout_device,training_devices,primary_channel,secondary_status,shared_parameters_only,constitutive_form_retuned,phase6_labels_used_as_targets,execution_status,description
+AS001,AS002|AS003|AS004|AS005|AS006,R1,available_held_out,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment
+AS002,AS001|AS003|AS004|AS005|AS006,R1,not_applicable,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment
+AS003,AS001|AS002|AS004|AS005|AS006,R2,not_applicable,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment
+AS004,AS001|AS002|AS003|AS005|AS006,R1,available_held_out,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment
+AS005,AS001|AS002|AS003|AS004|AS006,R1,not_applicable,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment
+AS006,AS001|AS002|AS003|AS004|AS005,R1,available_held_out,1,0,0,not_run_pending_full_RT_solver,fit_other_five_predict_heldout_without_adjustment

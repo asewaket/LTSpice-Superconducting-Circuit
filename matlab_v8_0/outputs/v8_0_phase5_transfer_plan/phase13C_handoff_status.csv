@@ -1,0 +1,9 @@
+item,status,note
+phase13C_shared_RT_calibration,pass,"R(T) interface, objective, and prediction campaign are locked."
+phase13C_closure,pass_RT_data_objective_lock,"This is a campaign setup closure, not a full prediction adequacy claim."
+constitutive_form_retuned,false,"Phase 13A equations remain frozen."
+device_specific_mechanism_parameters,false,"No device-specific mechanism knobs are allowed."
+heldout_predictions_completed,false,"Full RT prediction is the next execution step."
+prediction_execution_status,not_run_pending_full_RT_solver,"Prediction tables are schemas/ledgers until solver execution runs."
+source_commit_sha,0a2e5919d2b703dadfda0ad52dae324354efc036,"Source commit used to generate Phase 13C setup artifacts."
+next_phase,phase13C_full_RT_prediction_execution,"Execute shared calibration and held-out R(T) predictions next."

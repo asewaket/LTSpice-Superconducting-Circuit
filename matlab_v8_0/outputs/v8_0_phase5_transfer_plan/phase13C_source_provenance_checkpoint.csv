@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13C_shared_RT_calibration,Phase 13C shared R(T) calibration campaign setup.
+source_commit_sha,0a2e5919d2b703dadfda0ad52dae324354efc036,Git commit captured before this runner writes outputs.
+source_tree_sha,2fe7b7a1d81828dce4e683098c771103ae419674,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when the checkout is clean before this run writes outputs.
+provenance_scope,freeze_RT_data_objective_and_prediction_campaign_before_calibration,No full R(T) prediction is claimed until the solver/curve execution step runs.
+source_provenance_policy,Commit Phase 13C source first; rerun from clean source; commit generated artifacts separately.,Phase 13C artifacts are downstream of frozen Phase 13A/13B outputs.

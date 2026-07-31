@@ -1,0 +1,15 @@
+gate,outcome,note
+Phase 13A mapping unchanged,pass,Frozen constitutive mapping is consumed unchanged.
+Phase 13B behavior preserved,pass,Frozen limiting-case verification is consumed unchanged.
+Experimental data interface frozen,pass,Device/probe/channel/interface policies are written before fitting.
+AS003 primary channel locked to R2,pass,AS003 remains bottom_3_9/R2 with no R1 fallback.
+Objective and weights predeclared,pass,Composite RT objective is fixed before prediction.
+Shared parameters only,pass,Only shared constitutive/nuisance candidates may be optimized.
+Leave-one-device-out folds predeclared,pass,Six leave-one-device-out folds are declared.
+Paired probes specified jointly,pass,Available probe pairs must be predicted from one network state.
+Seed ensemble predeclared,pass,Seed ensemble is declared before fitting.
+Phase 6 labels not used as targets,pass,Interpretive status labels are comparison-only.
+Raman not used as transport target,pass,Raman is not a transport residual or target.
+Prediction failures retained,pass,Failed predictions remain in output ledgers.
+Full RT prediction execution pending,pass,This setup phase does not yet claim completed RT prediction.
+Clean provenance,pass,True only when the runner starts from a clean checkout.
