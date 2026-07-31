@@ -101,5 +101,8 @@ clear v800.plot_phase12C_raman_forward_summary
 clear run_v800_phase13A_constitutive_mapping_freeze
 clear v800.run_phase13A_constitutive_mapping_freeze
 clear v800.plot_phase13A_constitutive_mapping_summary
+clear run_v800_phase13B_limiting_case_verification
+clear v800.run_phase13B_limiting_case_verification
+clear v800.plot_phase13B_limiting_case_summary
 
 end
