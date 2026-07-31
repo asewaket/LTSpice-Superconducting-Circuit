@@ -1,0 +1,10 @@
+check,status,value,note
+all_declared_LODO_folds_completed,pass,true,All six leave-one-device-out folds completed.
+heldout_leakage_detected,pass,false,Pass means leakage was not detected.
+shared_parameters_only,pass,true,All folds used shared parameters.
+device_specific_retuning,pass,false,Pass means no constitutive retuning occurred.
+phase6_labels_used_as_targets,pass,false,Pass means frozen Phase 6 labels were not targets.
+raman_used_as_transport_target,pass,false,Pass means Raman was not used as a transport target.
+failed_predictions_zero,pass,0,No solver/prediction failures were recorded.
+phase13C2_execution_gates_pass,pass,true,Frozen execution gate table passed.
+execution_validity,pass,true,Execution integrity is separate from predictive adequacy.

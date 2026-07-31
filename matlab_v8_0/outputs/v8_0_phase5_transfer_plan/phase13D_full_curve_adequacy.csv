@@ -1,0 +1,7 @@
+device,probe_role,residual_value,training_objective,residual_to_training_ratio,qualitative_shape_status,adequacy_status,note
+AS001,primary,0.782367361492379,0.573519116046576,1.36415219580727,weak_transfer,poor_quantitative_transfer,"Residual is too large for a shared quantitative R(T) prediction claim."
+AS002,primary,0.820528725950377,0.535695603706884,1.53170703711682,weak_transfer,poor_quantitative_transfer,"Residual is too large for a shared quantitative R(T) prediction claim."
+AS003,primary,0.813226071782956,0.535722568539697,1.51799853047015,weak_transfer,poor_quantitative_transfer,"Residual is too large for a shared quantitative R(T) prediction claim."
+AS004,primary,0.625500186164036,0.628534107034954,0.995173021102657,partial_directional,directional_only,"Residual suggests partial transfer, not quantitative prediction."
+AS005,primary,0.325502027370319,0.526965060094416,0.617691858568382,best_available_partial,partial_predictive_signal,"Residual is the lowest tier observed in this execution, but adequacy still depends on transition metrics."
+AS006,primary,0.710154318275353,0.613644521636837,1.15727313328095,weak_transfer,poor_quantitative_transfer,"Residual is too large for a shared quantitative R(T) prediction claim."

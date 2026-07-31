@@ -1,0 +1,10 @@
+component,outcome,note
+Phase 13C.2 execution validity separated,pass,"Execution integrity is not conflated with predictive adequacy."
+Read-only assessment policy preserved,pass,"No optimizer rerun, retuning, or relabeling is allowed."
+Full-curve residuals assessed,pass,"Held-out full-curve residuals were classified by device."
+Transition crossing classes recorded,pass,"T90/T50/T10 NaN values are explicit status outcomes."
+Paired-probe transfer assessed,pass,"AS001/AS004/AS006 paired probes were evaluated."
+Geometry-family transfer assessed,pass,"Declared geometry-family holdouts were evaluated."
+Uncertainty coverage assessed,pass,"Prediction intervals were compared with observations."
+Shared quantitative RT predictor,fail,"This gate may fail while the assessment phase itself passes."
+Phase 13D decision frozen,pass,"The final adequacy decision was written."

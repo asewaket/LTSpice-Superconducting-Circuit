@@ -1,0 +1,5 @@
+family_holdout,heldout_devices,mean_full_curve_residual,execution_status,family_transfer_status,note
+cracked_full_coverage_AS005,AS005,0.325502027370319,completed,family_transfer_partial,Residual is within the predeclared partial family-transfer band.
+strong_half_coverage_AS006,AS006,0.724182273243716,completed,family_transfer_weak,Residual is too large for quantitative geometry-family transfer.
+half_coverage_sequence_AS002_AS004_AS006,AS002|AS004|AS006,0.691149089425831,completed,family_transfer_weak,Residual is too large for quantitative geometry-family transfer.
+control_limit_AS002_AS003,AS002|AS003,0.816877398866667,completed,family_transfer_weak,Residual is too large for quantitative geometry-family transfer.

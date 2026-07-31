@@ -1,0 +1,16 @@
+metric,T_comparison_status,count,fraction
+T90,both_cross,1,0.111111111111111
+T90,observed_cross_predicted_no_cross,4,0.444444444444444
+T90,observed_no_cross_predicted_cross,0,0
+T90,neither_crosses,4,0.444444444444444
+T90,crossing_ambiguous,0,0
+T50,both_cross,1,0.111111111111111
+T50,observed_cross_predicted_no_cross,4,0.444444444444444
+T50,observed_no_cross_predicted_cross,0,0
+T50,neither_crosses,4,0.444444444444444
+T50,crossing_ambiguous,0,0
+T10,both_cross,0,0
+T10,observed_cross_predicted_no_cross,3,0.333333333333333
+T10,observed_no_cross_predicted_cross,0,0
+T10,neither_crosses,6,0.666666666666667
+T10,crossing_ambiguous,0,0

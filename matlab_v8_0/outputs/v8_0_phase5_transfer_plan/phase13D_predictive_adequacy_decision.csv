@@ -1,0 +1,11 @@
+field,value,note
+phase13D_assessment_mode,read_only_no_refit,Consumes frozen Phase 13C.2 outputs only.
+execution_validity,true,Execution integrity is evaluated separately from adequacy.
+primary_residual_pass_fraction,0.16667,Fraction of primary held-out devices below the adequacy residual threshold.
+minimum_required_residual_pass_fraction,0.67,Predeclared target for a shared quantitative R(T) claim.
+missing_numerical_transition_fraction,0.92593,NaN transition errors are treated as explicit censored/categorical outcomes.
+paired_probe_limitation_present,true,Paired-probe onset comparison is unavailable for at least one paired device.
+geometry_family_weak_transfer_present,true,At least one geometry-family holdout has weak transfer.
+uncertainty_coverage_limitation_present,true,At least one device/probe has low predictive interval coverage.
+shared_quantitative_RT_predictive_model,false,False means no universal quantitative shared R(T) claim is frozen.
+phase13D_decision,pass_partial_predictive_scope,Final Phase 13D adequacy decision.

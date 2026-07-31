@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13D_predictive_adequacy,"Phase 13D predictive adequacy decision."
+source_commit_sha,74ecc3b0e62743bccad182fac3cfa7bed0d56c66,"Git commit captured before this runner writes outputs."
+source_tree_sha,457d2b7d0ebefd2e5831b5b9ae742630daa07882,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,false,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,false,"True only when checkout is clean before this run writes outputs."
+provenance_scope,read_only_assessment_of_frozen_phase13C2_outputs,"No optimizer rerun, constitutive retuning, or device relabeling."
+source_provenance_policy,Commit Phase 13D source first; rerun from clean source; commit adequacy artifacts separately.,"Adequacy artifacts are separate from source/configuration commits."

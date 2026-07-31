@@ -1,0 +1,6 @@
+field,value,note
+phase13D_closure,pass_read_only_adequacy_assessment,"Phase closure concerns assessment completeness, not model adequacy."
+predictive_adequacy_decision,pass_partial_predictive_scope,"Frozen decision from the adequacy table."
+shared_quantitative_RT_predictor,false,"False preserves the distinction between execution integrity and prediction adequacy."
+source_commit_sha,74ecc3b0e62743bccad182fac3cfa7bed0d56c66,"Source commit captured before outputs were written."
+next_phase,phase13E_or_model_revision_decision,"Recommended handoff after this adequacy decision."

@@ -1,0 +1,10 @@
+device,probe_role,n_points,coverage_fraction,mean_interval_width,coverage_status,note
+AS001,primary,38,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS001,secondary,38,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS002,primary,49,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS003,primary,47,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS004,primary,42,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS004,secondary,42,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS005,primary,120,0.025,0.0268589967287707,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS006,primary,49,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
+AS006,secondary,49,0,0,overconfident_or_mismatched,Prediction interval coverage is low relative to the target.
