@@ -147,6 +147,7 @@ end
 function spec = build_raman_forward_model_specification()
 term_id = [
     "mode_specific_linear_response"
+    "phenomenological_mode_archetypes"
     "shared_coefficients"
     "nonstrain_offset"
     "device_level_only_prediction"
@@ -155,6 +156,7 @@ term_id = [
     ];
 equation_or_policy = [
     "Deltaomega_m=sum_j K_mj*M_j + deltaomega_m_nonstrain"
+    "A1g_like/E2g_like/low_frequency_like denote response families, not experimental mode assignments"
     "K_mj shared across devices and not fit device-by-device"
     "deltaomega_m_nonstrain retained as uncertainty, not absorbed into strain"
     "Predictions are relative signs/orderings for device-level context"
@@ -166,11 +168,13 @@ status = [
     "frozen"
     "frozen"
     "frozen"
+    "frozen"
     "not_run"
     "blocked"
     ];
 note = [
     "Forward relation is mode-specific but component-linear."
+    "Experimental MoTe2 peak labels are not asserted or solved in Phase 12C."
     "Prevents AS002/AS005/AS006 coefficient overfitting."
     "Doping, thickness, heating, and interface effects remain explicit caveats."
     "Phase 12A registration limits prevent spatial residuals."
@@ -196,6 +200,9 @@ for m = 1:numel(modes)
         [nominal, width, signPolicy] = response_prior(modes(m), ...
             components(c));
         rows(idx).mode_id = modes(m);
+        rows(idx).mode_response_family = mode_response_family(modes(m));
+        rows(idx).experimental_mode_assignment = "not_asserted";
+        rows(idx).mode_names_are_phenomenological_archetypes = true;
         rows(idx).component_id = components(c);
         rows(idx).coefficient_prior_center = nominal;
         rows(idx).coefficient_prior_half_width = width;
@@ -266,6 +273,8 @@ for d = 1:numel(devices)
             sum(coeffMax .* components, 'omitnan')]);
         rows(idx).device = devices(d);
         rows(idx).mode_id = modes(m);
+        rows(idx).mode_response_family = mode_response_family(modes(m));
+        rows(idx).experimental_mode_assignment = "not_asserted";
         rows(idx).prediction_scope = cfg.phase12C.predictionScope;
         rows(idx).predicted_response_nominal = nominal;
         rows(idx).predicted_response_min = lower;
@@ -329,6 +338,8 @@ end
 equationsFrozen = all(string(spec.status) ~= "draft");
 priorsDocumented = ~isempty(priors) && ...
     all(string(priors.fit_status) == "not_fit_to_device_data");
+modeNamesBounded = all(priors.mode_names_are_phenomenological_archetypes) && ...
+    all(string(priors.experimental_mode_assignment) == "not_asserted");
 sharedCoefficients = all(priors.shared_across_devices);
 nonstrainRetained = ~isempty(nonstrainLedger) && ...
     all(~nonstrainLedger.absorbed_into_strain);
@@ -350,6 +361,7 @@ gate = [
     "Phase 12B mechanical proxy consumed"
     "Mode-response equations frozen"
     "Coefficient priors documented"
+    "Mode names declared as phenomenological archetypes"
     "Mode coefficients shared across devices"
     "Nonstrain contributions retained"
     "Predictions limited to qualitative device-level scope"
@@ -363,6 +375,7 @@ condition = [
     phase12BPass
     equationsFrozen
     priorsDocumented
+    modeNamesBounded
     sharedCoefficients
     nonstrainRetained
     qualitativeOnly
@@ -376,6 +389,7 @@ note = [
     "Phase 12C starts from frozen Phase 12B component proxies."
     "Forward equations are emitted before any registered comparison."
     "K_mj priors are bounded and not device-fit."
+    "Phase 12C does not assert crystallographic peak assignments."
     "Prevents AS002/AS005/AS006 overfitting."
     "Doping, thickness, heating, and interface offsets remain explicit."
     "Outputs are relative signs/orderings, not spatial residuals."
@@ -425,6 +439,8 @@ end
 
 function row = empty_prior_row()
 row = struct('mode_id', "", 'component_id', "", ...
+    'mode_response_family', "", 'experimental_mode_assignment', "", ...
+    'mode_names_are_phenomenological_archetypes', false, ...
     'coefficient_prior_center', NaN, ...
     'coefficient_prior_half_width', NaN, ...
     'coefficient_prior_min', NaN, ...
@@ -441,6 +457,7 @@ end
 
 function row = empty_prediction_row()
 row = struct('device', "", 'mode_id', "", 'prediction_scope', "", ...
+    'mode_response_family', "", 'experimental_mode_assignment', "", ...
     'predicted_response_nominal', NaN, 'predicted_response_min', NaN, ...
     'predicted_response_max', NaN, 'predicted_sign', "", ...
     'dominant_mechanical_context', "", ...
@@ -501,6 +518,19 @@ else
         otherwise
             nominal = 0.35; width = 0.25; signPolicy = "positive_prior";
     end
+end
+end
+
+function family = mode_response_family(mode)
+switch string(mode)
+    case "A1g_like"
+        family = "out_of_plane_like";
+    case "E2g_like"
+        family = "in_plane_like";
+    case "low_frequency_like"
+        family = "low_frequency_like";
+    otherwise
+        family = "unassigned_response_family";
 end
 end
 
