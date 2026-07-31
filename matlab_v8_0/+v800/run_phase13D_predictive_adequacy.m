@@ -234,6 +234,10 @@ end
 function n = failed_prediction_count(failedLog)
 if isempty(failedLog)
     n = 0;
+elseif any(strcmp(failedLog.Properties.VariableNames, 'failure_reason')) && ...
+        all(string(failedLog.failure_reason) == ...
+        "no_failed_predictions_recorded")
+    n = 0;
 elseif any(strcmp(failedLog.Properties.VariableNames, 'n_failed'))
     vals = double(failedLog.n_failed);
     n = sum(vals(~isnan(vals)));
