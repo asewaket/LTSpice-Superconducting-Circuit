@@ -929,6 +929,50 @@ cfg.phase13E.temperatureRegionEdges = [0.00 0.25 0.60 0.85 1.00];
 cfg.phase13E.maxSelectedUpgradeCount = 2;
 cfg.phase13E.nextPhase = "bounded_phase14_nonlinear_transport";
 
+cfg.phase13F.upgradeModelSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase13F_upgrade_model_specification.csv');
+cfg.phase13F.parameterRoleLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13F_parameter_role_ledger.csv');
+cfg.phase13F.baselineWindowManifestFile = fullfile(cfg.outputDir, ...
+    'phase13F_baseline_window_manifest.csv');
+cfg.phase13F.residualShuntSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase13F_residual_shunt_specification.csv');
+cfg.phase13F.interfaceTransferInputLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13F_interface_transfer_input_ledger.csv');
+cfg.phase13F.prohibitedFlexibilityLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13F_prohibited_flexibility_ledger.csv');
+cfg.phase13F.comparisonThresholdsFile = fullfile(cfg.outputDir, ...
+    'phase13F_comparison_thresholds.csv');
+cfg.phase13F.variantManifestFile = fullfile(cfg.outputDir, ...
+    'phase13F_variant_manifest.csv');
+cfg.phase13F.specificationGateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13F_specification_gate_summary.csv');
+cfg.phase13F.specificationHandoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase13F_specification_handoff_status.csv');
+cfg.phase13F.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase13F_source_provenance_checkpoint.csv');
+cfg.phase13F.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase13F_upgrade_specification_freeze');
+cfg.phase13F.description = ...
+    'Constrained R(T) model revision specification freeze';
+cfg.phase13F.allowOptimizerRerunInSpec = false;
+cfg.phase13F.allowDeviceSpecificTcGain = false;
+cfg.phase13F.allowDeviceSpecificBoundaryCoefficient = false;
+cfg.phase13F.allowDeviceSpecificCrackCoefficient = false;
+cfg.phase13F.allowRamanFitting = false;
+cfg.phase13F.allowUnrestrictedSpatialDisorder = false;
+cfg.phase13F.allowPhaseDynamics = false;
+cfg.phase13F.allowElectrothermalFeedback = false;
+cfg.phase13F.variantIds = ["F0"; "FB"; "FI"; "FBI"];
+cfg.phase13F.normalStateWindowScaled = [0.85 1.00];
+cfg.phase13F.materialMedianResidualImprovement = 0.10;
+cfg.phase13F.minimumImprovedPrimaryDevices = 4;
+cfg.phase13F.maximumSevereRegression = 0.05;
+cfg.phase13F.minimumCrossingRecoveryGain = 1;
+cfg.phase13F.minimumCoverageGain = 0.10;
+cfg.phase13F.maxPinnedParameterFoldFraction = 0.50;
+cfg.phase13F.nextPhase = "phase13F2_limiting_cases_and_ablations";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
