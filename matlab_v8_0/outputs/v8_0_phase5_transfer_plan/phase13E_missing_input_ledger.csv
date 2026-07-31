@@ -1,0 +1,11 @@
+candidate_missing_input,why_it_may_matter,input_status,identifiability_risk
+absolute_mechanical_amplitude,"Phase 12B fields are normalized proxies, not calibrated strain.",unmeasured,high
+interface_load_transfer,"Nominal coverage may not equal stress transmitted into MoTe2.",potentially_recoverable,medium
+device_thickness,"Thickness can affect strain transfer, normal resistance, and superconducting response.",measured_but_not_ingested,medium
+interface_transparency,"Weak-link transparency may vary independently of geometric boundaries.",unmeasured,high
+spatially_correlated_disorder,"Current disorder law may not reproduce transition breadth.",phenomenological_missing_physics,medium
+residual_shunt_distribution,"A single shared shunt law may miss persistent low-temperature resistance.",phenomenological_missing_physics,medium
+normal_state_heterogeneity,"Normal-state variation can distort normalized curve shape and asymmetry.",potentially_recoverable,medium
+contact_probe_geometry_uncertainty,"Four-probe response depends on current-injection and voltage-probe geometry.",potentially_recoverable,medium
+crack_morphology,"AS005 crack proxy may be too simplified despite partial success.",potentially_recoverable,medium
+nonmonotonic_constitutive_response,"Mechanical amplitude may not map monotonically to superconducting enhancement.",not_identifiable_from_current_data,high

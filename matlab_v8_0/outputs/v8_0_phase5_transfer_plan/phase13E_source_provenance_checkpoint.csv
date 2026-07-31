@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13E_missing_input_model_adequacy_audit,"Phase 13E missing-input/model-adequacy audit."
+source_commit_sha,d7b92459a5f2c29f44a3d38980bb85018c139d0d,"Git commit captured before this runner writes outputs."
+source_tree_sha,615ac9dc42f540088fd46274e69456d704dec939,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,read_only_failure_audit_after_phase13D,"No optimizer rerun, retuning, relabeling, or nonlinear physics."
+source_provenance_policy,Commit Phase 13E source first; rerun from clean source; commit diagnostic artifacts separately.,"Phase 13E artifacts are separate from source/configuration commits."

@@ -1,0 +1,6 @@
+field,value,note
+phase13D_decision_consumed,pass_partial_predictive_scope,Phase 13E consumes the frozen Phase 13D adequacy decision.
+shared_quantitative_RT_predictor,false,False means no universal quantitative six-device R(T) predictor.
+permitted_claim,limited_device_level_predictive_information_AS005_partial_AS004_directional,Claim remains contextual and bounded by Phase 13D limitations.
+phase13E_decision,baseline_and_shunt_upgrade_plus_interface_transfer_audit_justified,No upgrade is implemented here; this is a scope selection.
+selected_upgrade_count,2,Phase 13E selects at most two bounded future upgrades.

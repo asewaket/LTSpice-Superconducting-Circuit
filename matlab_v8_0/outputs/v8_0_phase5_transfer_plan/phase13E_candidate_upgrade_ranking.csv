@@ -1,0 +1,6 @@
+ranking,upgrade,score,physical_justification,multi_device_relevance,independent_input_availability,identifiability,overfit_risk_inverse,future_compatibility,decision_role,note
+1,baseline_and_residual_shunt_upgrade,27,5,5,4,4,4,5,selected_for_bounded_future_test,Prioritize because AS001/control and low-temperature coverage expose baseline/shunt limitations.
+2,interface_transfer_or_transparency_input,21,4,4,3,3,3,4,selected_for_bounded_future_test,Useful if fabrication or geometry metadata can constrain load transfer or transparency independently.
+3,spatial_disorder_correlation_upgrade,19,4,3,2,3,3,4,candidate,Potentially relevant to transition breadth but should remain shared and low-dimensional.
+4,mechanical_amplitude_calibration,14,3,3,1,2,2,3,candidate,Defer unless independent amplitude constraints become available.
+5,phase_or_electrothermal_dynamics,9,2,2,1,1,1,2,candidate,Defer until R(T) baseline scope is frozen; do not mask scalar-network limitations with new physics.

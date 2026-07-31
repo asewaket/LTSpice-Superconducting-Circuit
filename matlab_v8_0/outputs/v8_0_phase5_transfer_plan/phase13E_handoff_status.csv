@@ -1,0 +1,6 @@
+field,value,note
+phase13E_closure,pass_missing_input_model_adequacy_audit,"Closure means diagnostic audit completeness, not a new predictor pass."
+phase13E_decision,baseline_and_shunt_upgrade_plus_interface_transfer_audit_justified,"Frozen Phase 13E scope decision."
+selected_upgrades,baseline_and_residual_shunt_upgrade|interface_transfer_or_transparency_input,"At most two bounded future upgrade candidates."
+source_commit_sha,d7b92459a5f2c29f44a3d38980bb85018c139d0d,"Source commit captured before output generation."
+next_phase,bounded_phase14_nonlinear_transport,"Recommended next phase remains bounded."

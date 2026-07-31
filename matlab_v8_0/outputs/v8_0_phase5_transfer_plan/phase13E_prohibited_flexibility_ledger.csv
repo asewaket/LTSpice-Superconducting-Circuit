@@ -1,0 +1,7 @@
+prohibited_flexibility,status,reason
+device_specific_mechanism_parameters,blocked_in_phase13E,"Would erase leave-one-device-out predictive meaning."
+transport_relabeling,blocked_in_phase13E,"Would reopen frozen Phase 6/13 labels."
+optimizer_rerun_inside_phase13E,blocked_in_phase13E,"Phase 13E is an audit, not a calibration phase."
+new_phase_dynamics,blocked_in_phase13E,"Belongs only after bounded R(T) adequacy decisions."
+unconstrained_Raman_to_transport_target,blocked_in_phase13E,"Raman registration remains insufficient for direct target fitting."
+per_device_threshold_tuning,blocked_in_phase13E,"Would turn the adequacy decision into post-hoc classification."

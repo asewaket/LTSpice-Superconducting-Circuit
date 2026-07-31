@@ -1,0 +1,12 @@
+device,probe_role,metric,threshold_Rtilde,observed_crosses,predicted_crosses,T_metric_predicted_K,T_metric_observed_K,numerical_error_K,T_comparison_status,note
+AS004,primary,T90,0.9,1,0,NaN,0.28964257619556,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS004,primary,T50,0.5,1,0,NaN,0.228018287884999,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS004,primary,T10,0.1,1,0,NaN,0.17524274694046,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS004,secondary,T90,0.9,1,0,NaN,0.409491992248819,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS004,secondary,T50,0.5,1,0,NaN,0.244885944807576,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS004,secondary,T10,0.1,1,0,NaN,0.169747702429291,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS005,primary,T10,0.1,1,0,NaN,0.771634931186219,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS006,primary,T90,0.9,1,0,NaN,0.325055716144822,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS006,primary,T50,0.5,1,0,NaN,0.131003401702494,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS006,secondary,T90,0.9,1,0,NaN,0.251268566586107,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.
+AS006,secondary,T50,0.5,1,0,NaN,0.137769554984506,NaN,observed_cross_predicted_no_cross,Categorical prediction failure for this transition threshold.

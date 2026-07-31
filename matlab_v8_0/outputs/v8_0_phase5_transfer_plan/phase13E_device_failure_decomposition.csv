@@ -1,0 +1,7 @@
+device,full_curve_residual,phase13D_adequacy_status,dominant_region,dominant_region_mse,failure_type,most_plausible_implication,note
+AS001,0.78237,poor_quantitative_transfer,onset,0.791544399303885,onset_temperature_mismatch,Tc_mapping_or_mechanical_amplitude,"Failure pattern is too large for shared quantitative R(T) prediction."
+AS002,0.82053,poor_quantitative_transfer,normal,0.827483498087028,baseline_or_normal_state_mismatch,normal_state_heterogeneity_or_baseline_law,"Failure pattern is too large for shared quantitative R(T) prediction."
+AS003,0.81323,poor_quantitative_transfer,lowT,0.823251148754841,low_temperature_plateau_mismatch,residual_shunt_or_incomplete_connectivity,"Failure pattern is too large for shared quantitative R(T) prediction."
+AS004,0.6255,directional_only,normal,0.85793104524373,baseline_or_normal_state_mismatch,normal_state_heterogeneity_or_baseline_law,"Directional behavior exists without quantitative adequacy."
+AS005,0.3255,partial_predictive_signal,onset,0.607025330515036,onset_temperature_mismatch,Tc_mapping_or_mechanical_amplitude,"Partial signal exists, but dominant residual still limits quantitative transfer."
+AS006,0.71015,poor_quantitative_transfer,normal,0.882063487374638,baseline_or_normal_state_mismatch,normal_state_heterogeneity_or_baseline_law,"Failure pattern is too large for shared quantitative R(T) prediction."

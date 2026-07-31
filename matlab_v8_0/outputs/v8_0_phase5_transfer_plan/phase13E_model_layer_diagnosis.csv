@@ -1,0 +1,4 @@
+layer,support_level,evidence,phase13E_interpretation
+mechanical_proxy_insufficiency,moderate,Several devices with different geometry classes remain weakly predicted.,Normalized mechanical proxies are informative but not quantitatively sufficient.
+constitutive_law_insufficiency,high,Most transition thresholds are censored or fail to cross as observed.,The mapping from proxy fields to Tc/connectivity is too simple for full curves.
+electrical_network_insufficiency,high,Low-temperature/baseline failures and paired-probe limitations remain after shared mapping.,Scalar normalized R(T) network lacks enough baseline/shunt/probe-transfer structure.

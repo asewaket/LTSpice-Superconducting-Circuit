@@ -1,0 +1,3 @@
+upgrade,scope_status,allowed_test,prohibited_use
+baseline_and_residual_shunt_upgrade,selected_bounded_scope,shared baseline/residual-conduction parameterization,device-specific shunt fitting
+interface_transfer_or_transparency_input,selected_bounded_scope,shared interface/load-transfer or transparency input,free per-device transparency labels

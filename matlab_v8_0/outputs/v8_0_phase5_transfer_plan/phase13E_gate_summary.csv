@@ -1,0 +1,12 @@
+component,outcome,note
+Phase 13D outputs consumed unchanged,pass,"Frozen Phase 13D adequacy decision is the starting point."
+No optimizer rerun,pass,"Phase 13E remains diagnostic/read-only."
+Residuals decomposed by temperature region,pass,"Primary held-out residuals are split into lowT/transition/onset/normal regions."
+Threshold non-crossings treated explicitly,pass,"Missing T90/T50/T10 numerical errors remain explicit categorical outcomes."
+Probe failures assessed separately,pass,"Paired-probe limitations are not folded into scalar residuals."
+Missing inputs distinguished from missing physics,pass,"The missing-input ledger separates data gaps from missing physics."
+Model layer diagnosis written,pass,"Mechanical, constitutive, and electrical-network layers are assessed separately."
+Candidate upgrades ranked,pass,"Upgrades are ranked by physical justification, data availability, identifiability, and overfit risk."
+Selected upgrades bounded to one or two,pass,"No broad model expansion is allowed."
+Prohibited flexibility ledger written,pass,"Known overfitting routes are blocked."
+Claim update frozen,pass,"The claim remains partial and bounded."
