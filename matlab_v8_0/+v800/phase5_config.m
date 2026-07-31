@@ -885,6 +885,50 @@ cfg.phase13D.predictiveAdequacyPassResidualThreshold = 0.50;
 cfg.phase13D.predictiveAdequacyPassFractionTarget = 0.67;
 cfg.phase13D.nextPhase = "phase13E_or_model_revision_decision";
 
+cfg.phase13E.deviceFailureDecompositionFile = fullfile(cfg.outputDir, ...
+    'phase13E_device_failure_decomposition.csv');
+cfg.phase13E.temperatureRegionResidualsFile = fullfile(cfg.outputDir, ...
+    'phase13E_temperature_region_residuals.csv');
+cfg.phase13E.thresholdCrossingFailureLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13E_threshold_crossing_failure_ledger.csv');
+cfg.phase13E.probeAsymmetryFailureLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13E_probe_asymmetry_failure_ledger.csv');
+cfg.phase13E.missingInputLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13E_missing_input_ledger.csv');
+cfg.phase13E.modelLayerDiagnosisFile = fullfile(cfg.outputDir, ...
+    'phase13E_model_layer_diagnosis.csv');
+cfg.phase13E.candidateUpgradeRankingFile = fullfile(cfg.outputDir, ...
+    'phase13E_candidate_upgrade_ranking.csv');
+cfg.phase13E.selectedUpgradeScopeFile = fullfile(cfg.outputDir, ...
+    'phase13E_selected_upgrade_scope.csv');
+cfg.phase13E.prohibitedFlexibilityLedgerFile = fullfile(cfg.outputDir, ...
+    'phase13E_prohibited_flexibility_ledger.csv');
+cfg.phase13E.claimUpdateFile = fullfile(cfg.outputDir, ...
+    'phase13E_claim_update.csv');
+cfg.phase13E.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13E_gate_summary.csv');
+cfg.phase13E.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase13E_handoff_status.csv');
+cfg.phase13E.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase13E_source_provenance_checkpoint.csv');
+cfg.phase13E.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase13E_missing_input_model_adequacy_audit');
+cfg.phase13E.description = ...
+    'Read-only missing-input and model-adequacy audit after Phase 13D';
+cfg.phase13E.allowOptimizerRerun = false;
+cfg.phase13E.allowConstitutiveRetuning = false;
+cfg.phase13E.allowDeviceSpecificFitting = false;
+cfg.phase13E.allowTransportRelabeling = false;
+cfg.phase13E.temperatureRegionNames = [
+    "lowT"
+    "transition"
+    "onset"
+    "normal"
+    ];
+cfg.phase13E.temperatureRegionEdges = [0.00 0.25 0.60 0.85 1.00];
+cfg.phase13E.maxSelectedUpgradeCount = 2;
+cfg.phase13E.nextPhase = "bounded_phase14_nonlinear_transport";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';

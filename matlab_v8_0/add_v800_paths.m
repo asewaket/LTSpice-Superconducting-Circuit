@@ -113,5 +113,8 @@ clear v800.plot_phase13C_full_RT_execution_summary
 clear run_v800_phase13D_predictive_adequacy
 clear v800.run_phase13D_predictive_adequacy
 clear v800.plot_phase13D_predictive_adequacy_summary
+clear run_v800_phase13E_missing_input_model_adequacy_audit
+clear v800.run_phase13E_missing_input_model_adequacy_audit
+clear v800.plot_phase13E_missing_input_audit_summary
 
 end
