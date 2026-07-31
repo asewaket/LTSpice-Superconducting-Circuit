@@ -468,15 +468,27 @@ T = table(field, value, note);
 end
 
 function out = lookup_value(T, key)
-if any(strcmp(T.Properties.VariableNames, 'field'))
-    mask = string(T.field) == string(key);
-elseif any(strcmp(T.Properties.VariableNames, 'item'))
-    mask = string(T.item) == string(key);
+names = string(T.Properties.VariableNames);
+normalized = lower(regexprep(names, '[^A-Za-z0-9]', ''));
+fieldIdx = find(normalized == "field" | normalized == "item", 1);
+valueIdx = find(normalized == "value", 1);
+if isempty(fieldIdx) && width(T) >= 2
+    fieldIdx = 1;
+end
+if isempty(valueIdx) && width(T) >= 2
+    valueIdx = 2;
+end
+
+if ~isempty(fieldIdx) && ~isempty(valueIdx)
+    keyColumn = string(T{:, fieldIdx});
+    valueColumn = string(T{:, valueIdx});
+    mask = keyColumn == string(key);
 else
     mask = false(height(T), 1);
+    valueColumn = strings(height(T), 1);
 end
 if any(mask)
-    out = string(T.value(find(mask, 1)));
+    out = valueColumn(find(mask, 1));
 else
     out = "";
 end
