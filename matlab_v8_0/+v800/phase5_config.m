@@ -612,6 +612,44 @@ cfg.phase12A.allowTransportRelabeling = false;
 cfg.phase12A.allowTransportRetuning = false;
 cfg.phase12A.allow2DFieldFromLineScan = false;
 
+cfg.phase12B.mechanicalModelSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase12B_mechanical_model_specification.csv');
+cfg.phase12B.parameterPriorLedgerFile = fullfile(cfg.outputDir, ...
+    'phase12B_parameter_prior_ledger.csv');
+cfg.phase12B.deviceGeometryInputsFile = fullfile(cfg.outputDir, ...
+    'phase12B_device_geometry_inputs.csv');
+cfg.phase12B.mechanicalFieldManifestFile = fullfile(cfg.outputDir, ...
+    'phase12B_mechanical_field_manifest.csv');
+cfg.phase12B.boundaryTransferResultsFile = fullfile(cfg.outputDir, ...
+    'phase12B_boundary_transfer_results.csv');
+cfg.phase12B.crackRelaxationResultsFile = fullfile(cfg.outputDir, ...
+    'phase12B_crack_relaxation_results.csv');
+cfg.phase12B.uncertaintySensitivityFile = fullfile(cfg.outputDir, ...
+    'phase12B_uncertainty_sensitivity.csv');
+cfg.phase12B.deviceMechanicalSummaryFile = fullfile(cfg.outputDir, ...
+    'phase12B_device_mechanical_summary.csv');
+cfg.phase12B.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase12B_gate_summary.csv');
+cfg.phase12B.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase12B_handoff_status.csv');
+cfg.phase12B.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase12B_source_provenance_checkpoint.csv');
+cfg.phase12B.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase12B_reduced_mechanical_forward_summary');
+cfg.phase12B.description = ...
+    'Reduced geometry-driven mechanical forward model';
+cfg.phase12B.allowRamanDerivedField = false;
+cfg.phase12B.allowTransportRelabeling = false;
+cfg.phase12B.allowTransportRetuning = false;
+cfg.phase12B.retainComponentsBeforeScalarReduction = true;
+cfg.phase12B.transferLength_um = [2.0; 5.0; 10.0];
+cfg.phase12B.boundaryLength_um = [1.0; 3.0; 6.0];
+cfg.phase12B.crackLength_um = [0.5; 1.5; 4.0];
+cfg.phase12B.throughThicknessLength_nm = [10; 30; 80];
+cfg.phase12B.nominalCoverageAmplitude = [0.0; 0.35; 0.25; 0.55; 0.70; 0.90];
+cfg.phase12B.nominalBoundaryAmplitude = [0.0; 0.25; 0.05; 0.45; 0.35; 0.80];
+cfg.phase12B.nominalCrackAmplitude = [0.0; 0.0; 0.0; 0.0; 0.85; 0.0];
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
