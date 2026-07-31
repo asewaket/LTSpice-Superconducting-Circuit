@@ -1003,23 +1003,22 @@ artifact = [
     "phase13C_execution_handoff_status"
     "phase13C_execution_source_provenance"
     ];
-path = [
-    cfg.phase13C2.fullRTExecutionManifestFile
-    cfg.phase13C2.foldTrainingManifestFile
-    cfg.phase13C2.foldParameterResultsFile
-    cfg.phase13C2.sharedParameterSummaryFile
-    cfg.phase13C2.deviceRTPredictionsFile
-    cfg.phase13C2.transitionMetricPredictionsFile
-    cfg.phase13C2.fullCurveResidualsFile
-    cfg.phase13C2.probePairPredictionsFile
-    cfg.phase13C2.geometryFamilyHoldoutResultsFile
-    cfg.phase13C2.uncertaintyEnsembleSummaryFile
-    cfg.phase13C2.failedPredictionLogFile
-    cfg.phase13C2.solverDiagnosticsFile
-    cfg.phase13C2.executionGateSummaryFile
-    cfg.phase13C2.executionHandoffStatusFile
-    cfg.phase13C2.executionSourceProvenanceFile
-    ];
+path = strings(numel(artifact), 1);
+path(1) = string(cfg.phase13C2.fullRTExecutionManifestFile);
+path(2) = string(cfg.phase13C2.foldTrainingManifestFile);
+path(3) = string(cfg.phase13C2.foldParameterResultsFile);
+path(4) = string(cfg.phase13C2.sharedParameterSummaryFile);
+path(5) = string(cfg.phase13C2.deviceRTPredictionsFile);
+path(6) = string(cfg.phase13C2.transitionMetricPredictionsFile);
+path(7) = string(cfg.phase13C2.fullCurveResidualsFile);
+path(8) = string(cfg.phase13C2.probePairPredictionsFile);
+path(9) = string(cfg.phase13C2.geometryFamilyHoldoutResultsFile);
+path(10) = string(cfg.phase13C2.uncertaintyEnsembleSummaryFile);
+path(11) = string(cfg.phase13C2.failedPredictionLogFile);
+path(12) = string(cfg.phase13C2.solverDiagnosticsFile);
+path(13) = string(cfg.phase13C2.executionGateSummaryFile);
+path(14) = string(cfg.phase13C2.executionHandoffStatusFile);
+path(15) = string(cfg.phase13C2.executionSourceProvenanceFile);
 status = repmat("will_be_written_by_execution_runner", numel(artifact), 1);
 manifest = table(artifact, path, status);
 end
