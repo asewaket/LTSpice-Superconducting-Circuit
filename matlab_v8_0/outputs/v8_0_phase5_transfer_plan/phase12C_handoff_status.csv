@@ -1,0 +1,8 @@
+item,status,note
+phase12C_raman_forward_feasibility,pass,Mode-specific Raman forward feasibility artifacts generated.
+phase12C_closure,pass_mode_specific_forward_feasibility,Phase 12C closes only after clean provenance and all gates pass.
+quantitative_registered_comparison,not_run,No defensible device-to-model transform exists.
+raman_predictions,qualitative_device_level_only,Predictions are relative mode-response context only.
+transport_coupling_performed,false,Raman predictions are not passed to transport.
+source_commit_sha,7f379bb27dc6b72fceaca1cbdba240ee7e4507f9,Source commit used to generate Phase 12C artifacts.
+next_phase,phase13_predictive_RT_forward_model,Future phase may predeclare mechanical-to-transport constitutive reduction.

@@ -1,0 +1,13 @@
+mode_id,component_id,mode_response_family,experimental_mode_assignment,mode_names_are_phenomenological_archetypes,coefficient_prior_center,coefficient_prior_half_width,coefficient_prior_min,coefficient_prior_max,expected_sign_policy,source_class,fit_status,shared_across_devices
+A1g_like,coverage_transfer,out_of_plane_like,not_asserted,1,0.35,0.15,0.2,0.5,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+A1g_like,boundary_gradient,out_of_plane_like,not_asserted,1,0.25,0.2,0.05,0.45,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+A1g_like,crack_relaxation,out_of_plane_like,not_asserted,1,0.45,0.25,0.2,0.7,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+A1g_like,through_thickness_attenuation,out_of_plane_like,not_asserted,1,0.15,0.2,-0.05,0.35,weak_or_ambiguous,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+E2g_like,coverage_transfer,in_plane_like,not_asserted,1,-0.3,0.15,-0.45,-0.15,negative_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+E2g_like,boundary_gradient,in_plane_like,not_asserted,1,-0.5,0.2,-0.7,-0.3,negative_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+E2g_like,crack_relaxation,in_plane_like,not_asserted,1,-0.2,0.25,-0.45,0.05,negative_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+E2g_like,through_thickness_attenuation,in_plane_like,not_asserted,1,0.05,0.2,-0.15,0.25,weak_or_ambiguous,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+low_frequency_like,coverage_transfer,low_frequency_like,not_asserted,1,0.1,0.2,-0.1,0.3,weak_or_ambiguous,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+low_frequency_like,boundary_gradient,low_frequency_like,not_asserted,1,0.2,0.25,-0.05,0.45,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+low_frequency_like,crack_relaxation,low_frequency_like,not_asserted,1,0.65,0.3,0.35,0.95,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1
+low_frequency_like,through_thickness_attenuation,low_frequency_like,not_asserted,1,0.35,0.25,0.1,0.6,positive_prior,literature_bounded_or_explicit_uncertain_prior,not_fit_to_device_data,1

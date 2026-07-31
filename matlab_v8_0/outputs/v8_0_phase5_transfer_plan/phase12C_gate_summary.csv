@@ -1,0 +1,13 @@
+gate,outcome,note
+Phase 12B mechanical proxy consumed,pass,"Phase 12C starts from frozen Phase 12B component proxies."
+Mode-response equations frozen,pass,"Forward equations are emitted before any registered comparison."
+Coefficient priors documented,pass,"K_mj priors are bounded and not device-fit."
+Mode names declared as phenomenological archetypes,pass,"Phase 12C does not assert crystallographic peak assignments."
+Mode coefficients shared across devices,pass,"Prevents AS002/AS005/AS006 overfitting."
+Nonstrain contributions retained,pass,"Doping, thickness, heating, and interface offsets remain explicit."
+Predictions limited to qualitative device-level scope,pass,"Outputs are relative signs/orderings, not spatial residuals."
+Registered spatial comparison explicitly not run,pass,"Phase 12A found no defensible transform."
+No device-specific Raman coefficient fitting,pass,"No mode coefficient is fitted separately by device."
+No Raman-to-transport coupling,pass,"Predicted Raman response does not alter R(T) or weak-link labels."
+No absolute strain inference,pass,"Peak shifts are not converted to absolute strain."
+Clean provenance,pass,"True only when the runner starts from a clean checkout."

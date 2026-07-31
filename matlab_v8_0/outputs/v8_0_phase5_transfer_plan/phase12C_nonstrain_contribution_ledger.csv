@@ -1,0 +1,13 @@
+mode_id,nonstrain_term,separable_in_phase12C,uncertainty_role,absorbed_into_strain,note
+A1g_like,doping_or_charge_transfer,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+A1g_like,thickness_or_layer_count,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+A1g_like,laser_heating,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+A1g_like,interfacial_environment,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+E2g_like,doping_or_charge_transfer,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+E2g_like,thickness_or_layer_count,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+E2g_like,laser_heating,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+E2g_like,interfacial_environment,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+low_frequency_like,doping_or_charge_transfer,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+low_frequency_like,thickness_or_layer_count,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+low_frequency_like,laser_heating,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.
+low_frequency_like,interfacial_environment,0,retained_as_unresolved_offset,0,Phase 12C cannot separate this term without registered controls.

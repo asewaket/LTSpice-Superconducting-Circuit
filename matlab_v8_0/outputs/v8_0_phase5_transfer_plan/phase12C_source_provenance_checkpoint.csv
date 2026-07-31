@@ -1,0 +1,9 @@
+item,value,note
+phase,phase12C_raman_forward_feasibility,"Phase 12C mode-specific Raman forward-model feasibility."
+source_commit_sha,7f379bb27dc6b72fceaca1cbdba240ee7e4507f9,"Git commit captured before this runner writes outputs."
+source_tree_sha,001b92c01344c336fa0e4541bb0997245fbe9a6c,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when the checkout is clean before this run writes outputs."
+provenance_scope,mode_specific_qualitative_device_level_raman_predictions,"No registered spatial comparison, no device-specific coefficient fitting, no transport coupling."
+source_provenance_policy,Commit Phase 12C source first; rerun from clean source; commit generated artifacts separately.,"Phase 12C artifacts are downstream of the clean Phase 12B mechanical proxy."

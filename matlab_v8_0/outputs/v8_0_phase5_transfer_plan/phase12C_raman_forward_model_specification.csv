@@ -1,0 +1,8 @@
+term_id,equation_or_policy,status,note
+mode_specific_linear_response,"Deltaomega_m=sum_j K_mj*M_j + deltaomega_m_nonstrain",frozen,"Forward relation is mode-specific but component-linear."
+phenomenological_mode_archetypes,"A1g_like/E2g_like/low_frequency_like denote response families, not experimental mode assignments",frozen,"Experimental MoTe2 peak labels are not asserted or solved in Phase 12C."
+shared_coefficients,"K_mj shared across devices and not fit device-by-device",frozen,"Prevents AS002/AS005/AS006 coefficient overfitting."
+nonstrain_offset,"deltaomega_m_nonstrain retained as uncertainty, not absorbed into strain",frozen,"Doping, thickness, heating, and interface effects remain explicit caveats."
+device_level_only_prediction,"Predictions are relative signs/orderings for device-level context",frozen,"Phase 12A registration limits prevent spatial residuals."
+registered_spatial_comparison_blocked,"No modeled coordinate is assigned to unregistered Raman points",not_run,"Missing transform is a data limitation, not a model failure."
+transport_coupling_blocked,"Predicted Raman response is not passed into R(T) or weak-link fits",blocked,"Frozen v8 and Phase 6 transport conclusions remain protected."
