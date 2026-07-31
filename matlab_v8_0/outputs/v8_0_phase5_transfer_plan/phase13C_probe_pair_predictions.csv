@@ -1,4 +1,4 @@
-device,primary_probe,secondary_probe,primary_experimental_channel,secondary_status,predicted_quantity,paired_prediction_status,probe_independent_refit_allowed
-AS001,top_4_10,bottom_3_9,R1,available_held_out,A_probe_T=R1_T_minus_R2_T,not_run_pending_full_RT_solver,0
-AS004,top_4_10,bottom_3_9,R1,available_held_out,A_probe_T=R1_T_minus_R2_T,not_run_pending_full_RT_solver,0
-AS006,top_4_10,bottom_3_9,R1,available_held_out,A_probe_T=R1_T_minus_R2_T,not_run_pending_full_RT_solver,0
+device,primary_probe,secondary_probe,predicted_quantity,asymmetry_score,onset_difference_residual_K,probe_independent_refit_allowed,prediction_status
+AS001,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,6.58718062484786e-05,NaN,0,completed
+AS004,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.0082313863156865,NaN,0,completed
+AS006,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.00096355442861584,NaN,0,completed

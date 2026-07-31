@@ -1,0 +1,9 @@
+item,value,note
+reduced_forward_model,mechanical_proxy_to_Tc_connectivity_to_normalized_RT,"Reduced execution path, not a proxy-score replay."
+candidate_count,13,"Shared candidates only; no device-specific mechanism terms."
+LODO_fold_count,6,"One fold per frozen device."
+observed_curve_count,9,"Primary and available secondary R(T) curves loaded."
+prediction_row_count,474,"Long-form temperature rows written for held-out predictions."
+failed_prediction_count,0,"Prediction failures are retained in the failed log."
+missing_probe_policy,probe_asymmetry_not_applicable_and_available_weights_renormalized,"Probe-asymmetry weight is renormalized away when secondary data are absent."
+predictive_adequacy_decision,deferred_to_phase13D,"Phase 13D decides adequacy after artifacts are inspected."

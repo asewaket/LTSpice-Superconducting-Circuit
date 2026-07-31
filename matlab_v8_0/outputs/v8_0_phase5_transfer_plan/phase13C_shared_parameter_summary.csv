@@ -1,0 +1,14 @@
+parameter,median_value,fold_min,fold_max
+beta0,0,0,0
+beta_cov,1,1,1
+beta_z,0.5,0.5,0.5
+beta_boundary_Tc_optional,0,0,0
+beta_crack_Tc_optional,0,0,0
+Tc_base_K,5.25,2.5,5.25
+DeltaTc_max_K,4,2,4
+gamma0,0,0,0
+gamma_boundary,1,1,1
+gamma_crack,1,1,1
+gamma_coverage,0.25,0.25,0.25
+sigma_Tc_disorder_K,0.15,0.15,0.15
+G_shunt_global_fraction,0.02,0.02,0.11

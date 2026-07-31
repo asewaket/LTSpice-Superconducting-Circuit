@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13C_full_RT_prediction_execution,Phase 13C.2 full R(T) execution.
+source_commit_sha,0cceeeb700fbc7090679ec278a34a2fbd4abdcbd,Git commit captured before this runner writes outputs.
+source_tree_sha,21f4368aa73757e9b501348bf2aba3a9f9cbc6c1,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when checkout is clean before this run writes outputs.
+provenance_scope,execute_frozen_shared_RT_calibration_without_relabeling,Consumes frozen Phase 13C.1 data/objective/fold/firewall lock.
+source_provenance_policy,Commit Phase 13C.2 source first; rerun from clean source; commit execution artifacts separately.,Execution artifacts are separate from source/configuration commits.

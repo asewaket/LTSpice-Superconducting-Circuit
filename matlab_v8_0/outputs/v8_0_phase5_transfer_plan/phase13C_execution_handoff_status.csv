@@ -1,0 +1,8 @@
+item,status,note
+phase13C_prediction_campaign,complete,"Complete means the execution experiment ran honestly, not that it fit well."
+all_declared_folds_completed,true,"Every frozen LODO fold must complete."
+constitutive_form_retuned,false,"Phase 13A constitutive form remains frozen."
+device_specific_mechanism_parameters,false,"No device-specific mechanism corrections were fit."
+predictive_adequacy_decision,deferred_to_phase13D,"Phase 13D decides pass/partial/fail predictive adequacy."
+source_commit_sha,0cceeeb700fbc7090679ec278a34a2fbd4abdcbd,"Source commit used to generate execution artifacts."
+next_phase,phase13D_predictive_adequacy,"Assess predictive adequacy and claim scope next."

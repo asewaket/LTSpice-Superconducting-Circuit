@@ -1,0 +1,7 @@
+heldout_device,training_devices,n_training_devices,n_candidates_evaluated,selected_candidate_id,training_objective,heldout_data_excluded_from_calibration,shared_parameters_only,constitutive_form_retuned,phase6_labels_used_as_targets,raman_used_as_transport_target,fold_status,note
+AS001,AS002|AS003|AS004|AS005|AS006,5,13,high_Tc,0.573519116046576,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
+AS002,AS001|AS003|AS004|AS005|AS006,5,13,high_Tc,0.535695603706884,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
+AS003,AS001|AS002|AS004|AS005|AS006,5,13,high_Tc,0.535722568539697,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
+AS004,AS001|AS002|AS003|AS005|AS006,5,13,high_Tc,0.628534107034954,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
+AS005,AS001|AS002|AS003|AS004|AS006,5,13,high_shunt,0.526965060094416,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
+AS006,AS001|AS002|AS003|AS004|AS005,5,13,high_Tc,0.613644521636837,1,1,0,0,0,completed,fit_other_five_predict_heldout_without_adjustment
