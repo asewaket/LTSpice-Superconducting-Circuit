@@ -751,6 +751,60 @@ cfg.phase13B.allowTransportRelabeling = false;
 cfg.phase13B.minimumMonotonicityPassFraction = 1.0;
 cfg.phase13B.nextPhase = "phase13C_shared_RT_calibration";
 
+cfg.phase13C.RTDataLockManifestFile = fullfile(cfg.outputDir, ...
+    'phase13C_RT_data_lock_manifest.csv');
+cfg.phase13C.calibrationObjectiveSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase13C_calibration_objective_specification.csv');
+cfg.phase13C.parameterFitManifestFile = fullfile(cfg.outputDir, ...
+    'phase13C_parameter_fit_manifest.csv');
+cfg.phase13C.leaveOneDeviceOutManifestFile = fullfile(cfg.outputDir, ...
+    'phase13C_leave_one_device_out_manifest.csv');
+cfg.phase13C.foldParameterResultsFile = fullfile(cfg.outputDir, ...
+    'phase13C_fold_parameter_results.csv');
+cfg.phase13C.deviceRTPredictionsFile = fullfile(cfg.outputDir, ...
+    'phase13C_device_RT_predictions.csv');
+cfg.phase13C.transitionMetricPredictionsFile = fullfile(cfg.outputDir, ...
+    'phase13C_transition_metric_predictions.csv');
+cfg.phase13C.fullCurveResidualsFile = fullfile(cfg.outputDir, ...
+    'phase13C_full_curve_residuals.csv');
+cfg.phase13C.probePairPredictionsFile = fullfile(cfg.outputDir, ...
+    'phase13C_probe_pair_predictions.csv');
+cfg.phase13C.geometryFamilyHoldoutResultsFile = fullfile(cfg.outputDir, ...
+    'phase13C_geometry_family_holdout_results.csv');
+cfg.phase13C.uncertaintyEnsembleSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13C_uncertainty_ensemble_summary.csv');
+cfg.phase13C.calibrationFirewallFile = fullfile(cfg.outputDir, ...
+    'phase13C_calibration_firewall.csv');
+cfg.phase13C.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13C_gate_summary.csv');
+cfg.phase13C.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase13C_handoff_status.csv');
+cfg.phase13C.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase13C_source_provenance_checkpoint.csv');
+cfg.phase13C.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase13C_shared_RT_calibration_summary');
+cfg.phase13C.description = ...
+    'Shared RT calibration and held-out prediction campaign';
+cfg.phase13C.allowDeviceSpecificMechanismParameters = false;
+cfg.phase13C.allowConstitutiveFormRetuning = false;
+cfg.phase13C.allowPhase6LabelsAsTargets = false;
+cfg.phase13C.allowRamanTransportTargets = false;
+cfg.phase13C.allowProbeIndependentRefit = false;
+cfg.phase13C.allowAutomaticProbeFallback = false;
+cfg.phase13C.predictionExecutionStatus = "not_run_pending_full_RT_solver";
+cfg.phase13C.objectiveMetric = [
+    "full_curve_normalized_residual"
+    "T90"
+    "T50"
+    "T10"
+    "width_T90_T10"
+    "low_temperature_residual_fraction"
+    "probe_asymmetry"
+    ];
+cfg.phase13C.objectiveWeight = [0.30; 0.12; 0.12; 0.12; 0.12; 0.12; 0.10];
+cfg.phase13C.seedEnsemble = (2001:2030).';
+cfg.phase13C.nextPhase = "phase13C_full_RT_prediction_execution";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';

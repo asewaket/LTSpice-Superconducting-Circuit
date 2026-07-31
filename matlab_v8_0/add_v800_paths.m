@@ -104,5 +104,8 @@ clear v800.plot_phase13A_constitutive_mapping_summary
 clear run_v800_phase13B_limiting_case_verification
 clear v800.run_phase13B_limiting_case_verification
 clear v800.plot_phase13B_limiting_case_summary
+clear run_v800_phase13C_shared_RT_calibration
+clear v800.run_phase13C_shared_RT_calibration
+clear v800.plot_phase13C_shared_RT_calibration_summary
 
 end
