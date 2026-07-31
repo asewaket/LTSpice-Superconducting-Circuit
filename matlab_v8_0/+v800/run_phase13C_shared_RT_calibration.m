@@ -533,19 +533,21 @@ end
 function handoff = build_handoff_status(cfg, gates, sourceProvenance)
 allPass = all(string(gates.outcome) == "pass");
 item = [
-    "phase13C_shared_RT_calibration"
-    "phase13C_closure"
+    "phase13C_setup_closure"
+    "full_RT_prediction_execution"
+    "predictive_adequacy_assessed"
     "constitutive_form_retuned"
     "device_specific_mechanism_parameters"
     "heldout_predictions_completed"
     "prediction_execution_status"
     "source_commit_sha"
-    "next_phase"
+    "next_stage"
     ];
 status = [
-    ternary_status(allPass, "pass", "needs_clean_rerun_or_gate_review")
     ternary_status(allPass, "pass_RT_data_objective_lock", ...
         "pending_gate_review")
+    "not_run"
+    "false"
     string(cfg.phase13C.allowConstitutiveFormRetuning)
     string(cfg.phase13C.allowDeviceSpecificMechanismParameters)
     "false"
@@ -554,8 +556,9 @@ status = [
     cfg.phase13C.nextPhase
     ];
 note = [
-    "R(T) interface, objective, and prediction campaign are locked."
     "This is a campaign setup closure, not a full prediction adequacy claim."
+    "Full shared R(T) calibration and held-out execution are Phase 13C.2."
+    "Predictive adequacy is deferred until execution outputs exist."
     "Phase 13A equations remain frozen."
     "No device-specific mechanism knobs are allowed."
     "Full RT prediction is the next execution step."

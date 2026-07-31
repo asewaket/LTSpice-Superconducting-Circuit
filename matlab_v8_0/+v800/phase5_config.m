@@ -784,7 +784,7 @@ cfg.phase13C.sourceProvenanceFile = fullfile(cfg.outputDir, ...
 cfg.phase13C.figureBaseFile = fullfile(cfg.outputDir, ...
     'phase13C_shared_RT_calibration_summary');
 cfg.phase13C.description = ...
-    'Shared RT calibration and held-out prediction campaign';
+    'Phase 13C.1 RT data, objective, fold, and firewall lock';
 cfg.phase13C.allowDeviceSpecificMechanismParameters = false;
 cfg.phase13C.allowConstitutiveFormRetuning = false;
 cfg.phase13C.allowPhase6LabelsAsTargets = false;
@@ -804,6 +804,47 @@ cfg.phase13C.objectiveMetric = [
 cfg.phase13C.objectiveWeight = [0.30; 0.12; 0.12; 0.12; 0.12; 0.12; 0.10];
 cfg.phase13C.seedEnsemble = (2001:2030).';
 cfg.phase13C.nextPhase = "phase13C_full_RT_prediction_execution";
+
+cfg.phase13C2.fullRTExecutionManifestFile = fullfile(cfg.outputDir, ...
+    'phase13C_full_RT_execution_manifest.csv');
+cfg.phase13C2.foldTrainingManifestFile = fullfile(cfg.outputDir, ...
+    'phase13C_fold_training_manifest.csv');
+cfg.phase13C2.foldParameterResultsFile = cfg.phase13C.foldParameterResultsFile;
+cfg.phase13C2.sharedParameterSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13C_shared_parameter_summary.csv');
+cfg.phase13C2.deviceRTPredictionsFile = cfg.phase13C.deviceRTPredictionsFile;
+cfg.phase13C2.transitionMetricPredictionsFile = ...
+    cfg.phase13C.transitionMetricPredictionsFile;
+cfg.phase13C2.fullCurveResidualsFile = cfg.phase13C.fullCurveResidualsFile;
+cfg.phase13C2.probePairPredictionsFile = cfg.phase13C.probePairPredictionsFile;
+cfg.phase13C2.geometryFamilyHoldoutResultsFile = ...
+    cfg.phase13C.geometryFamilyHoldoutResultsFile;
+cfg.phase13C2.uncertaintyEnsembleSummaryFile = ...
+    cfg.phase13C.uncertaintyEnsembleSummaryFile;
+cfg.phase13C2.failedPredictionLogFile = fullfile(cfg.outputDir, ...
+    'phase13C_failed_prediction_log.csv');
+cfg.phase13C2.solverDiagnosticsFile = fullfile(cfg.outputDir, ...
+    'phase13C_solver_diagnostics.csv');
+cfg.phase13C2.executionGateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13C_execution_gate_summary.csv');
+cfg.phase13C2.executionHandoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase13C_execution_handoff_status.csv');
+cfg.phase13C2.executionSourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase13C_execution_source_provenance.csv');
+cfg.phase13C2.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase13C_full_RT_execution_summary');
+cfg.phase13C2.description = ...
+    'Full shared R(T) calibration and held-out prediction execution';
+cfg.phase13C2.candidateCount = 13;
+cfg.phase13C2.maxTemperaturePoints = 120;
+cfg.phase13C2.temperatureGrid_K = linspace(0.05, 2.20, 120).';
+cfg.phase13C2.primaryPredictionType = "heldout_LODO_prediction";
+cfg.phase13C2.trainingPredictionType = "calibration_prediction";
+cfg.phase13C2.geometryPredictionType = "geometry_family_holdout_prediction";
+cfg.phase13C2.missingProbePolicy = ...
+    "probe_asymmetry_not_applicable_and_available_weights_renormalized";
+cfg.phase13C2.predictiveAdequacyDecision = "deferred_to_phase13D";
+cfg.phase13C2.nextPhase = "phase13D_predictive_adequacy";
 
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';

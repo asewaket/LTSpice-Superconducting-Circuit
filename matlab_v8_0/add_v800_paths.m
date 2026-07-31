@@ -107,5 +107,8 @@ clear v800.plot_phase13B_limiting_case_summary
 clear run_v800_phase13C_shared_RT_calibration
 clear v800.run_phase13C_shared_RT_calibration
 clear v800.plot_phase13C_shared_RT_calibration_summary
+clear run_v800_phase13C_full_RT_prediction_execution
+clear v800.run_phase13C_full_RT_prediction_execution
+clear v800.plot_phase13C_full_RT_execution_summary
 
 end
