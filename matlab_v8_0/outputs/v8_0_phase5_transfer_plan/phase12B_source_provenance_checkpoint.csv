@@ -1,0 +1,9 @@
+item,value,note
+phase,phase12B_reduced_mechanical_forward_model,"Phase 12B reduced mechanical proxy equations and device inputs."
+source_commit_sha,9c613581aa4ba95d692f3c5f1abaa7996d2d1d0f,"Git commit captured before this runner writes outputs."
+source_tree_sha,37e37a09b0e9b710fefcd824c7d92f1cc73e16ed,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when the checkout is clean before this run writes outputs."
+provenance_scope,geometry_driven_no_quantitative_raman_transport_coupling,"No transport relabeling, no Raman-derived 2D field, no local Tc or weak-link fitting."
+source_provenance_policy,Commit Phase 12B source first; rerun from clean source; commit generated artifacts separately.,"Phase 12B artifacts are downstream of the clean Phase 12A registration audit."

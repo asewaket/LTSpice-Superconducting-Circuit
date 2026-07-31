@@ -1,0 +1,11 @@
+gate,outcome,note
+Phase 12A registration rules preserved,pass,"Phase 12B consumes Phase 12A and preserves registration limits."
+No Raman-derived 2D field constructed,pass,"No unregistered Raman scan is expanded into a 2D mechanical field."
+Mechanical equations frozen before result inspection,pass,"Equation forms are emitted as frozen model specification rows."
+Parameters bounded by geometry or literature,pass,"Prior bounds are explicit and not fit to transport or Raman."
+Shared equations across devices,pass,"The same reduced components are declared for all devices."
+Device-specific inputs limited to measured geometry/metadata,pass,"Only geometry, coverage, crack context, and metadata vary by device."
+Crack and boundary uncertainty evaluated,pass,"Boundary and crack length uncertainty sweeps are emitted."
+Components retained separately before scalar reduction,pass,"Coverage, boundary, crack, and thickness components remain separate."
+Phase 6 transport statuses protected,pass,"Frozen transport statuses are context only, not fitting targets."
+Clean provenance,pass,"True only when the runner starts from a clean checkout."

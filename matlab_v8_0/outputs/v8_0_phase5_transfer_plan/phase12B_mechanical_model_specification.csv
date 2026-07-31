@@ -1,0 +1,5 @@
+component_id,equation_form,shared_across_devices,raman_input_allowed,transport_input_allowed,scalar_reduction_policy,status,note
+coverage_transfer,"M_cov(d)=A_cov*(1-exp(-d/lambda_tr))",1,0,0,retain_component_before_optional_later_scalar,frozen_before_result_inspection,Represents gradual stressor load transfer from geometry only.
+boundary_gradient,"M_boundary(d_b)=A_b*exp(-(d_b/lambda_b)^2/2)",1,0,0,retain_component_before_optional_later_scalar,frozen_before_result_inspection,Represents stressor termination or boundary-localized gradient.
+crack_relaxation,"M_crack(d_c)=A_c*exp(-(d_c/lambda_c)^2/2)*s_c",1,0,0,retain_component_before_optional_later_scalar,frozen_before_result_inspection,Represents AS005 crack-localized relaxation or concentration proxy.
+through_thickness_attenuation,"M(x,y,z)=M(x,y,0)*exp(-z/lambda_z)",1,0,0,retain_component_before_optional_later_scalar,frozen_before_result_inspection,Represents vertical attenuation as a phenomenological prior only.

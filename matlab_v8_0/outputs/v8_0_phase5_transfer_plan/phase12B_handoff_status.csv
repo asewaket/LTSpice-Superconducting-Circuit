@@ -1,0 +1,8 @@
+item,status,note
+phase12B_reduced_mechanical_forward_model,pass,"Reduced geometry-driven mechanical proxy artifacts generated."
+phase12B_closure,pass_reduced_mechanical_proxy,"Phase 12B closes only after clean provenance and all gates pass."
+mechanical_components_retained,pass,"Coverage, boundary, crack, and through-thickness terms remain separate."
+raman_quantitative_coupling,blocked,"Raman remains qualitative until registration metadata exist."
+transport_status_changes,false,"Frozen v8/Phase 6 conclusions are unchanged."
+source_commit_sha,9c613581aa4ba95d692f3c5f1abaa7996d2d1d0f,"Source commit used to generate Phase 12B artifacts."
+next_phase,phase12C_raman_forward_prediction_or_qualitative_comparison,"Compare mechanical trends to available observables without refitting transport labels."
