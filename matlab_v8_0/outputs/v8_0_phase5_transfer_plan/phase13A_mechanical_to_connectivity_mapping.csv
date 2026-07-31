@@ -1,0 +1,5 @@
+mechanical_component,connectivity_role,equation_term,local_Tc_role_separated,note
+boundary_gradient,primary_structured_link_effect,gamma_boundary*M_boundary_ij,1,Boundary gradients encode bottleneck or weak-link topology.
+crack_relaxation,primary_crack_link_effect,gamma_crack*M_crack_ij,1,Crack proxy encodes local current redistribution/connectivity change.
+coverage_transfer,broad_support_secondary_link_effect,gamma_coverage*M_cov_ij,1,Coverage may weakly support connectivity but is not a free link map.
+through_thickness_attenuation,not_direct_link_break,not_in_Wij_first_version,1,Through-thickness enters local superconducting scale first.

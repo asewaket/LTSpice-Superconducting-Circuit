@@ -1,0 +1,8 @@
+prohibited_item,reason,allowed_alternative
+device_specific_Tc_gain,Would collapse forward model into per-device fitting.,shared_beta_parameters_only
+device_specific_gamma_boundary,Would hard-code expected structured devices.,shared_gamma_boundary_only
+device_specific_gamma_crack,Would hard-code crack-supported AS005 response.,shared_gamma_crack_only
+phase6_status_training_label,Frozen interpretive status must not become a target label.,use_after_prediction_for_interpretation
+raman_prediction_transport_target,Raman is qualitative until registration exists.,qualitative_independent_compatibility_check
+post_residual_equation_edit,Would invalidate constitutive freeze.,record_failure_or_missing_input_audit
+independent_shunt_per_device_without_measured_basis,Would hide missing normal-state/interface physics.,shared_G_shunt_or_measured_RN_geometry_input

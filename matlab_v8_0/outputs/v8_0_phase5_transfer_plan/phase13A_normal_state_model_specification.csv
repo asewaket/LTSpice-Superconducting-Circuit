@@ -1,0 +1,6 @@
+item,policy,device_specific_allowed,fitting_role
+normal_state_scaling,"Use measured RN or geometry/probe-derived conductance before superconducting mapping",1,measured_input
+probe_geometry,"Probe configuration may alter measured four-terminal response as measured input",1,measured_input
+residual_conduction,"Use one shared bounded G_shunt_global rule",0,shared_nuisance
+device_specific_normalization,"Allowed only when derived from RN, geometry, or probe metadata",1,measured_input
+superconducting_mechanism_parameters,"No device-specific mechanism parameters allowed",0,prohibited

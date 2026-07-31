@@ -1,0 +1,7 @@
+mapping_id,equation_or_policy,status,transport_residuals_used,device_specific_mechanism_allowed,note
+local_superconducting_scale,Tc_i=Tc_base+DeltaTc_max*sigmoid(beta0+beta_cov*M_cov_i+beta_z*M_z_i+weak_optional_terms)+deltaTc_i,frozen_before_RT_prediction,0,0,"Coverage and thickness primarily control local superconducting support."
+link_connectivity,W_ij=sigmoid(gamma0+gamma_b*M_boundary_ij+gamma_c*M_crack_ij+gamma_cov*M_cov_ij),frozen_before_RT_prediction,0,0,"Boundary and crack primarily control structured connectivity."
+normal_state_background,R_n or G_n fixed from measured normal-state/geometry/probe inputs,frozen_before_RT_prediction,0,0,"Normal-state scaling remains separate from superconducting mechanism."
+residual_conduction,G_measured=G_network+G_shunt with shared bounded shunt rule,frozen_before_RT_prediction,0,0,"Residual background is a shared nuisance rule, not a device mechanism."
+shared_disorder,deltaTc_i drawn from one shared disorder law and common seed plan,frozen_before_RT_prediction,0,0,"Seed cherry-picking by device is prohibited."
+heldout_prediction,Leave-one-device-out prediction required before adequacy claim,frozen_before_RT_prediction,0,0,"Phase 13A freezes the plan only; Phase 13C performs prediction."

@@ -1,0 +1,9 @@
+item,status,note
+phase13A_constitutive_mapping_freeze,pass,Mechanical-to-transport constitutive mapping artifacts generated.
+phase13A_closure,pass_constitutive_mapping_freeze,Phase 13A closes only after clean provenance and all gates pass.
+raman_used_to_fit_transport,false,Raman remains an independent qualitative compatibility layer.
+device_specific_mechanism_parameters,false,No per-device superconducting mechanism knobs are allowed.
+phase6_labels_used_as_targets,false,Frozen v8/Phase 6 labels are interpretation only.
+full_transport_recomputation_required,true,Phase 13B/13C must run actual forward R(T) calculations.
+source_commit_sha,40bbf3a0ed601fb605aee44e16401244e8bd25ff,Source commit used to generate Phase 13A artifacts.
+next_phase,phase13B_limiting_case_verification,Run limiting cases and ablations before experimental calibration.

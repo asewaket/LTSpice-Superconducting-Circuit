@@ -1,0 +1,5 @@
+mechanical_component,Tc_role,equation_term,default_strength_policy,connectivity_role_separated,note
+coverage_transfer,primary_positive_or_negative_shared_effect,beta_cov*M_cov_i,active_shared,1,Broad coverage support is allowed to shift local transition scale.
+through_thickness_attenuation,primary_vertical_heterogeneity_effect,beta_z*M_z_i,active_shared,1,Vertical attenuation may broaden or weaken local superconducting scale.
+boundary_gradient,optional_weak_effect,beta_boundary_Tc_optional*M_boundary_i,weak_optional_predeclared,1,Boundary primarily belongs to connectivity; Tc term is weak if used.
+crack_relaxation,optional_weak_effect,beta_crack_Tc_optional*M_crack_i,weak_optional_predeclared,1,Crack primarily belongs to connectivity; Tc term is weak if used.

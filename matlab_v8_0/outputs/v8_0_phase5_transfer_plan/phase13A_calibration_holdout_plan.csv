@@ -1,0 +1,7 @@
+heldout_device,training_devices,calibration_mode,shared_parameters_only,phase6_labels_used_as_targets,raman_used_to_fit_transport,predicted_quantities,status
+AS001,AS002|AS003|AS004|AS005|AS006,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A
+AS002,AS001|AS003|AS004|AS005|AS006,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A
+AS003,AS001|AS002|AS004|AS005|AS006,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A
+AS004,AS001|AS002|AS003|AS005|AS006,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A
+AS005,AS001|AS002|AS003|AS004|AS006,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A
+AS006,AS001|AS002|AS003|AS004|AS005,leave_one_device_out_shared_parameters,1,0,0,Rtilde_T|T90|T50|T10|width_90_10|Rlow_over_RN|onset|probe_asymmetry,predeclared_not_run_in_13A

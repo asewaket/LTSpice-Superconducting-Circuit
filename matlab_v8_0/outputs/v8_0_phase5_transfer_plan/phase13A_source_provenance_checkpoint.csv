@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13A_constitutive_mapping_freeze,"Phase 13A constitutive transport mapping freeze."
+source_commit_sha,40bbf3a0ed601fb605aee44e16401244e8bd25ff,"Git commit captured before this runner writes outputs."
+source_tree_sha,835972e3c54a4b032d6fd670cefeb8d7c56c0063,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when the checkout is clean before this run writes outputs."
+provenance_scope,freeze_mechanical_to_transport_laws_before_RT_prediction,"No R(T) prediction, no calibration, no device relabeling in this phase."
+source_provenance_policy,Commit Phase 13A source first; rerun from clean source; commit generated artifacts separately.,"Phase 13A artifacts are downstream of frozen Phase 12B/12C outputs."

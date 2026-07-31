@@ -1,0 +1,14 @@
+parameter,lower_bound,nominal_value,upper_bound,units,fit_scope,source_class
+beta0,-4,0,4,dimensionless,shared_global_only,bounded_constitutive_prior
+beta_cov,-2,1,4,dimensionless,shared_global_only,mechanical_to_Tc_prior
+beta_z,-2,0.5,4,dimensionless,shared_global_only,through_thickness_Tc_prior
+beta_boundary_Tc_optional,-0.5,0,0.5,dimensionless,shared_global_only,weak_optional_Tc_prior
+beta_crack_Tc_optional,-0.5,0,0.5,dimensionless,shared_global_only,weak_optional_Tc_prior
+Tc_base_K,0.5,2.5,8,K,shared_global_only,transport_temperature_scale_prior
+DeltaTc_max_K,0,2,6,K,shared_global_only,transport_temperature_scale_prior
+gamma0,-4,0,4,dimensionless,shared_global_only,connectivity_prior
+gamma_boundary,-4,1,4,dimensionless,shared_global_only,boundary_connectivity_prior
+gamma_crack,-4,1,4,dimensionless,shared_global_only,crack_connectivity_prior
+gamma_coverage,-2,0.25,2,dimensionless,shared_global_only,coverage_connectivity_prior
+sigma_Tc_disorder_K,0,0.15,1,K,shared_global_only,shared_disorder_prior
+G_shunt_global_fraction,0,0.02,0.2,fraction_of_normal_conductance,shared_global_only,shared_residual_conduction_prior

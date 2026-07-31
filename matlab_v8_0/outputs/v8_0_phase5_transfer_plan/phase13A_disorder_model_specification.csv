@@ -1,0 +1,5 @@
+item,policy,status,device_specific_allowed
+Tc_disorder_distribution,deltaTc_i sampled from one shared zero-mean law with sigma_Tc_disorder,frozen_before_RT_prediction,0
+common_seed_policy,Use predeclared common seed ensemble for limiting tests and heldout predictions,frozen_before_RT_prediction,0
+seed_selection,No favorable seed may be selected separately per device,frozen_before_RT_prediction,0
+mesh_resolution_policy,Mesh changes evaluated in Phase 13B/13C without changing constitutive form,frozen_before_RT_prediction,0
