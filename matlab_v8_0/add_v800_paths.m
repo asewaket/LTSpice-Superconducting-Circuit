@@ -98,5 +98,8 @@ clear v800.plot_phase12B_reduced_mechanical_summary
 clear run_v800_phase12C_raman_forward_feasibility
 clear v800.run_phase12C_raman_forward_feasibility
 clear v800.plot_phase12C_raman_forward_summary
+clear run_v800_phase13A_constitutive_mapping_freeze
+clear v800.run_phase13A_constitutive_mapping_freeze
+clear v800.plot_phase13A_constitutive_mapping_summary
 
 end
