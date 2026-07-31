@@ -95,5 +95,8 @@ clear v800.plot_phase12A_raman_registration_feasibility
 clear run_v800_phase12B_reduced_mechanical_forward_model
 clear v800.run_phase12B_reduced_mechanical_forward_model
 clear v800.plot_phase12B_reduced_mechanical_summary
+clear run_v800_phase12C_raman_forward_feasibility
+clear v800.run_phase12C_raman_forward_feasibility
+clear v800.plot_phase12C_raman_forward_summary
 
 end
