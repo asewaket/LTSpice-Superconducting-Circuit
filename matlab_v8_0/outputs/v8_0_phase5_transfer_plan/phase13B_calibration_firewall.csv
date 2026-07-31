@@ -1,0 +1,7 @@
+item,status,allowed,note
+experimental_RT_residuals_used,false,0,Phase 13B uses synthetic/proxy behavior only.
+parameter_retuning_performed,false,0,Frozen Phase 13A priors are read without modification.
+transport_labels_changed,false,0,Frozen v8/Phase 6 device conclusions are protected.
+phase6_labels_used_as_targets,false,0,Interpretive labels cannot train the forward model.
+raman_predictions_used_as_transport_targets,false,0,Raman remains qualitative independent context.
+device_specific_mechanism_parameters_added,false,0,No AS005/AS006 escape hatch is permitted.

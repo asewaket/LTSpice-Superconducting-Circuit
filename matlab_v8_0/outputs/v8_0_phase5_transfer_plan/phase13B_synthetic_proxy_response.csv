@@ -1,0 +1,11 @@
+case_id,local_Tc_drive,Tc_support_K,delta_Tc_vs_zero_K,connectivity_drive,W_support,delta_W_vs_zero,response_class,expected_response,experimental_residuals_used
+all_components_zero,0,3.5,0,0,0.5,0,baseline_M0star_proxy,baseline_M0star_proxy,0
+coverage_only_moderate,0.5,3.74491866240371,0.244918662403709,0.125,0.531209373373756,0.0312093733737563,local_Tc_dominated_proxy,local_Tc_support_increase,0
+coverage_only_full,1,3.96211715726001,0.46211715726001,0.25,0.562176500885798,0.0621765008857981,local_Tc_dominated_proxy,strong_local_Tc_support_increase,0
+boundary_only_moderate,0,3.5,0,0.5,0.622459331201855,0.122459331201855,connectivity_dominated_proxy,connectivity_support_increase,0
+boundary_only_strong,0,3.5,0,1,0.731058578630005,0.231058578630005,connectivity_dominated_proxy,strong_connectivity_support_increase,0
+crack_only_strong,0,3.5,0,1,0.731058578630005,0.231058578630005,connectivity_dominated_proxy,crack_connectivity_support_increase,0
+through_thickness_only,0.5,3.74491866240371,0.244918662403709,0,0.5,0,vertical_Tc_dominated_proxy,vertical_Tc_support_increase,0
+full_coverage_no_boundary,1.2,4.03704956699803,0.537049566998035,0.25,0.562176500885798,0.0621765008857981,local_Tc_dominated_proxy,coverage_dominated_without_internal_bottleneck,0
+half_coverage_boundary,0.9,3.92189900525001,0.421899005250008,0.975,0.726114981260779,0.226114981260779,connectivity_dominated_proxy,boundary_plus_coverage_intermediate,0
+combined_strong_boundary_crack,1,3.96211715726001,0.46211715726001,1.8,0.858148935099512,0.358148935099512,connectivity_dominated_proxy,combined_structured_connectivity,0

@@ -1,0 +1,11 @@
+gate,outcome,note
+Phase 13A freeze consumed unchanged,pass,"Consumes Phase 13A source/artifacts without changing equations."
+Limiting cases predeclared,pass,"Required synthetic limiting cases are emitted before Phase 13C."
+Zero-field baseline preserved,pass,"The all-zero case defines the unperturbed proxy baseline."
+Local Tc and connectivity channels respond,pass,"Coverage/thickness and boundary/crack produce separate responses."
+Component monotonicity checks pass,pass,"Frozen mapping is directionally coherent under component sweeps."
+AS005 crack and AS006 boundary ablations active,pass,"Required AS005 crack and AS006 boundary removals are nonzero."
+Calibration firewall intact,pass,"No residual inspection, Raman fitting, or label training is enabled."
+No transport relabeling,pass,"Phase 13B cannot change frozen v8/Phase 6 conclusions."
+No experimental residual use,pass,"Experimental R(T) data are reserved for Phase 13C."
+Clean provenance,pass,"True only when the runner starts from a clean checkout."

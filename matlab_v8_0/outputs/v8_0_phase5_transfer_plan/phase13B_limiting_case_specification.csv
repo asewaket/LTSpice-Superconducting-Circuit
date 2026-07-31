@@ -1,0 +1,11 @@
+case_id,coverage,boundary,crack,through_thickness,expected_response,experimental_residuals_used,status
+all_components_zero,0,0,0,0,baseline_M0star_proxy,0,predeclared_synthetic_case
+coverage_only_moderate,0.5,0,0,0,local_Tc_support_increase,0,predeclared_synthetic_case
+coverage_only_full,1,0,0,0,strong_local_Tc_support_increase,0,predeclared_synthetic_case
+boundary_only_moderate,0,0.5,0,0,connectivity_support_increase,0,predeclared_synthetic_case
+boundary_only_strong,0,1,0,0,strong_connectivity_support_increase,0,predeclared_synthetic_case
+crack_only_strong,0,0,1,0,crack_connectivity_support_increase,0,predeclared_synthetic_case
+through_thickness_only,0,0,0,1,vertical_Tc_support_increase,0,predeclared_synthetic_case
+full_coverage_no_boundary,1,0,0,0.4,coverage_dominated_without_internal_bottleneck,0,predeclared_synthetic_case
+half_coverage_boundary,0.7,0.8,0,0.4,boundary_plus_coverage_intermediate,0,predeclared_synthetic_case
+combined_strong_boundary_crack,0.8,0.8,0.8,0.4,combined_structured_connectivity,0,predeclared_synthetic_case

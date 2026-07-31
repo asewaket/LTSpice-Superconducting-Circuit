@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13B_limiting_case_verification,"Phase 13B limiting-case and ablation verification."
+source_commit_sha,48d4ad8adadfaabd466673a211747ef3e505c517,"Git commit captured before this runner writes outputs."
+source_tree_sha,7e20001e56f3faf591e7e1e807b06eea201e0651,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when the checkout is clean before this run writes outputs."
+provenance_scope,verify_frozen_constitutive_behavior_before_experimental_fitting,"No experimental residuals, no calibration, no device relabeling."
+source_provenance_policy,Commit Phase 13B source first; rerun from clean source; commit generated artifacts separately.,"Phase 13B artifacts are downstream of frozen Phase 13A outputs."

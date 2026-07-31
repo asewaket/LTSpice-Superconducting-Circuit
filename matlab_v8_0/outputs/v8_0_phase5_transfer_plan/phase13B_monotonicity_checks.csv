@@ -1,0 +1,6 @@
+check_id,outcome,minimum_increment,observed_pass_fraction,required_pass_fraction,note
+coverage_to_Tc,pass,0.04995837495788,1,1,Coverage-only Tc support should not decrease.
+boundary_to_Wij,pass,0.02497918747894,1,1,Boundary-only connectivity should not decrease.
+crack_to_Wij,pass,0.02497918747894,1,1,Crack-only connectivity should not decrease.
+through_thickness_to_Tc,pass,0.0249947929684207,1,1,Through-thickness Tc support should not decrease.
+half_coverage_boundary_order_AS002_AS004_AS006,pass,0.0746096742095147,1,1,Increasing half-coverage amplitude should increase W support.

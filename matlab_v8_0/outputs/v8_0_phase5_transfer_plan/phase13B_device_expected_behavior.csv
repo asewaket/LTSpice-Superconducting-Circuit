@@ -1,0 +1,7 @@
+device,coverage_proxy,boundary_proxy,crack_proxy,through_thickness_proxy,local_Tc_drive,Tc_support_K,connectivity_drive,W_support,frozen_expected_behavior,experimental_residuals_used,phase6_labels_used_as_targets
+AS001,0,0,0,0.4,0.2,3.59966799462496,0,0.5,near_baseline_transition_response,0,0
+AS002,0.35,0.3625,0,0.4,0.55,3.7682711820216,0.45,0.610639233949222,weak_boundary_associated_modification,0,0
+AS003,0.25,0.0995,0,0.4,0.45,3.72127846789844,0.162,0.54041165833662,broad_continuous_coverage_limited_bottlenecking,0,0
+AS004,0.55,0.6405,0,0.4,0.75,3.85835739835079,0.778,0.685248908158737,intermediate_boundary_associated_modification,0,0
+AS005,0.7,0.539,0.978333333333333,0.4,0.9,3.92189900525001,1.69233333333333,0.844530769502881,strong_crack_dependent_current_redistribution,0,0
+AS006,0.9,1,0,0.4,1.1,4.00052021119023,1.225,0.772942259396739,strongest_half_coverage_boundary_response,0,0

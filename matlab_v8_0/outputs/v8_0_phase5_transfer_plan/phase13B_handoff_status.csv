@@ -1,0 +1,9 @@
+item,status,note
+phase13B_limiting_case_verification,pass,Frozen constitutive mapping passes synthetic/proxy sanity checks.
+phase13B_closure,pass_limiting_case_verification,Phase 13B closes only after clean provenance and all gates pass.
+experimental_RT_residuals_used,false,Experimental R(T) residuals are reserved for Phase 13C.
+parameter_retuning_performed,false,No Phase 13A parameters are edited during Phase 13B.
+transport_relabeling_performed,false,Frozen device conclusions are unchanged.
+full_RT_prediction_performed,false,Phase 13B verifies behavior but does not run full R(T) prediction.
+source_commit_sha,48d4ad8adadfaabd466673a211747ef3e505c517,Source commit used to generate Phase 13B artifacts.
+next_phase,phase13C_shared_RT_calibration,Next step fits shared parameters and predicts held-out R(T).
