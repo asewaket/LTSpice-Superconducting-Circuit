@@ -1237,6 +1237,60 @@ cfg.phase14B2.allowThermalFeedback = false;
 cfg.phase14B2.allowPhaseDynamics = false;
 cfg.phase14B2.nextPhase = "phase14B3_AS001_AS004_nonlinear_execution";
 
+cfg.phase14B3.executionManifestFile = fullfile(cfg.outputDir, ...
+    'phase14B3_execution_manifest.csv');
+cfg.phase14B3.rawDataResolutionFile = fullfile(cfg.outputDir, ...
+    'phase14B3_raw_data_resolution.csv');
+cfg.phase14B3.sharedParameterCalibrationFile = fullfile(cfg.outputDir, ...
+    'phase14B3_shared_parameter_calibration.csv');
+cfg.phase14B3.temperatureSliceMetricsFile = fullfile(cfg.outputDir, ...
+    'phase14B3_temperature_slice_metrics.csv');
+cfg.phase14B3.devicePredictionMetricsFile = fullfile(cfg.outputDir, ...
+    'phase14B3_device_prediction_metrics.csv');
+cfg.phase14B3.switchingFeatureLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14B3_switching_feature_ledger.csv');
+cfg.phase14B3.N0NIComparisonFile = fullfile(cfg.outputDir, ...
+    'phase14B3_N0_NI_comparison.csv');
+cfg.phase14B3.currentSymmetryAssessmentFile = fullfile(cfg.outputDir, ...
+    'phase14B3_current_symmetry_assessment.csv');
+cfg.phase14B3.predictionIntervalCoverageFile = fullfile(cfg.outputDir, ...
+    'phase14B3_prediction_interval_coverage.csv');
+cfg.phase14B3.failedSwitchingLogFile = fullfile(cfg.outputDir, ...
+    'phase14B3_failed_switching_log.csv');
+cfg.phase14B3.solverDiagnosticsFile = fullfile(cfg.outputDir, ...
+    'phase14B3_solver_diagnostics.csv');
+cfg.phase14B3.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B3_gate_summary.csv');
+cfg.phase14B3.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B3_handoff_status.csv');
+cfg.phase14B3.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B3_source_provenance.csv');
+cfg.phase14B3.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B3_AS001_AS004_nonlinear_execution_summary');
+cfg.phase14B3.description = ...
+    'AS001/AS004 held-out nonlinear current-switching execution';
+cfg.phase14B3.candidateDevices = ["AS001"; "AS004"];
+cfg.phase14B3.comparisonVariants = ["N0"; "NI"];
+cfg.phase14B3.trainTemperatureSlices = [0.25; 0.50; 0.75];
+cfg.phase14B3.heldoutTemperatureSlices = [0.35; 0.65];
+cfg.phase14B3.currentGrid = (-1.40:0.20:1.40).';
+cfg.phase14B3.sharedIcScale = 1.00;
+cfg.phase14B3.sharedTemperatureExponentP = 2.00;
+cfg.phase14B3.sharedTemperatureExponentQ = 1.00;
+cfg.phase14B3.sharedSwitchingWidth = 0.08;
+cfg.phase14B3.sharedDissipativeResistance = 1.00;
+cfg.phase14B3.predictionIntervalHalfWidth = 0.08;
+cfg.phase14B3.allowThermalFeedback = false;
+cfg.phase14B3.allowPhaseDynamics = false;
+cfg.phase14B3.allowFieldDependentData = false;
+cfg.phase14B3.allowRamanTargets = false;
+cfg.phase14B3.allowDeviceSpecificNonlinearParameters = false;
+cfg.phase14B3.allowManualSwitchingCurrents = false;
+cfg.phase14B3.allowEquilibriumRetuning = false;
+cfg.phase14B3.rawGridPolicy = ...
+    'use_locked_raw_grid_when_loader_paths_exist_otherwise_record_proxy_execution_status';
+cfg.phase14B3.nextPhase = "phase14D_or_phase14C_decision";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
