@@ -1,0 +1,9 @@
+prohibited,blocked,reason
+phase_dynamics,1,Deferred to later nonlinear phases.
+electrothermal_feedback,1,Deferred until scalar R(T) foundation is resolved.
+device_specific_Tc_gain,1,Would create device-specific mechanism correction.
+device_specific_boundary_or_crack_coefficients,1,Would erase shared-transfer validation.
+Raman_fitting,1,Raman is not a transport target in Phase 13F.
+unrestricted_spatial_disorder_changes,1,Only two selected Phase 13E upgrades are allowed.
+automatic_probe_fallback,1,AS003 primary mapping remains frozen.
+transport_relabeling,1,Phase 6/13 device conclusions remain frozen.

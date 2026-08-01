@@ -1,0 +1,7 @@
+field,value,note
+phase13F1_closure,pass_upgrade_specification_freeze,"Closure means the constrained revision is specified, not executed."
+phase13D_decision_preserved,pass_partial_predictive_scope,"The negative/partial Phase 13D result remains visible."
+phase13E_decision_preserved,baseline_and_shunt_upgrade_plus_interface_transfer_audit_justified,"The Phase 13E missing-input audit selects the bounded scope."
+allowed_upgrades,baseline_and_residual_shunt_upgrade|interface_transfer_or_transparency_input,"No other model class may be added in Phase 13F."
+source_commit_sha,e95c62414ae1dc93c83751c078686480b8b7e4f2,"Source commit captured before output generation."
+next_phase,phase13F2_limiting_cases_and_ablations,"Proceed to limiting cases and ablations next."

@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13F2_limiting_case_ablation_verification,"Phase 13F.2 limiting cases and ablation verification."
+source_commit_sha,6d4dc03e169e5fa544d99c66cc8f82409d8ceb72,"Git commit captured before this runner writes outputs."
+source_tree_sha,fafc41f16dc97c3c2e1a4273e53663b4feedb6e0,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,false,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,false,"True only when checkout is clean before this run writes outputs."
+provenance_scope,pre_fit_synthetic_verification_before_phase13F3_LODO_execution,"No experimental residual scoring, optimizer rerun, or variant retuning."
+source_provenance_policy,Commit Phase 13F.2 source first; rerun from clean source; commit generated artifacts separately.,"Phase 13F.2 artifacts are downstream of frozen Phase 13F.1 outputs."

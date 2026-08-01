@@ -1,0 +1,9 @@
+criterion,threshold,comparison_source,note
+median_heldout_residual_improvement,0.1,frozen_phase13C_phase13D_baseline,"Material improvement is relative, not a tiny numerical decrease."
+minimum_primary_devices_improved,4,frozen_phase13C_phase13D_baseline,"Broad improvement is required for shared predictor claims."
+AS001_baseline_mismatch_improves,required,frozen_phase13C_phase13D_baseline,"Control/baseline failure was central to Phase 13E."
+AS003_lowT_plateau_improves,required,frozen_phase13C_phase13D_baseline,"Residual-conduction upgrade must address the AS003 plateau."
+AS006_no_material_worsening,0.05,frozen_phase13C_phase13D_baseline,"Strong boundary case cannot be sacrificed."
+threshold_crossing_availability_increases,1,frozen_phase13C_phase13D_baseline,"Censored/non-crossing outcomes remain explicit."
+uncertainty_coverage_gain,0.1,frozen_phase13C_phase13D_baseline,"Coverage must improve without becoming uninformatively broad."
+max_pinned_parameter_fold_fraction,0.5,frozen_phase13C_phase13D_baseline,"Boundary saturation indicates non-identifiability."

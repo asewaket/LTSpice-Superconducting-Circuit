@@ -1,0 +1,7 @@
+device,scaled_window_start,scaled_window_end,baseline_form,heldout_transition_data_allowed,heldout_lowT_data_allowed,note
+AS001,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.
+AS002,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.
+AS003,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.
+AS004,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.
+AS005,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.
+AS006,0.85,1,linear_a_plus_bT,0,0,Estimate baseline only from predeclared normal-state window.

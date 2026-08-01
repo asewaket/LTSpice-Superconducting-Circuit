@@ -1,0 +1,8 @@
+parameter,role,allowed_to_vary_by_device,fitting_constraint
+a_d,device_input_from_normal_window,1,estimated before transition from locked normal-state window
+b_d,device_input_from_normal_window,1,estimated before transition from locked normal-state window
+G0_residual,shared_fit_parameter,0,shared across all LODO training devices
+alpha_geometry_residual,shared_fit_parameter,0,shared across all LODO training devices
+tau_level,frozen_ordinal_or_metadata_input,1,not fitted continuously per device; ordinal/metadata category only
+Tc_mapping_parameters,shared_fit_parameter_from_phase13C_protocol,0,same shared LODO rule as Phase 13C
+boundary_crack_coefficients,shared_fit_parameter_from_phase13C_protocol,0,same shared LODO rule as Phase 13C

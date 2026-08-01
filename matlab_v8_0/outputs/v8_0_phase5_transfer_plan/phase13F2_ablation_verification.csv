@@ -1,0 +1,8 @@
+test_id,variant_pair,case_id,metric,observed_delta,threshold,outcome,experimental_residuals_used
+F0_zero_reference_reproduced,F0_vs_F0,zero_reference,curve_span,0.996146530673345,0.5,pass,0
+FB_baseline_channel_active,FB_vs_F0,normal_baseline_slope,normal_state_mean,0.101953799339142,0.02,pass,0
+FB_residual_channel_active,FB_vs_F0,lowT_residual_shunt,lowT_mean,0.0994254072582968,0.02,pass,0
+FI_interface_channel_active,FI_vs_F0,low_transfer_interface,transition_midpoint,0.07,0.02,pass,0
+FBI_residual_channel_retained,FBI_vs_FI,combined_shunt_low_transfer,lowT_mean,0.0787978396923697,0.02,pass,0
+FBI_interface_channel_retained,FBI_vs_FB,combined_shunt_low_transfer,transition_midpoint,0.07,0.02,pass,0
+FBI_no_unintended_cancellation,FBI_vs_FB_and_FI,combined_shunt_low_transfer,composite_response,0.0741117769977846,-0.01,pass,0

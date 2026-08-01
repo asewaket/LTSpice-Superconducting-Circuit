@@ -1,0 +1,7 @@
+item,status,allowed,note
+experimental_RT_residuals_used,false,0,Phase 13F.2 uses synthetic limiting cases only.
+optimizer_rerun_performed,false,0,No parameter search is run in Phase 13F.2.
+variant_retuning_performed,false,0,F0/FB/FI/FBI definitions are read from Phase 13F.1.
+device_specific_fitting_performed,false,0,No per-device mechanism escape hatch is introduced.
+transport_relabeling_performed,false,0,Frozen transport/probe labels remain unchanged.
+full_LODO_prediction_performed,false,0,Full six-fold R(T) execution is deferred to Phase 13F.3.

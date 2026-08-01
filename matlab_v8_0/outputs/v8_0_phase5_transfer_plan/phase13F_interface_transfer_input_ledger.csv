@@ -1,0 +1,6 @@
+input,input_role,allowed_mapping,continuous_per_device_fit_allowed
+coverage_state,independent_geometry_metadata,f_tau coverage contribution,0
+crack_state,independent_geometry_metadata,crack_disrupted_transfer category or range,0
+device_thickness,measured_but_not_ingested_if_available,shared thickness modifier,0
+fabrication_stack,fabrication_metadata,shared stack modifier,0
+delamination_or_continuity_evidence,fabrication_or_microscopy_metadata,ordinal transfer category,0

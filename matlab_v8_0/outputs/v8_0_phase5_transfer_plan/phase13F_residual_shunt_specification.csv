@@ -1,0 +1,5 @@
+field,value,note
+residual_model,"parallel_conductance",Residual conduction is separated from normal baseline and superconducting transition.
+allowed_form,"G_residual,d=G0+alpha_A*A_d+alpha_P*P_d when independent descriptors exist; otherwise one shared residual fraction",All coefficients must be shared or derived from independent descriptors.
+critical_device_test,"AS003_low_temperature_plateau",AS003 was flagged by Phase 13E as low-temperature plateau dominated.
+prohibited_form,"separate G_residual fitted directly to each held-out low-temperature curve",Would encode the answer and break held-out prediction meaning.

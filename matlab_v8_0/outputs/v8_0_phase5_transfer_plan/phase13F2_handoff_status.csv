@@ -1,0 +1,8 @@
+field,value,note
+phase13F2_closure,pass_limiting_case_ablation_verification,Closure means variants behave correctly under synthetic limiting cases.
+phase13F2_decision,ready_for_phase13F3_full_LODO_execution,Phase 13F.3 may run only after Phase 13F.2 passes.
+experimental_RT_residuals_used,false,No measured R(T) residuals are inspected in Phase 13F.2.
+optimizer_rerun_performed,false,No optimizer is run before the full LODO execution phase.
+variant_retuning_performed,false,F0/FB/FI/FBI remain frozen after Phase 13F.1.
+source_commit_sha,6d4dc03e169e5fa544d99c66cc8f82409d8ceb72,Source commit used to generate Phase 13F.2 artifacts.
+next_phase,phase13F3_full_LODO_RT_execution,Next step is the repeated six-fold R(T) prediction campaign.

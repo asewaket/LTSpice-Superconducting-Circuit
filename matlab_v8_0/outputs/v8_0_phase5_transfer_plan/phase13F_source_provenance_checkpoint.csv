@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13F_upgrade_specification_freeze,"Phase 13F.1 constrained model-revision specification."
+source_commit_sha,e95c62414ae1dc93c83751c078686480b8b7e4f2,"Git commit captured before this runner writes outputs."
+source_tree_sha,387a1587843048399aa0cb08ace78378f6061b28,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,false,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,false,"True only when checkout is clean before this run writes outputs."
+provenance_scope,specification_freeze_before_any_phase13F_execution,"No solver execution, optimizer rerun, or experimental residual improvement test."
+source_provenance_policy,Commit Phase 13F.1 source first; rerun from clean source; commit specification artifacts separately.,"Specification artifacts are separate from source/configuration commits."

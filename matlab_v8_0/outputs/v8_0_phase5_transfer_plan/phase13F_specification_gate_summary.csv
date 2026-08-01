@@ -1,0 +1,12 @@
+component,outcome,note
+Phase 13D/E conclusions preserved,pass,"Phase 13F is a new test, not a replacement for 13D/E."
+Only two selected upgrades specified,pass,"Baseline/shunt and interface/transfer are the only allowed upgrades."
+Baseline estimated from locked normal-state region,pass,"Normal-state baseline cannot use held-out transition or lowT data."
+Residual shunt not fitted to held-out lowT response,pass,"Low-temperature shunt cannot be fit per held-out device."
+Interface transfer based on independent metadata or frozen ordinal priors,pass,"tau is constrained by metadata or ordinal priors, not free per device."
+No device-specific mechanism parameters,pass,"Device-specific Tc/boundary/crack gains are blocked."
+Original LODO protocol retained,pass,"Same data lock, folds, objective weights, and probe mappings are reused."
+Four ablation variants declared,pass,"F0, FB, FI, and FBI are all required."
+Comparison thresholds frozen before execution,pass,"Adequacy criteria are frozen before Phase 13F execution."
+Negative and regressive results must be retained,pass,"Future output tables must retain failures and regressions."
+Clean specification provenance captured,pass,"Provenance is captured before artifacts are written."

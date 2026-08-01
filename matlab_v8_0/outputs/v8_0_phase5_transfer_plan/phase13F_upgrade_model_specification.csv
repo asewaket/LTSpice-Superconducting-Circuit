@@ -1,0 +1,5 @@
+component,equation_or_rule,allowed_inputs,prohibited_inputs
+normal_state_baseline,"R_N,d(T)=a_d+b_d*(T-T_ref), estimated only from locked normal-state window",high-temperature resistance level|high-temperature slope|geometry scaling|primary probe identity,transition-region data from held-out device|low-temperature held-out data
+superconducting_network_reduction,"R_network_abs(T)=R_N,d(T)*R_SC_tilde,d(T), with Phase 13C core mapping retained",Phase 13A/13C frozen mechanical and weak-link inputs,Phase 6 labels|Raman transport targets|device-specific mechanism labels
+residual_parallel_conduction,"G_total(T)=G_SC_network(T)+G_residual,d",shared residual fraction or shared geometry-linked residual law,separate low-temperature shunt fit for each device
+interface_transfer_field,"M_effective,d(x,y)=tau_d(x,y)*M_applied,d(x,y)",coverage|crack state|thickness|stack|fabrication metadata if independently available,free tau_AS001...tau_AS006 fitted to each device R(T)

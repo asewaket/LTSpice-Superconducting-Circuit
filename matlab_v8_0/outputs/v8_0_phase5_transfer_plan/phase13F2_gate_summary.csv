@@ -1,0 +1,11 @@
+gate,outcome,note
+Phase 13F.1 specification consumed,pass,"Phase 13F.2 starts only from the closed Phase 13F.1 specification."
+Synthetic limiting cases predeclared,pass,"Cases are synthetic and declared before 13F.3."
+Four frozen variants evaluated,pass,"F0, FB, FI, and FBI are all tested."
+Baseline/residual and interface ablations active,pass,"Each selected upgrade moves the intended limiting-case channel."
+Variant identifiability checks pass,pass,"Upgrades remain distinguishable before experimental execution."
+Numerical monotonicity and boundedness pass,pass,"Synthetic R(T) proxy curves stay finite, bounded, and monotonic."
+Calibration firewall intact,pass,"No optimizer, residual scoring, retuning, or relabeling is enabled."
+No experimental residual use,pass,"Experimental residual improvement is reserved for Phase 13F.3."
+No full LODO execution in Phase 13F.2,pass,"This phase does not claim held-out predictive adequacy."
+Tracked source provenance captured,pass,"Tracked files were clean at run start; untracked artifacts are recorded separately."

@@ -1,0 +1,7 @@
+check_id,outcome,note
+phase13F1_specification_closed,pass,"Phase 13F.2 consumes a closed Phase 13F.1 specification."
+all_four_variants_present,pass,"F0, FB, FI, and FBI are all required."
+FB_and_FI_are_distinguishable,pass,"Baseline/residual and interface channels should be separable."
+FBI_not_identical_to_single_upgrade,pass,"Combined upgrade should not collapse to a single-upgrade response."
+near_boundary_case_remains_small,pass,"Weak transfer near the boundary should remain modest."
+no_device_specific_parameters_added,pass,"Device-specific mechanism parameters remain blocked."

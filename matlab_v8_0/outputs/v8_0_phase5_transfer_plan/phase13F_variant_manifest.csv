@@ -1,0 +1,5 @@
+variant_id,variant_name,baseline_shunt_upgrade,interface_transfer_upgrade,execution_status,purpose
+F0,original_phase13C_model,0,0,not_run_in_phase13F1,Frozen baseline comparator
+FB,baseline_shunt_upgrade_only,1,0,not_run_in_phase13F1,Test whether baseline/residual conduction repairs control and plateau failures
+FI,interface_transfer_upgrade_only,0,1,not_run_in_phase13F1,Test whether transfer metadata improves ordering/onset prediction
+FBI,both_upgrades,1,1,not_run_in_phase13F1,Test whether both constrained upgrades jointly improve held-out transfer
