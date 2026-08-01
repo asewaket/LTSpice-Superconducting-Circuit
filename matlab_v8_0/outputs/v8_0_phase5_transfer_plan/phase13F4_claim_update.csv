@@ -1,0 +1,7 @@
+claim,statement,support
+allowed,Baseline/residual-shunt correction improves held-out R(T) prediction for selected devices.,supported_with_limited_transfer
+allowed,The preferred revised equilibrium R(T) baseline for bounded downstream work is FB.,FB
+allowed,Phase 13D partial-scope and uncertainty limitations remain active.,true
+not_allowed,Do not claim a transferable quantitative R(T) predictor across all six devices.,false
+not_allowed,Do not claim independent validation of interface transfer or transparency.,not_identifiable
+not_allowed,Do not use Phase 14 nonlinear terms to retroactively repair equilibrium R(T) failures.,policy_handoff

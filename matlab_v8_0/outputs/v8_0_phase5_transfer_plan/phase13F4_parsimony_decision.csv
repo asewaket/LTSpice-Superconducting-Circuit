@@ -1,0 +1,8 @@
+item,value,note
+phase13F4_decision,pass_selected_device_predictive_improvement,"The constrained revision improves selected devices but not a universal predictor."
+preferred_revised_variant,FB,"Chosen by frozen parsimony rule, not by lowest objective alone."
+baseline_residual_shunt_upgrade,supported_with_limited_transfer,"FB median DeltaS -0.01585, 4 devices improved."
+interface_transfer_upgrade,not_identifiable,"FI median DeltaS 0, 0 devices improved."
+combined_variant_extra_benefit,not_sufficiently_distinct,"FBI extra median benefit over FB 0.002974 with interface status not_identifiable."
+shared_quantitative_RT_predictor,false,"Coverage and material-improvement checks prevent broad quantitative claim."
+phase13D_partial_scope_preserved,true,"The Phase 13D partial-scope adequacy limit remains in force."

@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13F4_comparative_adequacy_decision,"Phase 13F.4 read-only comparative adequacy decision."
+source_commit_sha,462778871d1e90b92089d248488023884f534f6d,"Git commit captured before this runner writes outputs."
+source_tree_sha,409840c4e2cb8a02a73d6d01719d9334fb5c7ae6,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,read_only_decision_after_clean_phase13F3,"No optimizer rerun, retuning, relabeling, Raman target, or Phase 6 target use."
+source_provenance_policy,Commit Phase 13F.4 source first; rerun from clean source; commit decision artifacts separately.,"Artifacts are separate from source/configuration commits."

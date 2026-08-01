@@ -1,0 +1,11 @@
+item,status,note
+phase13F4_closure,pass_read_only_comparative_adequacy_assessment,Closure means a decision was made from frozen 13F.3 artifacts.
+phase13F4_decision,pass_selected_device_predictive_improvement,Selected-device improvement is supported; full quantitative prediction is not.
+preferred_revised_variant,FB,Parsimony selects FB over FBI because FI is not independently identifiable.
+baseline_residual_shunt_upgrade,supported_with_limited_transfer,Baseline and residual conduction correction is the useful addition.
+interface_transfer_upgrade,not_identifiable,Interface/transfer contribution remains unidentifiable in this data.
+shared_quantitative_RT_predictor,false,Do not claim a universal six-device equilibrium R(T) predictor.
+phase13D_partial_scope_preserved,true,Phase 13D partial adequacy and uncertainty limits stay visible.
+phase14_scope,bounded_nonlinear_transport_feasibility_without_RT_repair,Phase 14 may use FB as equilibrium baseline but may not relabel R(T).
+source_commit_sha,462778871d1e90b92089d248488023884f534f6d,Source commit captured before output generation.
+next_phase,phase14_nonlinear_transport_feasibility,Proceed only with bounded nonlinear feasibility.

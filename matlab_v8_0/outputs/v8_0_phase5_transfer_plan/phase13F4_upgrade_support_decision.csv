@@ -1,0 +1,5 @@
+upgrade,status,evidence,policy
+baseline_and_residual_shunt,supported_with_limited_transfer,FB improves 4/6 devices; median DeltaS -0.01585.,May be used as preferred limited R(T) baseline if parsimony selects FB.
+interface_transfer,not_identifiable,FI improves 0/6 devices; median DeltaS 0.,Do not claim independent interface or transparency validation.
+combined_baseline_interface,improves_same_devices_as_baseline_shunt,FBI improves 4/6 devices; median DeltaS -0.01883.,Do not prefer over FB unless extra benefit exceeds parsimony threshold.
+shared_quantitative_RT_predictor,false,No variant meets material full-series improvement plus uncertainty-coverage criteria.,Do not claim a universal six-device quantitative R(T) predictor.

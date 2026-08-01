@@ -1,0 +1,11 @@
+gate,outcome,note
+Clean Phase 13F.3 execution consumed,pass,"Phase 13F.3 handoff is complete and every execution gate passed."
+Read-only decision scope preserved,pass,"No optimization, retuning, relabeling, or new target use is permitted."
+All fold-variant executions present,pass,"Six held-out devices by four variants are present."
+No failed predictions hidden,pass,"The failed-prediction log remains explicit and contains no failures."
+Baseline/shunt selected-device improvement assessed,pass,"FB improves four devices without severe regressions."
+Interface non-identifiability recorded,pass,"FI has no standalone held-out improvement."
+Combined-model parsimony applied,pass,"FBI extra benefit is not enough to overcome added complexity."
+Universal quantitative predictor rejected,pass,"Material full-series and uncertainty-coverage criteria are not met."
+Phase 13D limitation preserved,pass,"Phase 13D remains the upper-level adequacy limiter."
+Phase 13F.4 clean provenance,pass,"True only when Phase 13F.4 starts from a clean checkout."
