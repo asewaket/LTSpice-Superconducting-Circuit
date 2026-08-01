@@ -482,7 +482,7 @@ end
 if ~isempty(fieldIdx) && ~isempty(valueIdx)
     keyColumn = string(T{:, fieldIdx});
     valueColumn = string(T{:, valueIdx});
-    mask = keyColumn == string(key);
+    mask = normalize_lookup_key(keyColumn) == normalize_lookup_key(key);
 else
     mask = false(height(T), 1);
     valueColumn = strings(height(T), 1);
@@ -492,6 +492,10 @@ if any(mask)
 else
     out = "";
 end
+end
+
+function out = normalize_lookup_key(in)
+out = lower(regexprep(strtrim(string(in)), '[^A-Za-z0-9]', ''));
 end
 
 function s = passfail(tf)
