@@ -353,7 +353,8 @@ end
 
 function holdout = build_training_holdout_manifest(cfg, inputs)
 manifest = inputs.phase14AManifest;
-devices = string(manifest.device(manifest.nonlinear_dataset_available));
+available = table_bool(manifest.nonlinear_dataset_available);
+devices = string(manifest.device(available));
 if isempty(devices)
     devices = "none";
 end
@@ -487,6 +488,19 @@ if tf
 else
     value = "fail";
 end
+end
+
+function mask = table_bool(values)
+if islogical(values)
+    mask = values;
+elseif isnumeric(values)
+    mask = values ~= 0;
+else
+    textValues = lower(strtrim(string(values)));
+    mask = textValues == "true" | textValues == "1" | ...
+        textValues == "yes" | textValues == "available";
+end
+mask = logical(mask);
 end
 
 function handoff = build_handoff_status(cfg, gates, holdout, sourceProvenance)
