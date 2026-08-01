@@ -348,7 +348,7 @@ try
         metadata.probeIdentityResolved = metadata.matrixResolved;
         summary = sprintf('table columns: %s', strjoin(names, '|'));
     elseif ext == ".mat"
-        info = whos('-file', char(filePath));
+        info = mat_whos_quiet(filePath);
         names = string({info.name});
         lowerNames = lower(names);
         metadata.variableResolved = ~isempty(names);
@@ -375,6 +375,14 @@ try
 catch ME
     summary = "inspection_failed:" + string(ME.message);
 end
+end
+
+function info = mat_whos_quiet(filePath)
+warnState = warning;
+cleanup = onCleanup(@() warning(warnState));
+warning('off', 'all');
+info = whos('-file', char(filePath));
+delete(cleanup);
 end
 
 function metadata = empty_metadata()
