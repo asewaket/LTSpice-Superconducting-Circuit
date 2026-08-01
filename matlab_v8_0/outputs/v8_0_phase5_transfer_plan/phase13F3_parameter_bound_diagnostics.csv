@@ -1,0 +1,13 @@
+variant_id,parameter,pinned_fold_fraction,max_allowed_pinned_fraction,status
+F0,baseline_gain,1,0.5,review
+F0,interface_shift_gain,0,0.5,pass
+F0,residual_shunt_gain,1,0.5,review
+FBI,baseline_gain,1,0.5,review
+FBI,interface_shift_gain,0,0.5,pass
+FBI,residual_shunt_gain,1,0.5,review
+FB,baseline_gain,0,0.5,pass
+FB,interface_shift_gain,0,0.5,pass
+FB,residual_shunt_gain,0,0.5,pass
+FI,baseline_gain,1,0.5,review
+FI,interface_shift_gain,1,0.5,review
+FI,residual_shunt_gain,1,0.5,review

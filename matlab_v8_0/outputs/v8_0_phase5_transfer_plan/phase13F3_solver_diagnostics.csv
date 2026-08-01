@@ -1,0 +1,9 @@
+item,value,note
+variant_count,4,"F0, FB, FI, and FBI are executed."
+expected_primary_fold_variant_count,24,"Six held-out devices times four variants."
+observed_fold_variant_count,24,"One training row per held-out device and variant."
+prediction_row_count,1896,"Long-form primary and available secondary R(T) predictions."
+residual_row_count,36,"One full-curve residual per device/probe/variant."
+failed_prediction_count,0,"Failures are retained, including explicit no-failure sentinel."
+phase13C_protocol_source,/private/tmp/LTSpice-Superconducting-Circuit-phase13F3-clean-71b913c/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase13C_full_RT_execution_manifest.csv,"Phase 13C data/probe/objective protocol remains the base lock."
+comparative_adequacy_decision,pending_phase13F4,"Phase 13F.4 performs the decision."

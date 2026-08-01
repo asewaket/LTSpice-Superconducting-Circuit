@@ -1,0 +1,9 @@
+item,value,note
+phase,phase13F3_full_variant_LODO_execution,Phase 13F.3 full four-variant LODO execution.
+source_commit_sha,71b913c98a22f4d2f9fc5a0befcdf0b831f9ba08,Git commit captured before this runner writes outputs.
+source_tree_sha,07f8ce3cc1b075b6574720af97edfa87e2072bb8,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when checkout is clean before this run writes outputs.
+provenance_scope,execute_four_frozen_variants_without_comparative_decision,Consumes frozen Phase 13F.1/13F.2 and Phase 13C execution artifacts.
+source_provenance_policy,Commit Phase 13F.3 source first; rerun from clean source; commit execution artifacts separately.,Artifacts are separate from source/configuration commits.

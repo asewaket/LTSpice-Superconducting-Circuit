@@ -1,0 +1,17 @@
+variant_id,family_holdout,heldout_devices,mean_full_curve_residual,execution_status,phase13C1_lock_consumed
+F0,cracked_full_coverage_AS005,AS005,0.325502027370319,completed,1
+F0,strong_half_coverage_AS006,AS006,0.710154318275353,completed,1
+F0,half_coverage_sequence_AS002_AS004_AS006,AS002|AS004|AS006,0.718727743463255,completed,1
+F0,control_limit_AS002_AS003,AS002|AS003,0.816877398866667,completed,1
+FB,cracked_full_coverage_AS005,AS005,0.328302502065424,completed,1
+FB,strong_half_coverage_AS006,AS006,0.700350311462419,completed,1
+FB,half_coverage_sequence_AS002_AS004_AS006,AS002|AS004|AS006,0.707754062407391,completed,1
+FB,control_limit_AS002_AS003,AS002|AS003,0.793359914966321,completed,1
+FI,cracked_full_coverage_AS005,AS005,0.328910381106716,completed,1
+FI,strong_half_coverage_AS006,AS006,0.710154318275353,completed,1
+FI,half_coverage_sequence_AS002_AS004_AS006,AS002|AS004|AS006,0.718727743463255,completed,1
+FI,control_limit_AS002_AS003,AS002|AS003,0.816877398866667,completed,1
+FBI,cracked_full_coverage_AS005,AS005,0.331518029361442,completed,1
+FBI,strong_half_coverage_AS006,AS006,0.698601896817871,completed,1
+FBI,half_coverage_sequence_AS002_AS004_AS006,AS002|AS004|AS006,0.705761105554832,completed,1
+FBI,control_limit_AS002_AS003,AS002|AS003,0.788855083472271,completed,1

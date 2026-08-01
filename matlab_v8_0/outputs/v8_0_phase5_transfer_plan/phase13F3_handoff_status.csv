@@ -1,0 +1,8 @@
+item,status,note
+phase13F3_closure,complete_repeated_LODO_execution,Execution closure only; this phase does not choose a winning variant.
+comparative_adequacy_decision,pending_phase13F4,Phase 13F.4 reads these artifacts and applies frozen adequacy rules.
+variant_retuning_performed,false,Variant definitions are frozen from Phase 13F.1.
+device_specific_mechanism_parameters,false,No per-device mechanism terms are introduced.
+phase13F3_execution_complete,true,All gates must pass for a clean handoff.
+source_commit_sha,71b913c98a22f4d2f9fc5a0befcdf0b831f9ba08,Source commit used to generate execution artifacts.
+next_phase,phase13F4_comparative_adequacy_decision,Read-only comparative adequacy decision.

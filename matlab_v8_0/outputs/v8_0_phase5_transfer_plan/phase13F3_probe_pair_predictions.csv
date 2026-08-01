@@ -1,0 +1,13 @@
+variant_id,device,primary_probe,secondary_probe,predicted_quantity,asymmetry_score,onset_difference_residual_K,probe_independent_refit_allowed,prediction_status
+F0,AS001,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,6.58718062484787e-05,NaN,0,completed
+F0,AS004,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.00823138631568654,NaN,0,completed
+F0,AS006,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.000963554428615845,NaN,0,completed
+FB,AS001,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,6.58718062484787e-05,NaN,0,completed
+FB,AS004,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.00823138631568654,NaN,0,completed
+FB,AS006,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.000963554428615845,NaN,0,completed
+FI,AS001,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,6.58718062484787e-05,NaN,0,completed
+FI,AS004,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.00823138631568654,NaN,0,completed
+FI,AS006,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.000963554428615845,NaN,0,completed
+FBI,AS001,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,6.58718062484787e-05,NaN,0,completed
+FBI,AS004,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.00823138631568654,NaN,0,completed
+FBI,AS006,top_4_10,bottom_3_9,A_probe_T=R1_T_minus_R2_T,0.000963554428615845,NaN,0,completed

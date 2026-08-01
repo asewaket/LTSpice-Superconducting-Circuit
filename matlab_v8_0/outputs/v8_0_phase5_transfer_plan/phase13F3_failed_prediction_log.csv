@@ -1,0 +1,2 @@
+device,prediction_type,failure_reason,retained_in_outputs
+none,none,no_failed_predictions_recorded,1
