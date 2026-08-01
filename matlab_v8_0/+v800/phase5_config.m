@@ -1374,6 +1374,61 @@ cfg.phase14B4R.figureOnlyAccepted = false;
 cfg.phase14B4R.nextPhaseWhenRecovered = "phase14B4_lock_recovered_sources_then_rerun_ingestion";
 cfg.phase14B4R.nextPhaseWhenNotRecovered = "phase14D_insufficient_raw_data_decision";
 
+cfg.phase14B4L.rawSourceLockManifestFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_raw_source_lock_manifest.csv');
+cfg.phase14B4L.fileChecksumManifestFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_file_checksum_manifest.csv');
+cfg.phase14B4L.loaderSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_loader_specification.csv');
+cfg.phase14B4L.axisValidationFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_axis_validation.csv');
+cfg.phase14B4L.matrixOrientationValidationFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_matrix_orientation_validation.csv');
+cfg.phase14B4L.unitsAndMetadataLockFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_units_and_metadata_lock.csv');
+cfg.phase14B4L.zeroCurrentValidationFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_zero_current_validation.csv');
+cfg.phase14B4L.duplicateCandidateResolutionFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_duplicate_candidate_resolution.csv');
+cfg.phase14B4L.canonicalGridManifestFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_canonical_grid_manifest.csv');
+cfg.phase14B4L.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_gate_summary.csv');
+cfg.phase14B4L.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_handoff_status.csv');
+cfg.phase14B4L.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_source_provenance.csv');
+cfg.phase14B4L.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B4L_raw_grid_loader_freeze_summary');
+cfg.phase14B4L.canonicalGridDir = fullfile(cfg.outputDir, ...
+    'phase14B4L_canonical_grids');
+cfg.phase14B4L.description = ...
+    'Raw grid parsing, validation, and loader freeze for AS001/AS004';
+cfg.phase14B4L.candidateDevices = cfg.phase14B4R.candidateDevices;
+cfg.phase14B4L.loaderName = "load_dVdIvIvT_dat";
+cfg.phase14B4L.loaderVersion = "v1";
+cfg.phase14B4L.requiredColumns = ["temp"; "I"; "R1"; "R2"];
+cfg.phase14B4L.primaryMatrixColumn = "R1";
+cfg.phase14B4L.secondaryMatrixColumn = "R2";
+cfg.phase14B4L.currentUnits = "A";
+cfg.phase14B4L.temperatureUnits = "K";
+cfg.phase14B4L.dVdIUnits = "Ohm";
+cfg.phase14B4L.field_T = 0;
+cfg.phase14B4L.fieldCondition = "zero_field_or_fixed_field_not_field_sweep";
+cfg.phase14B4L.sweepDirection = "negative_to_positive_current";
+cfg.phase14B4L.probePairPolicy = ...
+    'R1 and R2 columns retained; R1 used as primary canonical grid for Phase 14B.5 unless explicitly overridden';
+cfg.phase14B4L.backgroundSubtractionPolicy = ...
+    'not_detected_in_file_header; table values treated as exported measured dVdI/R columns';
+cfg.phase14B4L.rawTransportDataRoot = ...
+    "/Users/asewaket/Documents/Thesis/Raw Transport Data";
+cfg.phase14B4L.repositoryRelativeRoot = "external_raw_transport";
+cfg.phase14B4L.allowFitting = false;
+cfg.phase14B4L.allowProxySubstitution = false;
+cfg.phase14B4L.allowSourcePromotionWithoutChecksum = false;
+cfg.phase14B4L.nextPhaseWhenLocked = "phase14B5_raw_nonlinear_execution";
+cfg.phase14B4L.nextPhaseWhenBlocked = "phase14D_insufficient_raw_data_decision";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
