@@ -975,6 +975,40 @@ cfg.phase13F.minimumCoverageGain = 0.10;
 cfg.phase13F.maxPinnedParameterFoldFraction = 0.50;
 cfg.phase13F.nextPhase = "phase13F2_limiting_cases_and_ablations";
 
+cfg.phase13F2.limitingCaseManifestFile = fullfile(cfg.outputDir, ...
+    'phase13F2_limiting_case_manifest.csv');
+cfg.phase13F2.variantResponseSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13F2_variant_response_summary.csv');
+cfg.phase13F2.ablationVerificationFile = fullfile(cfg.outputDir, ...
+    'phase13F2_ablation_verification.csv');
+cfg.phase13F2.identifiabilityChecksFile = fullfile(cfg.outputDir, ...
+    'phase13F2_identifiability_checks.csv');
+cfg.phase13F2.numericalSanityChecksFile = fullfile(cfg.outputDir, ...
+    'phase13F2_numerical_sanity_checks.csv');
+cfg.phase13F2.calibrationFirewallFile = fullfile(cfg.outputDir, ...
+    'phase13F2_calibration_firewall.csv');
+cfg.phase13F2.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase13F2_gate_summary.csv');
+cfg.phase13F2.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase13F2_handoff_status.csv');
+cfg.phase13F2.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase13F2_source_provenance_checkpoint.csv');
+cfg.phase13F2.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase13F2_limiting_case_ablation_summary');
+cfg.phase13F2.description = ...
+    'Pre-fit limiting-case and ablation verification of frozen Phase 13F variants';
+cfg.phase13F2.allowExperimentalResidualUse = false;
+cfg.phase13F2.allowOptimizerRerun = false;
+cfg.phase13F2.allowVariantRetuning = false;
+cfg.phase13F2.allowDeviceSpecificFitting = false;
+cfg.phase13F2.allowTransportRelabeling = false;
+cfg.phase13F2.normalizedTemperatureGrid = linspace(0, 1, 101).';
+cfg.phase13F2.minimumResponseSeparation = 0.02;
+cfg.phase13F2.maximumVariantCancellation = 0.01;
+cfg.phase13F2.minimumMonotonicPassFraction = 1.00;
+cfg.phase13F2.minimumAblationPassFraction = 1.00;
+cfg.phase13F2.nextPhase = "phase13F3_full_LODO_RT_execution";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
