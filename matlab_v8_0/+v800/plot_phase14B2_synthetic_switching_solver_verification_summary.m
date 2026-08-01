@@ -46,13 +46,17 @@ saveas(h, [cfg.phase14B2.figureBaseFile '.pdf']);
 end
 
 function plot_single_link(T)
+rowIndex = (1:height(T)).';
+caseLabel = "I=" + string(T.applied_current) + ", T=" + string(T.temperature);
 yyaxis left;
-plot(T.applied_current, T.ic, 'o-', 'LineWidth', 1.4);
+plot(rowIndex, T.ic, 'o-', 'LineWidth', 1.4);
 ylabel('Ic');
 yyaxis right;
-bar(T.applied_current, double(T.switched), 0.45);
+bar(rowIndex, double(T.switched), 0.45);
 ylabel('switched');
-xlabel('applied current');
+xlabel('synthetic case');
+set(gca, 'XTick', rowIndex, 'XTickLabel', caseLabel);
+xtickangle(30);
 grid on;
 end
 
