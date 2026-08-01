@@ -1,0 +1,13 @@
+prohibited_item,blocked,reason
+alter_frozen_FB_equilibrium_RT,1,"Equilibrium baseline is frozen by Phase 13F.4."
+repair_AS004_or_AS005_equilibrium_residuals,1,"Phase 13D partial-scope limitation remains active."
+change_preferred_13F4_variant,1,"Phase 13F.4 selected FB by parsimony."
+device_specific_Ic_gain_fitted_to_each_map,1,"Would convert nonlinear phase into device-specific fitting."
+device_specific_thermal_gain,1,"Thermal terms are reserved for declared Phase 14C ablation."
+manual_switching_thresholds,1,"Switching thresholds must arise from shared law."
+device_specific_curve_shifts,1,"Would hide missing calibration/axis information."
+nonlinear_correction_to_equilibrium_Tc,1,"Would reopen equilibrium R(T) calibration."
+Phase6_status_used_as_target,1,"Phase 6 is interpretive evidence, not fitting target."
+Raman_used_as_nonlinear_target,1,"Raman remains independent context."
+field_oscillation_period_fitted_in_Phase14,1,"Field oscillations require Phase 15 phase/flux model."
+transport_relabeling_or_probe_fallback,1,"Probe labels remain locked from Phase 11."

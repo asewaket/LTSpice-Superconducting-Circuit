@@ -1,0 +1,5 @@
+observable,phase14A_status,allowed_use,normalization_policy
+dVdI_I_T,primary_focus,Phase 14B current-switching feasibility if source axes are declared.,Optional RN normalization requires estimator ledger.
+dVdI_I_B,excluded_field_oscillation_context,Phase 15 unless a fixed B~0 slice is explicitly locked.,No field-period fitting or loop phase use in Phase 14.
+I_V,metadata_or_reduction_context_only,May inform sweep/current-axis metadata; not a direct map target yet.,No universal voltage normalization frozen.
+R_T_equilibrium,frozen_FB_equilibrium_baseline,Zero-current limit only; cannot be retuned in Phase 14.,Use frozen FB state.

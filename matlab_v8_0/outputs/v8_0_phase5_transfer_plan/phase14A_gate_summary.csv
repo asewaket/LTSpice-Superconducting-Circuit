@@ -1,0 +1,11 @@
+gate,outcome,note
+"Phase 11 nonlinear architecture consumed",pass,"Phase 14A reads the Phase 11 device-centered inventory."
+"Phase 13F.4 FB baseline consumed",pass,"FB is frozen as the equilibrium nonlinear baseline."
+"Equilibrium limitations preserved",pass,"Partial R(T) predictive scope remains visible."
+"Nonlinear data availability explicit",pass,"Devices without dVdI(I,T) are not filled with synthetic targets."
+"dVdI(I,T) separated from dVdI(I,B)",pass,"AS006 field data are deferred to Phase 15 unless a fixed-B slice is locked later."
+"Objective weights and missing-data policy frozen",pass,"Objective terms are declared before any current-switching execution."
+"Calibration/holdout policy declared",pass,"Within-device held-out temperature/bias policy is declared."
+"No prohibited flexibility enabled",pass,"No device labels, probes, Raman targets, or device-specific gains are opened."
+"No electrothermal terms in Phase 14A",pass,"Thermal feedback requires Phase 14C ablation."
+"Clean provenance",pass,"True only when Phase 14A starts from a clean checkout."

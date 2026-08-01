@@ -1,0 +1,9 @@
+item,value,note
+phase,phase14A_nonlinear_data_objective_lock,"Phase 14A nonlinear data and objective lock."
+source_commit_sha,c27f11829a1f7dff510da51bd3f414d5cc73f4de,"Git commit captured before this runner writes outputs."
+source_tree_sha,e4c230f1f4b55fc0dc4a91c7d9fef5efc2519a54,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,data_and_objective_lock_before_current_switching,"No nonlinear fitting, equilibrium retuning, relabeling, or thermal model."
+source_provenance_policy,Commit Phase 14A source first; rerun from clean source; commit lock artifacts separately.,"Artifacts are separate from source/configuration commits."

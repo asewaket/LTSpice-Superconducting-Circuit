@@ -1,0 +1,11 @@
+item,status,note
+phase14A_closure,pass_nonlinear_data_objective_lock,"Closure means data availability, objectives, and prohibitions are frozen."
+equilibrium_baseline,FB,"Frozen by Phase 13F.4."
+equilibrium_RT_status,partial_predictive_scope,"The equilibrium R(T) predictor remains partial-scope."
+shared_quantitative_RT_predictor,false,"Phase 13F.4 rejected a universal quantitative R(T) predictor."
+interface_transfer_term,not_identifiable,"Phase 13F.4 marked interface transfer as not independently identifiable."
+phase14B_candidate_devices,AS001|AS004,"Only devices with declared dVdI(I,T) evidence enter Phase 14B candidates."
+phase15_deferred_field_devices,AS006,"Field-dependent nonlinear evidence is reserved for Phase 15."
+electrothermal_terms,not_enabled_until_phase14C_ablation,"Thermal physics requires a later explicit ablation."
+source_commit_sha,c27f11829a1f7dff510da51bd3f414d5cc73f4de,"Source commit captured before output generation."
+next_phase,phase14B_current_switching_feasibility,"Proceed to current-switching limiting cases and feasibility."
