@@ -1134,6 +1134,67 @@ cfg.phase14A.allowDeviceSpecificIcGain = false;
 cfg.phase14A.allowElectrothermalTerms = false;
 cfg.phase14A.nextPhase = "phase14B_current_switching_feasibility";
 
+cfg.phase14B.currentModelSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase14B_current_model_specification.csv');
+cfg.phase14B.parameterRoleLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14B_parameter_role_ledger.csv');
+cfg.phase14B.solverSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase14B_solver_specification.csv');
+cfg.phase14B.prohibitedFlexibilityLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14B_prohibited_flexibility_ledger.csv');
+cfg.phase14B.limitingCasePlanFile = fullfile(cfg.outputDir, ...
+    'phase14B_limiting_case_plan.csv');
+cfg.phase14B.trainingHoldoutManifestFile = fullfile(cfg.outputDir, ...
+    'phase14B_training_holdout_manifest.csv');
+cfg.phase14B.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B_gate_summary.csv');
+cfg.phase14B.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B_handoff_status.csv');
+cfg.phase14B.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B_source_provenance.csv');
+cfg.phase14B.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B_current_model_solver_freeze_summary');
+cfg.phase14B.description = ...
+    'Current-dependent network model and solver freeze before nonlinear execution';
+cfg.phase14B.equilibriumBaseline = "FB";
+cfg.phase14B.currentModelVariant = "NI";
+cfg.phase14B.baselineModelVariant = "N0";
+cfg.phase14B.criticalCurrentLaw = ...
+    "Ic_ij(T)=Ic0_ij*(1-(T/Tc_ij)^p)^q for T<Tc_ij; Ic_ij=0 otherwise";
+cfg.phase14B.Ic0CouplingRule = ...
+    "Ic0_ij=global_Ic_scale*g(W_ij,Tc_ij,Rn_ij)";
+cfg.phase14B.differentialResistanceScheme = ...
+    "central_finite_difference_on_frozen_current_grid";
+cfg.phase14B.currentSteppingDirection = "positive_and_negative_separate";
+cfg.phase14B.allowedSolverStatuses = [
+    "converged"
+    "maximum_iterations_reached"
+    "state_cycle_detected"
+    "singular_network"
+    "invalid_branch_current"
+    ];
+cfg.phase14B.sharedParameterNames = [
+    "global_Ic_scale"
+    "shared_temperature_exponent_p"
+    "shared_temperature_exponent_q"
+    "shared_switching_width"
+    "shared_iteration_tolerance"
+    "shared_dissipative_state_resistance"
+    ];
+cfg.phase14B.phase14BCandidateDevices = ["AS001"; "AS004"];
+cfg.phase14B.phase15DeferredDevices = "AS006";
+cfg.phase14B.allowEquilibriumRetuning = false;
+cfg.phase14B.allowDeviceSpecificIcScale = false;
+cfg.phase14B.allowDeviceSpecificSwitchingExponents = false;
+cfg.phase14B.allowManualSwitchingCurrents = false;
+cfg.phase14B.allowThermalFeedback = false;
+cfg.phase14B.allowPhaseDynamics = false;
+cfg.phase14B.allowFieldPeriodicityTerms = false;
+cfg.phase14B.allowRamanTargets = false;
+cfg.phase14B.allowPhase6Targets = false;
+cfg.phase14B.allowDeviceRelabeling = false;
+cfg.phase14B.nextPhase = "phase14B2_synthetic_current_switching_verification";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
