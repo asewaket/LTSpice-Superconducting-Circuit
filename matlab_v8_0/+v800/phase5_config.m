@@ -1097,6 +1097,43 @@ cfg.phase13F4.combinedExtraBenefitThreshold = 0.01;
 cfg.phase13F4.expectedPreferredVariant = "FB";
 cfg.phase13F4.nextPhase = "phase14_nonlinear_transport_feasibility";
 
+cfg.phase14A.nonlinearDataManifestFile = fullfile(cfg.outputDir, ...
+    'phase14A_nonlinear_data_manifest.csv');
+cfg.phase14A.observableDefinitionFile = fullfile(cfg.outputDir, ...
+    'phase14A_observable_definition.csv');
+cfg.phase14A.probeAndSweepLockFile = fullfile(cfg.outputDir, ...
+    'phase14A_probe_and_sweep_lock.csv');
+cfg.phase14A.objectiveSpecificationFile = fullfile(cfg.outputDir, ...
+    'phase14A_objective_specification.csv');
+cfg.phase14A.calibrationHoldoutManifestFile = fullfile(cfg.outputDir, ...
+    'phase14A_calibration_holdout_manifest.csv');
+cfg.phase14A.prohibitedFlexibilityLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14A_prohibited_flexibility_ledger.csv');
+cfg.phase14A.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14A_gate_summary.csv');
+cfg.phase14A.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14A_handoff_status.csv');
+cfg.phase14A.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14A_source_provenance.csv');
+cfg.phase14A.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14A_nonlinear_data_objective_lock_summary');
+cfg.phase14A.description = ...
+    'Nonlinear data availability and objective lock before current switching';
+cfg.phase14A.equilibriumBaseline = "FB";
+cfg.phase14A.equilibriumRTStatus = "partial_predictive_scope";
+cfg.phase14A.sharedQuantitativeRTPredictor = false;
+cfg.phase14A.interfaceTransferTerm = "not_identifiable";
+cfg.phase14A.focusObservable = "dVdI_I_T";
+cfg.phase14A.excludeFieldOscillations = true;
+cfg.phase14A.allowOptimizerRerun = false;
+cfg.phase14A.allowEquilibriumRetuning = false;
+cfg.phase14A.allowDeviceRelabeling = false;
+cfg.phase14A.allowPhase6Targets = false;
+cfg.phase14A.allowRamanTargets = false;
+cfg.phase14A.allowDeviceSpecificIcGain = false;
+cfg.phase14A.allowElectrothermalTerms = false;
+cfg.phase14A.nextPhase = "phase14B_current_switching_feasibility";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
