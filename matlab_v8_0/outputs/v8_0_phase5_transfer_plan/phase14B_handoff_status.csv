@@ -1,0 +1,12 @@
+item,status,note
+phase14B1_closure,pass_current_model_solver_freeze,"Closure means current law, parameter roles, solver rules, and tests are frozen."
+phase14B_execution,not_started_specification_only,"No synthetic or experimental nonlinear execution occurs in Phase 14B.1."
+equilibrium_baseline,FB,"Frozen by Phase 13F.4 and consumed through Phase 14A."
+zero_current_recovery_required,hard_gate,"The I to 0 response must equal FB."
+current_switching_variant,NI,"NI means FB plus current-dependent switching."
+thermal_feedback_used,false,"Electrothermal feedback is absent unless Phase 14C is explicitly triggered."
+phase14B_candidate_devices,AS001|AS004,"Only AS001 and AS004 have dVdI(I,T) targets."
+shared_Ic_law,frozen_common_AS001_AS004,"No device-specific nonlinear gains or exponents."
+nonlinear_adequacy_decision,pending,"Adequacy is decided after Phase 14B execution."
+source_commit_sha,cd5c96ab6c4aecea65f9fe1a7ccca3a2c5f66060,"Source commit captured before output generation."
+next_phase,phase14B2_synthetic_current_switching_verification,"Proceed to synthetic limiting-case verification."

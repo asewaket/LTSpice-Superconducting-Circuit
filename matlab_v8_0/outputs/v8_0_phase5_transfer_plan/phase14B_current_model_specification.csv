@@ -1,0 +1,11 @@
+component,definition,status,note
+equilibrium_limit,"limit_I_to_0_R_phase14B_T_I_equals_R_FB_T",hard_gate,"The nonlinear model cannot alter zero-bias R(T)."
+baseline_variant,"FB",frozen_from_phase13F4,"FB is the Phase 13F.4 selected equilibrium baseline."
+current_switching_variant,"NI",declared_for_phase14B,"NI adds current switching only."
+critical_current_temperature_law,"Ic_ij(T)=Ic0_ij*(1-(T/Tc_ij)^p)^q for T<Tc_ij; Ic_ij=0 otherwise",shared_global_law,"The same p and q are used for AS001 and AS004."
+zero_temperature_scale_rule,"Ic0_ij=global_Ic_scale*g(W_ij,Tc_ij,Rn_ij)",shared_global_coupling_rule,"The rule can depend on W_ij, Tc_ij, and Rn_ij but not device-specific gains."
+link_state_superconducting,"unswitched links use frozen FB equilibrium conductance",frozen_equilibrium_state,"No additional superconducting branch physics is introduced here."
+link_state_dissipative,"switched links use shared dissipative-state resistance rule",shared_parameter,"The high-current limit is checked in Phase 14B.2."
+switching_smoothing,"shared_switching_width applies globally to all eligible links",shared_parameter,"Smoothing is a numerical regularizer, not a per-device fit."
+differential_resistance,"central_finite_difference_on_frozen_current_grid",frozen_before_comparison,"dV/dI is computed after V(I,T) is solved."
+comparison_variants,"N0_versus_NI",thermal_feedback_absent,"N0 is FB-only; NI is FB plus Ic(T) switching."

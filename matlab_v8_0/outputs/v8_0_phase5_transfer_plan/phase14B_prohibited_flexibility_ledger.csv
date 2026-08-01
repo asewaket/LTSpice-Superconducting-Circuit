@@ -1,0 +1,13 @@
+prohibited_item,blocked,reason
+alter_frozen_FB_equilibrium_RT,1,"Zero-current state must recover FB."
+device_specific_Ic_scale,1,"Would split the shared nonlinear law by device."
+device_specific_switching_exponents,1,"Would split p/q by device."
+manual_switching_currents,1,"Switching currents must come from Ic(T), not hand-picked crossings."
+device_specific_temperature_offsets,1,"Would hide temperature-axis or calibration problems."
+nonlinear_correction_to_equilibrium_Tc,1,"Would reopen the equilibrium Tc map."
+thermal_feedback,1,"Reserved only for Phase 14C if current-only failure demands it."
+phase_dynamics,1,"Phase dynamics are outside Phase 14."
+field_periodicity_terms,1,"AS006 field periodicity is deferred to Phase 15."
+Raman_target_use,1,"Raman remains independent context."
+Phase6_label_target_use,1,"Phase 6 labels are interpretive outputs, not nonlinear targets."
+transport_relabeling_or_probe_fallback,1,"Probe labels remain locked by Phase 11/14A."

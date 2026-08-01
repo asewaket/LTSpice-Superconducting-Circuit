@@ -1,0 +1,9 @@
+item,value,note
+phase,phase14B1_current_model_solver_freeze,"Phase 14B.1 current-switching law and solver freeze."
+source_commit_sha,cd5c96ab6c4aecea65f9fe1a7ccca3a2c5f66060,"Git commit captured before this runner writes outputs."
+source_tree_sha,f9df83167ec4547b1696862dd8c65a271be48174,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,current_law_and_solver_specification_before_nonlinear_execution,"No nonlinear fitting, thermal feedback, field model, Raman target, or R(T) retuning."
+source_provenance_policy,Commit Phase 14B.1 source first; rerun from clean source; commit artifacts separately.,"Artifacts are separate from source/configuration commits."

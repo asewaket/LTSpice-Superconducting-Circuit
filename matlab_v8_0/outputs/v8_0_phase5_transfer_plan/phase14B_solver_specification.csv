@@ -1,0 +1,14 @@
+step,policy,frozen_status
+initialize_state,"start from previous current point or FB zero-current state",frozen_for_phase14B2
+solve_network_currents,"solve Kirchhoff network for fixed applied current and link states",frozen_for_phase14B2
+compare_branch_current_to_Ic,"use abs(branch_current) >= smoothed_Ic_threshold",frozen_for_phase14B2
+update_switched_links,"switched links enter shared dissipative state",frozen_for_phase14B2
+repeat_until_converged,"stop when state vector and voltage meet shared tolerance",frozen_for_phase14B2
+record_voltage,"store V(I,T), state count, and iteration count",frozen_for_phase14B2
+compute_dVdI,"central finite difference except endpoints use one-sided difference",frozen_for_phase14B2
+record_diagnostics,"retain nonconverged points in failed prediction log",frozen_for_phase14B2
+allowed_solver_status:converged,"accepted_success_status",frozen_for_phase14B2
+allowed_solver_status:maximum_iterations_reached,"failure_log_required",frozen_for_phase14B2
+allowed_solver_status:state_cycle_detected,"failure_log_required",frozen_for_phase14B2
+allowed_solver_status:singular_network,"failure_log_required",frozen_for_phase14B2
+allowed_solver_status:invalid_branch_current,"failure_log_required",frozen_for_phase14B2
