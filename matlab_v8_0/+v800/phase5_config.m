@@ -1193,7 +1193,49 @@ cfg.phase14B.allowFieldPeriodicityTerms = false;
 cfg.phase14B.allowRamanTargets = false;
 cfg.phase14B.allowPhase6Targets = false;
 cfg.phase14B.allowDeviceRelabeling = false;
-cfg.phase14B.nextPhase = "phase14B2_synthetic_current_switching_verification";
+cfg.phase14B.nextPhase = "phase14B2_synthetic_switching_solver_verification";
+
+cfg.phase14B2.singleLinkSwitchingFile = fullfile(cfg.outputDir, ...
+    'phase14B2_single_link_switching.csv');
+cfg.phase14B2.parallelPathRedistributionFile = fullfile(cfg.outputDir, ...
+    'phase14B2_parallel_path_redistribution.csv');
+cfg.phase14B2.boundaryBottleneckResultsFile = fullfile(cfg.outputDir, ...
+    'phase14B2_boundary_bottleneck_results.csv');
+cfg.phase14B2.currentSymmetryChecksFile = fullfile(cfg.outputDir, ...
+    'phase14B2_current_symmetry_checks.csv');
+cfg.phase14B2.IcTemperatureMonotonicityFile = fullfile(cfg.outputDir, ...
+    'phase14B2_Ic_temperature_monotonicity.csv');
+cfg.phase14B2.highCurrentLimitFile = fullfile(cfg.outputDir, ...
+    'phase14B2_high_current_limit.csv');
+cfg.phase14B2.zeroCurrentFBRecoveryFile = fullfile(cfg.outputDir, ...
+    'phase14B2_zero_current_FB_recovery.csv');
+cfg.phase14B2.solverConvergenceFile = fullfile(cfg.outputDir, ...
+    'phase14B2_solver_convergence.csv');
+cfg.phase14B2.stateCycleLogFile = fullfile(cfg.outputDir, ...
+    'phase14B2_state_cycle_log.csv');
+cfg.phase14B2.limitingCaseSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B2_limiting_case_summary.csv');
+cfg.phase14B2.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B2_gate_summary.csv');
+cfg.phase14B2.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B2_handoff_status.csv');
+cfg.phase14B2.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B2_source_provenance.csv');
+cfg.phase14B2.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B2_synthetic_switching_solver_verification_summary');
+cfg.phase14B2.description = ...
+    'Synthetic switching and solver verification before experimental nonlinear execution';
+cfg.phase14B2.currentGrid = (-1.60:0.20:1.60).';
+cfg.phase14B2.temperatureGrid = [0.00; 0.25; 0.50; 0.75; 1.00; 1.10];
+cfg.phase14B2.monotonicTolerance = 1e-12;
+cfg.phase14B2.symmetryTolerance = 1e-10;
+cfg.phase14B2.zeroCurrentTolerance = 1e-12;
+cfg.phase14B2.highCurrentRelativeTolerance = 0.15;
+cfg.phase14B2.maxIterations = 20;
+cfg.phase14B2.allowExperimentalResidualInspection = false;
+cfg.phase14B2.allowThermalFeedback = false;
+cfg.phase14B2.allowPhaseDynamics = false;
+cfg.phase14B2.nextPhase = "phase14B3_nonlinear_execution";
 
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
