@@ -1289,7 +1289,90 @@ cfg.phase14B3.allowManualSwitchingCurrents = false;
 cfg.phase14B3.allowEquilibriumRetuning = false;
 cfg.phase14B3.rawGridPolicy = ...
     'use_locked_raw_grid_when_loader_paths_exist_otherwise_record_proxy_execution_status';
-cfg.phase14B3.nextPhase = "phase14D_or_phase14C_decision";
+cfg.phase14B3.nextPhase = "phase14B4_raw_nonlinear_data_resolution";
+
+cfg.phase14B4.rawDataLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14B4_raw_nonlinear_data_ledger.csv');
+cfg.phase14B4.axisIntegrityFile = fullfile(cfg.outputDir, ...
+    'phase14B4_axis_integrity_checks.csv');
+cfg.phase14B4.ingestionPolicyFile = fullfile(cfg.outputDir, ...
+    'phase14B4_ingestion_policy.csv');
+cfg.phase14B4.resolutionDecisionFile = fullfile(cfg.outputDir, ...
+    'phase14B4_resolution_decision.csv');
+cfg.phase14B4.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B4_gate_summary.csv');
+cfg.phase14B4.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B4_handoff_status.csv');
+cfg.phase14B4.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B4_source_provenance.csv');
+cfg.phase14B4.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B4_raw_nonlinear_data_resolution_summary');
+cfg.phase14B4.description = ...
+    'Raw AS001/AS004 dVdI(I,T) source resolution and ingestion lock';
+cfg.phase14B4.candidateDevices = cfg.phase14B3.candidateDevices;
+cfg.phase14B4.requiredObservableType = "dVdI_I_T";
+cfg.phase14B4.allowedStatusForRawExecution = "raw_data_resolved";
+cfg.phase14B4.noProxySubstitution = true;
+cfg.phase14B4.allowFitting = false;
+cfg.phase14B4.allowSyntheticReplacement = false;
+cfg.phase14B4.allowFieldDependentMaps = false;
+cfg.phase14B4.currentAxisMonotonicRequired = true;
+cfg.phase14B4.zeroCurrentRequired = true;
+cfg.phase14B4.requireProbeIdentity = true;
+cfg.phase14B4.requireSweepDirection = true;
+cfg.phase14B4.requireUnits = true;
+cfg.phase14B4.requireFieldCondition = true;
+cfg.phase14B4.nextPhaseWhenResolved = "phase14B5_raw_AS001_AS004_nonlinear_prediction_execution";
+cfg.phase14B4.nextPhaseWhenUnresolved = "insufficient_raw_data_for_nonlinear_adequacy";
+
+cfg.phase14B4R.candidateSourceLedgerFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_candidate_source_ledger.csv');
+cfg.phase14B4R.recoveryValidationFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_recovery_validation.csv');
+cfg.phase14B4R.deviceRecoveryDecisionFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_device_recovery_decision.csv');
+cfg.phase14B4R.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_gate_summary.csv');
+cfg.phase14B4R.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_handoff_status.csv');
+cfg.phase14B4R.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_source_provenance.csv');
+cfg.phase14B4R.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase14B4R_raw_nonlinear_source_recovery_summary');
+cfg.phase14B4R.description = ...
+    'Raw nonlinear source recovery for AS001/AS004';
+cfg.phase14B4R.candidateDevices = cfg.phase14B4.candidateDevices;
+cfg.phase14B4R.deviceRawLabels = table( ...
+    ["AS001"; "AS004"], ["ASD088"; "ASD087"], ...
+    'VariableNames', {'device', 'raw_label'});
+cfg.phase14B4R.deviceMappingSource = ...
+    'matlab_sc_network_project_v4/make_experiment_data_table.m and thesis ch4 dimensions note';
+cfg.phase14B4R.searchRoots = [
+    string(cfg.repoRoot)
+    "/Users/asewaket/Documents/Thesis/Raw Transport Data"
+    "/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data"
+    ];
+cfg.phase14B4R.preferredPatterns = [
+    "*%s*dVdIvIvT*.dat"
+    "*%s*dVdIvIvT*.csv"
+    "*%s*dVdIvIvT*.txt"
+    "sm_%s_dVdIvIvT*.mat"
+    ];
+cfg.phase14B4R.secondaryPatterns = [
+    "*%s*dVdIvI*.mat"
+    "*%s*dVdIvI*.dat"
+    "*%s*dVdIvIvB*.dat"
+    "*%s*RvT*.dat"
+    ];
+cfg.phase14B4R.acceptedMatrixColumns = ["R1"; "R2"; "dVdI"; "R"];
+cfg.phase14B4R.acceptedCurrentColumns = ["I"; "current"; "bias_current"];
+cfg.phase14B4R.acceptedTemperatureColumns = ["temp"; "T"; "temperature"];
+cfg.phase14B4R.allowModelChanges = false;
+cfg.phase14B4R.allowFitting = false;
+cfg.phase14B4R.allowProxySubstitution = false;
+cfg.phase14B4R.figureOnlyAccepted = false;
+cfg.phase14B4R.nextPhaseWhenRecovered = "phase14B4_lock_recovered_sources_then_rerun_ingestion";
+cfg.phase14B4R.nextPhaseWhenNotRecovered = "phase14D_insufficient_raw_data_decision";
 
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
