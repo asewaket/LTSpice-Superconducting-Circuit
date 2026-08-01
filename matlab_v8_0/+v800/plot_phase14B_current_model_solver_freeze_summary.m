@@ -94,11 +94,12 @@ end
 
 function plot_handoff_text(cfg, holdout, prohibited)
 axis off;
+candidateText = strjoin(string(holdout.device), " | ");
 lines = [
     "Equilibrium baseline: " + cfg.phase14B.equilibriumBaseline
     "Variants: " + cfg.phase14B.baselineModelVariant + " vs " + ...
         cfg.phase14B.currentModelVariant
-    "Candidate devices: " + strjoin(string(holdout.device), "|")
+    "Candidate devices: " + candidateText
     "Thermal feedback: blocked"
     "Prohibited items: " + string(height(prohibited))
     "Next: synthetic limiting-case verification"
