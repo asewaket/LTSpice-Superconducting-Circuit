@@ -49,7 +49,7 @@ function plot_single_link(T)
 rowIndex = (1:height(T)).';
 caseLabel = "I=" + string(T.applied_current) + ", T=" + string(T.temperature);
 yyaxis left;
-plot(rowIndex, T.ic, 'o-', 'LineWidth', 1.4);
+plot(rowIndex, T.ic, 'o', 'LineStyle', 'none', 'LineWidth', 1.4);
 ylabel('Ic');
 yyaxis right;
 bar(rowIndex, double(T.switched), 0.45);

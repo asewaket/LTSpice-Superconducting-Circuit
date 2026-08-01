@@ -1235,7 +1235,7 @@ cfg.phase14B2.maxIterations = 20;
 cfg.phase14B2.allowExperimentalResidualInspection = false;
 cfg.phase14B2.allowThermalFeedback = false;
 cfg.phase14B2.allowPhaseDynamics = false;
-cfg.phase14B2.nextPhase = "phase14B3_nonlinear_execution";
+cfg.phase14B2.nextPhase = "phase14B3_AS001_AS004_nonlinear_execution";
 
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
