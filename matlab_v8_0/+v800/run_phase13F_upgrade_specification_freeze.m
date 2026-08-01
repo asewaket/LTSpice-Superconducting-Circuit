@@ -10,6 +10,7 @@ end
 
 sourceProvenance = build_source_provenance(cfg);
 inputs = load_inputs(cfg);
+inputResolution = build_input_resolution_ledger(cfg, inputs);
 upgradeSpec = build_upgrade_model_specification();
 parameterRoles = build_parameter_role_ledger();
 baselineWindow = build_baseline_window_manifest(cfg);
@@ -20,9 +21,10 @@ comparisonThresholds = build_comparison_thresholds(cfg);
 variantManifest = build_variant_manifest(cfg);
 gateSummary = build_gate_summary(cfg, inputs, upgradeSpec, parameterRoles, ...
     baselineWindow, residualShuntSpec, interfaceTransferLedger, ...
-    prohibitedFlexibility, comparisonThresholds, variantManifest);
+    prohibitedFlexibility, comparisonThresholds, variantManifest, ...
+    inputResolution);
 handoffStatus = build_handoff_status(cfg, gateSummary, inputs, ...
-    sourceProvenance);
+    sourceProvenance, inputResolution);
 
 writetable(upgradeSpec, cfg.phase13F.upgradeModelSpecificationFile);
 writetable(parameterRoles, cfg.phase13F.parameterRoleLedgerFile);
@@ -34,6 +36,7 @@ writetable(prohibitedFlexibility, ...
     cfg.phase13F.prohibitedFlexibilityLedgerFile);
 writetable(comparisonThresholds, cfg.phase13F.comparisonThresholdsFile);
 writetable(variantManifest, cfg.phase13F.variantManifestFile);
+writetable(inputResolution, cfg.phase13F.inputResolutionFile);
 writetable(gateSummary, cfg.phase13F.specificationGateSummaryFile);
 writetable(handoffStatus, cfg.phase13F.specificationHandoffStatusFile);
 writetable(sourceProvenance, cfg.phase13F.sourceProvenanceFile);
@@ -51,6 +54,7 @@ end
 out = struct();
 out.config = cfg;
 out.inputs = inputs;
+out.inputResolution = inputResolution;
 out.upgradeModelSpecification = upgradeSpec;
 out.parameterRoleLedger = parameterRoles;
 out.baselineWindowManifest = baselineWindow;
@@ -80,6 +84,7 @@ paths.prohibitedFlexibilityLedger = ...
     cfg.phase13F.prohibitedFlexibilityLedgerFile;
 paths.comparisonThresholds = cfg.phase13F.comparisonThresholdsFile;
 paths.variantManifest = cfg.phase13F.variantManifestFile;
+paths.inputResolution = cfg.phase13F.inputResolutionFile;
 paths.gateSummary = cfg.phase13F.specificationGateSummaryFile;
 paths.handoffStatus = cfg.phase13F.specificationHandoffStatusFile;
 paths.sourceProvenance = cfg.phase13F.sourceProvenanceFile;
@@ -374,12 +379,46 @@ T = table(variant_id, variant_name, baseline_shunt_upgrade, ...
     interface_transfer_upgrade, execution_status, purpose);
 end
 
+function T = build_input_resolution_ledger(cfg, inputs)
+field = [
+    "phase13D_decision"
+    "phase13E_decision"
+    "phase13E_selected_upgrade_count"
+    ];
+table_value = [
+    lookup_value(inputs.phase13DDecision, "phase13D_decision")
+    lookup_value(inputs.phase13EClaim, "phase13E_decision")
+    string(numel(string(inputs.phase13ESelectedScope.upgrade)))
+    ];
+fallback_value = [
+    lookup_csv_ledger_value(cfg.phase13D.predictiveAdequacyDecisionFile, ...
+        "phase13D_decision")
+    lookup_csv_ledger_value(cfg.phase13E.claimUpdateFile, ...
+        "phase13E_decision")
+    ""
+    ];
+resolved_value = table_value;
+useFallback = strlength(resolved_value) == 0 & strlength(fallback_value) > 0;
+resolved_value(useFallback) = fallback_value(useFallback);
+resolution_source = repmat("table_lookup", numel(field), 1);
+resolution_source(useFallback) = "csv_ledger_fallback";
+expected_value = [
+    "pass_partial_predictive_scope"
+    "baseline_and_shunt_upgrade_plus_interface_transfer_audit_justified"
+    "2"
+    ];
+matches_expected = resolved_value == expected_value;
+T = table(field, table_value, fallback_value, resolved_value, ...
+    resolution_source, expected_value, matches_expected);
+end
+
 function T = build_gate_summary(cfg, inputs, upgradeSpec, parameterRoles, ...
     baselineWindow, residualShuntSpec, interfaceTransferLedger, ...
-    prohibitedFlexibility, comparisonThresholds, variantManifest)
-phase13DEPreserved = lookup_value(inputs.phase13DDecision, ...
+    prohibitedFlexibility, comparisonThresholds, variantManifest, ...
+    inputResolution)
+phase13DEPreserved = resolved_input(inputResolution, ...
     "phase13D_decision") == "pass_partial_predictive_scope" && ...
-    lookup_value(inputs.phase13EClaim, "phase13E_decision") == ...
+    resolved_input(inputResolution, "phase13E_decision") == ...
     "baseline_and_shunt_upgrade_plus_interface_transfer_audit_justified";
 selected = string(inputs.phase13ESelectedScope.upgrade);
 onlyTwoSelected = numel(selected) == 2 && all(ismember(selected, [
@@ -437,7 +476,8 @@ note = [
 T = table(component, outcome, note);
 end
 
-function T = build_handoff_status(cfg, gateSummary, inputs, sourceProvenance)
+function T = build_handoff_status(cfg, gateSummary, inputs, sourceProvenance, ...
+    inputResolution)
 phasePass = all(string(gateSummary.outcome) == "pass");
 field = [
     "phase13F1_closure"
@@ -450,8 +490,8 @@ field = [
 value = [
     conditional(phasePass, "pass_upgrade_specification_freeze", ...
         "fail_specification_incomplete")
-    lookup_value(inputs.phase13DDecision, "phase13D_decision")
-    lookup_value(inputs.phase13EClaim, "phase13E_decision")
+    resolved_input(inputResolution, "phase13D_decision")
+    resolved_input(inputResolution, "phase13E_decision")
     "baseline_and_residual_shunt_upgrade|interface_transfer_or_transparency_input"
     lookup_value(sourceProvenance, "source_commit_sha")
     cfg.phase13F.nextPhase
@@ -465,6 +505,15 @@ note = [
     "Proceed to limiting cases and ablations next."
     ];
 T = table(field, value, note);
+end
+
+function out = resolved_input(T, key)
+mask = string(T.field) == string(key);
+if any(mask)
+    out = string(T.resolved_value(find(mask, 1)));
+else
+    out = "";
+end
 end
 
 function out = lookup_value(T, key)
@@ -496,6 +545,30 @@ end
 
 function out = normalize_lookup_key(in)
 out = lower(regexprep(strtrim(string(in)), '[^A-Za-z0-9]', ''));
+end
+
+function out = lookup_csv_ledger_value(pathValue, key)
+out = "";
+if ~exist(pathValue, 'file')
+    return;
+end
+txt = fileread(pathValue);
+lines = regexp(txt, '\r\n|\n|\r', 'split');
+target = normalize_lookup_key(key);
+for k = 2:numel(lines)
+    line = string(strtrim(lines{k}));
+    if strlength(line) == 0
+        continue;
+    end
+    parts = regexp(char(line), ',', 'split');
+    if numel(parts) < 2
+        continue;
+    end
+    if normalize_lookup_key(parts{1}) == target
+        out = string(strtrim(parts{2}));
+        return;
+    end
+end
 end
 
 function s = passfail(tf)
