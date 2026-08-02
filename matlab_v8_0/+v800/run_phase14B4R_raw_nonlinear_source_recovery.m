@@ -17,7 +17,7 @@ deviceDecision = build_device_recovery_decision(cfg, inputs, ...
     recoveryValidation);
 gateSummary = build_gate_summary(cfg, inputs, candidateLedger, ...
     recoveryValidation, deviceDecision, sourceProvenance);
-handoffStatus = build_handoff_status(cfg, deviceDecision, gateSummary, ...
+handoffStatus = build_handoff_status(cfg, inputs, deviceDecision, gateSummary, ...
     sourceProvenance);
 
 writetable(candidateLedger, cfg.phase14B4R.candidateSourceLedgerFile);
@@ -99,12 +99,24 @@ end
 
 function inputs = load_inputs(cfg)
 inputs = struct();
-inputs.phase14B4Ledger = read_required_table( ...
-    cfg.phase14B4.rawDataLedgerFile);
-inputs.phase14B4Decision = read_required_table( ...
-    cfg.phase14B4.resolutionDecisionFile);
-inputs.phase14B4Handoff = read_required_table( ...
-    cfg.phase14B4.handoffStatusFile);
+requiredFiles = [
+    string(cfg.phase14B4.rawDataLedgerFile)
+    string(cfg.phase14B4.resolutionDecisionFile)
+    string(cfg.phase14B4.handoffStatusFile)
+    ];
+havePriorArtifacts = all(arrayfun(@(p) exist(char(p), 'file') > 0, ...
+    requiredFiles));
+if havePriorArtifacts
+    inputs.phase14B4Ledger = read_required_table( ...
+        cfg.phase14B4.rawDataLedgerFile);
+    inputs.phase14B4Decision = read_required_table( ...
+        cfg.phase14B4.resolutionDecisionFile);
+    inputs.phase14B4Handoff = read_required_table( ...
+        cfg.phase14B4.handoffStatusFile);
+    inputs.phase14B4InputMode = "loaded_from_phase14B4_artifacts";
+else
+    inputs = build_bootstrap_phase14B4_inputs(cfg, requiredFiles);
+end
 end
 
 function T = read_required_table(pathValue)
@@ -117,6 +129,53 @@ try
 catch
     T = readtable(pathValue, 'TextType', 'string', 'Delimiter', ',');
 end
+end
+
+function inputs = build_bootstrap_phase14B4_inputs(cfg, requiredFiles)
+% Phase 14B.4R can be rerun from a clean source checkout before the
+% preliminary Phase 14B.4 blocked-state artifacts have been committed. In
+% that case, bootstrap only the frozen blocked state that 14B.4R consumes:
+% both candidate devices are not released to 14B.5 until recovery and
+% relock complete.
+inputs = struct();
+devices = string(cfg.phase14B4R.candidateDevices(:));
+n = numel(devices);
+rawStatus = repmat("raw_data_partially_resolved", n, 1);
+allowedFor14B5 = false(n, 1);
+note = repmat("Bootstrapped frozen Phase 14B.4 blocked state for clean Phase 14B.4R recovery rerun.", n, 1);
+
+inputs.phase14B4Ledger = table( ...
+    devices, rawStatus, allowedFor14B5, note, ...
+    'VariableNames', {'device', 'raw_data_status', ...
+    'allowed_for_phase14B5', 'note'});
+inputs.phase14B4Decision = table( ...
+    devices, rawStatus, allowedFor14B5, ...
+    repmat("block_raw_execution_until_source_lock", n, 1), ...
+    repmat("phase14B4R_raw_source_recovery", n, 1), ...
+    'VariableNames', {'device', 'raw_data_status', ...
+    'allowed_for_phase14B5', 'decision', 'next_action'});
+
+item = [
+    "phase14B4_input_mode"
+    "missing_phase14B4_artifacts"
+    "blocked_state_policy"
+    "allowed_for_phase14B5"
+    ];
+status = [
+    "bootstrapped_frozen_blocked_state"
+    strjoin(requiredFiles, "|")
+    "AS001_AS004_not_released_until_recovery_and_relock"
+    "false"
+    ];
+handoffNote = [
+    "Used only because a clean artifact-freeze rerun starts before generated Phase 14B.4 artifacts are present."
+    "The listed preliminary Phase 14B.4 files were absent at run start."
+    "This bootstrap does not perform fitting, relabeling, source recovery, or proxy substitution."
+    "Phase 14B.5 remains blocked by construction."
+    ];
+inputs.phase14B4Handoff = table(item, status, handoffNote, ...
+    'VariableNames', {'item', 'status', 'note'});
+inputs.phase14B4InputMode = "bootstrapped_frozen_blocked_state";
 end
 
 function ledger = build_candidate_source_ledger(cfg)
@@ -556,7 +615,7 @@ outcome = [
     passfail(cleanSource)
     ];
 note = [
-    "Recovery starts from the prior raw-ingestion block."
+    "Recovery starts from the prior raw-ingestion block or its clean-rerun bootstrap equivalent."
     "AS001->ASD088 and AS004->ASD087 are recorded from legacy documentation."
     "Search roots and filename patterns are recorded in configuration."
     "Map images or PDFs cannot substitute for numerical grids."
@@ -570,7 +629,7 @@ note = [
 gates = table(gate, outcome, note);
 end
 
-function handoff = build_handoff_status(cfg, deviceDecision, gates, ...
+function handoff = build_handoff_status(cfg, inputs, deviceDecision, gates, ...
     sourceProvenance)
 recoveredDevices = string(deviceDecision.device( ...
     deviceDecision.allowed_for_phase14B4_relock));
@@ -593,6 +652,7 @@ end
 item = [
     "phase14B4R_recovery"
     "phase14B4R_closure"
+    "phase14B4_input_mode"
     "raw_sources_all_recovered"
     "raw_sources_any_recovered"
     "recovered_devices"
@@ -606,6 +666,7 @@ item = [
 status = [
     conditional(allPass, "complete", "needs_recovery_review")
     closure
+    inputs.phase14B4InputMode
     string(allRecovered)
     string(anyRecovered)
     join_or_none(recoveredDevices)
@@ -619,6 +680,7 @@ status = [
 note = [
     "Recovery audit status."
     "Closure distinguishes full, partial, and absent recovery."
+    "Records whether Phase 14B.4R consumed generated Phase 14B.4 artifacts or bootstrapped the frozen blocked state for a clean recovery rerun."
     "True only if all candidate devices have accepted raw candidates."
     "True if at least one candidate device has an accepted raw candidate."
     "Devices with candidates ready for manual lock review."
