@@ -1289,6 +1289,15 @@ solverConvergence = passfail(all(solverDiagnostics.converged));
 currentSwitchingImproves = all(channelPerformance.NI_improves);
 allowedFail = string(gates.gate) == "Prediction bounds satisfied";
 executionIntegrity = all(string(gates.outcome) == "pass" | allowedFail);
+closureStatus = "needs_bounded_prediction_implementation_review";
+if executionIntegrity
+    if predictionBoundsStatus == "pass"
+        closureStatus = "complete_raw_current_switching_execution";
+    else
+        closureStatus = ...
+            "complete_raw_current_switching_execution_with_bounds_limitation";
+    end
+end
 trigger = lookup_assessment(thermalTriggerAssessment, ...
     "phase14C_trigger") == "true";
 reason = lookup_assessment(thermalTriggerAssessment, ...
@@ -1317,8 +1326,7 @@ item = [
 status = [
     conditional(executionIntegrity, "complete_raw_nonlinear_campaign", ...
         "needs_execution_review")
-    conditional(executionIntegrity, "complete_raw_current_switching_execution", ...
-        "needs_bounded_prediction_implementation_review")
+    closureStatus
     passfail(executionIntegrity)
     "true"
     string(cfg.phase14B5.allowProxySubstitution)
