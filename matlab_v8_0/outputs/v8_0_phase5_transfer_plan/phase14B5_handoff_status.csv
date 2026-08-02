@@ -1,0 +1,18 @@
+item,status,note
+phase14B5_execution,complete_raw_nonlinear_campaign,Execution closure is separate from final adequacy.
+phase14B5_closure,complete_raw_current_switching_execution_with_bounds_limitation,Complete means raw-grid N0 versus NI evidence was emitted; prediction bounds are carried separately.
+execution_integrity,pass,Pass allows the frozen prediction-bounds limitation to proceed to Phase 14D.
+raw_experimental_grids_used,true,Canonical AS001/AS004 grids from Phase 14B.4L are used.
+proxy_substitution_used,false,No proxy data are allowed.
+all_predictions_finite,true,Finite predictions are a numerical-integrity requirement.
+solver_convergence,pass,Convergence is separate from prediction-bounds adequacy.
+prediction_bounds_status,fail,Frozen normalized bounds remain visible and are not retuned.
+current_switching_improves_all_channels,true,True only if NI reduces residuals for every retained device/channel.
+electrothermal_feedback_used,false,Thermal feedback is reserved for conditional Phase 14C.
+phase_dynamics_used,false,Phase dynamics remain outside this model class.
+phase14C_trigger,false,True only if raw evidence justifies electrothermal ablation.
+phase14C_trigger_reason,thermal_feedback_not_identifiable_from_available_raw_grids,Primary reason for running or skipping Phase 14C.
+nonlinear_adequacy_decision,pending_phase14C_or_phase14D,14D freezes the adequacy claim after optional 14C.
+source_commit_sha,a84f8cc265c4c399d7ab14b56d932cbd801d48af,Source commit captured before output generation.
+source_pre_run_clean,true,Clean provenance requires no tracked or untracked pre-run changes.
+next_phase,phase14D_current_only_adequacy_decision,Next stage selected by the trigger assessment.

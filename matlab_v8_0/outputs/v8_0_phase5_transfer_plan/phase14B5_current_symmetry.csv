@@ -1,0 +1,9 @@
+device,variant_id,channel_role,measurement_channel,mean_symmetry_error,max_symmetry_error,symmetry_status
+AS001,N0,primary,R1_primary_dVdI,0.30534956593821,0.363500892094835,fail
+AS001,NI,primary,R1_primary_dVdI,0.30534956593821,0.363500892094835,fail
+AS001,N0,secondary,R2_secondary_dVdI,0.308027484970944,0.383319134127065,fail
+AS001,NI,secondary,R2_secondary_dVdI,0.308027484970944,0.383319134127065,fail
+AS004,N0,primary,R1_primary_dVdI,0.19474816222808,0.884014033054576,fail
+AS004,NI,primary,R1_primary_dVdI,0.19474816222808,0.884014033054576,fail
+AS004,N0,secondary,R2_secondary_dVdI,0.0577388217686971,0.231680583918049,pass
+AS004,NI,secondary,R2_secondary_dVdI,0.0577388217686971,0.231680583918049,pass

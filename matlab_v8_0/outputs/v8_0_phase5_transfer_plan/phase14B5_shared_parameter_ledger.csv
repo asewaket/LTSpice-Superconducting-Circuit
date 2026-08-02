@@ -1,0 +1,10 @@
+parameter,value,role,device_specific,note
+shared_Ic0_fraction_of_current_max,0.35,shared_global_current_scale,0,Sets NI switching location scale from the measured current-axis range.
+shared_temperature_exponent_p,2,shared_global_temperature_law,0,Controls monotonic Ic(T) decrease.
+shared_temperature_exponent_q,1,shared_global_temperature_law,0,Controls monotonic Ic(T) decrease.
+shared_switching_width_fraction,0.035,shared_global_switching_smoothing,0,Shared sigmoid width on the current axis.
+prediction_interval_half_width,0.12,reporting_interval,0,Used for descriptive residual coverage only.
+device_specific_Ic_scale,prohibited,blocked,1,No per-device nonlinear gain is introduced.
+thermal_feedback_gain,prohibited_until_phase14C_if_triggered,conditional_future_ablation_only,0,Phase 14B.5 only decides whether Phase 14C is justified.
+phase_dynamics,prohibited,blocked,0,Josephson phase dynamics remain outside the model.
+equilibrium_retuning,prohibited,blocked,0,FB/N0 zero-current baseline is not retuned.

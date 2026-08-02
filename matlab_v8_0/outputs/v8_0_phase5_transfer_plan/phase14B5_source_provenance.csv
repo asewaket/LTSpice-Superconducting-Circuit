@@ -1,0 +1,9 @@
+item,value,note
+phase,phase14B5_raw_nonlinear_execution,"Phase 14B.5 raw AS001/AS004 current-only nonlinear execution."
+source_commit_sha,a84f8cc265c4c399d7ab14b56d932cbd801d48af,"Git commit captured before this runner writes outputs."
+source_tree_sha,97ee18cc57579c668aa9a6483c00728100a6a838,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,AS001_AS004_raw_grid_N0_vs_NI_current_only_execution,"No thermal feedback, phase dynamics, Raman target, or device-specific nonlinear fitting."
+source_provenance_policy,Commit Phase 14B.5 source first; rerun from clean source; commit execution artifacts separately.,"Artifacts are separate from source/configuration commits."

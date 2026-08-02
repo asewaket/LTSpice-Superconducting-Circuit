@@ -1,0 +1,12 @@
+item,value,note
+up_sweep_available,false,"True only if raw grids contain an explicit upward sweep branch."
+down_sweep_available,false,"True only if raw grids contain an explicit downward sweep branch."
+sweep_direction_locked,true,"The current axis and exported sweep direction are locked, but not split into up/down branches."
+sweep_rate_available,false,"Required for quantitative electrothermal hysteresis dynamics."
+switching_and_retrapping_distinguishable,false,"Required to separate switching current from retrapping current."
+mean_NI_minus_N0_improvement,2.9964,"Positive means NI reduces mean raw-grid residual relative to N0."
+mean_switching_current_error_A,7.9105e-07,"Descriptive switching-location mismatch for NI."
+mean_current_symmetry_error,0.21647,"Descriptive positive/negative current residual asymmetry."
+hysteresis_specific_failure,false,"True only for a hysteresis-specific NI failure, not broad poor fit."
+phase14C_trigger,false,"Controls whether Phase 14C is run."
+phase14C_trigger_reason,thermal_feedback_not_identifiable_from_available_raw_grids,"Reason used by the Phase 14B.5 handoff."

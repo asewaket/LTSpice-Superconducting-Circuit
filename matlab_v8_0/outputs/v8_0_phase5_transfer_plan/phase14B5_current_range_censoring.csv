@@ -1,0 +1,5 @@
+device,channel_role,current_min_A,current_max_A,predicted_Ic_min_A,predicted_Ic_max_A,current_range_censored,censoring_status
+AS001,primary,-2.5e-06,2.5e-06,4.375e-08,8.75e-07,0,pass
+AS001,secondary,-2.5e-06,2.5e-06,4.375e-08,8.75e-07,0,pass
+AS004,primary,-2.5e-06,2.5e-06,4.375e-08,8.75e-07,0,pass
+AS004,secondary,-2.5e-06,2.5e-06,4.375e-08,8.75e-07,0,pass

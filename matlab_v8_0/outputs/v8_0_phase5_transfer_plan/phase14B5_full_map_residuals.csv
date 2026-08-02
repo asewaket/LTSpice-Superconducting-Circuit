@@ -1,0 +1,9 @@
+device,variant_id,channel_role,measurement_channel,mean_squared_residual,mean_absolute_residual,max_absolute_residual,normalized_observable,raw_grid_used
+AS001,N0,primary,R1_primary_dVdI,0.349485861598067,0.419090499517071,2.86415544849004,robust_5_95_scaled_dVdI,1
+AS001,NI,primary,R1_primary_dVdI,0.129621481632192,0.261739694093291,2.48148169766697,robust_5_95_scaled_dVdI,1
+AS001,N0,secondary,R2_secondary_dVdI,0.162196136900665,0.307069560623147,2.63425060911074,robust_5_95_scaled_dVdI,1
+AS001,NI,secondary,R2_secondary_dVdI,0.124771332139162,0.269680993353444,2.63426463157631,robust_5_95_scaled_dVdI,1
+AS004,N0,primary,R1_primary_dVdI,17.3078461696745,1.89664993728926,54.1199791889061,robust_5_95_scaled_dVdI,1
+AS004,NI,primary,R1_primary_dVdI,7.59962873055676,0.730196740358794,54.0347973092268,robust_5_95_scaled_dVdI,1
+AS004,N0,secondary,R2_secondary_dVdI,2.80503162092362,0.925100765995396,13.0944583812551,robust_5_95_scaled_dVdI,1
+AS004,NI,secondary,R2_secondary_dVdI,0.785080796892698,0.28022661877208,13.0577274982854,robust_5_95_scaled_dVdI,1

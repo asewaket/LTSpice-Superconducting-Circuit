@@ -1,0 +1,9 @@
+device,channel_role,measurement_channel,variant_id,n_prediction_points,n_out_of_bounds,fraction_out_of_bounds,prediction_min,prediction_max,lower_bound,upper_bound,maximum_lower_violation,maximum_upper_violation,violations_near_switching,violations_at_current_edges,violations_at_temperature_edges,bounds_interpretation
+AS001,primary,R1_primary_dVdI,N0,19038,2004,0.105263157894737,-1.45083642394839,0.737845058939504,-0.25,2.5,1.20083642394839,0,0,104,501,widespread_normalization_or_model_bounds_mismatch
+AS001,primary,R1_primary_dVdI,NI,19038,644,0.0338270826767518,-1.45073775340565,0.781235967330062,-0.25,2.5,1.20073775340565,0,156,0,179,localized_normalization_or_derivative_overshoot
+AS001,secondary,R2_secondary_dVdI,N0,19038,0,0,-0.0695931406153828,0.644190913228902,-0.25,2.5,0,0,0,0,0,bounds_satisfied
+AS001,secondary,R2_secondary_dVdI,NI,19038,0,0,-0.0695746390932707,0.644190913228902,-0.25,2.5,0,0,0,0,0,bounds_satisfied
+AS004,primary,R1_primary_dVdI,N0,21042,6012,0.285714285714286,-8.23409357846113,0.674557042607554,-0.25,2.5,7.98409357846113,0,0,312,501,widespread_normalization_or_model_bounds_mismatch
+AS004,primary,R1_primary_dVdI,NI,21042,2354,0.111871495105028,-8.23368985375875,0.79211536760909,-0.25,2.5,7.98368985375875,0,936,0,215,widespread_normalization_or_model_bounds_mismatch
+AS004,secondary,R2_secondary_dVdI,N0,21042,7515,0.357142857142857,-3.09806272828069,0.61655006892755,-0.25,2.5,2.84806272828069,0,0,390,501,widespread_normalization_or_model_bounds_mismatch
+AS004,secondary,R2_secondary_dVdI,NI,21042,2465,0.117146659062827,-3.09789036221454,0.698724865378872,-0.25,2.5,2.84789036221454,0,788,0,195,widespread_normalization_or_model_bounds_mismatch
