@@ -1,0 +1,9 @@
+item,value,note
+phase,phase14B4R_raw_nonlinear_source_recovery,"Phase 14B.4R raw nonlinear source-recovery audit."
+source_commit_sha,cb90edddfabdb7abbfb63531bab161b169113f64,"Git commit captured before this runner writes outputs."
+source_tree_sha,9c005d722460e1fb45a10a5c074e56875502a21f,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,AS001_AS004_raw_source_recovery_no_model_changes,"No fitting, no model retuning, no proxy substitution."
+source_provenance_policy,Commit source first; rerun from clean source; commit recovery artifacts separately.,"Artifacts are separate from source/configuration commits."

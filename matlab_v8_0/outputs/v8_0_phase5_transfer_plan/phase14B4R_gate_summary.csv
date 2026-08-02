@@ -1,0 +1,11 @@
+gate,outcome,note
+Phase 14B.4 blocked-data result consumed,pass,Recovery starts from the prior raw-ingestion block or its clean-rerun bootstrap equivalent.
+AS-to-raw device mapping explicit,pass,AS001->ASD088 and AS004->ASD087 are recorded from legacy documentation.
+Candidate source search completed,pass,Search roots and filename patterns are recorded in configuration.
+Figure-only sources not accepted,pass,Map images or PDFs cannot substitute for numerical grids.
+Candidate validation completed,pass,Each candidate receives axis/matrix/unit/probe checks.
+Device recovery decisions recorded,pass,Each device receives a best-candidate recovery decision.
+No direct Phase 14B.5 release,pass,Recovered sources must be relocked by Phase 14B.4 before Phase 14B.5.
+No model changes or fitting,pass,No optimizer or model parameter is touched.
+Partial recovery policy preserved,pass,Single-device recovery can be carried forward explicitly.
+Clean provenance,pass,True only when Phase 14B.4R starts from a clean checkout.

@@ -1,0 +1,13 @@
+item,status,note
+phase14B4R_recovery,complete,"Recovery audit status."
+phase14B4R_closure,pass_raw_source_recovery_ready_for_relock,"Closure distinguishes full, partial, and absent recovery."
+phase14B4_input_mode,bootstrapped_frozen_blocked_state,"Records whether Phase 14B.4R consumed generated Phase 14B.4 artifacts or bootstrapped the frozen blocked state for a clean recovery rerun."
+raw_sources_all_recovered,true,"True only if all candidate devices have accepted raw candidates."
+raw_sources_any_recovered,true,"True if at least one candidate device has an accepted raw candidate."
+recovered_devices,AS001|AS004,"Devices with candidates ready for manual lock review."
+blocked_devices,none,"Devices still lacking accepted candidates."
+phase14B5_release,blocked_until_phase14B4_relock,"Phase 14B.5 still requires Phase 14B.4 relock."
+model_changes,none,"The frozen nonlinear model is untouched."
+source_commit_sha,cb90edddfabdb7abbfb63531bab161b169113f64,"Source commit captured before output generation."
+source_pre_run_clean,true,"Clean provenance requires no tracked or untracked pre-run changes."
+next_phase,phase14B4_lock_recovered_sources_then_rerun_ingestion,"Next stage depends on recovery status."
