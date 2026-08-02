@@ -1,0 +1,3 @@
+device,current_units,temperature_units,dVdI_units,field_T,field_condition,sweep_direction,probe_pair,measurement_channel,matrix_channel_count,background_subtraction_status,metadata_lock_status
+AS001,A,K,Ohm,0,zero_field_or_fixed_field_not_field_sweep,negative_to_positive_current,R1|R2,R1_primary_dVdI|R2_secondary_dVdI,2,not_detected_in_file_header; table values treated as exported measured dVdI/R columns,pass
+AS004,A,K,Ohm,0,zero_field_or_fixed_field_not_field_sweep,negative_to_positive_current,R1|R2,R1_primary_dVdI|R2_secondary_dVdI,2,not_detected_in_file_header; table values treated as exported measured dVdI/R columns,pass

@@ -1,0 +1,3 @@
+device,source_original_path,current_points,temperature_points,current_min_A,current_max_A,temperature_min_K,temperature_max_K,current_axis_increasing,temperature_axis_increasing,positive_negative_current_present,missing_value_count,duplicate_pair_count,axis_validation_status
+AS001,/Users/asewaket/Documents/Thesis/Raw Transport Data/ASD088_dVdIvIvT_0069.dat,501,38,-2.5e-06,2.5e-06,0.0602,0.8005,1,1,1,0,0,pass
+AS004,/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data/ASD087_dVdIvIvT_0061.dat,501,42,-2.5e-06,2.5e-06,0.06,0.8805,1,1,1,0,0,pass

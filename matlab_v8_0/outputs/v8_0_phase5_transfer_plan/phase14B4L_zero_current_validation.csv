@@ -1,0 +1,3 @@
+device,zero_current_index,zero_current_A,zero_current_abs_A,negative_current_count,positive_current_count,current_ordering_status,zero_current_status
+AS001,251,0,0,250,250,ascending_negative_to_positive,pass
+AS004,251,0,0,250,250,ascending_negative_to_positive,pass

@@ -1,0 +1,9 @@
+item,value,note
+phase,phase14B4L_raw_grid_loader_freeze,"Phase 14B.4L raw nonlinear grid loader freeze."
+source_commit_sha,4d9a8ac61f014d21cba588dfe16b616ca7fdd490,"Git commit captured before this runner writes outputs."
+source_tree_sha,34054de32915a44e8a3b420ffb41f8305c7595ec,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+provenance_scope,AS001_AS004_raw_dVdI_I_T_grid_schema_loader_relock,"No fitting, no proxy substitution, no adequacy execution."
+source_provenance_policy,Commit Phase 14B.4L source first; rerun from clean source; commit relock artifacts separately.,"Artifacts are separate from source/configuration commits."

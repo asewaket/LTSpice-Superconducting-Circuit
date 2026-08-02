@@ -1,0 +1,3 @@
+device,raw_label,source_original_path,source_relative_path,source_exists,source_recovery_status,selected_by_phase14B4R,source_lock_status,allowed_for_phase14B5,note
+AS001,ASD088,/Users/asewaket/Documents/Thesis/Raw Transport Data/ASD088_dVdIvIvT_0069.dat,external_raw_transport/ASD088_dVdIvIvT_0069.dat,1,raw_source_recovered,1,locked_for_loader_validation,0,Phase 14B.4L validates schema before Phase 14B.5 release.
+AS004,ASD087,/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data/ASD087_dVdIvIvT_0061.dat,external_raw_transport/2023_5_26_ASD087/data/ASD087_dVdIvIvT_0061.dat,1,raw_source_recovered,1,locked_for_loader_validation,0,Phase 14B.4L validates schema before Phase 14B.5 release.
