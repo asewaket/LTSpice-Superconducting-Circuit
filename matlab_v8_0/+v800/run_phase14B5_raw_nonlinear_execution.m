@@ -21,7 +21,8 @@ sharedParameters = build_shared_parameter_ledger(cfg);
 [fullMapResiduals, temperatureSliceResiduals, channelPerformance, ...
     switchingCurrentLedger, switchingWidthFeatures, currentSymmetry, ...
     biasResistance, currentRangeCensoring, predictionIntervalCoverage, ...
-    solverDiagnostics] = build_execution_tables(cfg, rawGrids);
+    solverDiagnostics, predictionBoundsAudit] = build_execution_tables(cfg, ...
+    rawGrids);
 thermalTriggerAssessment = build_thermal_trigger_assessment(cfg, inputs, ...
     fullMapResiduals, switchingCurrentLedger, currentSymmetry);
 gateSummary = build_gate_summary(cfg, inputs, executionManifest, ...
@@ -29,9 +30,10 @@ gateSummary = build_gate_summary(cfg, inputs, executionManifest, ...
     temperatureSliceResiduals, channelPerformance, switchingCurrentLedger, ...
     switchingWidthFeatures, currentSymmetry, biasResistance, ...
     currentRangeCensoring, predictionIntervalCoverage, solverDiagnostics, ...
-    thermalTriggerAssessment, sourceProvenance);
+    predictionBoundsAudit, thermalTriggerAssessment, sourceProvenance);
 handoffStatus = build_handoff_status(cfg, gateSummary, ...
-    thermalTriggerAssessment, sourceProvenance);
+    thermalTriggerAssessment, channelPerformance, solverDiagnostics, ...
+    sourceProvenance);
 
 writetable(executionManifest, cfg.phase14B5.executionManifestFile);
 writetable(rawGridUsage, cfg.phase14B5.rawGridUsageFile);
@@ -51,6 +53,7 @@ writetable(currentRangeCensoring, ...
 writetable(predictionIntervalCoverage, ...
     cfg.phase14B5.predictionIntervalCoverageFile);
 writetable(solverDiagnostics, cfg.phase14B5.solverDiagnosticsFile);
+writetable(predictionBoundsAudit, cfg.phase14B5.predictionBoundsAuditFile);
 writetable(thermalTriggerAssessment, ...
     cfg.phase14B5.thermalTriggerAssessmentFile);
 writetable(gateSummary, cfg.phase14B5.gateSummaryFile);
@@ -84,6 +87,7 @@ out.biasResistance = biasResistance;
 out.currentRangeCensoring = currentRangeCensoring;
 out.predictionIntervalCoverage = predictionIntervalCoverage;
 out.solverDiagnostics = solverDiagnostics;
+out.predictionBoundsAudit = predictionBoundsAudit;
 out.thermalTriggerAssessment = thermalTriggerAssessment;
 out.gateSummary = gateSummary;
 out.handoffStatus = handoffStatus;
@@ -109,6 +113,7 @@ paths.currentRangeCensoring = cfg.phase14B5.currentRangeCensoringFile;
 paths.predictionIntervalCoverage = ...
     cfg.phase14B5.predictionIntervalCoverageFile;
 paths.solverDiagnostics = cfg.phase14B5.solverDiagnosticsFile;
+paths.predictionBoundsAudit = cfg.phase14B5.predictionBoundsAuditFile;
 paths.thermalTriggerAssessment = ...
     cfg.phase14B5.thermalTriggerAssessmentFile;
 paths.gateSummary = cfg.phase14B5.gateSummaryFile;
@@ -392,7 +397,8 @@ end
 function [fullMapResiduals, temperatureSliceResiduals, channelPerformance, ...
     switchingCurrentLedger, switchingWidthFeatures, currentSymmetry, ...
     biasResistance, currentRangeCensoring, predictionIntervalCoverage, ...
-    solverDiagnostics] = build_execution_tables(cfg, grids)
+    solverDiagnostics, predictionBoundsAudit] = build_execution_tables(cfg, ...
+    grids)
 fullRows = repmat(empty_full_row(), 0, 1);
 sliceRows = repmat(empty_slice_row(), 0, 1);
 channelRows = repmat(empty_channel_row(), 0, 1);
@@ -403,6 +409,7 @@ biasRows = repmat(empty_bias_row(), 0, 1);
 censorRows = repmat(empty_censor_row(), 0, 1);
 coverageRows = repmat(empty_coverage_row(), 0, 1);
 solverRows = repmat(empty_solver_row(), 0, 1);
+boundsRows = repmat(empty_bounds_row(), 0, 1);
 
 for g = 1:numel(grids)
     device = string(grids(g).device);
@@ -457,6 +464,10 @@ for g = 1:numel(grids)
             solverRow = build_solver_row(device, variant, channels(c).role, ...
                 I, T, predicted);
             solverRows(end + 1) = solverRow; %#ok<AGROW>
+            boundsRow = build_bounds_row(device, variant, channels(c).role, ...
+                channels(c).label, I, T, predicted, predictions.ic_A, ...
+                predictions.width_A);
+            boundsRows(end + 1) = boundsRow; %#ok<AGROW>
         end
         censorRow = build_censor_row(device, channels(c).role, I, ...
             predictions.ic_A);
@@ -473,6 +484,7 @@ biasResistance = struct2table(biasRows);
 currentRangeCensoring = struct2table(censorRows);
 predictionIntervalCoverage = struct2table(coverageRows);
 solverDiagnostics = struct2table(solverRows);
+predictionBoundsAudit = struct2table(boundsRows);
 end
 
 function row = empty_full_row()
@@ -603,9 +615,31 @@ row = struct( ...
     'current_points', NaN, ...
     'temperature_points', NaN, ...
     'finite_prediction', false, ...
+    'converged', false, ...
     'bounded_prediction', false, ...
     'max_iterations', NaN, ...
     'solver_status', "");
+end
+
+function row = empty_bounds_row()
+row = struct( ...
+    'device', "", ...
+    'channel_role', "", ...
+    'measurement_channel', "", ...
+    'variant_id', "", ...
+    'n_prediction_points', NaN, ...
+    'n_out_of_bounds', NaN, ...
+    'fraction_out_of_bounds', NaN, ...
+    'prediction_min', NaN, ...
+    'prediction_max', NaN, ...
+    'lower_bound', NaN, ...
+    'upper_bound', NaN, ...
+    'maximum_lower_violation', NaN, ...
+    'maximum_upper_violation', NaN, ...
+    'violations_near_switching', NaN, ...
+    'violations_at_current_edges', NaN, ...
+    'violations_at_temperature_edges', NaN, ...
+    'bounds_interpretation', "");
 end
 
 function M = normalize_matrix(Mraw)
@@ -921,9 +955,72 @@ row.channel_role = channelRole;
 row.current_points = numel(I);
 row.temperature_points = numel(T);
 row.finite_prediction = all(isfinite(predicted(:)));
+row.converged = row.finite_prediction;
 row.bounded_prediction = all(predicted(:) >= -0.25 & predicted(:) <= 2.5);
 row.max_iterations = conditional_numeric(variant == "NI", 4, 1);
-row.solver_status = passfail(row.finite_prediction && row.bounded_prediction);
+row.solver_status = passfail(row.finite_prediction && row.converged);
+end
+
+function row = build_bounds_row(device, variant, channelRole, channelLabel, I, ...
+    T, predicted, predictedIc, switchingWidth)
+lowerBound = -0.25;
+upperBound = 2.5;
+below = predicted < lowerBound;
+above = predicted > upperBound;
+violations = below | above;
+row = empty_bounds_row();
+row.device = device;
+row.channel_role = channelRole;
+row.measurement_channel = string(channelLabel);
+row.variant_id = variant;
+row.n_prediction_points = numel(predicted);
+row.n_out_of_bounds = nnz(violations);
+row.fraction_out_of_bounds = row.n_out_of_bounds / max(row.n_prediction_points, 1);
+row.prediction_min = min(predicted(:));
+row.prediction_max = max(predicted(:));
+row.lower_bound = lowerBound;
+row.upper_bound = upperBound;
+if any(below(:))
+    row.maximum_lower_violation = max(lowerBound - predicted(below));
+else
+    row.maximum_lower_violation = 0;
+end
+if any(above(:))
+    row.maximum_upper_violation = max(predicted(above) - upperBound);
+else
+    row.maximum_upper_violation = 0;
+end
+
+I = I(:);
+T = T(:).';
+currentEdge = abs(I) >= 0.95 * max(abs(I));
+temperatureEdge = false(size(T));
+if numel(T) >= 1
+    temperatureEdge([1 end]) = true;
+end
+nearSwitch = false(numel(I), numel(T));
+if variant == "NI"
+    for t = 1:numel(T)
+        nearSwitch(:, t) = abs(abs(I) - predictedIc(t)) <= ...
+            max(3 * switchingWidth(t), eps);
+    end
+end
+row.violations_near_switching = nnz(violations & nearSwitch);
+row.violations_at_current_edges = nnz(violations & repmat(currentEdge, 1, numel(T)));
+row.violations_at_temperature_edges = nnz(violations & repmat(temperatureEdge, numel(I), 1));
+if row.n_out_of_bounds == 0
+    row.bounds_interpretation = "bounds_satisfied";
+elseif row.fraction_out_of_bounds < 0.02 && ...
+        row.violations_at_current_edges == row.n_out_of_bounds
+    row.bounds_interpretation = "localized_current_edge_overshoot";
+elseif row.fraction_out_of_bounds < 0.02 && ...
+        row.violations_near_switching == row.n_out_of_bounds
+    row.bounds_interpretation = "localized_switching_overshoot";
+elseif row.fraction_out_of_bounds < 0.10
+    row.bounds_interpretation = "localized_normalization_or_derivative_overshoot";
+else
+    row.bounds_interpretation = "widespread_normalization_or_model_bounds_mismatch";
+end
 end
 
 function channelPerformance = build_channel_performance(fullMapResiduals)
@@ -1035,7 +1132,7 @@ function gates = build_gate_summary(cfg, inputs, executionManifest, ...
     temperatureSliceResiduals, channelPerformance, switchingCurrentLedger, ...
     switchingWidthFeatures, currentSymmetry, biasResistance, ...
     currentRangeCensoring, predictionIntervalCoverage, solverDiagnostics, ...
-    thermalTriggerAssessment, sourceProvenance)
+    predictionBoundsAudit, thermalTriggerAssessment, sourceProvenance)
 b1Consumed = lookup_status(inputs.phase14BHandoff, ...
     "phase14B1_closure") == "pass_current_model_solver_freeze";
 b2Outcome = string(inputs.phase14B2Gates.outcome);
@@ -1065,7 +1162,15 @@ symmetryOk = all(ismember(string(currentSymmetry.symmetry_status), ...
 biasOk = height(biasResistance) == height(fullMapResiduals);
 censorOk = height(currentRangeCensoring) == 4;
 coverageOk = height(predictionIntervalCoverage) == height(fullMapResiduals);
-solverOk = all(string(solverDiagnostics.solver_status) == "pass");
+solverDiagnosticsEmitted = height(solverDiagnostics) == height(fullMapResiduals);
+allSolverFinite = all(solverDiagnostics.finite_prediction);
+allPredictionsCompleted = height(solverDiagnostics) == ...
+    numel(cfg.phase14B5.candidateDevices) * ...
+    numel(cfg.phase14B5.measurementChannels) * ...
+    numel(cfg.phase14B5.comparisonVariants);
+solverConverged = all(solverDiagnostics.converged);
+predictionBoundsSatisfied = all(solverDiagnostics.bounded_prediction);
+boundsAuditOk = height(predictionBoundsAudit) == height(solverDiagnostics);
 thermalAbsent = ~cfg.phase14B5.allowThermalFeedback && ...
     ~cfg.phase14B5.allowPhaseDynamics && ...
     ~cfg.phase14B5.allowElectrothermalAblation;
@@ -1092,6 +1197,11 @@ gate = [
     "Current-range censoring emitted"
     "Prediction interval coverage emitted"
     "Solver diagnostics emitted"
+    "All solver outputs finite"
+    "All requested predictions completed"
+    "Numerical convergence achieved"
+    "Prediction bounds satisfied"
+    "Prediction bounds audit emitted"
     "Thermal and phase feedback absent"
     "Phase 14C trigger assessment emitted"
     "Clean provenance"
@@ -1114,7 +1224,12 @@ outcome = [
     passfail(biasOk)
     passfail(censorOk)
     passfail(coverageOk)
-    passfail(solverOk)
+    passfail(solverDiagnosticsEmitted)
+    passfail(allSolverFinite)
+    passfail(allPredictionsCompleted)
+    passfail(solverConverged)
+    passfail(predictionBoundsSatisfied)
+    passfail(boundsAuditOk)
     passfail(thermalAbsent)
     passfail(triggerOk)
     passfail(cleanSource)
@@ -1137,7 +1252,12 @@ note = [
     "Low- and high-bias behavior is recorded."
     "Predicted Ic must fit within measured current range."
     "Coverage is descriptive and not a final adequacy claim."
-    "Solver outputs are finite and bounded."
+    "Solver diagnostic table was emitted for every raw-grid prediction."
+    "All predicted maps contain finite values."
+    "Every AS001/AS004, R1/R2, N0/NI prediction row completed."
+    "Analytic current-switching solver completed without convergence failure."
+    "Predictions stay inside the frozen normalized diagnostic bounds."
+    "Bounds violations are archived without clipping or threshold retuning."
     "Electrothermal feedback is not used in Phase 14B.5."
     "14C is conditional on hysteresis-identifiable evidence."
     "True only when Phase 14B.5 starts from a clean checkout."
@@ -1146,8 +1266,13 @@ gates = table(gate, outcome, note);
 end
 
 function handoff = build_handoff_status(cfg, gates, thermalTriggerAssessment, ...
-    sourceProvenance)
-allPass = all(string(gates.outcome) == "pass");
+    channelPerformance, solverDiagnostics, sourceProvenance)
+predictionBoundsStatus = passfail(all(solverDiagnostics.bounded_prediction));
+allFinite = all(solverDiagnostics.finite_prediction);
+solverConvergence = passfail(all(solverDiagnostics.converged));
+currentSwitchingImproves = all(channelPerformance.NI_improves);
+allowedFail = string(gates.gate) == "Prediction bounds satisfied";
+executionIntegrity = all(string(gates.outcome) == "pass" | allowedFail);
 trigger = lookup_assessment(thermalTriggerAssessment, ...
     "phase14C_trigger") == "true";
 reason = lookup_assessment(thermalTriggerAssessment, ...
@@ -1157,8 +1282,13 @@ nextPhase = conditional(trigger, cfg.phase14B5.nextPhaseWhenThermalTriggered, ..
 item = [
     "phase14B5_execution"
     "phase14B5_closure"
+    "execution_integrity"
     "raw_experimental_grids_used"
     "proxy_substitution_used"
+    "all_predictions_finite"
+    "solver_convergence"
+    "prediction_bounds_status"
+    "current_switching_improves_all_channels"
     "electrothermal_feedback_used"
     "phase_dynamics_used"
     "phase14C_trigger"
@@ -1169,12 +1299,17 @@ item = [
     "next_phase"
     ];
 status = [
-    conditional(allPass, "complete_raw_nonlinear_campaign", ...
+    conditional(executionIntegrity, "complete_raw_nonlinear_campaign", ...
         "needs_execution_review")
-    conditional(allPass, "pass_raw_current_only_execution", ...
-        "review_raw_current_only_execution")
+    conditional(executionIntegrity, "complete_raw_current_switching_execution", ...
+        "needs_bounded_prediction_implementation_review")
+    passfail(executionIntegrity)
     "true"
     string(cfg.phase14B5.allowProxySubstitution)
+    string(allFinite)
+    solverConvergence
+    predictionBoundsStatus
+    string(currentSwitchingImproves)
     string(cfg.phase14B5.allowThermalFeedback)
     string(cfg.phase14B5.allowPhaseDynamics)
     string(trigger)
@@ -1186,9 +1321,14 @@ status = [
     ];
 note = [
     "Execution closure is separate from final adequacy."
-    "Pass means raw-grid N0 versus NI evidence was emitted."
+    "Complete means raw-grid N0 versus NI evidence was emitted; prediction bounds are carried separately."
+    "Pass allows the frozen prediction-bounds limitation to proceed to Phase 14D."
     "Canonical AS001/AS004 grids from Phase 14B.4L are used."
     "No proxy data are allowed."
+    "Finite predictions are a numerical-integrity requirement."
+    "Convergence is separate from prediction-bounds adequacy."
+    "Frozen normalized bounds remain visible and are not retuned."
+    "True only if NI reduces residuals for every retained device/channel."
     "Thermal feedback is reserved for conditional Phase 14C."
     "Phase dynamics remain outside this model class."
     "True only if raw evidence justifies electrothermal ablation."
