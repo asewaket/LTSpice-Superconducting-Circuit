@@ -1410,6 +1410,11 @@ cfg.phase14B4L.loaderVersion = "v1";
 cfg.phase14B4L.requiredColumns = ["temp"; "I"; "R1"; "R2"];
 cfg.phase14B4L.primaryMatrixColumn = "R1";
 cfg.phase14B4L.secondaryMatrixColumn = "R2";
+cfg.phase14B4L.primaryMeasurementChannel = "R1_primary_dVdI";
+cfg.phase14B4L.secondaryMeasurementChannel = "R2_secondary_dVdI";
+cfg.phase14B4L.measurementChannel = ...
+    "R1_primary_dVdI|R2_secondary_dVdI";
+cfg.phase14B4L.matrixChannelCount = 2;
 cfg.phase14B4L.currentUnits = "A";
 cfg.phase14B4L.temperatureUnits = "K";
 cfg.phase14B4L.dVdIUnits = "Ohm";
