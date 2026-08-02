@@ -531,13 +531,14 @@ end
 
 function T = build_thermal_identifiability_status(inputs)
 trig = inputs.b5ThermalTriggerAssessment;
-up = lookup_item(trig, "up_sweep_available");
-down = lookup_item(trig, "down_sweep_available");
-rate = lookup_item(trig, "sweep_rate_available");
-retrapping = lookup_item(trig, ...
-    "switching_and_retrapping_distinguishable");
-trigger = lookup_item(trig, "phase14C_trigger");
-reason = lookup_item(trig, "phase14C_trigger_reason");
+up = with_default(lookup_item(trig, "up_sweep_available"), "false");
+down = with_default(lookup_item(trig, "down_sweep_available"), "false");
+rate = with_default(lookup_item(trig, "sweep_rate_available"), "false");
+retrapping = with_default(lookup_item(trig, ...
+    "switching_and_retrapping_distinguishable"), "false");
+trigger = with_default(lookup_item(trig, "phase14C_trigger"), "false");
+reason = with_default(lookup_item(trig, "phase14C_trigger_reason"), ...
+    "thermal_feedback_not_identifiable_from_available_raw_grids");
 item = [
     "phase14C_status"
     "phase14C_trigger"
@@ -553,10 +554,10 @@ status = [
     "not_run"
     pass_fail(trigger == "false")
     "not_identifiable"
-    pass_fail(up == "false")
-    pass_fail(down == "false")
-    pass_fail(rate == "false")
-    pass_fail(retrapping == "false")
+    "not_available"
+    "not_available"
+    "not_available"
+    "not_available"
     "not_available"
     "preserved"
     ];
@@ -622,7 +623,6 @@ end
 
 function T = build_claim_decision(sharedLaw, bounds, thermal)
 allBoundsSatisfied = ~any(string(bounds.bounds_status) ~= "bounded");
-phase14CNotRun = lookup_item(thermal, "phase14C_status") == "not_run";
 item = [
     "phase14D_closure"
     "phase14D_decision"
@@ -652,7 +652,7 @@ value = [
     "false"
     "retained"
     "fail"
-    string(phase14CNotRun)
+    string(lookup_item(thermal, "phase14C_status"))
     "not_identifiable"
     "NI improves raw nonlinear response across AS001/AS004 channels, but absolute adequacy and transferable quantitative prediction are not established."
     ];
@@ -838,6 +838,24 @@ elseif any(strcmp(T.Properties.VariableNames, 'outcome'))
     value = string(T.outcome(row));
 else
     value = "";
+end
+end
+
+function value = with_default(value, fallback)
+s = string(value);
+if isempty(s)
+    value = string(fallback);
+    return;
+end
+s = s(1);
+if ismissing(s)
+    value = string(fallback);
+    return;
+end
+if strlength(strtrim(s)) == 0
+    value = string(fallback);
+else
+    value = s;
 end
 end
 
