@@ -993,6 +993,8 @@ end
 
 I = I(:);
 T = T(:).';
+predictedIc = expand_to_temperature_axis(predictedIc, numel(T));
+switchingWidth = expand_to_temperature_axis(switchingWidth, numel(T));
 currentEdge = abs(I) >= 0.95 * max(abs(I));
 temperatureEdge = false(size(T));
 if numel(T) >= 1
@@ -1020,6 +1022,20 @@ elseif row.fraction_out_of_bounds < 0.10
     row.bounds_interpretation = "localized_normalization_or_derivative_overshoot";
 else
     row.bounds_interpretation = "widespread_normalization_or_model_bounds_mismatch";
+end
+end
+
+function values = expand_to_temperature_axis(values, nT)
+values = values(:).';
+if isempty(values)
+    values = NaN(1, nT);
+elseif numel(values) == 1 && nT > 1
+    values = repmat(values, 1, nT);
+elseif numel(values) ~= nT
+    values = values(1:min(end, nT));
+    if numel(values) < nT
+        values = [values repmat(values(end), 1, nT - numel(values))];
+    end
 end
 end
 
