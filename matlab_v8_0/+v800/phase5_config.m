@@ -1541,6 +1541,54 @@ cfg.phase14D.expectedPhase14B5Closure = ...
     "complete_raw_current_switching_execution_with_bounds_limitation";
 cfg.phase14D.nextPhase = "phase15_field_dependent_and_phase_aware_transport";
 
+cfg.phase15A.rawFieldSourceLockFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_raw_source_lock.csv');
+cfg.phase15A.axisMetadataLockFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_axis_metadata_lock.csv');
+cfg.phase15A.channelLockFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_channel_lock.csv');
+cfg.phase15A.sweepHistoryAuditFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_sweep_history_audit.csv');
+cfg.phase15A.phase15PolicyFile = fullfile(cfg.outputDir, ...
+    'phase15A_field_model_policy.csv');
+cfg.phase15A.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_data_lock_gate_summary.csv');
+cfg.phase15A.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_data_lock_handoff_status.csv');
+cfg.phase15A.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_source_provenance.csv');
+cfg.phase15A.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase15A_as006_field_data_lock_summary');
+cfg.phase15A.description = ...
+    'AS006 dVdI(I,B,T) raw field-data recovery and observable lock';
+cfg.phase15A.device = "AS006";
+cfg.phase15A.requiredObservableType = "dVdI_I_B_fixed_T";
+cfg.phase15A.rawFieldFile = ...
+    "/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data/ASD092_dVdIvIvB_0108.dat";
+cfg.phase15A.rawSourceLabel = "ASD092_dVdIvIvB_0108";
+cfg.phase15A.legacyLoaderFile = fullfile(cfg.repoRoot, ...
+    'matlab_v7_4_6_files', 'load_v73_experimental_field_dvdi.m');
+cfg.phase15A.requiredColumns = ["Bfield"; "I"; "R1"; "R2"];
+cfg.phase15A.currentUnits = "A";
+cfg.phase15A.fieldUnits = "T";
+cfg.phase15A.dVdIUnits = "Ohm";
+cfg.phase15A.assumedTemperature_K = 0.06;
+cfg.phase15A.fieldDirection = "out_of_plane";
+cfg.phase15A.primaryMatrixColumn = "R1";
+cfg.phase15A.secondaryMatrixColumn = "R2";
+cfg.phase15A.primaryMeasurementChannel = "R1_top_4_10_dVdI";
+cfg.phase15A.secondaryMeasurementChannel = "R2_bottom_3_9_dVdI";
+cfg.phase15A.requireZeroCurrent = true;
+cfg.phase15A.requireZeroField = true;
+cfg.phase15A.requireBothChannels = true;
+cfg.phase15A.allowPhaseAwareModel = false;
+cfg.phase15A.allowPhaseDynamics = false;
+cfg.phase15A.allowFluxQuantizationFit = false;
+cfg.phase15A.allowTopologicalClaim = false;
+cfg.phase15A.allowParameterRetuning = false;
+cfg.phase15A.allowRawDataRelabeling = false;
+cfg.phase15A.nextPhase = "phase15B_phase_aware_model_specification_freeze";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
