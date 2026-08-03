@@ -610,23 +610,27 @@ end
 function value = lookup_table_value(T, item, valueCandidates, strict, label)
 names = string(T.Properties.VariableNames);
 keyCandidates = ["item"; "field"; "key"; "name"];
-keyMask = ismember(lower(names), lower(keyCandidates));
-if ~any(keyMask)
-    if strict
-        error('v800:phase15CLookupMissingKeyColumn', ...
-            '%s table is missing an item/field/key/name column.', ...
-            char(label));
-    end
-    value = "";
-    return;
+keyNames = names(ismember(lower(names), lower(keyCandidates)));
+if isempty(keyNames)
+    keyNames = names(1);
 end
-keyName = names(find(keyMask, 1, 'first'));
-idx = strcmpi(strtrim(string(T.(char(keyName)))), strtrim(string(item)));
+
+idx = false(height(T), 1);
+for k = 1:numel(keyNames)
+    thisIdx = strcmpi(strtrim(string(T.(char(keyNames(k))))), ...
+        strtrim(string(item)));
+    if any(thisIdx)
+        idx = thisIdx;
+        break;
+    end
+end
 if nnz(idx) ~= 1
     if strict
         error('v800:phase15CLookupCardinality', ...
-            'Expected exactly one %s row in %s table, but found %d.', ...
-            char(item), char(label), nnz(idx));
+            ['Expected exactly one %s row in %s table, but found %d. ' ...
+            'Candidate key columns: %s.'], ...
+            char(item), char(label), nnz(idx), ...
+            char(strjoin(keyNames, '|')));
     end
     value = "";
     return;
@@ -642,13 +646,16 @@ for k = 1:numel(valueCandidates)
     end
 end
 if valueName == ""
-    if strict
+    if strict && width(T) >= 3
+        valueName = names(3);
+    elseif strict
         error('v800:phase15CLookupMissingValueColumn', ...
             '%s table is missing the requested value/status column.', ...
             char(label));
+    else
+        value = "";
+        return;
     end
-    value = "";
-    return;
 end
 value = strtrim(string(T.(char(valueName))(idx)));
 end
