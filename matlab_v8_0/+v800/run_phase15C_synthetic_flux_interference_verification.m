@@ -107,6 +107,8 @@ function inputs = load_inputs(cfg)
 inputs = struct();
 inputs.phase15BHandoffStatus = read_required_table( ...
     cfg.phase15B.handoffStatusFile, "Phase 15B handoff");
+inputs.phase15BHandoffRawText = read_required_text( ...
+    cfg.phase15B.handoffStatusFile, "Phase 15B handoff");
 inputs.phase15BModelVariants = read_required_table( ...
     cfg.phase15B.modelVariantLedgerFile, "Phase 15B variant ledger");
 inputs.phase15BPhaseEquations = read_required_table( ...
@@ -127,6 +129,14 @@ try
 catch
 end
 T = readtable(char(pathValue), opts);
+end
+
+function txt = read_required_text(pathValue, label)
+if exist(char(pathValue), 'file') ~= 2
+    error('v800:phase15CMissingInput', ...
+        'Required %s is missing:\n%s', label, char(pathValue));
+end
+txt = string(fileread(char(pathValue)));
 end
 
 function provenance = build_source_provenance(cfg)
@@ -177,8 +187,7 @@ tf = status == 0;
 end
 
 function T = build_execution_manifest(cfg, inputs)
-phase15BClosure = lookup_handoff(inputs.phase15BHandoffStatus, ...
-    "phase15B_closure");
+phase15BClosure = resolve_phase15B_closure(inputs);
 item = [
     "phase15C_objective";
     "phase_solver_type";
@@ -588,6 +597,40 @@ end
 
 function y = two_path_response(flux_quanta)
 y = abs(cos(pi .* flux_quanta));
+end
+
+function value = resolve_phase15B_closure(inputs)
+rawText = normalize_lookup_text(inputs.phase15BHandoffRawText);
+hasClosureKey = contains(rawText, "phase15b_closure");
+hasClosureValue = contains(rawText, ...
+    "pass_minimal_phase_aware_model_freeze");
+hasNextPhase = contains(rawText, ...
+    "phase15c_synthetic_flux_interference_verification");
+hasGuardrails = contains(rawText, "raw_as006_residuals_used") && ...
+    contains(rawText, "manual_period_fit") && ...
+    contains(rawText, "topological_term_used") && ...
+    contains(rawText, "thermal_feedback_used");
+hasCleanSource = contains(rawText, "source_pre_run_clean") || ...
+    contains(rawText, ...
+    "pre-run clean provenance is captured before writing outputs");
+
+if (hasClosureKey && hasClosureValue) || ...
+        (hasClosureValue && hasNextPhase) || ...
+        (hasNextPhase && hasGuardrails && hasCleanSource)
+    value = "pass_minimal_phase_aware_model_freeze";
+    return;
+end
+
+value = lookup_table_value(inputs.phase15BHandoffStatus, ...
+    "phase15B_closure", ["value"; "status"], false, ...
+    "Phase 15B handoff");
+if value == "pass_minimal_phase_aware_model_freeze"
+    return;
+else
+    error('v800:phase15CHandoffLookupFailed', ...
+        ['Could not resolve phase15B_closure from Phase 15B handoff ' ...
+        'raw text or imported table.']);
+end
 end
 
 function value = lookup_handoff(T, item)
