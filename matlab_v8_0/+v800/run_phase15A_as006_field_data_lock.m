@@ -73,37 +73,37 @@ function provenance = build_source_provenance(cfg)
 sourceStatus = v800.git_tree_status(cfg.repoRoot);
 phase14DReachable = git_commit_is_ancestor(cfg.repoRoot, "cd08009");
 item = [
-    "phase"
-    "source_commit_sha"
-    "source_tree_sha"
-    "source_pre_run_tracked_clean"
-    "source_pre_run_untracked_clean"
-    "source_pre_run_clean"
-    "frozen_phase14D_artifact_commit"
-    "frozen_phase14D_artifact_commit_reachable"
-    "provenance_scope"
+    "phase";
+    "source_commit_sha";
+    "source_tree_sha";
+    "source_pre_run_tracked_clean";
+    "source_pre_run_untracked_clean";
+    "source_pre_run_clean";
+    "frozen_phase14D_artifact_commit";
+    "frozen_phase14D_artifact_commit_reachable";
+    "provenance_scope";
     ];
 value = [
-    "phase15A_as006_field_data_lock"
-    sourceStatus.commit_sha
-    sourceStatus.tree_sha
-    string(sourceStatus.tracked_clean)
-    string(sourceStatus.untracked_clean)
-    string(sourceStatus.tracked_clean && sourceStatus.untracked_clean)
-    "cd08009"
-    string(phase14DReachable)
-    "field_data_observable_lock_no_phase_model"
+    "phase15A_as006_field_data_lock";
+    sourceStatus.commit_sha;
+    sourceStatus.tree_sha;
+    string(sourceStatus.tracked_clean);
+    string(sourceStatus.untracked_clean);
+    string(sourceStatus.tracked_clean && sourceStatus.untracked_clean);
+    "cd08009";
+    string(phase14DReachable);
+    "field_data_observable_lock_no_phase_model";
     ];
 note = [
-    "AS006 raw field-data recovery and observable-lock phase."
-    "Git commit captured before this runner writes outputs."
-    "Git tree object captured before this runner writes outputs."
-    "Tracked-source cleanliness before output generation."
-    "Untracked-source/artifact cleanliness before output generation."
-    "True only when checkout is clean before Phase 15A writes outputs."
-    "Canonical Phase 14D artifact-freeze commit consumed as handoff."
-    "True when the Phase 14D artifact commit is an ancestor of this run."
-    "No phase-aware model, flux fit, or parameter retuning is introduced."
+    "AS006 raw field-data recovery and observable-lock phase.";
+    "Git commit captured before this runner writes outputs.";
+    "Git tree object captured before this runner writes outputs.";
+    "Tracked-source cleanliness before output generation.";
+    "Untracked-source/artifact cleanliness before output generation.";
+    "True only when checkout is clean before Phase 15A writes outputs.";
+    "Canonical Phase 14D artifact-freeze commit consumed as handoff.";
+    "True when the Phase 14D artifact commit is an ancestor of this run.";
+    "No phase-aware model, flux fit, or parameter retuning is introduced.";
     ];
 provenance = table(item, value, note);
 end
@@ -287,40 +287,40 @@ end
 
 function phase15Policy = build_phase15_policy(cfg)
 item = [
-    "phase15A_scope"
-    "phase_aware_model"
-    "flux_quantization_fit"
-    "topological_superconductivity_claim"
-    "parameter_retuning"
-    "raw_data_relabeling"
-    "allowed_next_step"
+    "phase15A_scope";
+    "phase_aware_model";
+    "flux_quantization_fit";
+    "topological_superconductivity_claim";
+    "parameter_retuning";
+    "raw_data_relabeling";
+    "allowed_next_step";
     ];
 status = [
-    "locked"
-    "prohibited"
-    "prohibited"
-    "prohibited"
-    "prohibited"
-    "prohibited"
-    "allowed"
+    "locked";
+    "prohibited";
+    "prohibited";
+    "prohibited";
+    "prohibited";
+    "prohibited";
+    "allowed";
     ];
 value = [
-    "raw_AS006_dVdI_I_B_fixed_T_observable_lock"
-    string(cfg.phase15A.allowPhaseAwareModel)
-    string(cfg.phase15A.allowFluxQuantizationFit)
-    string(cfg.phase15A.allowTopologicalClaim)
-    string(cfg.phase15A.allowParameterRetuning)
-    string(cfg.phase15A.allowRawDataRelabeling)
-    string(cfg.phase15A.nextPhase)
+    "raw_AS006_dVdI_I_B_fixed_T_observable_lock";
+    string(cfg.phase15A.allowPhaseAwareModel);
+    string(cfg.phase15A.allowFluxQuantizationFit);
+    string(cfg.phase15A.allowTopologicalClaim);
+    string(cfg.phase15A.allowParameterRetuning);
+    string(cfg.phase15A.allowRawDataRelabeling);
+    string(cfg.phase15A.nextPhase);
     ];
 note = [
-    "Phase 15A locks data availability and coordinates only."
-    "Phase dynamics are deferred until Phase 15B specification freeze."
-    "No field period or flux quantum is fit in Phase 15A."
-    "Oscillatory field response cannot imply topology in this roadmap."
-    "Frozen Phase 14 baseline/current-switching conclusions are unchanged."
-    "R1/R2 and axis identities are recorded, not reassigned."
-    "Phase 15B may specify a minimal phase-aware model after this lock."
+    "Phase 15A locks data availability and coordinates only.";
+    "Phase dynamics are deferred until Phase 15B specification freeze.";
+    "No field period or flux quantum is fit in Phase 15A.";
+    "Oscillatory field response cannot imply topology in this roadmap.";
+    "Frozen Phase 14 baseline/current-switching conclusions are unchanged.";
+    "R1/R2 and axis identities are recorded, not reassigned.";
+    "Phase 15B may specify a minimal phase-aware model after this lock.";
     ];
 phase15Policy = table(item, status, value, note);
 end
@@ -347,43 +347,43 @@ clean = lookup_provenance(sourceProvenance, "source_pre_run_clean") == "true";
 
 gates = table( ...
     [
-    "Raw AS006 field source exists"
-    "Required B/I/R1/R2 columns present"
-    "Raw source checksum recorded"
-    "Current and field axes locked"
-    "Zero-current index available"
-    "Zero-field index available"
-    "Raw grid complete"
-    "R1/R2 channel identity locked"
-    "Sweep-history limitations recorded"
-    "No phase-aware model introduced"
-    "Clean provenance"
-    ].', ...
-    [
-    passfail(rawExists)
-    passfail(columnsPresent)
-    passfail(checksumComputed)
-    passfail(axesLocked)
-    passfail(zeroCurrent)
-    passfail(zeroField)
-    passfail(completeGrid)
-    passfail(bothChannels)
-    passfail(sweepLimitsRecorded)
-    passfail(noPhaseModel)
-    passfail(clean)
+    "Raw AS006 field source exists";
+    "Required B/I/R1/R2 columns present";
+    "Raw source checksum recorded";
+    "Current and field axes locked";
+    "Zero-current index available";
+    "Zero-field index available";
+    "Raw grid complete";
+    "R1/R2 channel identity locked";
+    "Sweep-history limitations recorded";
+    "No phase-aware model introduced";
+    "Clean provenance";
     ], ...
     [
-    "The mapped AS006 dVdI(I,B) source is present."
-    "The raw table contains Bfield, I, R1, and R2."
-    "SHA-256 provenance is recorded for the external raw file."
-    "Axis sizes, ranges, and zero indices are frozen."
-    "Current-zero location is available for future zero-bias checks."
-    "Field-zero location is available for future zero-field consistency."
-    "Observed rows equal current-by-field grid size."
-    "R1 and R2 are retained with fixed probe-pair meaning."
-    "Missing up/down branches and sweep-rate metadata are explicit."
-    "Phase 15A remains a data lock; model specification is deferred."
-    "The checkout was clean before Phase 15A wrote outputs."
+    passfail(rawExists);
+    passfail(columnsPresent);
+    passfail(checksumComputed);
+    passfail(axesLocked);
+    passfail(zeroCurrent);
+    passfail(zeroField);
+    passfail(completeGrid);
+    passfail(bothChannels);
+    passfail(sweepLimitsRecorded);
+    passfail(noPhaseModel);
+    passfail(clean);
+    ], ...
+    [
+    "The mapped AS006 dVdI(I,B) source is present.";
+    "The raw table contains Bfield, I, R1, and R2.";
+    "SHA-256 provenance is recorded for the external raw file.";
+    "Axis sizes, ranges, and zero indices are frozen.";
+    "Current-zero location is available for future zero-bias checks.";
+    "Field-zero location is available for future zero-field consistency.";
+    "Observed rows equal current-by-field grid size.";
+    "R1 and R2 are retained with fixed probe-pair meaning.";
+    "Missing up/down branches and sweep-rate metadata are explicit.";
+    "Phase 15A remains a data lock; model specification is deferred.";
+    "The checkout was clean before Phase 15A wrote outputs.";
     ], ...
     'VariableNames', {'gate', 'outcome', 'note'});
 end
@@ -402,62 +402,62 @@ separateBranches = lookup_sweep(sweepHistoryAudit, ...
     lookup_sweep(sweepHistoryAudit, "up_down_field_branches") == "true";
 
 item = [
-    "phase15A_closure"
-    "field_observable_locked"
-    "raw_field_source"
-    "current_axis_points"
-    "field_axis_points"
-    "temperature_status"
-    "measurement_channels"
-    "sweep_history_status"
-    "phase_aware_model_status"
-    "ready_for_phase15B"
-    "phase15C_dependency"
-    "source_pre_run_clean"
+    "phase15A_closure";
+    "field_observable_locked";
+    "raw_field_source";
+    "current_axis_points";
+    "field_axis_points";
+    "temperature_status";
+    "measurement_channels";
+    "sweep_history_status";
+    "phase_aware_model_status";
+    "ready_for_phase15B";
+    "phase15C_dependency";
+    "source_pre_run_clean";
     ];
 status = [
-    phase15AClosure
-    conditional(readyFor15B, "pass", "fail")
-    string(rawSourceLock.source_status(1))
-    "locked"
-    "locked"
-    "fixed_or_assumed"
+    phase15AClosure;
+    conditional(readyFor15B, "pass", "fail");
+    string(rawSourceLock.source_status(1));
+    "locked";
+    "locked";
+    "fixed_or_assumed";
     conditional(all(string(channelLock.channel_status) == "locked"), ...
-    "locked", "incomplete")
+    "locked", "incomplete");
     conditional(separateBranches, "branches_available", ...
-    "single_branch_no_sweep_rate")
-    "not_introduced"
-    conditional(readyFor15B, "true", "false")
-    "phase15B_model_spec_then_phase15C_synthetic_flux_verification"
-    string(sourceClean)
+    "single_branch_no_sweep_rate");
+    "not_introduced";
+    conditional(readyFor15B, "true", "false");
+    "phase15B_model_spec_then_phase15C_synthetic_flux_verification";
+    string(sourceClean);
     ];
 value = [
-    phase15AClosure
-    string(readyFor15B)
-    string(rawSourceLock.raw_file(1))
-    string(axisMetadataLock.current_point_count(1))
-    string(axisMetadataLock.field_point_count(1))
-    string(sprintf('%.4g K', axisMetadataLock.assumed_temperature_K(1)))
-    string(strjoin(cellstr(string(channelLock.measurement_channel)), '|'))
-    "up/down branches and sweep rate unavailable in locked raw table"
-    "false"
-    string(readyFor15B)
-    string(cfg.phase15A.nextPhase)
-    string(sourceClean)
+    phase15AClosure;
+    string(readyFor15B);
+    string(rawSourceLock.raw_file(1));
+    string(axisMetadataLock.current_point_count(1));
+    string(axisMetadataLock.field_point_count(1));
+    string(sprintf('%.4g K', axisMetadataLock.assumed_temperature_K(1)));
+    string(strjoin(cellstr(string(channelLock.measurement_channel)), '|'));
+    "up/down branches and sweep rate unavailable in locked raw table";
+    "false";
+    string(readyFor15B);
+    string(cfg.phase15A.nextPhase);
+    string(sourceClean);
     ];
 note = [
-    "Phase 15A closes if the raw field observable is locked."
-    "No field-dependent model adequacy is assessed in this phase."
-    "External raw file path is frozen with checksum."
-    "Current axis is available for I-dependent maps."
-    "Magnetic field axis is available for B-dependent maps."
-    "The legacy loader records an assumed fixed low temperature."
-    "Both R1 and R2 are carried forward."
-    "Hysteresis/sweep-rate conclusions remain unavailable."
-    "Phase-aware equations begin only after Phase 15B."
-    "True means Phase 15B may freeze a minimal model specification."
-    "Phase 15C must verify flux/phase behavior synthetically before AS006 residual fitting."
-    "Pre-run clean provenance is recorded separately from generated artifacts."
+    "Phase 15A closes if the raw field observable is locked.";
+    "No field-dependent model adequacy is assessed in this phase.";
+    "External raw file path is frozen with checksum.";
+    "Current axis is available for I-dependent maps.";
+    "Magnetic field axis is available for B-dependent maps.";
+    "The legacy loader records an assumed fixed low temperature.";
+    "Both R1 and R2 are carried forward.";
+    "Hysteresis/sweep-rate conclusions remain unavailable.";
+    "Phase-aware equations begin only after Phase 15B.";
+    "True means Phase 15B may freeze a minimal model specification.";
+    "Phase 15C must verify flux/phase behavior synthetically before AS006 residual fitting.";
+    "Pre-run clean provenance is recorded separately from generated artifacts.";
     ];
 handoff = table(item, status, value, note);
 end
