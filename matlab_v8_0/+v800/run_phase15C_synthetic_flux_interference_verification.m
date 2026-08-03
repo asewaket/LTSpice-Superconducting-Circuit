@@ -177,6 +177,8 @@ tf = status == 0;
 end
 
 function T = build_execution_manifest(cfg, inputs)
+phase15BClosure = lookup_handoff(inputs.phase15BHandoffStatus, ...
+    "phase15B_closure");
 item = [
     "phase15C_objective";
     "phase_solver_type";
@@ -201,7 +203,7 @@ value = [
     string(cfg.phase15C.syntheticAreaScale);
     string(cfg.phase15C.fieldSuppressionB0_T);
     string(cfg.phase15C.tolerance);
-    lookup_handoff(inputs.phase15BHandoffStatus, "phase15B_closure");
+    phase15BClosure;
     string(~cfg.phase15C.noAS006ResidualsInspected);
     string(~cfg.phase15C.noFittedOscillationPeriod);
     string(~cfg.phase15C.noTopologicalTerm);
@@ -404,10 +406,13 @@ function gates = build_gate_summary(cfg, inputs, executionManifest, ...
     phaseAblationResults, fieldSymmetry, sharedChannelState, ...
     phaseSolverDiagnostics, fluxStateStability, sourceProvenance)
 
-phase15BConsumed = lookup_handoff(inputs.phase15BHandoffStatus, ...
-    "phase15B_closure") == "pass_minimal_phase_aware_model_freeze";
+phase15BClosure = lookup_manifest(executionManifest, ...
+    "phase15B_closure_consumed");
+phase15BConsumed = phase15BClosure == ...
+    "pass_minimal_phase_aware_model_freeze";
 phase15BReachable = lookup_provenance(sourceProvenance, ...
     "frozen_phase15B_artifact_commit_reachable") == "true";
+phase15BConsumedUnchanged = phase15BConsumed && phase15BReachable;
 zeroFieldPass = all(zeroFieldInheritance.passes);
 singleLinkNoOsc = ~any(singleLinkResults.field_periodicity_detected) && ...
     all(singleLinkResults.josephson_relation_consistent) && ...
@@ -463,7 +468,7 @@ gate = [
     "Clean provenance";
     ];
 outcome = [
-    passfail(phase15BConsumed);
+    passfail(phase15BConsumedUnchanged);
     passfail(phase15BReachable);
     passfail(zeroFieldPass);
     passfail(singleLinkNoOsc);
@@ -507,10 +512,14 @@ function handoff = build_handoff_status(cfg, gates)
 allPass = all(string(gates.outcome) == "pass");
 item = [
     "phase15C_closure";
+    "phase15B_specification_consumed_unchanged";
     "AS006_residuals_used";
     "flux_quantum_periodicity_verified";
     "effective_area_scaling_verified";
     "zero_field_NI_recovery";
+    "PB_nonoscillatory";
+    "Pphi_loop_interference_verified";
+    "R1_R2_shared_phase_state";
     "phase_solver_type";
     "dynamic_phase_slips_modeled";
     "manual_period_fit";
@@ -521,10 +530,14 @@ item = [
 status = [
     conditional(allPass, "pass_synthetic_flux_interference_verification", ...
     "blocked_synthetic_flux_interference_verification");
+    gate_outcome(gates, "Phase 15B specification consumed unchanged");
     "false";
     gate_outcome(gates, "Phi0 periodicity verified");
     gate_outcome(gates, "Effective-area inverse scaling verified");
     gate_outcome(gates, "Zero-field NI recovery");
+    gate_outcome(gates, "PB remains nonoscillatory");
+    gate_outcome(gates, "Oscillations require active phase loop");
+    gate_outcome(gates, "R1/R2 share one phase state");
     string(cfg.phase15C.phaseSolverType);
     string(cfg.phase15C.dynamicPhaseSlipsModeled);
     "false";
@@ -534,10 +547,14 @@ status = [
     ];
 value = [
     status(1);
+    string(status(2) == "pass");
     "false";
-    string(status(3) == "pass");
     string(status(4) == "pass");
     string(status(5) == "pass");
+    string(status(6) == "pass");
+    string(status(7) == "pass");
+    string(status(8) == "pass");
+    string(status(9) == "pass");
     string(cfg.phase15C.phaseSolverType);
     string(cfg.phase15C.dynamicPhaseSlipsModeled);
     "false";
@@ -547,10 +564,14 @@ value = [
     ];
 note = [
     "Phase 15C closes only if all synthetic verification gates pass.";
+    "Frozen Phase 15B handoff and artifact commit are consumed unchanged.";
     "No raw AS006 residual comparison occurs in this phase.";
     "Flux periodicity is a synthetic implementation check.";
     "Area scaling checks geometry-driven period behavior.";
     "Zero-field response inherits the frozen current-switching layer.";
+    "PB is allowed only as a smooth monotonic field suppression term.";
+    "Pphi oscillations require loop, phase constraint, and nonzero flux.";
+    "R1/R2 share one phase state rather than independent fitted periods.";
     "Static constrained means no full time-dependent RSJ claim.";
     "Dynamic phase slips are not modeled by this implementation.";
     "No observed oscillation period is used.";
@@ -570,39 +591,66 @@ y = abs(cos(pi .* flux_quanta));
 end
 
 function value = lookup_handoff(T, item)
-idx = string(T.item) == string(item);
-if any(idx)
-    value = string(T.status(find(idx, 1, 'first')));
-else
-    value = "";
-end
+value = lookup_table_value(T, item, ["value"; "status"], true, ...
+    "Phase 15B handoff");
 end
 
 function value = lookup_manifest(T, item)
-idx = string(T.item) == string(item);
-if any(idx)
-    value = string(T.value(find(idx, 1, 'first')));
-else
-    value = "";
-end
+value = lookup_table_value(T, item, "value", false, "manifest");
 end
 
 function value = lookup_provenance(T, item)
-idx = string(T.item) == string(item);
-if any(idx)
-    value = string(T.value(find(idx, 1, 'first')));
-else
-    value = "";
-end
+value = lookup_table_value(T, item, "value", false, "provenance");
 end
 
 function value = lookup_shared(T, item)
-idx = string(T.item) == string(item);
-if any(idx)
-    value = string(T.value(find(idx, 1, 'first')));
-else
-    value = "";
+value = lookup_table_value(T, item, "value", false, "shared state");
 end
+
+function value = lookup_table_value(T, item, valueCandidates, strict, label)
+names = string(T.Properties.VariableNames);
+keyCandidates = ["item"; "field"; "key"; "name"];
+keyMask = ismember(lower(names), lower(keyCandidates));
+if ~any(keyMask)
+    if strict
+        error('v800:phase15CLookupMissingKeyColumn', ...
+            '%s table is missing an item/field/key/name column.', ...
+            char(label));
+    end
+    value = "";
+    return;
+end
+keyName = names(find(keyMask, 1, 'first'));
+idx = strcmpi(strtrim(string(T.(char(keyName)))), strtrim(string(item)));
+if nnz(idx) ~= 1
+    if strict
+        error('v800:phase15CLookupCardinality', ...
+            'Expected exactly one %s row in %s table, but found %d.', ...
+            char(item), char(label), nnz(idx));
+    end
+    value = "";
+    return;
+end
+
+valueCandidates = string(valueCandidates(:));
+valueName = "";
+for k = 1:numel(valueCandidates)
+    hit = find(lower(names) == lower(valueCandidates(k)), 1, 'first');
+    if ~isempty(hit)
+        valueName = names(hit);
+        break;
+    end
+end
+if valueName == ""
+    if strict
+        error('v800:phase15CLookupMissingValueColumn', ...
+            '%s table is missing the requested value/status column.', ...
+            char(label));
+    end
+    value = "";
+    return;
+end
+value = strtrim(string(T.(char(valueName))(idx)));
 end
 
 function value = gate_outcome(T, gate)
