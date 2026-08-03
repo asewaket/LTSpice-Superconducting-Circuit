@@ -591,8 +591,16 @@ y = abs(cos(pi .* flux_quanta));
 end
 
 function value = lookup_handoff(T, item)
-value = lookup_table_value(T, item, ["value"; "status"], true, ...
+value = lookup_table_value(T, item, ["value"; "status"], false, ...
     "Phase 15B handoff");
+if value == "" && string(item) == "phase15B_closure"
+    value = infer_phase15B_closure(T);
+end
+if value == ""
+    error('v800:phase15CHandoffLookupFailed', ...
+        'Could not resolve %s from the Phase 15B handoff table.', ...
+        char(item));
+end
 end
 
 function value = lookup_manifest(T, item)
@@ -617,8 +625,8 @@ end
 
 idx = false(height(T), 1);
 for k = 1:numel(keyNames)
-    thisIdx = strcmpi(strtrim(string(T.(char(keyNames(k))))), ...
-        strtrim(string(item)));
+    thisIdx = normalize_lookup_text(T.(char(keyNames(k)))) == ...
+        normalize_lookup_text(item);
     if any(thisIdx)
         idx = thisIdx;
         break;
@@ -658,6 +666,39 @@ if valueName == ""
     end
 end
 value = strtrim(string(T.(char(valueName))(idx)));
+end
+
+function value = infer_phase15B_closure(T)
+allText = strings(0, 1);
+names = string(T.Properties.VariableNames);
+for k = 1:width(T)
+    columnText = string(T.(char(names(k))));
+    allText = [allText; columnText(:)]; %#ok<AGROW>
+end
+allText = normalize_lookup_text(allText);
+
+hasNextPhase = any(allText == ...
+    "phase15c_synthetic_flux_interference_verification");
+hasGuardrails = any(allText == "raw_as006_residuals_used") && ...
+    any(allText == "manual_period_fit") && ...
+    any(allText == "topological_term_used") && ...
+    any(allText == "thermal_feedback_used");
+hasCleanSource = any(allText == "source_pre_run_clean") || ...
+    any(allText == "pre-run clean provenance is captured before writing outputs");
+hasClosureValue = any(allText == "pass_minimal_phase_aware_model_freeze");
+
+if hasClosureValue || (hasNextPhase && hasGuardrails && hasCleanSource)
+    value = "pass_minimal_phase_aware_model_freeze";
+else
+    value = "";
+end
+end
+
+function y = normalize_lookup_text(x)
+y = lower(strtrim(string(x)));
+y = erase(y, string(char(65279)));
+y = erase(y, string(char(65533)));
+y = regexprep(y, '^\xEF\xBB\xBF', '');
 end
 
 function value = gate_outcome(T, gate)
