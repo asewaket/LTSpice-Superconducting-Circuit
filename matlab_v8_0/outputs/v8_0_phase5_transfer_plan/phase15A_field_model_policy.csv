@@ -1,0 +1,8 @@
+item,status,value,note
+phase15A_scope,locked,raw_AS006_dVdI_I_B_fixed_T_observable_lock,"Phase 15A locks data availability and coordinates only."
+phase_aware_model,prohibited,false,"Phase dynamics are deferred until Phase 15B specification freeze."
+flux_quantization_fit,prohibited,false,"No field period or flux quantum is fit in Phase 15A."
+topological_superconductivity_claim,prohibited,false,"Oscillatory field response cannot imply topology in this roadmap."
+parameter_retuning,prohibited,false,"Frozen Phase 14 baseline/current-switching conclusions are unchanged."
+raw_data_relabeling,prohibited,false,"R1/R2 and axis identities are recorded, not reassigned."
+allowed_next_step,allowed,phase15B_phase_aware_model_specification_freeze,"Phase 15B may specify a minimal phase-aware model after this lock."

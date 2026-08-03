@@ -1,0 +1,13 @@
+item,status,value,note
+phase15A_closure,pass_as006_field_observable_lock,pass_as006_field_observable_lock,Phase 15A closes if the raw field observable is locked.
+field_observable_locked,pass,true,No field-dependent model adequacy is assessed in this phase.
+raw_field_source,locked_raw_field_candidate,/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data/ASD092_dVdIvIvB_0108.dat,External raw file path is frozen with checksum.
+current_axis_points,locked,501,Current axis is available for I-dependent maps.
+field_axis_points,locked,1001,Magnetic field axis is available for B-dependent maps.
+temperature_status,fixed_or_assumed,0.06 K,The legacy loader records an assumed fixed low temperature.
+measurement_channels,locked,R1_top_4_10_dVdI|R2_bottom_3_9_dVdI,Both R1 and R2 are carried forward.
+sweep_history_status,single_branch_no_sweep_rate,up/down branches and sweep rate unavailable in locked raw table,Hysteresis/sweep-rate conclusions remain unavailable.
+phase_aware_model_status,not_introduced,false,Phase-aware equations begin only after Phase 15B.
+ready_for_phase15B,true,true,True means Phase 15B may freeze a minimal model specification.
+phase15C_dependency,phase15B_model_spec_then_phase15C_synthetic_flux_verification,phase15B_phase_aware_model_specification_freeze,Phase 15C must verify flux/phase behavior synthetically before AS006 residual fitting.
+source_pre_run_clean,true,true,Pre-run clean provenance is recorded separately from generated artifacts.

@@ -1,0 +1,8 @@
+item,status,value,note
+current_axis,locked,"501 points, zero index 251",Current axis is locked from raw I column.
+field_axis,locked,"1001 points, zero index 501",Magnetic-field axis is locked from raw Bfield column.
+current_sweep_direction,single_branch_inferred,"negative_to_positive_current_per_field_step",The table contains one monotonic current branch per field value.
+field_sweep_direction,single_branch_inferred,"decreasing_field",Field order is inferred from first occurrence in the raw table.
+up_down_current_branches,not_available,"false",Separate up/down current branches are not encoded.
+up_down_field_branches,not_available,"false",Separate up/down field branches are not encoded.
+sweep_rate_metadata,not_available,"false",Sweep-rate metadata are not encoded in the recovered file.

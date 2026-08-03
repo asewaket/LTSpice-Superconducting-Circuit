@@ -1,0 +1,12 @@
+gate,outcome,note
+Raw AS006 field source exists,pass,"The mapped AS006 dVdI(I,B) source is present."
+Required B/I/R1/R2 columns present,pass,"The raw table contains Bfield, I, R1, and R2."
+Raw source checksum recorded,pass,"SHA-256 provenance is recorded for the external raw file."
+Current and field axes locked,pass,"Axis sizes, ranges, and zero indices are frozen."
+Zero-current index available,pass,"Current-zero location is available for future zero-bias checks."
+Zero-field index available,pass,"Field-zero location is available for future zero-field consistency."
+Raw grid complete,pass,"Observed rows equal current-by-field grid size."
+R1/R2 channel identity locked,pass,"R1 and R2 are retained with fixed probe-pair meaning."
+Sweep-history limitations recorded,pass,"Missing up/down branches and sweep-rate metadata are explicit."
+No phase-aware model introduced,pass,"Phase 15A remains a data lock; model specification is deferred."
+Clean provenance,pass,"The checkout was clean before Phase 15A wrote outputs."

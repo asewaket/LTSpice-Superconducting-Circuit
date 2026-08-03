@@ -1,0 +1,2 @@
+device,source_label,raw_file,raw_file_exists,source_sha256,file_bytes,data_row_count,columns_detected,required_columns_present,legacy_loader_file,legacy_loader_exists,source_status
+AS006,ASD092_dVdIvIvB_0108,/Users/asewaket/Documents/Thesis/Raw Transport Data/2023_5_26_ASD087/data/ASD092_dVdIvIvB_0108.dat,true,8d008ce844e11568bfde1663e622be7ef6d023960e772f22dc50e34180fdf6a2,25586720,501501,Bfield|I|R1|R2,true,/private/tmp/LTSpice-Superconducting-Circuit-phase15A/matlab_v7_4_6_files/load_v73_experimental_field_dvdi.m,true,locked_raw_field_candidate

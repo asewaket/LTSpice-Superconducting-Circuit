@@ -1,0 +1,2 @@
+device,observable_type,current_units,field_units,temperature_units,assumed_temperature_K,field_direction,current_point_count,field_point_count,grid_point_count,observed_row_count,current_min_A,current_max_A,field_min_T,field_max_T,zero_current_available,zero_field_available,zero_current_index,zero_field_index,current_axis_monotonic,field_axis_monotonic,grid_complete,axis_lock_status
+AS006,dVdI_I_B_fixed_T,A,T,K,0.06,out_of_plane,501,1001,501501,501501,-2.5e-06,2.5e-06,-0.05,0.05,1,1,251,501,1,1,1,locked

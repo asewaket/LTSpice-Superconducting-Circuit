@@ -1,0 +1,10 @@
+item,value,note
+phase,phase15A_as006_field_data_lock,"AS006 raw field-data recovery and observable-lock phase."
+source_commit_sha,1ea0e955f3b06ce754639cfea650a68d011fd6a7,"Git commit captured before this runner writes outputs."
+source_tree_sha,bed543c295ddfde58ae823e11ac90f73ab5b044c,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before Phase 15A writes outputs."
+frozen_phase14D_artifact_commit,cd08009,"Canonical Phase 14D artifact-freeze commit consumed as handoff."
+frozen_phase14D_artifact_commit_reachable,true,"True when the Phase 14D artifact commit is an ancestor of this run."
+provenance_scope,field_data_observable_lock_no_phase_model,"No phase-aware model, flux fit, or parameter retuning is introduced."
