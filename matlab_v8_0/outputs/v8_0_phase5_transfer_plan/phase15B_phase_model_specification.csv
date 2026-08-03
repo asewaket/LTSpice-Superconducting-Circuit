@@ -1,0 +1,17 @@
+item,value,note,phase15A_current_points,phase15A_field_points,phase15A_temperature_K
+phase15B_closure_target,pass_minimal_phase_aware_model_freeze,"The phase closes as a specification freeze, not a raw-map fit.",501,1001,0.06
+inherited_equilibrium_baseline,FB,"Phase 13F.4 preferred equilibrium baseline is inherited unchanged.",501,1001,0.06
+inherited_current_switching_baseline,NI,"Phase 14 current-switching layer is inherited unchanged.",501,1001,0.06
+model_hierarchy,FB_to_NI_to_Pphi,"Phase-aware terms are an added field-response layer only.",501,1001,0.06
+phase_model_type,overdamped_resistively_shunted_josephson_link_network,"Smallest model class able to produce loop interference.",501,1001,0.06
+link_law,Iij=Icij*sin(phiij)+Vij/Rij,"A sinusoidal final-map correction is explicitly avoided.",501,1001,0.06
+voltage_relation,Vij=(Phi0/2pi)*dphiij_dt,"Voltage is tied to phase evolution through the Josephson relation.",501,1001,0.06
+gauge_invariant_phase,phiij=theta_i-theta_j-(2pi/Phi0)*line_integral_A_dot_dl,"Magnetic field enters through vector-potential line integrals.",501,1001,0.06
+loop_constraint,sum_loop_phiij=2pi*n-2pi*Phi_loop/Phi0,"Closed-loop constraints control interference.",501,1001,0.06
+field_suppression_policy,monotonic_field_suppression_separate_from_phase_interference,"Ordinary critical-current suppression is not treated as oscillation.",501,1001,0.06
+shared_quantitative_RT_predictor,false,"Phase 15B cannot repair the Phase 13 R(T) limitation.",501,1001,0.06
+shared_raw_nonlinear_predictor,false,"Phase 15B cannot repair the Phase 14 raw nonlinear limitation.",501,1001,0.06
+raw_AS006_residuals_used,false,"Raw residuals are reserved for Phase 15D.",501,1001,0.06
+manual_period_fit,false,"Oscillation period is not manually fit in Phase 15B.",501,1001,0.06
+topological_term_used,false,"Topological superconductivity is outside the model claim.",501,1001,0.06
+thermal_feedback_used,false,"Thermal feedback remains blocked by Phase 14D sweep metadata limits.",501,1001,0.06

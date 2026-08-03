@@ -1,0 +1,12 @@
+blocked_item,status,reason
+manual_oscillation_period,prohibited,Would tune the answer to observed oscillations.
+manual_field_axis_shift,prohibited,Requires independent magnet calibration before residual inspection.
+independent_period_per_channel,prohibited,R1/R2 must share one underlying phase state.
+independent_loop_area_per_feature,prohibited,Feature-by-feature areas would destroy geometry constraint.
+topological_edge_term,prohibited,Topological claims are explicitly excluded.
+device_specific_phase_offset_fit,prohibited,AS006-only offsets would be unconstrained flexibility.
+manual_branch_selection,prohibited,Sweep branches are unavailable in Phase 15A raw lock.
+hysteresis_fit_from_single_branch_data,prohibited,Single-branch data cannot validate hysteresis.
+thermal_feedback,prohibited,Phase 14D found thermal feedback unidentifiable from available grids.
+Raman_target_use,prohibited,Raman cannot be used as a target for field-period fitting.
+Phase6_label_target_use,prohibited,Frozen Phase 6 labels cannot train the field model.

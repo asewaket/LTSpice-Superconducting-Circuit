@@ -1,0 +1,10 @@
+item,value,note
+phase,phase15B_phase_aware_model_specification,"Minimal phase-aware field-response model specification phase."
+source_commit_sha,d6495ca93e0abfe9ab72547c656edb248de14aaa,"Git commit captured before this runner writes outputs."
+source_tree_sha,af0e8209161fcbb38405d3d3cb04d50b9fe5f5c6,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before Phase 15B writes outputs."
+frozen_phase15A_artifact_commit,0f20cd6,"Canonical Phase 15A artifact-freeze commit consumed as handoff."
+frozen_phase15A_artifact_commit_reachable,true,"True when the Phase 15A artifact commit is an ancestor of this run."
+provenance_scope,model_specification_freeze_no_raw_residual_fit,"No AS006 residual improvement, period fit, or topology claim is used."

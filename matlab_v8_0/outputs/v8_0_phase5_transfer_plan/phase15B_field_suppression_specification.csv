@@ -1,0 +1,4 @@
+component,expression,oscillatory,purpose,status
+PB_monotonic_field_suppression,Icij(B)=Icij(0)*fB(B),0,Control for ordinary noninterference field suppression.,allowed
+Pphi_phase_interference,loop_response_depends_on_Phi_loop_over_Phi0,1,Generate oscillations only through gauge-invariant loop phase.,allowed_only_in_Pphi
+oscillatory_envelope_without_phase,prohibited,0,Prevent final-map sinusoidal correction from masquerading as phase.,prohibited

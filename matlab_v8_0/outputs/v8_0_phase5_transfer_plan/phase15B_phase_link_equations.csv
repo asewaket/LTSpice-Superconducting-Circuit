@@ -1,0 +1,6 @@
+equation_id,expression,purpose,status
+current_phase_link_law,Iij=Icij*sin(phiij)+Vij/Rij,Define overdamped Josephson-like weak-link current.,frozen_for_phase15C_implementation
+josephson_voltage_relation,Vij=(Phi0/2pi)*dphiij_dt,Tie voltage to phase evolution.,frozen_for_phase15C_implementation
+gauge_invariant_phase_difference,phiij=theta_i-theta_j-(2pi/Phi0)*integral_i_to_j_A_dot_dl,Make field coupling gauge-invariant.,frozen_for_phase15C_implementation
+closed_loop_phase_constraint,sum_loop_phiij=2pi*n-2pi*Phi_loop/Phi0,Generate loop interference without manual period fitting.,frozen_for_phase15C_implementation
+flux_area_relation,Phi_loop=B*Aeff_loop,Connect field axis to geometry-derived loop flux.,frozen_for_phase15C_implementation

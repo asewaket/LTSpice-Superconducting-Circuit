@@ -1,0 +1,12 @@
+item,status,value,note
+phase15B_closure,pass_minimal_phase_aware_model_freeze,pass_minimal_phase_aware_model_freeze,Phase 15B closes only as a model-specification freeze.
+raw_AS006_residuals_used,false,false,Raw AS006 residuals are reserved for Phase 15D.
+manual_period_fit,false,false,No oscillation period is fit in Phase 15B.
+topological_term_used,false,false,No topological claim or term is introduced.
+thermal_feedback_used,false,false,Thermal feedback remains outside this phase.
+field_points_locked,locked_from_phase15A,1001,Phase 15A field axis is consumed unchanged.
+current_points_locked,locked_from_phase15A,501,Phase 15A current axis is consumed unchanged.
+temperature_K,locked_from_phase15A,0.06,Fixed/assumed temperature is inherited from the data lock.
+sweep_history_status,single_branch_no_sweep_rate,up/down branches and sweep rate unavailable,Hysteresis and sweep-rate claims remain unavailable.
+next_phase,phase15C_synthetic_flux_interference_verification,phase15C_synthetic_flux_interference_verification,Phase 15C must verify the implementation synthetically.
+source_pre_run_clean,true,true,Pre-run clean provenance is captured before writing outputs.

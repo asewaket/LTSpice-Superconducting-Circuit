@@ -1,0 +1,11 @@
+test_id,requirement,status
+single_josephson_link_zero_field,Recover current-switching behavior at B=0.,required_before_phase15D
+two_path_interference,Produce SQUID-like interference in a two-path synthetic loop.,required_before_phase15D
+flux_quantum_periodicity,Recover periodicity in Phi/Phi0.,required_before_phase15D
+effective_area_scaling,Show period scales inversely with effective area.,required_before_phase15D
+positive_negative_field_symmetry,Recover symmetry when geometry and envelope are symmetric.,required_before_phase15D
+zero_field_recovery_of_NI,Pphi must reduce to NI at zero field without phase frustration.,required_before_phase15D
+PB_monotonic_envelope_no_phase_oscillation,PB may suppress Ic but must not oscillate.,required_before_phase15D
+Pphi_oscillation_only_from_loop_phase,Oscillations must be absent unless loop phase is active.,required_before_phase15D
+phase_solver_convergence,Solver converges across flux-state choices.,required_before_phase15D
+no_artificial_grid_interpolation_oscillation,Interpolation alone cannot generate periodic structure.,required_before_phase15D
