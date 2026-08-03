@@ -1,0 +1,11 @@
+item,value,note
+phase,phase14D_current_only_adequacy_decision,"Phase 14D read-only raw nonlinear adequacy decision."
+source_commit_sha,e6dd41e0203e72c54526a24f536b2afbe2e797a3,"Git commit captured before this runner writes outputs."
+source_tree_sha,4a6b5bd199f89baa0431cada25034ef355d0f194,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase14B5_artifact_commit,b94ba33,"Canonical Phase 14B.5 artifact-freeze commit consumed by policy."
+frozen_phase14B5_artifact_commit_reachable,true,"True when the frozen Phase 14B.5 artifact commit is an ancestor of this run."
+provenance_scope,read_only_claim_freeze_after_clean_phase14B5,"No solver rerun, retuning, clipping, channel reassignment, thermal feedback, or equilibrium reopen."
+source_provenance_policy,Commit Phase 14D source first; rerun from clean source; commit decision artifacts separately.,"Artifacts are separate from source/configuration commits."

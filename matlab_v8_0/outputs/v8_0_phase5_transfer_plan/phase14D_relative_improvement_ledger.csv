@@ -1,0 +1,5 @@
+device_channel,device,channel_role,measurement_channel,N0_MSE,NI_MSE,Delta_NI_minus_N0,NI_improves,improvement_fraction,relative_interpretation
+AS001_primary,AS001,primary,R1_primary_dVdI,0.349485861598067,0.129621481632192,-0.219864379965875,1,0.629108081684673,substantial_relative_improvement
+AS001_secondary,AS001,secondary,R2_secondary_dVdI,0.162196136900665,0.124771332139162,-0.0374248047615022,1,0.230737953915775,modest_relative_improvement
+AS004_primary,AS004,primary,R1_primary_dVdI,17.3078461696745,7.59962873055676,-9.70821743911772,1,0.560914243398335,substantial_relative_improvement
+AS004_secondary,AS004,secondary,R2_secondary_dVdI,2.80503162092362,0.785080796892698,-2.01995082403092,1,0.720116953036632,substantial_relative_improvement

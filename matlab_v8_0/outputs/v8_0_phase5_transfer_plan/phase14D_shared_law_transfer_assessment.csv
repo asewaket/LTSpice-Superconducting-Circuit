@@ -1,0 +1,9 @@
+item,status,value,note
+current_switching_directionally_supported,pass,true,"NI improves every retained channel relative to N0."
+NI_improves_all_retained_channels,pass,true,"All four AS001/AS004 channel rows improve under NI."
+mean_fractional_improvement,descriptive,0.53522,"Mean of channel-level fractional MSE improvement."
+shared_law_transfer_scope,pass_selected_device_scope,AS001_AS004_R1_R2_directional_support_only,"Shared Ic(T) law supports selected-device current-switching contribution."
+shared_raw_nonlinear_predictor,fail,false,"False because quantitative failures and bounds violations remain."
+AS004_primary_quantitative_adequacy,fail,fail,"AS004 primary remains the hard-failure channel."
+prediction_bounds_limitation,pass,true,"Retained bounds failure is an adequacy limitation, not an execution failure."
+relative_improvement_not_quantitative_adequacy,pass,true,"Relative improvement is explicitly separated from quantitative adequacy."

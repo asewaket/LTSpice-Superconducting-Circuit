@@ -1,0 +1,10 @@
+item,status,value,note
+phase14D_closure,pass_read_only_raw_nonlinear_adequacy_assessment,"pass_read_only_raw_nonlinear_adequacy_assessment",Workflow passes because it freezes a bounded claim from frozen inputs.
+phase14D_decision,pass_selected_device_current_switching_scope,"pass_selected_device_current_switching_scope",Selected-device current-switching contribution is supported directionally.
+current_switching_directionally_supported,pass,"true",NI improves all four retained channels.
+shared_raw_nonlinear_predictor,fail,"false",False because AS004 primary and prediction bounds remain inadequate.
+prediction_bounds_limitation,pass,"retained",Bounds failure is retained as a scientific/model limitation.
+AS004_primary_quantitative_adequacy,fail,"fail",AS004 primary remains quantitatively inadequate.
+phase14C_status,not_run,"not_run",Phase 14C remains conditional and not run.
+electrothermal_feedback,not_identifiable,"not_identifiable",Not identifiable from available raw-grid metadata.
+strongest_defensible_claim,frozen,"NI improves raw nonlinear response across AS001/AS004 channels, but absolute adequacy and transferable quantitative prediction are not established.",Final Phase 14D scientific statement.

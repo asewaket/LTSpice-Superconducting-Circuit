@@ -1,0 +1,12 @@
+item,status,value,note
+raw_grids_used,pass,true,"Canonical AS001/AS004 raw dV/dI(I,T) grids are required."
+proxy_substitution_used,pass,false,"Proxy substitutions are prohibited."
+all_predictions_completed,pass,true,"All AS001/AS004, R1/R2, N0/NI rows must be present."
+all_predictions_finite,pass,true,"Read-only assessment requires finite frozen predictions."
+solver_convergence,pass,true,"Read-only assessment requires converged frozen predictions."
+shared_nonlinear_parameters_only,pass,true,"Nonlinear parameters must be shared, not device-specific."
+phase14B5_execution,pass,complete_raw_nonlinear_campaign,"Frozen Phase 14B.5 execution status."
+phase14B5_closure,pass,complete_raw_current_switching_execution_with_bounds_limitation,"Frozen Phase 14B.5 closure status."
+no_solver_rerun,pass,true,"Phase 14D does not rerun the solver."
+no_parameter_retuning,pass,true,"Phase 14D does not retune shared parameters."
+no_thermal_feedback,pass,true,"Phase 14D does not add electrothermal feedback."

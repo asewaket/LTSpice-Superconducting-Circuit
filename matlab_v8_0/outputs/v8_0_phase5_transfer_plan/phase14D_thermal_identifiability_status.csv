@@ -1,0 +1,10 @@
+item,status,value,note
+phase14C_status,not_run,not_run,Phase 14C is conditional and is not run from these raw grids.
+phase14C_trigger,pass,false,No electrothermal-ablation trigger is present.
+electrothermal_feedback,not_identifiable,not_identifiable,Not identifiable does not mean absent.
+up_sweep_available,not_available,false,No separate upward sweep branch is available.
+down_sweep_available,not_available,false,No separate downward sweep branch is available.
+sweep_rate_available,not_available,false,No sweep-rate metadata is available.
+switching_and_retrapping_distinguishable,not_available,false,Switching and retrapping cannot be separated.
+thermal_memory_observable,not_available,false,No thermal memory observable is encoded in the recovered grids.
+phase14C_trigger_reason,preserved,thermal_feedback_not_identifiable_from_available_raw_grids,Frozen Phase 14B.5 trigger reason.

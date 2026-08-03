@@ -1,0 +1,5 @@
+device,channel_role,measurement_channel,N0_MSE,NI_MSE,NI_MAE,NI_max_abs_residual,improvement_fraction,adequacy_class,absolute_adequacy,interpretation
+AS001,primary,R1_primary_dVdI,0.349485861598067,0.129621481632192,0.261739694093291,2.48148169766697,0.629108081684673,partial_support,partial_or_limited_support,substantial improvement with retained localized bounds issue
+AS001,secondary,R2_secondary_dVdI,0.162196136900665,0.124771332139162,0.269680993353444,2.63426463157631,0.230737953915775,limited_support,partial_or_limited_support,modest improvement and bounded predictions
+AS004,primary,R1_primary_dVdI,17.3078461696745,7.59962873055676,0.730196740358794,54.0347973092268,0.560914243398335,quantitatively_inadequate,fail,large relative improvement but poor absolute residual and widespread lower-bound violation
+AS004,secondary,R2_secondary_dVdI,2.80503162092362,0.785080796892698,0.28022661877208,13.0577274982854,0.720116953036632,partial_support,partial_or_limited_support,strong improvement but residual mismatch and lower-bound violation remain
