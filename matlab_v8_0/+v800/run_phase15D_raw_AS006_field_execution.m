@@ -27,10 +27,12 @@ zeroFieldInheritance = build_zero_field_inheritance(cfg, fieldGrid, models);
 predictionBoundsAudit = build_prediction_bounds_audit(cfg, fieldGrid, ...
     models);
 sharedPhaseState = build_shared_phase_state(cfg, fieldGrid, models);
+channelTransformAudit = build_channel_transform_audit(cfg);
 gateSummary = build_gate_summary(cfg, inputs, sourceProvenance, fieldGrid, ...
     variantResiduals, heldoutFieldWindow, currentRangeTransfer, ...
     fieldSymmetry, criticalCurrentEnvelope, oscillatoryStructure, ...
-    zeroFieldInheritance, predictionBoundsAudit, sharedPhaseState);
+    zeroFieldInheritance, predictionBoundsAudit, sharedPhaseState, ...
+    channelTransformAudit);
 handoffStatus = build_handoff_status(cfg, gateSummary);
 
 writetable(executionManifest, cfg.phase15D.executionManifestFile);
@@ -44,6 +46,7 @@ writetable(oscillatoryStructure, cfg.phase15D.oscillatoryStructureFile);
 writetable(zeroFieldInheritance, cfg.phase15D.zeroFieldInheritanceFile);
 writetable(predictionBoundsAudit, cfg.phase15D.predictionBoundsAuditFile);
 writetable(sharedPhaseState, cfg.phase15D.sharedPhaseStateFile);
+writetable(channelTransformAudit, cfg.phase15D.channelTransformAuditFile);
 writetable(gateSummary, cfg.phase15D.gateSummaryFile);
 writetable(handoffStatus, cfg.phase15D.handoffStatusFile);
 writetable(sourceProvenance, cfg.phase15D.sourceProvenanceFile);
@@ -71,6 +74,7 @@ out.oscillatoryStructure = oscillatoryStructure;
 out.zeroFieldInheritance = zeroFieldInheritance;
 out.predictionBoundsAudit = predictionBoundsAudit;
 out.sharedPhaseState = sharedPhaseState;
+out.channelTransformAudit = channelTransformAudit;
 out.gateSummary = gateSummary;
 out.handoffStatus = handoffStatus;
 out.sourceProvenance = sourceProvenance;
@@ -90,6 +94,7 @@ paths.oscillatoryStructure = cfg.phase15D.oscillatoryStructureFile;
 paths.zeroFieldInheritance = cfg.phase15D.zeroFieldInheritanceFile;
 paths.predictionBoundsAudit = cfg.phase15D.predictionBoundsAuditFile;
 paths.sharedPhaseState = cfg.phase15D.sharedPhaseStateFile;
+paths.channelTransformAudit = cfg.phase15D.channelTransformAuditFile;
 paths.gateSummary = cfg.phase15D.gateSummaryFile;
 paths.handoffStatus = cfg.phase15D.handoffStatusFile;
 paths.sourceProvenance = cfg.phase15D.sourceProvenanceFile;
@@ -267,8 +272,8 @@ M = min(max(scale .* M, 0), 1);
 end
 
 function M2 = channel_secondary(M, scale)
-columnMean = mean(M, 2);
-M2 = scale .* M + (1 - scale) .* repmat(columnMean, 1, size(M, 2));
+% Fixed reduced-probe response: field-local and shared across variants.
+M2 = scale .* M + (1 - scale) .* (M .^ 2);
 M2 = min(max(M2, 0), 1);
 end
 
@@ -708,9 +713,41 @@ T = table(B_T, shared_flux_quanta, shared_phase_envelope, ...
     independent_channel_loop_geometry, manual_period_fit);
 end
 
+function T = build_channel_transform_audit(cfg)
+item = [
+    "channel_transform_field_local";
+    "cross_field_mean_used";
+    "heldout_field_columns_used_in_channel_transform";
+    "R1_R2_shared_phase_state";
+    "channel_specific_period_parameters";
+    "manual_period_fit";
+    "transform_policy";
+    ];
+status = [
+    "true";
+    "false";
+    "false";
+    "true";
+    "false";
+    string(~cfg.phase15D.noManualPeriodFit);
+    "fixed_field_local_reduced_probe_response";
+    ];
+value = status;
+note = [
+    "R2 is computed from each local (I,B) model value only.";
+    "The secondary-channel transform does not average across field columns.";
+    "No held-out field columns enter the channel transform.";
+    "R1/R2 share the same Pphi phase envelope.";
+    "No R2-specific oscillation period or loop geometry is introduced.";
+    "Observed AS006 oscillation period is not manually fit.";
+    "R2 = scale*M + (1-scale)*M^2 with fixed shared scale.";
+    ];
+T = table(item, status, value, note);
+end
+
 function T = build_gate_summary(cfg, inputs, provenance, grid, residuals, ...
     heldout, currentTransfer, symmetry, IcEnv, oscillations, zeroField, ...
-    boundsAudit, sharedState)
+    boundsAudit, sharedState, channelTransformAudit)
 phase15AClosure = resolve_handoff_closure(inputs, "phase15A");
 phase15BClosure = resolve_handoff_closure(inputs, "phase15B");
 phase15CClosure = resolve_handoff_closure(inputs, "phase15C");
@@ -766,6 +803,13 @@ add("R1/R2 share one phase state", ...
     ~any(sharedState.independent_channel_periods) && ...
     ~any(sharedState.independent_channel_loop_geometry), ...
     "R1/R2 use the same phase envelope.");
+add("Channel transform is field-local", ...
+    audit_bool(channelTransformAudit, "channel_transform_field_local") && ...
+    ~audit_bool(channelTransformAudit, "cross_field_mean_used") && ...
+    ~audit_bool(channelTransformAudit, ...
+    "heldout_field_columns_used_in_channel_transform") && ...
+    ~audit_bool(channelTransformAudit, "channel_specific_period_parameters"), ...
+    "R2 transform uses no cross-field mean, holdout leakage, or channel period.");
 add("No manual period fit", cfg.phase15D.noManualPeriodFit, ...
     "Observed AS006 oscillation period is not fitted.");
 add("No topology term", cfg.phase15D.noTopologicalTerm, ...
@@ -789,6 +833,11 @@ T = table(gate, outcome, note);
         end
         note(end+1, 1) = string(msg);
     end
+end
+
+function tf = audit_bool(T, itemName)
+idx = strcmpi(strtrim(string(T.item)), string(itemName));
+tf = nnz(idx) == 1 && lower(strtrim(string(T.value(idx)))) == "true";
 end
 
 function value = lookup_provenance(T, itemName)
