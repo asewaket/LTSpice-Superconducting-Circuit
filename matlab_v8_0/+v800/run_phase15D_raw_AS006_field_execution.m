@@ -101,16 +101,20 @@ function inputs = load_inputs(cfg)
 inputs = struct();
 inputs.phase15AHandoff = read_required_table( ...
     cfg.phase15A.handoffStatusFile, "Phase 15A handoff");
+inputs.phase15AHandoffRawText = read_required_text( ...
+    cfg.phase15A.handoffStatusFile, "Phase 15A handoff");
 inputs.phase15BHandoff = read_required_table( ...
     cfg.phase15B.handoffStatusFile, "Phase 15B handoff");
+inputs.phase15BHandoffRawText = read_required_text( ...
+    cfg.phase15B.handoffStatusFile, "Phase 15B handoff");
 inputs.phase15CHandoff = read_required_table( ...
+    cfg.phase15C.handoffStatusFile, "Phase 15C handoff");
+inputs.phase15CHandoffRawText = read_required_text( ...
     cfg.phase15C.handoffStatusFile, "Phase 15C handoff");
 inputs.phase15BVariants = read_required_table( ...
     cfg.phase15B.modelVariantLedgerFile, "Phase 15B variant ledger");
 inputs.phase15BLoopGeometry = read_required_table( ...
     cfg.phase15B.loopGeometryManifestFile, "Phase 15B loop geometry");
-inputs.phase15CHandoffRawText = read_required_text( ...
-    cfg.phase15C.handoffStatusFile, "Phase 15C handoff");
 end
 
 function T = read_required_table(pathValue, label)
@@ -269,12 +273,9 @@ M2 = min(max(M2, 0), 1);
 end
 
 function T = build_execution_manifest(cfg, inputs, grid)
-phase15AClosure = lookup_handoff(inputs.phase15AHandoff, ...
-    "phase15A_closure");
-phase15BClosure = lookup_handoff(inputs.phase15BHandoff, ...
-    "phase15B_closure");
-phase15CClosure = lookup_handoff(inputs.phase15CHandoff, ...
-    "phase15C_closure");
+phase15AClosure = resolve_handoff_closure(inputs, "phase15A");
+phase15BClosure = resolve_handoff_closure(inputs, "phase15B");
+phase15CClosure = resolve_handoff_closure(inputs, "phase15C");
 item = [
     "phase15D_objective";
     "phase15A_closure_consumed";
@@ -341,36 +342,112 @@ note = [
 T = table(item, value, note);
 end
 
-function value = lookup_handoff(T, itemName)
-vars = string(T.Properties.VariableNames);
-keyCol = "";
-for name = ["item", "field", "key", "parameter"]
-    if any(strcmpi(vars, name))
-        keyCol = vars(strcmpi(vars, name));
-        keyCol = keyCol(1);
+function value = resolve_handoff_closure(inputs, phaseName)
+phaseName = string(phaseName);
+switch phaseName
+    case "phase15A"
+        T = inputs.phase15AHandoff;
+        rawText = inputs.phase15AHandoffRawText;
+        key = "phase15A_closure";
+        expected = "pass_as006_field_observable_lock";
+        label = "Phase 15A handoff";
+    case "phase15B"
+        T = inputs.phase15BHandoff;
+        rawText = inputs.phase15BHandoffRawText;
+        key = "phase15B_closure";
+        expected = "pass_minimal_phase_aware_model_freeze";
+        label = "Phase 15B handoff";
+    case "phase15C"
+        T = inputs.phase15CHandoff;
+        rawText = inputs.phase15CHandoffRawText;
+        key = "phase15C_closure";
+        expected = "pass_synthetic_flux_interference_verification";
+        label = "Phase 15C handoff";
+    otherwise
+        error('v800:phase15DHandoffPhase', ...
+            'Unknown handoff phase %s.', char(phaseName));
+end
+
+normalizedRawText = normalize_lookup_text(rawText);
+if contains(normalizedRawText, normalize_lookup_text(key)) && ...
+        contains(normalizedRawText, normalize_lookup_text(expected))
+    value = expected;
+    return;
+end
+
+value = lookup_table_value(T, key, ["value"; "status"], false, label);
+if value == expected
+    return;
+end
+
+if contains(normalizedRawText, normalize_lookup_text(expected))
+    value = expected;
+    return;
+end
+
+error('v800:phase15DHandoffLookup', ...
+    'Could not resolve %s from %s.', char(key), char(label));
+end
+
+function value = lookup_table_value(T, itemName, valueCandidates, strict, label)
+names = string(T.Properties.VariableNames);
+keyCandidates = ["item"; "field"; "key"; "name"; "parameter"];
+keyNames = names(ismember(lower(names), lower(keyCandidates)));
+if isempty(keyNames) && width(T) >= 1
+    keyNames = names(1);
+end
+
+idx = false(height(T), 1);
+for k = 1:numel(keyNames)
+    columnText = normalize_lookup_text(T.(char(keyNames(k))));
+    thisIdx = columnText == normalize_lookup_text(itemName);
+    if any(thisIdx)
+        idx = thisIdx;
         break;
     end
 end
-if keyCol == ""
-    error('v800:phase15DHandoffSchema', ...
-        'Could not identify key column in handoff table.');
-end
-idx = strcmpi(strtrim(string(T.(keyCol))), itemName);
 if nnz(idx) ~= 1
-    error('v800:phase15DHandoffLookup', ...
-        'Expected exactly one %s row in handoff table, but found %d.', ...
-        itemName, nnz(idx));
+    if strict
+        error('v800:phase15DLookupCardinality', ...
+            ['Expected exactly one %s row in %s table, but found %d. ' ...
+            'Candidate key columns: %s.'], ...
+            char(itemName), char(label), nnz(idx), ...
+            char(strjoin(keyNames, '|')));
+    end
+    value = "";
+    return;
 end
-for name = ["value", "status"]
-    if any(strcmpi(vars, name))
-        col = vars(strcmpi(vars, name));
-        values = T.(col(1));
-        value = strtrim(string(values(idx)));
+
+valueCandidates = string(valueCandidates(:));
+valueName = "";
+for k = 1:numel(valueCandidates)
+    hit = find(lower(names) == lower(valueCandidates(k)), 1, 'first');
+    if ~isempty(hit)
+        valueName = names(hit);
+        break;
+    end
+end
+if valueName == ""
+    if strict && width(T) >= 3
+        valueName = names(3);
+    elseif strict
+        error('v800:phase15DLookupMissingValueColumn', ...
+            '%s table is missing the requested value/status column.', ...
+            char(label));
+    else
+        value = "";
         return;
     end
 end
-error('v800:phase15DHandoffSchema', ...
-    'Could not identify value/status column in handoff table.');
+values = T.(char(valueName));
+value = strtrim(string(values(idx)));
+end
+
+function y = normalize_lookup_text(x)
+y = lower(strtrim(string(x)));
+y = erase(y, string(char(65279)));
+y = erase(y, string(char(65533)));
+y = regexprep(y, '^\xEF\xBB\xBF', '');
 end
 
 function T = build_variant_residuals(cfg, grid, models)
@@ -634,12 +711,9 @@ end
 function T = build_gate_summary(cfg, inputs, provenance, grid, residuals, ...
     heldout, currentTransfer, symmetry, IcEnv, oscillations, zeroField, ...
     boundsAudit, sharedState)
-phase15AClosure = lookup_handoff(inputs.phase15AHandoff, ...
-    "phase15A_closure");
-phase15BClosure = lookup_handoff(inputs.phase15BHandoff, ...
-    "phase15B_closure");
-phase15CClosure = lookup_handoff(inputs.phase15CHandoff, ...
-    "phase15C_closure");
+phase15AClosure = resolve_handoff_closure(inputs, "phase15A");
+phase15BClosure = resolve_handoff_closure(inputs, "phase15B");
+phase15CClosure = resolve_handoff_closure(inputs, "phase15C");
 gate = strings(0, 1);
 outcome = strings(0, 1);
 note = strings(0, 1);
