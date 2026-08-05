@@ -1,0 +1,10 @@
+item,value,note
+phase,phase15C_synthetic_flux_interference_verification,"Synthetic flux/interference verification phase."
+source_commit_sha,911d5d9e10ad1c187f43ba943656b1b5322a659f,"Git commit captured before this runner writes outputs."
+source_tree_sha,f5cfefd863449531fad455b7fcd8d334bdf8bea9,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before Phase 15C writes outputs."
+frozen_phase15B_artifact_commit,30cd2d8,"Canonical Phase 15B artifact-freeze commit consumed as handoff."
+frozen_phase15B_artifact_commit_reachable,true,"True when the Phase 15B artifact commit is an ancestor of this run."
+provenance_scope,synthetic_verification_no_AS006_residual_fit,"No AS006 map residual, fitted period, topology, or thermal term is used."

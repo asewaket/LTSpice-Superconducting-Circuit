@@ -1,0 +1,5 @@
+case_id,closed_loop_exists,phase_constraints_active,nonzero_effective_flux,oscillation_amplitude,oscillation_detected
+Pphi_loop_active,1,1,1,1,1
+phase_disabled,1,0,1,0,0
+loop_removed,0,0,1,0,0
+zero_flux,1,1,0,0,0

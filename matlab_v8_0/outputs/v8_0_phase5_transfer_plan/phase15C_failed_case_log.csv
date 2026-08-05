@@ -1,0 +1,2 @@
+case_id,status,reason
+none,no_failed_synthetic_cases,all_required_synthetic_checks_passed

@@ -1,0 +1,2 @@
+A1,A2,period1_T,period2_T,observed_period_ratio,expected_period_ratio,absolute_error,passes
+2e-12,4e-12,0.001033916924,0.000516958462,0.5,0.5,0,1

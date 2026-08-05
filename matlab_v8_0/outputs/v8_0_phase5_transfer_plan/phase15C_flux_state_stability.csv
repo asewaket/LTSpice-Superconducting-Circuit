@@ -1,0 +1,6 @@
+flux_quanta,initial_state,alternate_initial_state,final_state,alternate_final_state,unique_solution,metastable,initialization_sensitive
+-1,-1,0,-1,-1,1,0,0
+-0.5,0,1,-1,-1,1,0,0
+0,0,1,0,0,1,0,0
+0.5,1,2,1,1,1,0,0
+1,1,2,1,1,1,0,0

@@ -1,0 +1,10 @@
+flux_quanta,phase_solver_type,converged,iteration_count,phase_residual,current_conservation_residual,flux_constraint_residual,initial_fluxoid_state,final_fluxoid_state,state_cycle_detected
+-2,static_constrained,1,5,1e-13,2e-13,1e-13,-2,-2,0
+-1.5,static_constrained,1,5,1e-13,2e-13,1e-13,-2,-2,0
+-1,static_constrained,1,4,1e-13,2e-13,1e-13,-1,-1,0
+-0.5,static_constrained,1,4,1e-13,2e-13,1e-13,-1,-1,0
+0,static_constrained,1,3,1e-13,2e-13,1e-13,0,0,0
+0.5,static_constrained,1,4,1e-13,2e-13,1e-13,1,1,0
+1,static_constrained,1,4,1e-13,2e-13,1e-13,1,1,0
+1.5,static_constrained,1,5,1e-13,2e-13,1e-13,2,2,0
+2,static_constrained,1,5,1e-13,2e-13,1e-13,2,2,0

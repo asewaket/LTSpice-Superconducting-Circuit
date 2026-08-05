@@ -1,0 +1,5 @@
+item,value,status
+shared_phase_state,true,pass
+independent_channel_periods,false,pass
+independent_channel_loop_geometry,false,pass
+R1_R2_response_difference_source,probe_extraction_geometry_only,locked
