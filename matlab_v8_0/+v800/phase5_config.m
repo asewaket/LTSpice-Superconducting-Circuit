@@ -1681,6 +1681,62 @@ cfg.phase15C.noTopologicalTerm = true;
 cfg.phase15C.noThermalTerm = true;
 cfg.phase15C.nextPhase = "phase15D_raw_AS006_field_execution";
 
+cfg.phase15D.executionManifestFile = fullfile(cfg.outputDir, ...
+    'phase15D_raw_AS006_field_execution_manifest.csv');
+cfg.phase15D.variantResidualsFile = fullfile(cfg.outputDir, ...
+    'phase15D_variant_full_map_residuals.csv');
+cfg.phase15D.heldoutFieldWindowFile = fullfile(cfg.outputDir, ...
+    'phase15D_heldout_field_window_residuals.csv');
+cfg.phase15D.currentRangeTransferFile = fullfile(cfg.outputDir, ...
+    'phase15D_current_range_transfer.csv');
+cfg.phase15D.fieldSymmetryFile = fullfile(cfg.outputDir, ...
+    'phase15D_field_symmetry.csv');
+cfg.phase15D.criticalCurrentEnvelopeFile = fullfile(cfg.outputDir, ...
+    'phase15D_critical_current_envelopes.csv');
+cfg.phase15D.oscillatoryStructureFile = fullfile(cfg.outputDir, ...
+    'phase15D_oscillatory_structure.csv');
+cfg.phase15D.zeroFieldInheritanceFile = fullfile(cfg.outputDir, ...
+    'phase15D_zero_field_inheritance.csv');
+cfg.phase15D.predictionBoundsAuditFile = fullfile(cfg.outputDir, ...
+    'phase15D_prediction_bounds_audit.csv');
+cfg.phase15D.sharedPhaseStateFile = fullfile(cfg.outputDir, ...
+    'phase15D_shared_phase_state.csv');
+cfg.phase15D.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase15D_gate_summary.csv');
+cfg.phase15D.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase15D_handoff_status.csv');
+cfg.phase15D.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase15D_source_provenance.csv');
+cfg.phase15D.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase15D_raw_AS006_field_execution_summary');
+cfg.phase15D.description = ...
+    'Raw AS006 field-dependent execution for P0/PB/Pphi';
+cfg.phase15D.expectedPhase15AClosure = ...
+    "pass_as006_field_observable_lock";
+cfg.phase15D.expectedPhase15BClosure = ...
+    "pass_minimal_phase_aware_model_freeze";
+cfg.phase15D.expectedPhase15CClosure = ...
+    "pass_synthetic_flux_interference_verification";
+cfg.phase15D.variants = ["P0"; "PB"; "Pphi"];
+cfg.phase15D.channels = ["R1"; "R2"];
+cfg.phase15D.channelRoles = ["primary"; "secondary"];
+cfg.phase15D.currentSwitchingIcFraction = 0.32;
+cfg.phase15D.currentSwitchingWidthFraction = 0.08;
+cfg.phase15D.secondaryChannelScale = 0.92;
+cfg.phase15D.centralFieldHalfWindow_T = 0.015;
+cfg.phase15D.currentHoldoutFraction = 0.60;
+cfg.phase15D.oscillationPeakProminenceFraction = 0.08;
+cfg.phase15D.predictionBoundHalfWidth = 0.35;
+cfg.phase15D.noManualPeriodFit = true;
+cfg.phase15D.noTopologicalTerm = true;
+cfg.phase15D.noThermalMemory = true;
+cfg.phase15D.noIndependentR1R2LoopParameters = true;
+cfg.phase15D.phaseSolverType = cfg.phase15C.phaseSolverType;
+cfg.phase15D.syntheticPhi0_Wb = cfg.phase15C.syntheticPhi0_Wb;
+cfg.phase15D.effectiveArea_m2 = cfg.phase15C.syntheticAreaA_m2;
+cfg.phase15D.fieldSuppressionB0_T = cfg.phase15C.fieldSuppressionB0_T;
+cfg.phase15D.nextPhase = "phase15E_field_model_adequacy_decision";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
