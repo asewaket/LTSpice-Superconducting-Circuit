@@ -32,7 +32,7 @@ for i = 1:numel(channels)
     for j = 1:numel(variants)
         idx = string(T.channel) == channels(i) & string(T.variant) == variants(j);
         if any(idx)
-            M(i, j) = T.normalized_mse(idx);
+            M(i, j) = T.mean_squared_residual(idx);
         end
     end
 end
@@ -51,7 +51,9 @@ gain = nan(numel(channels), 1);
 for i = 1:numel(channels)
     idx = string(T.channel) == channels(i) & string(T.variant) == "Pphi";
     if any(idx)
-        gain(i) = T.fractional_gain_vs_PB(idx);
+        pbIdx = string(T.channel) == channels(i) & string(T.variant) == "PB";
+        gain(i) = T.Pphi_MSE_gain_vs_PB(idx) ./ ...
+            T.mean_squared_residual(pbIdx);
     end
 end
 bar(gain);
@@ -72,8 +74,8 @@ for i = 1:numel(channels)
     for j = 1:numel(variants)
         idx = string(T.channel) == channels(i) & string(T.variant) == variants(j);
         if any(idx)
-            low(i, j) = T.low_current_fractional_gain_vs_P0(idx);
-            high(i, j) = T.high_current_fractional_gain_vs_P0(idx);
+            low(i, j) = T.low_current_fractional_gain(idx);
+            high(i, j) = T.high_current_fractional_gain(idx);
         end
     end
 end
