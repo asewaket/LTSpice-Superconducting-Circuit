@@ -1,0 +1,8 @@
+item,value,note
+phase,phase15D_raw_AS006_field_execution,Raw AS006 field-dependent execution phase.
+source_commit_sha,ace8b89f5f15933ed0506886606cecc74b53892c,Git commit captured before this runner writes outputs.
+source_tree_sha,b2ae014bab927e130a539e65ed504691c20a5d13,Git tree object captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,true,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,true,True only when checkout is clean before Phase 15D writes outputs.
+provenance_scope,raw_AS006_execution_no_manual_period_fit,Residuals are evaluated without fitting field period or adding excluded physics.

@@ -1,0 +1,13 @@
+item,status,value,note
+phase15D_closure,complete_raw_AS006_field_execution,complete_raw_AS006_field_execution,Phase 15D is an execution phase; final adequacy is reserved for Phase 15E.
+execution_integrity,pass,pass,Pass means all execution and bookkeeping gates pass.
+raw_AS006_residuals_used,true,true,Raw locked AS006 R1/R2 maps are evaluated for the first time in Phase 15D.
+variants_evaluated,P0|PB|Pphi,P0|PB|Pphi,Frozen field-response variants are compared.
+channels_evaluated,R1|R2,R1|R2,Both locked channels are carried.
+shared_phase_state,true,true,Pphi uses one shared phase envelope for R1/R2.
+manual_period_fit,false,false,Observed oscillation period is not manually fit.
+topological_term_used,false,false,No topological term or claim is introduced.
+thermal_memory_used,false,false,No electrothermal memory or hysteresis model is introduced.
+independent_R1_R2_loop_parameters,false,false,R1/R2 do not receive independent loop parameters.
+field_model_adequacy,pending_phase15E,pending_phase15E,Adequacy decision is intentionally deferred.
+next_phase,phase15E_field_model_adequacy_decision,phase15E_field_model_adequacy_decision,Read-only adequacy decision follows in Phase 15E.

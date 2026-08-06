@@ -1,0 +1,8 @@
+item,status,value,note
+channel_transform_field_local,true,true,"R2 is computed from each local (I,B) model value only."
+cross_field_mean_used,false,false,"The secondary-channel transform does not average across field columns."
+heldout_field_columns_used_in_channel_transform,false,false,"No held-out field columns enter the channel transform."
+R1_R2_shared_phase_state,true,true,"R1/R2 share the same Pphi phase envelope."
+channel_specific_period_parameters,false,false,"No R2-specific oscillation period or loop geometry is introduced."
+manual_period_fit,false,false,"Observed AS006 oscillation period is not manually fit."
+transform_policy,fixed_field_local_reduced_probe_response,fixed_field_local_reduced_probe_response,"R2 = scale*M + (1-scale)*M^2 with fixed shared scale."

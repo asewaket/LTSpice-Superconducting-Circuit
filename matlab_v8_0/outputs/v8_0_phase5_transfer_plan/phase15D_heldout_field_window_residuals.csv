@@ -1,0 +1,13 @@
+variant,channel,holdout_id,calibration_window_mse,heldout_window_mse,calibration_field_count,heldout_field_count
+P0,R1,central_field_train_outer_field_holdout,0.189436455076693,0.1866517927494,301,700
+P0,R1,alternate_field_window_holdout,0.187490236625247,0.187488038706832,501,500
+P0,R2,central_field_train_outer_field_holdout,0.195387187761079,0.192584063198587,301,700
+P0,R2,alternate_field_window_holdout,0.193427726614729,0.193426193442233,501,500
+PB,R1,central_field_train_outer_field_holdout,0.166879435682596,0.160066856301818,301,700
+PB,R1,alternate_field_window_holdout,0.162113844007709,0.162116947407744,501,500
+PB,R2,central_field_train_outer_field_holdout,0.180164877759549,0.176918282268822,301,700
+PB,R2,alternate_field_window_holdout,0.177894082138395,0.177894981284928,501,500
+Pphi,R1,central_field_train_outer_field_holdout,0.161596247825395,0.160104370094634,301,700
+Pphi,R1,alternate_field_window_holdout,0.160553065591567,0.160552887600625,501,500
+Pphi,R2,central_field_train_outer_field_holdout,0.176792029132997,0.176954958500875,301,700
+Pphi,R2,alternate_field_window_holdout,0.176905597321766,0.176906334922879,501,500

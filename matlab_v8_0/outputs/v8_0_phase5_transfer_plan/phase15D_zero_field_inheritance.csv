@@ -1,0 +1,5 @@
+variant,channel,nearest_zero_field_T,max_abs_difference_vs_P0,zero_field_inheritance_pass
+PB,R1,0,0,1
+PB,R2,0,0,1
+Pphi,R1,0,0,1
+Pphi,R2,0,0,1
