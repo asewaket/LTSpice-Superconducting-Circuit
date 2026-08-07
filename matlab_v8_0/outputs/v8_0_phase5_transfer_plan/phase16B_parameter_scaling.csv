@@ -1,0 +1,9 @@
+parameter,theta0,theta_scale,lower_bound,upper_bound,unit
+Tc_scale,1,0.05,0.9,1.1,relative
+Tc_heterogeneity_amplitude,0.2,0.06,0.05,0.4,relative
+W_boundary_class,0.55,0.15,0.1,1,relative
+W_coverage_class,0.45,0.15,0.1,1,relative
+W_crack_class,0.65,0.2,0.1,1,relative
+residual_shunt,0.08,0.03,0,0.2,normalized_R
+Ic0_scale,1,0.2,0.5,1.6,relative
+B_supp_scale,0.018,0.006,0.006,0.05,T

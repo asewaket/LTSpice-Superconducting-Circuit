@@ -1,0 +1,5 @@
+mode,singular_value,relative_to_max,dominant_positive,dominant_negative,interpretation
+1,2.41095352794286,1,Tc_scale,Ic0_scale,joint_transport_scale_direction
+2,1.58152028564756,0.655972944860946,Tc_heterogeneity_amplitude,B_supp_scale,RT_shunt_Tc_contrast_direction
+3,1.17490942499517,0.487321473175661,residual_shunt,Tc_scale,field_suppression_current_contrast
+4,0.971787957580212,0.403072040301577,Ic0_scale,residual_shunt,weaker_connectivity_contrast

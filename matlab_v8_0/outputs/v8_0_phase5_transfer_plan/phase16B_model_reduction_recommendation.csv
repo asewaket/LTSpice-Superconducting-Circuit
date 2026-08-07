@@ -1,0 +1,7 @@
+recommendation,status,justification
+retain_PB_for_AS006_field_primary,retain,Phase 15E selected PB by parsimony and morphology.
+do_not_include_dense_Pphi_in_primary_covariance,exclude_primary_keep_optional_sparse_side_analysis,Dense Pphi has small MSE gain and overproduces oscillations.
+collapse_Wij_to_class_level_parameters,retain_grouped_only,Unique Wij map remains structurally non-identifiable.
+profile_Tc_shunt_and_baseline_jointly,phase16C_profile_target,R(T) and residual floor share information directions.
+profile_Ic0_with_boundary_connectivity,phase16C_profile_target,Nonlinear current and boundary connectivity remain correlated.
+defer_dynamic_phase_vortex_and_topology_terms,defer_until_new_observables,No data currently identify dynamics or topological structure.

@@ -1,0 +1,9 @@
+parameter,global_first_order,global_total,global_nonlinearity
+Tc_scale,0.18,0.3,moderate
+Tc_heterogeneity_amplitude,0.13,0.25,moderate
+W_boundary_class,0.16,0.34,strong
+W_coverage_class,0.1,0.21,moderate
+W_crack_class,0.07,0.14,weak
+residual_shunt,0.15,0.29,moderate
+Ic0_scale,0.19,0.36,strong
+B_supp_scale,0.22,0.38,moderate

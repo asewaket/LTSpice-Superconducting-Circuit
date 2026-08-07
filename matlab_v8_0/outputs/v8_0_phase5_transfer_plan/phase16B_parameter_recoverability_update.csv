@@ -1,0 +1,9 @@
+parameter,phase16B_recoverability,reason
+Tc_scale,partially_constrained,"Appears in leading singular-vector subspace but not uniquely."
+Tc_heterogeneity_amplitude,partially_constrained_strongly_correlated,"Local information matrix shows practical correlation with another active parameter."
+W_boundary_class,partially_constrained_strongly_correlated,"Local information matrix shows practical correlation with another active parameter."
+W_coverage_class,partially_constrained_strongly_correlated,"Local information matrix shows practical correlation with another active parameter."
+W_crack_class,partially_constrained_strongly_correlated,"Local information matrix shows practical correlation with another active parameter."
+residual_shunt,partially_constrained,"Appears in leading singular-vector subspace but not uniquely."
+Ic0_scale,partially_constrained_strongly_correlated,"Local information matrix shows practical correlation with another active parameter."
+B_supp_scale,well_constrained_selected_device,"AS006 dV/dI(I,B) provides a distinct field-suppression direction."

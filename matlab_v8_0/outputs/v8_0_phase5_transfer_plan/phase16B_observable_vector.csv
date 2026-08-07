@@ -1,0 +1,13 @@
+observable,family,device_scope,normalization
+RT_T50,RT,AS001-AS006,temperature_scale
+RT_width,RT,AS001-AS006,transition_width_scale
+RT_lowT_floor,RT,AS001-AS006,normalized_resistance
+RT_probe_asymmetry,RT,paired_probe_devices,probe_difference_scale
+IT_Ic_temperature_scale,IT,AS001_AS004_AS006,current_scale
+IT_switching_width,IT,AS001_AS004,current_width_scale
+IT_low_current_curvature,IT,AS001_AS004,curvature_scale
+IT_channel_asymmetry,IT,AS001_AS004,channel_difference_scale
+IB_Ic_field_envelope,IB,AS006,current_scale
+IB_low_current_field_response,IB,AS006,normalized_dVdI
+IB_high_current_field_response,IB,AS006,normalized_dVdI
+IB_R1_R2_difference,IB,AS006_R1_R2,channel_difference_scale

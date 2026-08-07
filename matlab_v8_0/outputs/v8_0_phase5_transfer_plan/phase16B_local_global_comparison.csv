@@ -1,0 +1,9 @@
+parameter,local_max_abs_sensitivity,global_total_sensitivity,local_global_class
+Tc_scale,0.395,0.3,local_weak_global_sensitive
+Tc_heterogeneity_amplitude,0.515,0.25,local_sensitive_global_sensitive
+W_boundary_class,0.46,0.34,local_sensitive_global_sensitive
+W_coverage_class,0.335,0.21,globally_weak_or_contextual
+W_crack_class,0.255,0.14,globally_weak_or_contextual
+residual_shunt,0.475,0.29,local_sensitive_global_sensitive
+Ic0_scale,0.5875,0.36,local_sensitive_global_sensitive
+B_supp_scale,0.76,0.38,local_sensitive_global_sensitive

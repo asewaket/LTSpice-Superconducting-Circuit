@@ -1,0 +1,12 @@
+item,status,note
+phase16B_closure,pass_sensitivity_conditioning_analysis,"Scientific identifiability failures do not block workflow closure."
+phase16B_decision,proceed_to_profile_likelihood_and_posterior_exploration,"Phase 16C should profile correlated parameter blocks, not add physics."
+workflow_integrity,pass,"All non-scientific execution/provenance gates must pass."
+scientific_conditioning_failures,0,"Count of intentionally scientific failed gates."
+condition_number,34.6804,"Conditioning of the reduced normalized sensitivity matrix."
+well_constrained_parameter_count,1,"Parameters with distinct selected-device support."
+partially_constrained_parameter_count,7,"Parameters retained but correlated or only partially separated."
+primary_field_model,PB,"PB is the primary AS006 field response retained after Phase 15E."
+dense_Pphi_primary_inference,excluded,"Dense Pphi is not part of the primary covariance calculation."
+unique_Wij_inference,prohibited,"Individual weak-link edge claims remain excluded."
+next_phase,phase16C_profile_likelihood_posterior_exploration,"Next roadmap phase."

@@ -1,0 +1,6 @@
+metric,value,unit
+condition_number,34.6804482270347,ratio
+effective_rank,8,count
+parameter_count,8,count
+observable_count,12,count
+well_conditioned,1,boolean

@@ -1,0 +1,10 @@
+item,value,note
+phase,phase16B_sensitivity_conditioning,"Phase 16B sensitivity and conditioning analysis."
+source_commit_sha,4344ef96654bc20e39348cc67e1b9e3ae53ac995,"Git commit captured before this runner writes outputs."
+source_tree_sha,0fbce05c4345c5d0b523d110a8506e58b80b9596,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase16A_artifact_commit,121d2cb,"Canonical Phase 16A artifact-freeze commit consumed by policy."
+frozen_phase16A_artifact_commit_reachable,true,"True when the frozen Phase 16A artifact commit is an ancestor."
+provenance_scope,read_only_sensitivity_conditioning_analysis,"No fitting, solver rerun, new physics, or device relabeling."

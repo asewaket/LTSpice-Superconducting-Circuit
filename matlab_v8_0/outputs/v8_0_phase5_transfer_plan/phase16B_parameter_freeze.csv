@@ -1,0 +1,13 @@
+parameter,role,model_layer,primary_analysis,reason
+Tc_scale,active_continuous,RT,1,"R(T) transition location and nonlinear zero-field inheritance constrain global scale."
+Tc_heterogeneity_amplitude,active_continuous,RT,1,"R(T) broadening and probe asymmetry constrain a coarse distribution amplitude."
+W_boundary_class,active_grouped_spatial,connectivity,1,"Class-level boundary connectivity retained; unique edge map prohibited."
+W_coverage_class,active_grouped_spatial,connectivity,1,"Coverage transfer retained as reduced grouped spatial component."
+W_crack_class,active_grouped_spatial,connectivity,1,"Crack connectivity retained only as grouped device-level component."
+residual_shunt,active_continuous,RT,1,"Baseline and low-temperature floor constrain residual shunt jointly with Tc."
+Ic0_scale,active_continuous,current,1,"Raw dV/dI(I,T) and dV/dI(I,B) constrain current scale directionally."
+B_supp_scale,active_continuous,field,1,"Phase 15E selected monotonic PB field suppression as preferred AS006 field model."
+static_phase_loop_area,context_only,field_optional,0,"Dense Pphi was not preferred and is excluded from primary covariance."
+unique_Wij_edges,structurally_nonidentifiable,connectivity_excluded,0,"Phase 16A declares unique edge inference non-identifiable."
+absolute_strain_tensor,structurally_nonidentifiable,mechanical_excluded,0,"No direct strain tensor is available."
+Josephson_phase_dynamics,deferred_model_layer,field_dynamic_deferred,0,"No sweep-history dynamic phase data are available."
