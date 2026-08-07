@@ -1,0 +1,14 @@
+physical_quantity,current_recoverability,claim_policy
+Absolute strain tensor,not_identifiable,excluded
+Relative mechanical heterogeneity,supported,contextual_support
+Local Tc distribution,partially_constrained,bounded_inference
+Residual shunt contribution,partially_constrained,bounded_inference
+Structured bottleneck requirement,supported_for_selected_devices,device_level_support
+Unique weak-link locations,not_identifiable,do_not_claim
+Current-switching contribution,supported_directionally,selected_device_support
+Field suppression,supported_for_AS006,selected_device_support
+Static interference,plausible_but_not_quantitatively_supported,directional_only
+Loop area,weakly_or_non_identifiable,do_not_fit_to_period
+Josephson dynamics,not_tested,do_not_claim
+Vortex dynamics,not_tested,do_not_claim
+Order-parameter symmetry,not_identifiable,do_not_claim

@@ -1,0 +1,10 @@
+item,value,note
+phase,phase16A_identifiability_inventory,"Phase 16A inventory and recoverability freeze."
+source_commit_sha,f6f5710e072417010f715fcec7111b5a006c0d78,"Git commit captured before this runner writes outputs."
+source_tree_sha,2df95424128d89a056786277c865ad9e36fe53ef,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase15E_artifact_commit,127141b,"Canonical Phase 15E artifact-freeze commit consumed by policy."
+frozen_phase15E_artifact_commit_reachable,true,"True when the frozen Phase 15E artifact commit is an ancestor of this run."
+provenance_scope,read_only_global_latent_quantity_inventory,"No fitting, solver rerun, new physics, or device relabeling."

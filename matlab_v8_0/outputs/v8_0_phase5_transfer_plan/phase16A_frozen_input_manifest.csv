@@ -1,0 +1,6 @@
+artifact,path,role,present
+phase5D2_result_freeze,/private/tmp/LTSpice-Superconducting-Circuit-phase16A-clean/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase5D2_handoff_status.csv,"R(T) evidence policy and confidence limiter",true
+phase6_hierarchical_evidence_freeze,/private/tmp/LTSpice-Superconducting-Circuit-phase16A-clean/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_handoff_status.csv,"six-device model status and evidence tier",true
+phase13F4_comparative_adequacy,/private/tmp/LTSpice-Superconducting-Circuit-phase16A-clean/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase13F4_handoff_status.csv,"reduced R(T) upgrade conclusion",true
+phase14D_raw_nonlinear_adequacy,/private/tmp/LTSpice-Superconducting-Circuit-phase16A-clean/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase14D_handoff_status.csv,"raw dV/dI(I,T) current-only adequacy",true
+phase15E_field_model_adequacy,/private/tmp/LTSpice-Superconducting-Circuit-phase16A-clean/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase15E_handoff_status.csv,"AS006 dV/dI(I,B) field adequacy",true

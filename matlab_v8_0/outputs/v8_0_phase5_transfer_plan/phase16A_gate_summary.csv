@@ -1,0 +1,13 @@
+gate,outcome,note
+Frozen Phase 15E artifacts consumed,pass,"Canonical Phase 15E artifact commit is reachable."
+All required frozen inputs present,pass,"Read-only phase inputs exist."
+Global parameter inventory emitted,pass,"Latent quantities across mechanical, R(T), nonlinear, and field layers are listed."
+Recoverability classes assigned,pass,"Each latent quantity has a recoverability label."
+Observable constraint matrix emitted,pass,"Observables are mapped to constraint strength."
+Degeneracy ledger emitted,pass,"Known degeneracies are recorded for Phase 16B."
+Model-reduction queue emitted,pass,"Reduction priorities are explicit."
+No new mechanism introduced,pass,"Phase 16A is inventory only."
+No parameter retuning,pass,"No fit or threshold is changed."
+No solver rerun,pass,"Frozen artifacts are read, not regenerated."
+Phase 16B handoff declared,pass,"Next phase is sensitivity/covariance."
+Clean provenance,pass,"True only for clean source before this run writes outputs."

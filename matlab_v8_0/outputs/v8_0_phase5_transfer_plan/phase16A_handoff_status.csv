@@ -1,0 +1,11 @@
+item,status,note
+phase16A_closure,pass_global_identifiability_inventory,"Phase 16A closes only when the inventory and provenance gates pass."
+phase16A_decision,proceed_to_sensitivity_and_covariance,"Phase 16B should compute sensitivity/covariance, not add physics."
+inventory_scope,mechanical_RT_current_field_layers,"The inventory spans frozen Phase 5D2 through Phase 15E."
+new_mechanisms_introduced,false,"No additional physical mechanism is introduced in Phase 16A."
+parameter_retuning_performed,false,"No parameter is fitted or retuned."
+solver_rerun_performed,false,"No previous solver output is regenerated."
+primary_reduction_result,use_smallest_spatial_model_supported_by_heldout_data,"Dense spatial/phase maps are not claimable from the current data."
+field_model_reduction,PB_retained_sparse_phase_optional,"Phase 15E prefers monotonic PB; static phase remains directional only."
+phase16B_ready,true,"True when Phase 16A produced complete read-only ledgers."
+next_phase,phase16B_sensitivity_and_covariance,"Next roadmap phase."

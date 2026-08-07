@@ -1,0 +1,7 @@
+degeneracy_id,description,affected_phases,current_resolution,phase16B_action
+Tc_vs_shunt,"Broad R(T) changes can be traded between local Tc distribution and residual conductance floor.","5D,13F",partially_resolved_by_policy,profile_joint_sensitivity
+boundary_vs_disorder,"Boundary connectivity and correlated disorder can produce similar percolative transfer.","4,5,7,12",partially_resolved_by_controls,compute_covariance_block
+mechanical_proxy_vs_connectivity,"Reduced mechanical proxies support classes but do not identify unique weak-link paths.","6,12,13",not_unique,hold_reduced_components_fixed_then_ablate
+field_suppression_vs_static_phase_gain,"Pphi slightly lowers MSE, but PB explains most field gain with fewer morphology penalties.","15D,15E",resolved_in_favor_of_PB_for_AS006,quantify_delta_MSE_vs_complexity
+loop_area_vs_loop_count,"Many loop areas/counts can generate oscillations; AS006 morphology disfavors dense loops.","15C,15D,15E",non_identifiable_from_current_field_map,test_sparse_phase_reduction
+current_scale_vs_transition_width,"Switching scale and sigmoid width both influence nonlinear transition sharpness.","14B,14D",partially_constrained,profile_current_width_block

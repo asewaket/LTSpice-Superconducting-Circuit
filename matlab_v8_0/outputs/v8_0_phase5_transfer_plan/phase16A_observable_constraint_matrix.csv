@@ -1,0 +1,9 @@
+quantity,RT_primary,RT_secondary,dVdI_IT,dVdI_IB,Raman_geometry,constraint_level
+relative_mechanical_heterogeneity,2,2,0,0,3,moderate
+local_Tc_distribution,3,2,1,0,1,moderate
+weak_link_transparency_field_Wij,2,2,2,1,1,moderate
+residual_shunt_contribution,2,2,1,0,0,moderate
+critical_current_scale,0,0,3,2,0,moderate
+field_suppression_scale_B0,0,0,0,3,0,moderate
+static_phase_loop_area,0,0,0,1,0,weak
+Josephson_phase_dynamics,0,0,0,0,0,none

@@ -1,0 +1,7 @@
+priority,candidate_reduction,reason,status
+1,retain_PB_as_AS006_field_baseline,Phase 15E prefers PB by parsimony and oscillation morphology.,recommended
+2,replace_dense_Pphi_with_sparse_optional_loop_family,Dense static phase model overproduces turning points.,recommended_for_phase16D
+3,collapse_unique_Wij_locations_to_class_level_support,Transport does not identify unique spatial links.,recommended
+4,profile_baseline_and_residual_shunt_jointly,Phase 13F/5D show baseline-shunt degeneracy.,recommended_for_phase16B
+5,report_local_Tc_as_distribution_not_map,Current observables constrain coarse Tc heterogeneity only.,recommended
+6,defer_dynamic_phase_or_vortex_models,No sweep-history or field-dynamics data identify dynamics.,deferred_until_new_data

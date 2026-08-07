@@ -1,0 +1,22 @@
+quantity,model_layer,role,classification,evidence_basis,next_action
+absolute_strain_tensor,mechanical,excluded_microscopic_input,non_identifiable,"No direct strain tensor measurements.",do_not_fit
+relative_mechanical_heterogeneity,mechanical,latent_proxy,partially_constrained,"Geometry and Raman proxies support relative heterogeneity only.",carry_as_context
+coverage_transfer_proxy,mechanical,reduced_common_component,partially_constrained,"Phase 12B retained coverage transfer as reduced mechanical proxy.",retain_reduced_proxy
+boundary_gradient_proxy,mechanical,reduced_common_component,partially_constrained,"Phase 12B retained boundary gradient as reduced mechanical proxy.",retain_reduced_proxy
+crack_relaxation_proxy,mechanical,device_specific_geometry_proxy,partially_constrained,"Phase 12B retained AS005 crack relaxation proxy.",retain_reduced_proxy
+local_Tc_distribution,equilibrium_RT,latent_distribution,partially_constrained,"R(T) constrains coarse distribution, not unique map.",profile_in_phase16B
+gap_scale_alpha,equilibrium_RT,shared_literature_constrained_scale,fixed_by_external_input,"Gap scale tied to literature prior and local Tc.",keep_fixed_or_narrow_prior
+weak_link_transparency_field_Wij,connectivity,latent_connectivity_field,partially_constrained,"Weak-link classes supported for selected devices, not unique links.",profile_class_level_only
+unique_weak_link_locations,connectivity,spatial_detail,non_identifiable,"Many spatial maps remain compatible with transport.",do_not_claim
+transition_width_deltaT,equilibrium_RT,shared_or_class_width,partially_constrained,"Broad transitions constrain shared widths only.",profile_shared_width
+residual_shunt_contribution,equilibrium_RT,nuisance_and_physical_path,partially_constrained,"Phase 5D and 13F show shunt/baseline degeneracy.",profile_with_baseline
+baseline_normal_resistance,equilibrium_RT,shared_equilibrium_baseline,partially_constrained,"Phase 13F selected baseline/residual-shunt upgrade.",profile_with_shunt
+critical_current_scale,nonlinear_current,shared_current_switching_scale,partially_constrained,"Phase 14 supports current switching directionally.",profile_current_scale
+Ic_temperature_law,nonlinear_current,fixed_literature_constrained_shape,fixed_by_external_input,"Temperature law is frozen from prior model specification.",keep_fixed
+field_suppression_scale_B0,field_response,shared_field_suppression_scale,partially_constrained,"Phase 15E prefers monotonic PB field suppression.",profile_field_suppression
+static_phase_loop_area,field_response,synthetic_geometry_prior,weakly_constrained,"Pphi residual gain is small and morphology overproduced.",reduce_or_defer
+phase_coherence_or_loop_count,field_response,candidate_phase_structure,weakly_constrained,"26-versus-1 turning-point mismatch prevents support.",sparsify_or_defer
+R1_R2_shared_phase_state,field_response,shared_state_constraint,fixed_by_model_policy,"Phase 15B/15D enforce shared R1/R2 phase state.",retain_policy_constraint
+Josephson_phase_dynamics,excluded,excluded_dynamic_physics,not_tested,"No time-dependent RSJ or sweep-history evidence.",defer_until_new_data
+vortex_dynamics,excluded,excluded_field_physics,not_tested,"No vortex model or raw evidence test.",defer_until_new_data
+order_parameter_symmetry,excluded,excluded_microscopic_physics,non_identifiable,"No phase-sensitive pairing measurement.",do_not_claim
