@@ -1,0 +1,7 @@
+item,value,note
+sampler_type,bounded_importance_sampler,"Samples uniformly cover frozen support and receive pseudo-objective weights."
+sample_count,4096,"Number of bounded ensemble states."
+random_seed,1603,"Deterministic seed for reproducibility."
+weight_definition,exp(-profile_objective/2),"Objective-weighted ensemble, not formal likelihood."
+formal_MCMC_used,false,"No MCMC chain is used; Rhat and ESS per chain are not applicable."
+formal_posterior_claimed,false,"Results are pseudo-posterior/objective-support summaries."

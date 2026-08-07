@@ -1,0 +1,5 @@
+combination_id,dominant_terms,interpretation
+mode_1,-Ic0_scale -W_boundary_class -W_coverage_class,combined_boundary_current_bottleneck_direction
+mode_2,-B_supp_scale +Tc_heterogeneity_amplitude +Tc_scale,field_suppression_direction
+mode_3,+residual_shunt -Tc_scale -B_supp_scale,field_suppression_direction
+mode_4,+Ic0_scale -residual_shunt -B_supp_scale,field_suppression_direction

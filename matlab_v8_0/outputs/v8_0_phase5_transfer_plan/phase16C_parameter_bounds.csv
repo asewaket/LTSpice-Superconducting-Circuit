@@ -1,0 +1,9 @@
+parameter,nominal,lower,upper,bound_source,note
+Tc_scale,1,0.9,1.1,shared_Tc_scale_prior,Frozen before profile and sampling calculations.
+Tc_heterogeneity_amplitude,1,0.35,1.8,frozen_disorder_amplitude_range,Frozen before profile and sampling calculations.
+W_boundary_class,1,0,2,class_level_connectivity_range,Frozen before profile and sampling calculations.
+W_coverage_class,1,0,2,class_level_connectivity_range,Frozen before profile and sampling calculations.
+W_crack_class,1,0,2,class_level_connectivity_range,Frozen before profile and sampling calculations.
+residual_shunt,1,0.2,2,positive_residual_floor_range,Frozen before profile and sampling calculations.
+Ic0_scale,1,0.25,2.25,shared_current_scale_range,Frozen before profile and sampling calculations.
+B_supp_scale,1,0.2,2.5,AS006_field_suppression_range,Frozen before profile and sampling calculations.

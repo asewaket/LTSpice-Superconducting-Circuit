@@ -1,0 +1,9 @@
+parameter,profile_class
+Tc_scale,flat
+Tc_heterogeneity_amplitude,flat
+W_boundary_class,flat
+W_coverage_class,flat
+W_crack_class,flat
+residual_shunt,flat
+Ic0_scale,flat
+B_supp_scale,broad_but_bounded

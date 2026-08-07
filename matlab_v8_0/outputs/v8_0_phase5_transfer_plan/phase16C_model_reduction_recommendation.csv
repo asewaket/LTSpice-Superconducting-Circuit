@@ -1,0 +1,8 @@
+recommendation,status,justification
+retain_PB_as_primary_field_model,retain,"Phase 15E and Phase 16B retain monotonic PB as preferred AS006 field response."
+profile_boundary_crack_coverage_as_grouped_connectivity_block,phase16D_reduction_target,"Phase 16B/16C degeneracies show class-level connectivity, not unique edge recovery."
+profile_Ic0_with_boundary_connectivity,phase16D_reduction_target,"Boundary connectivity and current scale remain practically correlated."
+report_identifiable_combinations_before_individual_parameters,required_reporting_policy,"Some singular directions are more meaningful than individual physical parameters."
+do_not_reintroduce_unique_Wij,prohibit,"Unique weak-link map remains structurally non-identifiable."
+do_not_add_dense_Pphi_or_dynamic_phase_terms,defer,"No current observable identifies dense phase topology or dynamics."
+prepare_phase16D_spatial_model_reduction,next_phase,"Use 16C uncertainty structure to reduce spatial degrees of freedom."

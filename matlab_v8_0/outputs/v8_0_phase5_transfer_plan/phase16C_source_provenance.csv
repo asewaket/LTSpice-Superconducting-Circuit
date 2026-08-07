@@ -1,0 +1,10 @@
+item,value,note
+phase,phase16C_profile_likelihood_posterior_exploration,"Phase 16C profile-objective and pseudo-posterior exploration."
+source_commit_sha,3b90aaeaeb2d674708be8f7dd642dae7d60dfb12,"Git commit captured before this runner writes outputs."
+source_tree_sha,ccab066b046776ed41a3e2b734e9388b8320d064,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase16B_artifact_commit,b6e7b01,"Canonical Phase 16B artifact-freeze commit consumed by policy."
+frozen_phase16B_artifact_commit_reachable,true,"True when the frozen Phase 16B artifact commit is an ancestor."
+provenance_scope,read_only_profile_objective_and_pseudo_posterior,"No fitting, solver rerun, new physics, or device relabeling."

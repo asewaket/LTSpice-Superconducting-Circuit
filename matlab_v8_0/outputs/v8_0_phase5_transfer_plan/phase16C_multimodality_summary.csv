@@ -1,0 +1,9 @@
+parameter,peak_count,multimodality_detected,threshold,note
+Tc_scale,6,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+Tc_heterogeneity_amplitude,6,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+W_boundary_class,7,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+W_coverage_class,6,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+W_crack_class,7,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+residual_shunt,6,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+Ic0_scale,5,1,0.25,Multiple weighted histogram peaks; retain rather than average away.
+B_supp_scale,3,1,0.25,Multiple weighted histogram peaks; retain rather than average away.

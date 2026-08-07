@@ -1,0 +1,9 @@
+parameter,minimum_theta,support_lower,support_upper,support_width_fraction,profile_class
+Tc_scale,1,0.9,1.1,1,flat
+Tc_heterogeneity_amplitude,1.0025,0.35,1.8,1,flat
+W_boundary_class,1,0,2,1,flat
+W_coverage_class,1,0,2,1,flat
+W_crack_class,1,0,2,1,flat
+residual_shunt,1.01,0.2,2,1,flat
+Ic0_scale,1,0.25,2.25,1,flat
+B_supp_scale,1.005,0.2575,1.695,0.625,broad_but_bounded

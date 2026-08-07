@@ -1,0 +1,17 @@
+gate,outcome,scientific,note
+Phase 16B parameter set consumed unchanged,pass,0,Phase 16B closure token found=true; artifact reachable=true.
+No new mechanism introduced,pass,0,Phase 16C is an uncertainty analysis over frozen reduced parameters.
+PB remains AS006 field baseline,pass,0,PB remains the AS006 field-response baseline.
+Dense Pphi excluded,pass,0,Dense Pphi is excluded from primary profile/pseudo-posterior analysis.
+Unique Wij inference excluded,pass,0,Individual edge-level W_ij inference remains prohibited.
+Raman remains contextual,pass,0,Raman has no quantitative registered coupling in this phase.
+Statistical/objective interpretation explicitly declared,pass,0,Outputs use profile_objective and pseudo_posterior terminology.
+Profile reoptimization only over frozen active parameters,pass,0,Compensation occurs only among Phase 16B active parameters.
+Known degeneracy pairs profiled,pass,0,The four Phase 16B degeneracy pairs are explicitly profiled.
+Parameter bounds fixed before profile results,pass,0,Bounds are declared before profile and sampling outputs.
+Sampling diagnostics assessed,pass,0,Effective sample size and bounded sampler diagnostics are emitted.
+Predictive and parameter uncertainty separated,pass,0,Parameter intervals and predictive envelopes are separate outputs.
+Multimodality retained rather than averaged away,pass,0,Multimodality diagnostic is emitted; no averaging-away rule is used.
+Clean provenance,pass,0,True only for a clean source tree before this run writes outputs.
+All active parameters uniquely recoverable,fail,1,Scientific failure is expected if correlated parameters remain nonunique.
+Unique connectivity class decomposition,fail,1,Scientific failure means connectivity is class/combination-level only.

@@ -1,0 +1,11 @@
+item,status,note
+phase16C_closure,pass_profile_pseudo_posterior_exploration,Scientific recoverability failures do not block workflow closure.
+phase16C_decision,proceed_to_spatial_model_reduction,Phase 16D should reduce spatial degrees of freedom using these profiles.
+workflow_integrity,pass,All non-scientific execution/provenance gates must pass.
+scientific_recoverability_failures,2,Count of intentionally scientific failed gates.
+effective_sample_size,2272.472,Effective sample size of objective-weighted bounded ensemble.
+well_bounded_parameter_count,0,Parameters with localized profile/objective support.
+class_or_combination_level_parameter_count,5,Parameters reportable only as class-level or identifiable combinations.
+formal_likelihood_claimed,false,The multimodal score is not promoted to a formal noise likelihood.
+pseudo_posterior_used,true,The ensemble uses exp(-S/2) as a pseudo-objective weight.
+next_phase,phase16D_spatial_model_reduction,Next roadmap phase.

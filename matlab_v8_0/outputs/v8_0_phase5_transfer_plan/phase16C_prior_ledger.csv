@@ -1,0 +1,9 @@
+parameter,prior_type,lower,upper,source,note
+Tc_scale,bounded_uniform_support,0.9,1.1,shared_Tc_scale_prior,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+Tc_heterogeneity_amplitude,bounded_uniform_support,0.35,1.8,frozen_disorder_amplitude_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+W_boundary_class,bounded_uniform_support,0,2,class_level_connectivity_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+W_coverage_class,bounded_uniform_support,0,2,class_level_connectivity_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+W_crack_class,bounded_uniform_support,0,2,class_level_connectivity_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+residual_shunt,bounded_uniform_support,0.2,2,positive_residual_floor_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+Ic0_scale,bounded_uniform_support,0.25,2.25,shared_current_scale_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.
+B_supp_scale,bounded_uniform_support,0.2,2.5,AS006_field_suppression_range,Prior support freezes physical/roadmap bounds; it is not tuned to narrow the result.

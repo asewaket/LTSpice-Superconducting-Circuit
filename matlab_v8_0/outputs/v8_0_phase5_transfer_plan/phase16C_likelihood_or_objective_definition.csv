@@ -1,0 +1,7 @@
+item,value,note
+observable_model,"y(theta) ~= y0 + S(theta-theta0)","Linearized observable response from the frozen normalized sensitivity matrix."
+objective_symbol,"S(theta)","The score is a pseudo-objective, not a full statistical likelihood."
+objective_definition,"(theta-theta0)' * F * (theta-theta0), F from Phase 16B J'WJ","F is read from Phase 16B and is not refit."
+profile_definition,"Lambda_p(theta_p)=min_{theta_-p} S(theta)","Compensating parameters are optimized within predeclared bounds."
+ensemble_definition,"p_star(theta) proportional to exp(-S(theta)/2) within frozen bounds","Importance sampling gives an objective-weighted ensemble."
+interval_wording,"objective_support_interval","Avoids overclaiming formal confidence or credible intervals."

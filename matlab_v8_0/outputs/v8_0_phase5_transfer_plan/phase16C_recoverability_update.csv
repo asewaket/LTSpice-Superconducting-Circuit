@@ -1,0 +1,9 @@
+parameter,phase16C_recoverability,reason
+Tc_scale,partially_bounded,Parameter has finite support but no unique physical estimate.
+Tc_heterogeneity_amplitude,class_or_combination_level_only,Profile must be interpreted jointly with correlated parameters.
+W_boundary_class,class_or_combination_level_only,Profile must be interpreted jointly with correlated parameters.
+W_coverage_class,class_or_combination_level_only,Profile must be interpreted jointly with correlated parameters.
+W_crack_class,class_or_combination_level_only,Profile must be interpreted jointly with correlated parameters.
+residual_shunt,partially_bounded,Parameter has finite support but no unique physical estimate.
+Ic0_scale,class_or_combination_level_only,Profile must be interpreted jointly with correlated parameters.
+B_supp_scale,bounded_but_broad,Profile support is finite but broad.

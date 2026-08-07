@@ -1,0 +1,9 @@
+parameter,main_observable_family,main_family_score,secondary_observable_family,remaining_degeneracy
+Tc_scale,RT,0.395,IT,coverage_or_residual_floor
+Tc_heterogeneity_amplitude,RT,0.515,IT,coverage_or_residual_floor
+W_boundary_class,IT,0.46,RT,other_connectivity_classes_or_Ic0
+W_coverage_class,RT,0.335,IT,other_connectivity_classes_or_Ic0
+W_crack_class,IT,0.255,RT,other_connectivity_classes_or_Ic0
+residual_shunt,RT,0.475,IT,low_to_moderate
+Ic0_scale,IT,0.5875,IB,boundary_connectivity
+B_supp_scale,IB,0.76,IT,low_to_moderate

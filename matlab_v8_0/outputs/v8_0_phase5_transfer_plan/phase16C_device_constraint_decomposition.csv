@@ -1,0 +1,9 @@
+parameter,main_device,main_device_score,secondary_device,secondary_device_score
+Tc_scale,AS002,0.62,AS003,0.58
+Tc_heterogeneity_amplitude,AS002,0.46,AS001,0.38
+W_boundary_class,AS006,0.72,AS004,0.64
+W_coverage_class,AS006,0.44,AS004,0.36
+W_crack_class,AS005,0.88,AS004,0.1
+residual_shunt,AS003,0.6,AS002,0.54
+Ic0_scale,AS004,0.76,AS006,0.62
+B_supp_scale,AS006,0.94,AS001,0

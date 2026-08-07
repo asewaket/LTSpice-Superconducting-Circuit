@@ -1,0 +1,8 @@
+metric,metric_value,status
+effective_sample_size,2272.47236624168,pass
+minimum_required_effective_sample_size,200,declared_threshold
+acceptance_rate,1,not_MCMC
+chain_count,0,not_applicable
+burn_in,0,not_applicable
+failed_model_evaluations,0,pass
+boundary_fraction,0,diagnostic
