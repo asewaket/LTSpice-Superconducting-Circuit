@@ -4,7 +4,8 @@ function h = plot_phase15E_field_model_adequacy_decision_summary( ...
 %PLOT_PHASE15E_FIELD_MODEL_ADEQUACY_DECISION_SUMMARY Plot Phase 15E summary.
 
 h = figure('Name', 'v9 Phase 15E field-model adequacy decision', ...
-    'Color', 'w', 'Position', [80 80 1800 1050]);
+    'Color', 'w', 'InvertHardcopy', 'off', ...
+    'Position', [80 80 1800 1050]);
 tiledlayout(h, 2, 3, 'TileSpacing', 'compact', 'Padding', 'compact');
 
 plot_residual_comparison(variantResiduals);
@@ -14,8 +15,10 @@ plot_oscillation_morphology(oscillationMorphology);
 plot_prediction_bounds(predictionBounds);
 plot_decision_panel(preferredVariant, gateSummary);
 
-sgtitle('Phase 15E read-only AS006 field-model adequacy decision', ...
+titleHandle = sgtitle('Phase 15E read-only AS006 field-model adequacy decision', ...
     'FontWeight', 'bold');
+titleHandle.Color = 'k';
+force_light_theme(h);
 
 pngPath = [cfg.phase15E.figureBaseFile '.png'];
 pdfPath = [cfg.phase15E.figureBaseFile '.pdf'];
@@ -170,5 +173,25 @@ end
 idx = string(T.item) == item;
 if any(idx)
     value = string(T.value(find(idx, 1, 'first')));
+end
+end
+
+function force_light_theme(h)
+axesHandles = findall(h, 'Type', 'axes');
+for ax = reshape(axesHandles, 1, [])
+    set(ax, 'Color', 'w', 'XColor', 'k', 'YColor', 'k', ...
+        'GridColor', [0.82 0.82 0.82], ...
+        'MinorGridColor', [0.90 0.90 0.90]);
+    ax.Title.Color = 'k';
+    ax.XLabel.Color = 'k';
+    ax.YLabel.Color = 'k';
+    if ~isempty(ax.ZLabel)
+        ax.ZLabel.Color = 'k';
+    end
+end
+
+legendHandles = findall(h, 'Type', 'legend');
+for lgd = reshape(legendHandles, 1, [])
+    set(lgd, 'Color', 'w', 'TextColor', 'k', 'EdgeColor', [0.3 0.3 0.3]);
 end
 end
