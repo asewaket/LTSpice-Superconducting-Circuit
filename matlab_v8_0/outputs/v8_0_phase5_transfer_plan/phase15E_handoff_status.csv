@@ -1,0 +1,19 @@
+item,status,note
+phase15E_closure,pass_read_only_AS006_field_adequacy_assessment,Read-only assessment closes as a bounded claim freeze.
+phase15E_decision,pass_selected_device_field_suppression_scope,Selected decision from frozen Phase 15D outputs.
+execution_integrity,pass,Workflow integrity permits failing quantitative adequacy.
+preferred_field_variant,PB,PB is preferred as the parsimonious field baseline.
+monotonic_field_suppression,true,Field-dependent suppression is supported.
+static_phase_interference,limited_low_current_incremental_value,Static phase interference is informative but inadequate.
+phase_interference_quantitative_adequacy,false,Quantitative phase-interference adequacy fails.
+shared_quantitative_field_predictor,false,No shared quantitative field predictor is claimed.
+AS006_quantitative_field_predictor,false,AS006-only quantitative adequacy is not established.
+prediction_bounds_limitation,retained,Prediction-bound failures are retained.
+high_current_transfer,weak,High-current transfer remains weak.
+oscillation_morphology,overproduced,Pphi overproduces oscillatory structure.
+Josephson_dynamics_established,false,Static constrained phase does not establish Josephson dynamics.
+vortex_mechanism_established,false,No vortex model or claim is introduced.
+topological_mechanism_established,false,No topological mechanism is introduced.
+source_phase15D_artifact_commit,cfb95f1,Canonical Phase 15D artifact input.
+source_pre_run_clean,true,True only when source was clean before writing Phase 15E artifacts.
+next_phase,phase16_joint_identifiability_model_reduction,Next roadmap phase.

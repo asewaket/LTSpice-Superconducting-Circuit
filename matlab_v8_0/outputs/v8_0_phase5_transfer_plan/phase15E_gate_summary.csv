@@ -1,0 +1,18 @@
+gate,outcome,note
+Frozen Phase 15D artifacts consumed unchanged,pass,All required Phase 15D read-only inputs are present.
+Frozen Phase 15D artifact commit reachable,pass,Commit cfb95f1 is in the current history.
+No solver rerun,pass,Phase 15E reads frozen tables only.
+No parameter retuning,pass,No model parameter is retuned.
+No period fit,pass,Observed AS006 period is not fit.
+No loop count reduction after seeing residuals,pass,The 26-versus-1 Pphi morphology mismatch is retained.
+No topology/vortex/thermal/screening terms,pass,Excluded physics remains excluded.
+R1/R2 assessed jointly and separately,pass,R1/R2 channels are assessed separately and as one shared-phase result.
+Zero-field inheritance retained,pass,PB/Pphi zero-field inheritance is preserved.
+Low/high-current performance separated,pass,Low/high current behavior is separately reported.
+Ic-envelope assessment retained,pass,Critical-current envelope improvement is reported.
+Oscillation overproduction retained,pass,Pphi oscillation overproduction is retained as a limitation.
+Prediction-bound violations retained,pass,Prediction-bound violations remain explicit.
+Complexity considered in model preference,pass,PB is preferred over Pphi on parsimony plus morphology.
+No microscopic Josephson/vortex/topology claim,pass,Static phase-aware improvement is not promoted to microscopic mechanism.
+Shared quantitative field predictor,fail,Scientific adequacy gate fails by design; it is not workflow failure.
+Clean provenance,pass,True only for clean source before Phase 15E writes outputs.

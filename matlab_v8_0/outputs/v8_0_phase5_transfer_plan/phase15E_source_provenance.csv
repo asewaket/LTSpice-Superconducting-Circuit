@@ -1,0 +1,11 @@
+item,value,note
+phase,phase15E_field_model_adequacy_decision,"Phase 15E read-only AS006 field-model adequacy decision."
+source_commit_sha,8594aa6115fb8c3402fb35545037e2468b39891a,"Git commit captured before this runner writes outputs."
+source_tree_sha,ee44ba8f4016e15d0a5a42861a98a748dd2b4d2c,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase15D_artifact_commit,cfb95f1,"Canonical Phase 15D artifact-freeze commit consumed by policy."
+frozen_phase15D_artifact_commit_reachable,true,"True when the frozen Phase 15D artifact commit is an ancestor of this run."
+provenance_scope,read_only_AS006_field_adequacy_after_clean_phase15D,"No solver rerun, parameter retuning, period fitting, topology, thermal memory, or R1/R2 split loop."
+source_provenance_policy,Commit Phase 15E source first; rerun from clean source; commit decision artifacts separately.,"Artifacts are separate from source/configuration commits."

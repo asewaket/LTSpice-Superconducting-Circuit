@@ -1,0 +1,7 @@
+variant,channel,normalized_half_width,fraction_outside_bounds,bounds_status,bounds_interpretation
+P0,R1,0.35,0.843130920975232,widespread_violation,widespread_prediction_bound_violation_retained
+P0,R2,0.35,0.849116950913358,widespread_violation,widespread_prediction_bound_violation_retained
+PB,R1,0.35,0.87204811156907,widespread_violation,widespread_prediction_bound_violation_retained
+PB,R2,0.35,0.885017178430352,widespread_violation,widespread_prediction_bound_violation_retained
+Pphi,R1,0.35,0.87464032973015,widespread_violation,widespread_prediction_bound_violation_retained
+Pphi,R2,0.35,0.88816572648908,widespread_violation,widespread_prediction_bound_violation_retained

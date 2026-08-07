@@ -1,0 +1,7 @@
+variant,channel,observed_turning_points,model_turning_points,turning_point_excess,observed_oscillation_score,model_oscillation_score,morphology_interpretation
+P0,R1,1,0,-1,0.00295373545387803,0,zero_field_current_baseline_no_field_oscillation
+PB,R1,1,0,-1,0.00295373545387803,0.00247439747744357,nonoscillatory_field_suppression
+Pphi,R1,1,26,25,0.00295373545387803,0.0581905151137628,overproduced_oscillation_morphology
+P0,R2,1,0,-1,0.00272808328472027,0,zero_field_current_baseline_no_field_oscillation
+PB,R2,1,0,-1,0.00272808328472027,0.00238021969511215,nonoscillatory_field_suppression
+Pphi,R2,1,26,25,0.00272808328472027,0.0561413802578943,overproduced_oscillation_morphology

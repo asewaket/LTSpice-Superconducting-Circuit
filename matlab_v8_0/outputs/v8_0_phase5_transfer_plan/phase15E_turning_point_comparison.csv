@@ -1,0 +1,9 @@
+source,channel,peak_count,trough_count,turning_point_count,oscillation_score,manual_period_fit
+observed,R1,1,0,1,0.00295373545387803,0
+observed,R2,1,0,1,0.00272808328472027,0
+P0,R1,0,0,0,0,0
+P0,R2,0,0,0,0,0
+PB,R1,0,0,0,0.00247439747744357,0
+PB,R2,0,0,0,0.00238021969511215,0
+Pphi,R1,26,0,26,0.0581905151137628,0
+Pphi,R2,26,0,26,0.0561413802578943,0

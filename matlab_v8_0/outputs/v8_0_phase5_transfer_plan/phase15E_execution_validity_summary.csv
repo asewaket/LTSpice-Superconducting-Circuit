@@ -1,0 +1,15 @@
+item,status,value,note
+phase15D_closure_consumed,pass,complete_raw_AS006_field_execution,Canonical Phase 15D execution closure is required.
+phase15D_execution_integrity,pass,pass,Phase 15D execution integrity must pass.
+phase15D_all_gates_passed,pass,true,Phase 15D execution gates must all pass.
+phase15D_clean_provenance,pass,true,Phase 15D artifacts must come from a clean provenance run.
+raw_AS006_residuals_used,pass,true,Phase 15E consumes the raw AS006 residuals emitted by Phase 15D.
+no_solver_rerun,pass,true,Phase 15E is read-only and does not rerun the solver.
+no_parameter_retuning,pass,true,Phase 15E does not retune parameters.
+no_period_fit,pass,true,Observed oscillation period is not fit.
+no_topology_term,pass,true,No topological superconductivity term or claim is introduced.
+no_vortex_term,pass,true,No vortex mechanism is introduced.
+no_thermal_memory,pass,true,No electrothermal memory or hysteresis model is introduced.
+no_magnetic_screening,pass,true,No magnetic screening term is introduced.
+shared_R1_R2_phase_state,pass,true,R1/R2 are assessed from one shared phase state.
+no_independent_R1_R2_phase_parameters,pass,true,Independent channel phase parameters remain prohibited.

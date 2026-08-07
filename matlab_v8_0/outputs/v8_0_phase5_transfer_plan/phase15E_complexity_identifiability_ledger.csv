@@ -1,0 +1,4 @@
+variant,complexity_level,mean_MSE,mean_MSE_gain_vs_P0,mean_Pphi_MSE_gain_vs_PB,oscillation_morphology,prediction_bounds_status,identifiability_status,no_manual_period_fit
+P0,1,0.1904580497791,0,NaN,not_overproduced,bounds_fail,baseline_current_only_field_model,1
+PB,2,0.170004962710057,0.020453087069043,NaN,nonoscillatory,bounds_fail,preferred_parsimonious_field_baseline,1
+Pphi,3,0.168729471219447,0.021728578559654,0.00127549149061099,overproduced,bounds_fail,directionally_informative_but_morphology_inadequate,1

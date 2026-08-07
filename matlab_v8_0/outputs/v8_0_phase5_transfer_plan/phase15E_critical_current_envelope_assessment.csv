@@ -1,0 +1,7 @@
+variant,channel,mean_abs_Ic_error_A,Ic_envelope_correlation,Ic_error_reduction_vs_P0_A,Ic_error_fractional_reduction_vs_P0,envelope_interpretation
+P0,R1,7.76053946053946e-07,2.4550714328444e-15,0,0,zero_field_current_baseline
+P0,R2,7.67702297702299e-07,5.63927539519279e-15,0,0,zero_field_current_baseline
+PB,R1,1.10739260739261e-07,0.462215268657609,6.65314685314685e-07,0.857304686997155,field_dependent_envelope_substantially_improved
+PB,R2,1.18791208791209e-07,0.362461726439644,6.4891108891109e-07,0.845263966062436,field_dependent_envelope_substantially_improved
+Pphi,R1,7.23976023976026e-08,0.405152572043417,7.03656343656343e-07,0.906710605924076,field_dependent_envelope_substantially_improved
+Pphi,R2,8.03296703296705e-08,0.316932486982815,6.87372627372629e-07,0.895363514515856,field_dependent_envelope_substantially_improved

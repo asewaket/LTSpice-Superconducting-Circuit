@@ -1,0 +1,8 @@
+item,status,value,note
+preferred_field_variant,PB,PB,"Preferred variant follows residual improvement, morphology, and complexity."
+phase15E_decision,pass_selected_device_field_suppression_scope,pass_selected_device_field_suppression_scope,"Phase 15E closes as field-suppression scope, not phase adequacy."
+Pphi_mean_MSE_gain_vs_PB,descriptive,0.0012755,"Mean PB MSE minus mean Pphi MSE across R1/R2."
+Pphi_fractional_MSE_gain_vs_PB,descriptive,0.0075027,"Increment is small relative to PB and outweighed by morphology failure."
+phase_aware_extension,directionally_informative_but_inadequate,directionally_informative_but_inadequate,"Pphi remains useful but not quantitatively adequate."
+parsimonious_baseline,PB,PB,"PB is retained as the parsimonious AS006 field baseline."
+quantitative_adequacy,fail,false,"Quantitative field adequacy is not established."

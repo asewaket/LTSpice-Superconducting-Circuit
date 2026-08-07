@@ -1,0 +1,3 @@
+channel,PB_improves_over_P0,Pphi_improves_over_P0,Pphi_improves_over_PB,Pphi_fractional_gain_vs_PB,low_current_response,high_current_response,prediction_bounds,oscillation_morphology,quantitative_adequacy
+R1,1,1,1,0.00963768728252489,improved,weak,fail_widespread_violation,overproduced_oscillation_morphology,fail
+R2,1,1,1,0.00555703147045638,improved,weak,fail_widespread_violation,overproduced_oscillation_morphology,fail
