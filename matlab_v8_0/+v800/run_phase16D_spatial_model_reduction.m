@@ -299,7 +299,7 @@ T = table(latent_component, source_parameters, ...
 end
 
 function T = build_Tc_connectivity_variant_manifest()
-variant_id = ["H0"; "HT"; "HW"; "HTW"].';
+variant_id = ["H0"; "HT"; "HW"; "HTW"];
 Tc_heterogeneity_enabled = [false; true; false; true];
 spatial_connectivity_enabled = [false; false; true; true];
 interpretation = [
@@ -542,7 +542,7 @@ end
 function T = build_identifiable_spatial_combinations(combinations)
 combo_id = string(combinations.combination_id);
 if isempty(combo_id)
-    combo_id = ["Q1"; "Q2"; "Q3"].';
+    combo_id = ["Q1"; "Q2"; "Q3"];
 end
 n = numel(combo_id);
 spatial_combination = strings(n, 1);
