@@ -2002,6 +2002,42 @@ cfg.phase16D.minimumSupportRobust = 0.75;
 cfg.phase16D.minimumSupportFrequent = 0.55;
 cfg.phase16D.minimumHeldoutGainForRetention = 0.015;
 
+cfg.phase16E.phaseChainManifestFile = fullfile(cfg.outputDir, ...
+    'phase16E_phase_chain_manifest.csv');
+cfg.phase16E.recoverabilityClaimMatrixFile = fullfile(cfg.outputDir, ...
+    'phase16E_recoverability_claim_matrix.csv');
+cfg.phase16E.finalModelClaimsFile = fullfile(cfg.outputDir, ...
+    'phase16E_final_model_claims.csv');
+cfg.phase16E.excludedClaimsFile = fullfile(cfg.outputDir, ...
+    'phase16E_excluded_claims.csv');
+cfg.phase16E.preferredReducedModelFile = fullfile(cfg.outputDir, ...
+    'phase16E_preferred_reduced_model.csv');
+cfg.phase16E.evidenceSynthesisFile = fullfile(cfg.outputDir, ...
+    'phase16E_evidence_synthesis.csv');
+cfg.phase16E.limitationLedgerFile = fullfile(cfg.outputDir, ...
+    'phase16E_limitation_ledger.csv');
+cfg.phase16E.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase16E_gate_summary.csv');
+cfg.phase16E.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase16E_handoff_status.csv');
+cfg.phase16E.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase16E_source_provenance.csv');
+cfg.phase16E.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase16E_final_recoverability_claim_freeze_summary');
+cfg.phase16E.description = ...
+    'Final recoverability and model-claim freeze after Phase 16D reduction';
+cfg.phase16E.frozenPhase15EArtifactCommit = "127141b";
+cfg.phase16E.frozenPhase16DSourceCommit = "1bc1ceb";
+cfg.phase16E.nextPhase = "phase17_final_release_or_targeted_future_work";
+cfg.phase16E.noNewMechanism = true;
+cfg.phase16E.noParameterRetuning = true;
+cfg.phase16E.noSolverRerun = true;
+cfg.phase16E.primaryFieldModel = "PB";
+cfg.phase16E.preferredSpatialRepresentation = "reduced_geometry_class_basis";
+cfg.phase16E.excludeDensePphiFromPrimary = true;
+cfg.phase16E.uniqueWijInferenceProhibited = true;
+cfg.phase16E.sharedQuantitativePredictorClaimAllowed = false;
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
