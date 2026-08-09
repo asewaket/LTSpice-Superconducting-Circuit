@@ -616,12 +616,15 @@ end
 function value = lookup_value(T, key)
 value = "";
 names = string(T.Properties.VariableNames);
-keyNames = ["item", "field", "key", "gate", "claim", "decision_item"];
+keyNames = ["item", "field", "key", "gate", "claim", ...
+    "decision_item", "quantity", "component"];
 valueNames = ["status", "value", "outcome", "decision"];
 keyColumn = "";
+keyNeedle = lower(strtrim(string(key)));
 for i = 1:numel(keyNames)
     if any(names == keyNames(i))
-        if any(string(T.(keyNames(i))) == key)
+        candidate = lower(strtrim(string(T.(keyNames(i)))));
+        if any(candidate == keyNeedle)
             keyColumn = keyNames(i);
             break;
         end
@@ -630,10 +633,11 @@ end
 if keyColumn == ""
     return;
 end
-row = string(T.(keyColumn)) == key;
+row = lower(strtrim(string(T.(keyColumn)))) == keyNeedle;
 for i = 1:numel(valueNames)
     if any(names == valueNames(i))
         value = string(T.(valueNames(i))(find(row, 1)));
+        value = strtrim(value);
         return;
     end
 end

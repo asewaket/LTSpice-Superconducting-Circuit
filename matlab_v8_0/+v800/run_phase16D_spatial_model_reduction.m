@@ -830,35 +830,38 @@ handoff = table(item, status, note);
 end
 
 function status = lookup_status(T, key)
-status = "";
-if any(strcmp(T.Properties.VariableNames, "item"))
-    row = string(T.item) == key;
-elseif any(strcmp(T.Properties.VariableNames, "field"))
-    row = string(T.field) == key;
-else
-    row = false(height(T), 1);
-end
-if any(row)
-    if any(strcmp(T.Properties.VariableNames, "status"))
-        status = string(T.status(find(row, 1)));
-    elseif any(strcmp(T.Properties.VariableNames, "value"))
-        status = string(T.value(find(row, 1)));
-    end
-end
+status = lookup_table_value(T, key, ["status"; "value"; "decision"; "outcome"]);
 end
 
 function value = lookup_value(T, key)
 value = "";
-if any(strcmp(T.Properties.VariableNames, "item"))
-    row = string(T.item) == key;
-else
-    row = false(height(T), 1);
+value = lookup_table_value(T, key, ["value"; "status"; "decision"; "outcome"]);
 end
-if any(row)
-    if any(strcmp(T.Properties.VariableNames, "value"))
-        value = string(T.value(find(row, 1)));
-    elseif any(strcmp(T.Properties.VariableNames, "status"))
-        value = string(T.status(find(row, 1)));
+
+function value = lookup_table_value(T, key, preferredValueColumns)
+value = "";
+names = string(T.Properties.VariableNames);
+keyColumns = ["item"; "field"; "key"; "gate"; "claim"; ...
+    "decision_item"; "quantity"; "component"];
+keyNeedle = lower(strtrim(string(key)));
+row = false(height(T), 1);
+for k = 1:numel(keyColumns)
+    if any(names == keyColumns(k))
+        candidate = lower(strtrim(string(T.(keyColumns(k)))));
+        row = candidate == keyNeedle;
+        if any(row)
+            break;
+        end
+    end
+end
+if ~any(row)
+    return;
+end
+for k = 1:numel(preferredValueColumns)
+    if any(names == preferredValueColumns(k))
+        value = string(T.(preferredValueColumns(k))(find(row, 1)));
+        value = strtrim(value);
+        return;
     end
 end
 end
