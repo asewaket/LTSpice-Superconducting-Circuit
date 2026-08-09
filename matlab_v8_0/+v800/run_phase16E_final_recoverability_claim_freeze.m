@@ -210,11 +210,13 @@ end
 
 function T = build_recoverability_claim_matrix(inputs)
 quantity = [
+    "B_supp"
     "field_suppression"
     "static_phase_interference"
     "shared_quantitative_field_predictor"
     "uniform_background"
     "structured_bottleneck_strength"
+    "geometry_class_connectivity"
     "boundary_structure"
     "coverage_segmentation"
     "AS005_crack_neighborhood"
@@ -222,13 +224,20 @@ quantity = [
     "boundary_vs_coverage_decomposition"
     "individual_Wij"
     "microscopic_weak_link_map"
+    "dense_phase_loop_map"
+    "unique_strain_tensor"
+    "Josephson_vortex_dynamics"
+    "order_parameter_symmetry"
+    "topology"
     ];
 recoverability_status = [
+    "selected_device_constrained"
     "supported_directional"
     "directionally_informative_but_inadequate"
     "not_established"
     "retained"
     "identifiable_as_grouped_direction"
+    "supported_in_reduced_combinations"
     "supported_region_level"
     "partial_redundant_support"
     "supported_not_unique"
@@ -236,17 +245,25 @@ recoverability_status = [
     "nonunique"
     "non_identifiable"
     "prohibited_claim"
+    "not_supported"
+    "not_inferred"
+    "not_established"
+    "not_accessible"
+    "not_established"
     ];
 claim_allowed = [
-    true; true; false; true; true; true; true; true; true; ...
-    false; false; false
+    true; true; true; false; true; true; true; true; true; ...
+    true; true; false; false; false; false; false; false; ...
+    false; false
     ];
 claim_strength = [
+    "selected_device_scope"
     "selected_device_scope"
     "limited_context"
     "not_allowed"
     "baseline_component"
     "class_level"
+    "reduced_combination"
     "region_level"
     "partial"
     "AS005_local_context"
@@ -254,8 +271,14 @@ claim_strength = [
     "not_allowed"
     "not_allowed"
     "not_allowed"
+    "not_allowed"
+    "not_allowed"
+    "not_allowed"
+    "not_allowed"
+    "not_allowed"
     ];
 source_phase = [
+    "16B"
     "15E"
     "15E"
     "15E"
@@ -268,13 +291,21 @@ source_phase = [
     "16D"
     "16D"
     "16D"
+    "16D"
+    "15E-16D"
+    "1-16"
+    "1-16"
+    "1-16"
+    "1-16"
     ];
 policy_note = [
+    "Field suppression scale is constrained only in selected-device context."
     "PB retained as AS006 field baseline."
     "Pphi has limited descriptive value but is not a quantitative field model."
     "Frozen scientific failure from Phase 15E."
     "Shared background retained in reduced model."
     "Report as grouped latent connectivity, not individual components."
+    "Report reduced geometry-class combinations, not a dense spatial field."
     "Report as transport-sensitive region-level support."
     "Coverage information partly overlaps boundary term."
     "AS005 crack support is local and nonunique."
@@ -282,6 +313,11 @@ policy_note = [
     "Do not report unique boundary/coverage amplitudes."
     "Individual W_ij remains diagnostic only."
     "No microscopic strain or weak-link probability map is inferred."
+    "Dense phase-loop map remains outside the preferred recoverable model."
+    "No unique strain tensor is inferred."
+    "Josephson/vortex dynamics are not established by this workflow."
+    "Order-parameter symmetry is not accessible from these observables."
+    "Topological superconductivity is not established."
     ];
 T = table(quantity, recoverability_status, claim_allowed, ...
     claim_strength, source_phase, policy_note);
@@ -556,7 +592,7 @@ function handoff = build_handoff_status(cfg, gateSummary, ...
 workflowFailures = gateSummary(string(gateSummary.outcome) == "fail" & ...
     ~gateSummary.expected_scientific_limitation, :);
 if isempty(workflowFailures)
-    closure = "pass_final_recoverability_and_model_claim_freeze";
+    closure = "pass_final_recoverability_claim_freeze";
     workflow = "pass";
 else
     closure = "fail_workflow_integrity";
@@ -568,6 +604,9 @@ item = [
     "preferred_field_model"
     "preferred_spatial_representation"
     "preferred_reduced_model"
+    "effective_spatial_dof"
+    "structured_connectivity"
+    "monotonic_field_suppression"
     "unique_Wij_recovery"
     "shared_quantitative_predictor"
     "static_phase_interference"
@@ -581,6 +620,9 @@ status = [
     string(cfg.phase16E.primaryFieldModel)
     string(cfg.phase16E.preferredSpatialRepresentation)
     string(preferredReducedModel.model_id(1))
+    string(preferredReducedModel.effective_spatial_dof(1))
+    "supported_at_class_level"
+    lookup_value(finalModelClaims, "AS006_field_claim")
     string(preferredReducedModel.unique_Wij_recovery(1))
     claim_status(finalModelClaims, "quantitative_predictor_claim")
     claim_status(finalModelClaims, "Pphi_claim")
@@ -594,6 +636,9 @@ note = [
     "Frozen AS006 field baseline from Phase 15E."
     "Frozen reduced spatial representation from Phase 16D."
     "Machine-readable final reduced model identifier."
+    "Preferred model effective spatial degree count."
+    "Structured connectivity may be reported only at class level."
+    "AS006 monotonic field suppression claim from Phase 15E."
     "Individual W_ij recovery remains false."
     "No shared quantitative predictor is claimed."
     "Static phase interference retained as limited context."
