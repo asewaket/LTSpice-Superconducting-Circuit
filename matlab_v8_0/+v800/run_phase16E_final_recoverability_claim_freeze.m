@@ -493,21 +493,23 @@ end
 
 function gates = build_gate_summary(cfg, inputs, sourceProvenance, ...
     preferredReducedModel, finalModelClaims)
-clean = lookup_value(sourceProvenance, "source_pre_run_clean") == "true";
-phase15EClosed = lookup_value(inputs.phase15EHandoff, ...
-    "phase15E_closure") == "pass_read_only_AS006_field_adequacy_assessment";
-phase16AClosed = startsWith(lookup_value(inputs.phase16AHandoff, ...
+clean = lookup_equals(lookup_value(sourceProvenance, ...
+    "source_pre_run_clean"), "true");
+phase15EClosed = lookup_equals(lookup_value(inputs.phase15EHandoff, ...
+    "phase15E_closure"), ...
+    "pass_read_only_AS006_field_adequacy_assessment");
+phase16AClosed = lookup_starts_with(lookup_value(inputs.phase16AHandoff, ...
     "phase16A_closure"), "pass");
-phase16BClosed = startsWith(lookup_value(inputs.phase16BHandoff, ...
+phase16BClosed = lookup_starts_with(lookup_value(inputs.phase16BHandoff, ...
     "phase16B_closure"), "pass");
-phase16CClosed = lookup_value(inputs.phase16CHandoff, ...
-    "phase16C_closure") == "pass_profile_pseudo_posterior_exploration";
-phase16DClosed = lookup_value(inputs.phase16DHandoff, ...
-    "phase16D_closure") == "pass_spatial_model_reduction";
-phase15EReachable = lookup_value(sourceProvenance, ...
-    "frozen_phase15E_artifact_commit_reachable") == "true";
-phase16DReachable = lookup_value(sourceProvenance, ...
-    "frozen_phase16D_source_commit_reachable") == "true";
+phase16CClosed = lookup_equals(lookup_value(inputs.phase16CHandoff, ...
+    "phase16C_closure"), "pass_profile_pseudo_posterior_exploration");
+phase16DClosed = lookup_equals(lookup_value(inputs.phase16DHandoff, ...
+    "phase16D_closure"), "pass_spatial_model_reduction");
+phase15EReachable = lookup_equals(lookup_value(sourceProvenance, ...
+    "frozen_phase15E_artifact_commit_reachable"), "true");
+phase16DReachable = lookup_equals(lookup_value(sourceProvenance, ...
+    "frozen_phase16D_source_commit_reachable"), "true");
 preferredFieldIsPB = preferredReducedModel.field_component(1) == ...
     string(cfg.phase16E.primaryFieldModel);
 preferredSpatialFrozen = preferredReducedModel.spatial_representation(1) == ...
@@ -665,10 +667,10 @@ keyNames = ["item", "field", "key", "gate", "claim", ...
     "decision_item", "quantity", "component"];
 valueNames = ["status", "value", "outcome", "decision"];
 keyColumn = "";
-keyNeedle = lower(strtrim(string(key)));
+keyNeedle = normalize_lookup_text(key);
 for i = 1:numel(keyNames)
     if any(names == keyNames(i))
-        candidate = lower(strtrim(string(T.(keyNames(i)))));
+        candidate = normalize_lookup_text(T.(keyNames(i)));
         if any(candidate == keyNeedle)
             keyColumn = keyNames(i);
             break;
@@ -678,12 +680,31 @@ end
 if keyColumn == ""
     return;
 end
-row = lower(strtrim(string(T.(keyColumn)))) == keyNeedle;
+row = normalize_lookup_text(T.(keyColumn)) == keyNeedle;
 for i = 1:numel(valueNames)
     if any(names == valueNames(i))
         value = string(T.(valueNames(i))(find(row, 1)));
-        value = strtrim(value);
+        value = clean_lookup_value(value);
         return;
     end
 end
+end
+
+function tf = lookup_equals(actual, expected)
+tf = normalize_lookup_text(actual) == normalize_lookup_text(expected);
+end
+
+function tf = lookup_starts_with(actual, expectedPrefix)
+tf = startsWith(normalize_lookup_text(actual), ...
+    normalize_lookup_text(expectedPrefix));
+end
+
+function value = clean_lookup_value(value)
+value = strtrim(string(value));
+value = erase(value, '"');
+value = erase(value, "'");
+end
+
+function text = normalize_lookup_text(value)
+text = lower(clean_lookup_value(value));
 end

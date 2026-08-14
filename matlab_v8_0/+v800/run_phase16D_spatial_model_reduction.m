@@ -691,11 +691,11 @@ end
 function gates = build_gate_summary(cfg, sourceProvenance, inputs, preferred)
 phase16CClosure = lookup_status(inputs.phase16CHandoff, ...
     "phase16C_closure");
-phase16CConsumed = phase16CClosure == ...
-    "pass_profile_pseudo_posterior_exploration";
-phase16CReachable = strcmpi(lookup_value(sourceProvenance, ...
+phase16CConsumed = lookup_equals(phase16CClosure, ...
+    "pass_profile_pseudo_posterior_exploration");
+phase16CReachable = lookup_equals(lookup_value(sourceProvenance, ...
     "frozen_phase16C_artifact_commit_reachable"), "true");
-clean = strcmpi(lookup_value(sourceProvenance, ...
+clean = lookup_equals(lookup_value(sourceProvenance, ...
     "source_pre_run_clean"), "true");
 item = [
     "Phase 16C ensemble consumed unchanged"
@@ -843,11 +843,11 @@ value = "";
 names = string(T.Properties.VariableNames);
 keyColumns = ["item"; "field"; "key"; "gate"; "claim"; ...
     "decision_item"; "quantity"; "component"];
-keyNeedle = lower(strtrim(string(key)));
+keyNeedle = normalize_lookup_text(key);
 row = false(height(T), 1);
 for k = 1:numel(keyColumns)
     if any(names == keyColumns(k))
-        candidate = lower(strtrim(string(T.(keyColumns(k)))));
+        candidate = normalize_lookup_text(T.(keyColumns(k)));
         row = candidate == keyNeedle;
         if any(row)
             break;
@@ -860,8 +860,22 @@ end
 for k = 1:numel(preferredValueColumns)
     if any(names == preferredValueColumns(k))
         value = string(T.(preferredValueColumns(k))(find(row, 1)));
-        value = strtrim(value);
+        value = clean_lookup_value(value);
         return;
     end
 end
+end
+
+function tf = lookup_equals(actual, expected)
+tf = normalize_lookup_text(actual) == normalize_lookup_text(expected);
+end
+
+function value = clean_lookup_value(value)
+value = strtrim(string(value));
+value = erase(value, '"');
+value = erase(value, "'");
+end
+
+function text = normalize_lookup_text(value)
+text = lower(clean_lookup_value(value));
 end
