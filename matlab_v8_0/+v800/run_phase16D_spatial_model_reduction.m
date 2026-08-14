@@ -841,13 +841,15 @@ end
 function value = lookup_table_value(T, key, preferredValueColumns)
 value = "";
 names = string(T.Properties.VariableNames);
+normalizedNames = normalize_lookup_text(names);
 keyColumns = ["item"; "field"; "key"; "gate"; "claim"; ...
     "decision_item"; "quantity"; "component"];
 keyNeedle = normalize_lookup_text(key);
 row = false(height(T), 1);
 for k = 1:numel(keyColumns)
-    if any(names == keyColumns(k))
-        candidate = normalize_lookup_text(T.(keyColumns(k)));
+    colIdx = find(normalizedNames == normalize_lookup_text(keyColumns(k)), 1);
+    if ~isempty(colIdx)
+        candidate = normalize_lookup_text(T.(names(colIdx)));
         row = candidate == keyNeedle;
         if any(row)
             break;
@@ -855,13 +857,35 @@ for k = 1:numel(keyColumns)
     end
 end
 if ~any(row)
-    return;
+    row = find_table_key_any_column(T, keyNeedle);
+    if ~any(row)
+        return;
+    end
 end
 for k = 1:numel(preferredValueColumns)
-    if any(names == preferredValueColumns(k))
-        value = string(T.(preferredValueColumns(k))(find(row, 1)));
+    colIdx = find(normalizedNames == normalize_lookup_text(preferredValueColumns(k)), 1);
+    if ~isempty(colIdx)
+        value = string(T.(names(colIdx))(find(row, 1)));
         value = clean_lookup_value(value);
         return;
+    end
+end
+end
+
+function row = find_table_key_any_column(T, keyNeedle)
+names = string(T.Properties.VariableNames);
+row = false(height(T), 1);
+for k = 1:numel(names)
+    try
+        candidate = normalize_lookup_text(T.(names(k)));
+    catch
+        continue;
+    end
+    if numel(candidate) == height(T)
+        row = candidate == keyNeedle;
+        if any(row)
+            return;
+        end
     end
 end
 end
@@ -872,6 +896,7 @@ end
 
 function value = clean_lookup_value(value)
 value = strtrim(string(value));
+value = erase(value, char(65279));
 value = erase(value, '"');
 value = erase(value, "'");
 end
