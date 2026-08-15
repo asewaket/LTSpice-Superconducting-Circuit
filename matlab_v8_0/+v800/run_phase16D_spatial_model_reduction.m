@@ -689,10 +689,16 @@ T = table(decision_item, decision, note);
 end
 
 function gates = build_gate_summary(cfg, sourceProvenance, inputs, preferred)
-phase16CClosure = lookup_status(inputs.phase16CHandoff, ...
-    "phase16C_closure");
-phase16CConsumed = lookup_equals(phase16CClosure, ...
-    "pass_profile_pseudo_posterior_exploration");
+phase16CClosureOk = table_has_key_value(inputs.phase16CHandoff, ...
+    "phase16C_closure", "pass_profile_pseudo_posterior_exploration");
+phase16CWorkflowOk = table_has_key_value(inputs.phase16CHandoff, ...
+    "workflow_integrity", "pass");
+phase16CPseudoPosteriorOk = table_has_key_value(inputs.phase16CHandoff, ...
+    "pseudo_posterior_used", "true");
+phase16CNextPhaseOk = table_has_key_value(inputs.phase16CHandoff, ...
+    "next_phase", "phase16D_spatial_model_reduction");
+phase16CConsumed = phase16CClosureOk && phase16CWorkflowOk && ...
+    phase16CPseudoPosteriorOk && phase16CNextPhaseOk;
 phase16CReachable = lookup_equals(lookup_value(sourceProvenance, ...
     "frozen_phase16C_artifact_commit_reachable"), "true");
 clean = lookup_equals(lookup_value(sourceProvenance, ...
@@ -746,7 +752,9 @@ for i = 1:numel(passFlag)
     end
 end
 note = [
-    "Phase 16D reads frozen Phase 16C profile/pseudo-posterior artifacts."
+    string(sprintf("Phase 16D reads frozen Phase 16C artifacts: closure=%d, workflow=%d, pseudoPosterior=%d, nextPhase=%d, commitReachable=%d.", ...
+    phase16CClosureOk, phase16CWorkflowOk, phase16CPseudoPosteriorOk, ...
+    phase16CNextPhaseOk, phase16CReachable))
     "No vortices, heating, phase dynamics, topology, or microscopic strain inversion added."
     "Field-dependent hierarchy continues to use PB as primary field baseline."
     "Dense Pphi remains excluded from primary inference."
@@ -867,6 +875,62 @@ for k = 1:numel(preferredValueColumns)
     if ~isempty(colIdx)
         value = string(T.(names(colIdx))(find(row, 1)));
         value = clean_lookup_value(value);
+        return;
+    end
+end
+end
+
+function tf = table_has_key_value(T, key, expected)
+tf = false;
+names = string(T.Properties.VariableNames);
+normalizedNames = normalize_lookup_text(names);
+keyColumns = ["item"; "field"; "key"; "gate"; "claim"; ...
+    "decision_item"; "quantity"; "component"; "recommendation"];
+valueColumns = ["status"; "value"; "decision"; "outcome"; "result"];
+keyNeedle = normalize_lookup_text(key);
+expectedNeedle = normalize_lookup_text(expected);
+for k = 1:numel(keyColumns)
+    keyCol = find(normalizedNames == normalize_lookup_text(keyColumns(k)), 1);
+    if isempty(keyCol)
+        continue;
+    end
+    keyText = normalize_lookup_text(T.(names(keyCol)));
+    row = keyText == keyNeedle;
+    if ~any(row)
+        continue;
+    end
+    for j = 1:numel(valueColumns)
+        valueCol = find(normalizedNames == normalize_lookup_text(valueColumns(j)), 1);
+        if isempty(valueCol)
+            continue;
+        end
+        valueText = normalize_lookup_text(T.(names(valueCol)));
+        if any(valueText(row) == expectedNeedle)
+            tf = true;
+            return;
+        end
+    end
+end
+tf = table_contains_key_value_pair(T, keyNeedle, expectedNeedle);
+end
+
+function tf = table_contains_key_value_pair(T, keyNeedle, expectedNeedle)
+tf = false;
+names = string(T.Properties.VariableNames);
+for i = 1:height(T)
+    rowHasKey = false;
+    rowHasExpected = false;
+    for k = 1:numel(names)
+        try
+            cellText = normalize_lookup_text(T.(names(k))(i));
+        catch
+            continue;
+        end
+        rowHasKey = rowHasKey || any(cellText == keyNeedle);
+        rowHasExpected = rowHasExpected || any(cellText == expectedNeedle);
+    end
+    if rowHasKey && rowHasExpected
+        tf = true;
         return;
     end
 end
