@@ -673,7 +673,7 @@ for i = 1:numel(keyNames)
     nameIdx = find(normalizedNames == normalize_lookup_text(keyNames(i)), ...
         1);
     if ~isempty(nameIdx)
-        candidate = normalize_lookup_text(T.(names(nameIdx)));
+        candidate = normalize_lookup_text(T.(char(names(nameIdx))));
         if any(candidate == keyNeedle)
             keyColumn = names(nameIdx);
             break;
@@ -681,14 +681,46 @@ for i = 1:numel(keyNames)
     end
 end
 if keyColumn == ""
+    value = lookup_value_by_row_scan(T, keyNeedle, names, normalizedNames, ...
+        valueNames);
     return;
 end
-row = normalize_lookup_text(T.(keyColumn)) == keyNeedle;
+row = normalize_lookup_text(T.(char(keyColumn))) == keyNeedle;
 for i = 1:numel(valueNames)
     nameIdx = find(normalizedNames == normalize_lookup_text(valueNames(i)), ...
         1);
     if ~isempty(nameIdx)
-        value = string(T.(names(nameIdx))(find(row, 1)));
+        value = string(T.(char(names(nameIdx)))(find(row, 1)));
+        value = clean_lookup_value(value);
+        return;
+    end
+end
+end
+
+function value = lookup_value_by_row_scan(T, keyNeedle, names, ...
+    normalizedNames, valueNames)
+value = "";
+preferredValueIdx = [];
+for i = 1:numel(valueNames)
+    idx = find(normalizedNames == normalize_lookup_text(valueNames(i)), 1);
+    if ~isempty(idx)
+        preferredValueIdx(end + 1) = idx; %#ok<AGROW>
+    end
+end
+if isempty(preferredValueIdx)
+    return;
+end
+for c = 1:numel(names)
+    columnValues = normalize_lookup_text(T.(char(names(c))));
+    rowIdx = find(columnValues == keyNeedle, 1);
+    if isempty(rowIdx)
+        continue;
+    end
+    for v = preferredValueIdx
+        if v == c
+            continue;
+        end
+        value = string(T.(char(names(v)))(rowIdx));
         value = clean_lookup_value(value);
         return;
     end
