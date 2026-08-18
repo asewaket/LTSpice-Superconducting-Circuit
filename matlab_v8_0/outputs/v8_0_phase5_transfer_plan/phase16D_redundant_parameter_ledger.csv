@@ -1,0 +1,8 @@
+parameter_or_component,redundancy_reason,action
+W_boundary_class,correlated with coverage and Ic0; retained through Q_structured_bottleneck,collapse_to_latent_connectivity
+W_coverage_class,partly redundant with boundary response,collapse_to_latent_connectivity
+W_crack_class,supported only as AS005 grouped crack/boundary direction,collapse_to_AS005_grouped_component
+Ic0_scale,correlated with structured bottleneck amplitude,report_with_bottleneck_strength
+edge_distance,weakly supported and absorbed into smooth basis,drop_from_preferred_model
+individual_Wij,not recoverable and prohibited as physical map,diagnostic_upper_bound_only
+dense_Pphi,excluded by Phase 15E/16B primary field baseline,defer_not_primary

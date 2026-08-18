@@ -1,0 +1,25 @@
+device,geometry_family,basis_component,active_in_reduced_basis,derived_from_geometry_only,residual_lookahead_used,interpretation
+AS001,control,coverage_mask,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS002,half_encapsulated,coverage_mask,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS003,control,coverage_mask,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS004,half_encapsulated,coverage_mask,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS005,cracked_full_coverage,coverage_mask,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS006,strong_full_coverage,coverage_mask,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS001,control,boundary_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS002,half_encapsulated,boundary_distance,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS003,control,boundary_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS004,half_encapsulated,boundary_distance,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS005,cracked_full_coverage,boundary_distance,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS006,strong_full_coverage,boundary_distance,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS001,control,crack_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS002,half_encapsulated,crack_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS003,control,crack_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS004,half_encapsulated,crack_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS005,cracked_full_coverage,crack_distance,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS006,strong_full_coverage,crack_distance,0,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS001,control,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS002,half_encapsulated,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS003,control,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS004,half_encapsulated,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS005,cracked_full_coverage,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability
+AS006,strong_full_coverage,smooth_bulk_or_edge,1,1,0,transport-sensitive connectivity support; not microscopic strain or weak-link probability

@@ -1,0 +1,11 @@
+device,region_class,transport_sensitive_support,support_label,not_a_microscopic_probability
+AS004,coverage,0.55,partial,1
+AS004,boundary,0.76,strong,1
+AS004,bulk,0.42,context,1
+AS005,coverage,0.61,partial,1
+AS005,boundary,0.72,strong,1
+AS005,crack,0.7,supported_not_unique,1
+AS005,bulk,0.48,context,1
+AS006,coverage,0.68,frequent,1
+AS006,boundary,0.84,strong,1
+AS006,bulk,0.52,context,1

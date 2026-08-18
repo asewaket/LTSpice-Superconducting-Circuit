@@ -1,0 +1,5 @@
+variant_id,Tc_heterogeneity_enabled,spatial_connectivity_enabled,interpretation,status
+H0,0,0,no local-Tc heterogeneity and no structured connectivity,control_limit
+HT,1,0,local-Tc heterogeneity only,retained_partial_support
+HW,0,1,reduced spatial connectivity only,retained_required_connectivity_test
+HTW,1,1,local-Tc heterogeneity plus reduced spatial connectivity,preferred_joint_reduced_test

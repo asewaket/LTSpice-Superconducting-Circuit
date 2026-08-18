@@ -1,0 +1,7 @@
+candidate_id,description,effective_spatial_dof,uses_coverage,uses_boundary,uses_crack,allowed_primary,preferred_role,microscopic_claim_allowed
+S0_uniform,"Uniform connectivity W(x,y)=W0.",1,0,0,0,1,control_floor,0
+S1_coverage,"Coverage-versus-uncovered segmentation.",2,1,0,0,1,coarse_candidate,0
+S2_boundary,"Coverage plus boundary-sensitive connectivity.",3,1,1,0,1,interpretable_candidate,0
+S3_crack_extension,"Boundary-aware model with AS005 crack component.",4,1,1,1,1,AS005_diagnostic_candidate,0
+S4_reduced_basis,"Small geometry-derived basis: coverage, boundary distance, crack distance, edge/bulk.",3,1,1,1,1,preferred_reduced_candidate,0
+Sfull_diagnostic_upper_bound,"Individual W_ij diagnostic upper bound only.",200,1,1,1,0,diagnostic_upper_bound_not_preferred,0

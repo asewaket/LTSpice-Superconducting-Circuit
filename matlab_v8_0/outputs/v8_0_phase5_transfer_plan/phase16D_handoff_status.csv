@@ -1,0 +1,14 @@
+item,status,note
+phase16D_closure,pass_spatial_model_reduction,Phase 16D closes if workflow gates pass; scientific limitations are retained.
+workflow_integrity,pass,Non-scientific execution/provenance gate aggregate.
+scientific_recoverability_failures,2,Count of expected scientific non-recoverability failures.
+preferred_connectivity_representation,reduced_geometry_class_basis,Machine-readable preferred spatial representation.
+preferred_candidate,S4_reduced_basis,Preferred nested candidate after complexity/stability penalty.
+unique_Wij_recovery,false,Individual link-level recovery remains false.
+boundary_structure,supported,Boundary support retained at region/component level.
+coverage_structure,partially_redundant,Coverage support is partial and partly redundant.
+AS005_crack_structure,supported_but_not_uniquely_decomposed,Crack support is AS005-local and nonunique.
+Tc_heterogeneity,retained_partial_support,Local-Tc heterogeneity retained as partial support.
+effective_spatial_dof,3,Small effective spatial degree count.
+dense_spatial_model,not_justified,Dense link map is not justified.
+next_phase,phase16E_final_recoverability_and_model_claim_freeze,Next read-only closure phase.

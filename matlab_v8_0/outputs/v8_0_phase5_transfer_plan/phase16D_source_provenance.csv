@@ -1,0 +1,10 @@
+item,value,note
+phase,phase16D_spatial_model_reduction,"Phase 16D spatial model reduction."
+source_commit_sha,6efa9ab7441d9f0cbf46d4fce50018354aea1b72,"Git commit captured before this runner writes outputs."
+source_tree_sha,dfd97a1e6179eaa442f7cb1d5eb77a94d698e0a3,"Git tree object captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when checkout is clean before this run writes outputs."
+frozen_phase16C_artifact_commit,e9f3a1c,"Canonical Phase 16C artifact-freeze commit consumed by policy."
+frozen_phase16C_artifact_commit_reachable,true,"True when the frozen Phase 16C artifact commit is an ancestor."
+provenance_scope,read_only_spatial_reduction_from_phase16C_ensemble,"No solver rerun, residual lookahead, new mechanism, or parameter retuning."

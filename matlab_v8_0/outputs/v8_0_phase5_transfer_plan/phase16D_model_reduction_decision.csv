@@ -1,0 +1,11 @@
+decision_item,decision,note
+uniform_connectivity_sufficient,no,"Uniform model remains the control floor but loses retained predictive information."
+coverage_segmentation_improves_prediction,partial,"Coverage is informative but overlaps with boundary effects."
+boundary_component_required,yes,"Boundary/structured bottleneck support survives reduction."
+AS005_crack_component_independently_supported,supported_but_not_unique,"AS005 crack support survives only as a grouped local component."
+boundary_coverage_crack_collapsible,yes_as_latent_connectivity,"Correlated amplitudes should be reported as latent connectivity directions."
+Tc_heterogeneity_independently_required,partial,"Local-Tc heterogeneity remains useful but not independently unique."
+spatial_degrees_of_freedom_justified,small_reduced_basis,"Preferred model keeps three effective spatial degrees of freedom."
+Phase16C_ensemble_stability,stable_at_component_level,"Stable at region/component level, not at individual-link level."
+unique_Wij_recovery,no,"Expected scientific limitation retained."
+phase16D_closure,pass_spatial_model_reduction,"Workflow closes despite expected non-recoverability failures."

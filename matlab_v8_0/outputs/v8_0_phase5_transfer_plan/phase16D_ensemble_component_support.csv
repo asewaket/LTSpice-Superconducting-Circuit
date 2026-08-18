@@ -1,0 +1,10 @@
+component,support_probability,support_class,retained,note
+structured_bottleneck,0.84,robustly_required,1,Best-supported class-level direction from Phase 16C ensemble.
+boundary_structure,0.82,robustly_required,1,Boundary term is required at region level.
+coverage_segmentation,0.58,frequently_supported,1,Coverage partially overlaps boundary information.
+AS005_crack_neighborhood,0.7,frequently_supported,1,Supported for AS005 but not uniquely separable from boundary.
+Tc_heterogeneity,0.62,frequently_supported,1,Kept as partial support independent of connectivity tests.
+uniform_background,0.9,robustly_required,1,Required baseline/control component.
+edge_distance,0.24,weakly_supported,0,Absorbed by smooth bulk/boundary basis.
+individual_Wij,0,non_identifiable_or_excluded,0,Explicitly prohibited as physical inference.
+dense_Pphi,0,non_identifiable_or_excluded,0,Excluded from primary field baseline.

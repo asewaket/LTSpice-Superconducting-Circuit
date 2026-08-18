@@ -1,0 +1,7 @@
+candidate_id,effective_spatial_dof,held_out_predictive_score,complexity_penalty,stability_penalty,parameter_stability,recoverability,total_reduction_score,rank,preferred
+S0_uniform,1,0,0.018,0,0.88,0.92,0.0448,3,0
+S1_coverage,2,0.03,0.036,0,0.66,0.58,0.0378,4,0
+S2_boundary,3,0.064,0.054,0,0.7,0.63,0.0569,2,0
+S3_crack_extension,4,0.071,0.072,0.012,0.62,0.55,0.0283,5,0
+S4_reduced_basis,3,0.076,0.054,0,0.78,0.74,0.0754,1,1
+Sfull_diagnostic_upper_bound,200,0.083,0.216,0.012,0.18,0.05,-0.1363,6,0

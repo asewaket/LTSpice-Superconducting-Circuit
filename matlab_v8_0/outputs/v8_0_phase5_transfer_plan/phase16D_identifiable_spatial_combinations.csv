@@ -1,0 +1,5 @@
+combo_id,spatial_combination,interpretation,report_individual_parameters
+mode_1,reduced_spatial_direction_1,structured bottleneck versus uniform background,0
+mode_2,reduced_spatial_direction_2,Tc heterogeneity versus coverage connectivity,0
+mode_3,reduced_spatial_direction_3,crack/boundary grouped AS005 response,0
+mode_4,reduced_spatial_direction_4,lower-weight correlated direction,0

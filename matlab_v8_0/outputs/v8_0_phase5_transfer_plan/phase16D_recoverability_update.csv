@@ -1,0 +1,8 @@
+quantity,phase16D_recoverability,claim_policy
+uniform_background,retained,"may report as shared background term"
+structured_bottleneck_strength,identifiable_as_grouped_direction,"may report as class-level connectivity support"
+boundary_vs_coverage_decomposition,nonunique,"do not report unique amplitudes"
+AS005_crack_component,supported_not_uniquely_decomposed,"report as AS005-local support, not unique crack parameter"
+Tc_heterogeneity_amplitude,retained_partial_support,"report only with connectivity ablation context"
+individual_Wij,non_identifiable,"do not map or interpret physically"
+microscopic_weak_link_map,prohibited_claim,"do not claim"

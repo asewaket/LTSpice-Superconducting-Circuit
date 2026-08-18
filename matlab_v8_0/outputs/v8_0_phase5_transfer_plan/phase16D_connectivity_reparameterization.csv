@@ -1,0 +1,6 @@
+latent_component,source_parameters,before_reduction_mean_abs_correlation,after_reduction_mean_abs_correlation,reduced_role,unique_physical_decomposition
+Q_uniform_background,"W0,residual_shunt",0.18,0.18,retained_background,1
+Q_structured_bottleneck,"W_boundary_class,W_coverage_class,Ic0_scale",0.78,0.31,primary_identifiable_connectivity_direction,0
+Q_crack_specific,"W_crack_class,W_boundary_class",0.81,0.38,AS005_supported_but_not_uniquely_decomposed,0
+Q_Tc_heterogeneity,"Tc_scale,Tc_heterogeneity_amplitude",0.43,0.3,retained_partial_support,0
+Q_dense_Wij,"individual_link_Wij",NaN,NaN,prohibited_diagnostic_only,0

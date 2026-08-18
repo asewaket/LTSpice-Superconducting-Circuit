@@ -1,0 +1,7 @@
+component,delta_score_when_removed,support_class,retain_in_preferred_model,interpretation
+bulk_background,0.042,robustly_required,1,common residual and background connectivity path
+coverage_segmentation,0.018,frequently_supported_but_partly_redundant,1,coverage carries information but overlaps boundary response
+boundary_structure,0.052,robustly_required,1,transport-sensitive structured bottleneck
+AS005_crack_neighborhood,0.036,supported_but_not_uniquely_decomposed,1,AS005-specific crack/relaxation support
+edge_distance,0.006,weakly_supported,0,minor support absorbed into smooth bulk/boundary basis
+dense_link_map,0.004,non_identifiable,0,not justified by recoverability

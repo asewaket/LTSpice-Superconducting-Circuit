@@ -1,0 +1,5 @@
+penalty_component,penalty_value,applies_to,note
+spatial_degree_of_freedom,0.018,all_candidates,Explicit complexity penalty; not a BIC or formal evidence.
+unstable_component,0.012,components_with_weak_ensemble_support,Encourages class-level stable combinations over split amplitudes.
+dense_Wij,1,Sfull_diagnostic_upper_bound,Dense individual weak-link map is diagnostic only.
+manual_residual_fit,Inf,prohibited,No residual lookahead or manual period/geometry fitting in Phase 16D.
