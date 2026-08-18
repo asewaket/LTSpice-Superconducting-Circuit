@@ -2027,7 +2027,7 @@ cfg.phase16E.figureBaseFile = fullfile(cfg.outputDir, ...
 cfg.phase16E.description = ...
     'Final recoverability and model-claim freeze after Phase 16D reduction';
 cfg.phase16E.frozenPhase15EArtifactCommit = "127141b";
-cfg.phase16E.frozenPhase16DSourceCommit = "1bc1ceb";
+cfg.phase16E.frozenPhase16DArtifactCommit = "8d46ed6";
 cfg.phase16E.nextPhase = "phase17_final_release_or_targeted_future_work";
 cfg.phase16E.noNewMechanism = true;
 cfg.phase16E.noParameterRetuning = true;

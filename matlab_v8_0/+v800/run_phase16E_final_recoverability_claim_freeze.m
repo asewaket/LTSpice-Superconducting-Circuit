@@ -121,7 +121,7 @@ end
 function provenance = build_source_provenance(cfg)
 sourceStatus = v800.git_tree_status(cfg.repoRoot);
 phase15ECommit = string(cfg.phase16E.frozenPhase15EArtifactCommit);
-phase16DCommit = string(cfg.phase16E.frozenPhase16DSourceCommit);
+phase16DCommit = string(cfg.phase16E.frozenPhase16DArtifactCommit);
 item = [
     "phase"
     "source_commit_sha"
@@ -131,8 +131,8 @@ item = [
     "source_pre_run_clean"
     "frozen_phase15E_artifact_commit"
     "frozen_phase15E_artifact_commit_reachable"
-    "frozen_phase16D_source_commit"
-    "frozen_phase16D_source_commit_reachable"
+    "frozen_phase16D_artifact_commit"
+    "frozen_phase16D_artifact_commit_reachable"
     "provenance_scope"
     ];
 value = [
@@ -157,8 +157,8 @@ note = [
     "True only when source tree is fully clean before output generation."
     "Closed Phase 15E AS006 field adequacy artifact commit."
     "True when Phase 15E artifact commit is in history."
-    "Phase 16D spatial reduction source commit expected before artifacts."
-    "True when Phase 16D source commit is in history."
+    "Closed Phase 16D spatial reduction artifact commit."
+    "True when Phase 16D artifact commit is in history."
     "No solver rerun, residual lookahead, new mechanism, or parameter retuning."
     ];
 provenance = table(item, value, note);
@@ -509,7 +509,7 @@ phase16DClosed = lookup_equals(lookup_value(inputs.phase16DHandoff, ...
 phase15EReachable = lookup_equals(lookup_value(sourceProvenance, ...
     "frozen_phase15E_artifact_commit_reachable"), "true");
 phase16DReachable = lookup_equals(lookup_value(sourceProvenance, ...
-    "frozen_phase16D_source_commit_reachable"), "true");
+    "frozen_phase16D_artifact_commit_reachable"), "true");
 preferredFieldIsPB = preferredReducedModel.field_component(1) == ...
     string(cfg.phase16E.primaryFieldModel);
 preferredSpatialFrozen = preferredReducedModel.spatial_representation(1) == ...
@@ -527,7 +527,7 @@ gate = [
     "Phase 16C profile ensemble consumed"
     "Phase 16D spatial reduction consumed"
     "Phase 15E artifact commit reachable"
-    "Phase 16D source commit reachable"
+    "Phase 16D artifact commit reachable"
     "No new physical mechanism"
     "No parameter retuning"
     "No solver rerun"
@@ -574,7 +574,7 @@ note = [
     "Uses Phase 16C profile and pseudo-objective ensemble."
     "Uses Phase 16D reduced spatial basis and claim policy."
     "Canonical Phase 15E artifact commit must be in history."
-    "Phase 16D source commit must be in history before final freeze."
+    "Canonical Phase 16D artifact commit must be in history before final freeze."
     "No topology, vortex, heating, new phase dynamics, or microscopy term."
     "No parameter changes or residual rescoring."
     "No solver execution in Phase 16E."
