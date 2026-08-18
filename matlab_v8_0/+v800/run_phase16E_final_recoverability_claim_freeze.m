@@ -663,16 +663,19 @@ end
 function value = lookup_value(T, key)
 value = "";
 names = string(T.Properties.VariableNames);
+normalizedNames = normalize_lookup_text(names);
 keyNames = ["item", "field", "key", "gate", "claim", ...
     "decision_item", "quantity", "component"];
 valueNames = ["status", "value", "outcome", "decision"];
 keyColumn = "";
 keyNeedle = normalize_lookup_text(key);
 for i = 1:numel(keyNames)
-    if any(names == keyNames(i))
-        candidate = normalize_lookup_text(T.(keyNames(i)));
+    nameIdx = find(normalizedNames == normalize_lookup_text(keyNames(i)), ...
+        1);
+    if ~isempty(nameIdx)
+        candidate = normalize_lookup_text(T.(names(nameIdx)));
         if any(candidate == keyNeedle)
-            keyColumn = keyNames(i);
+            keyColumn = names(nameIdx);
             break;
         end
     end
@@ -682,8 +685,10 @@ if keyColumn == ""
 end
 row = normalize_lookup_text(T.(keyColumn)) == keyNeedle;
 for i = 1:numel(valueNames)
-    if any(names == valueNames(i))
-        value = string(T.(valueNames(i))(find(row, 1)));
+    nameIdx = find(normalizedNames == normalize_lookup_text(valueNames(i)), ...
+        1);
+    if ~isempty(nameIdx)
+        value = string(T.(names(nameIdx))(find(row, 1)));
         value = clean_lookup_value(value);
         return;
     end
