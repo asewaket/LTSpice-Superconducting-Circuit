@@ -123,6 +123,7 @@ end
 function inputs = load_inputs(cfg)
 inputs = struct();
 inputs.phase16CHandoff = read_required_table(cfg.phase16C.handoffStatusFile);
+inputs.phase16CHandoffText = read_required_text(cfg.phase16C.handoffStatusFile);
 inputs.phase16CSourceProvenance = read_required_table( ...
     cfg.phase16C.sourceProvenanceFile);
 inputs.parameterSamples = read_required_table(cfg.phase16C.parameterSamplesFile);
@@ -147,6 +148,13 @@ if exist(path, 'file') ~= 2
 end
 T = readtable(path, 'TextType', 'string', ...
     'VariableNamingRule', 'preserve', 'Delimiter', ',');
+end
+
+function text = read_required_text(path)
+if exist(path, 'file') ~= 2
+    error('Required Phase 16D input is missing: %s', path);
+end
+text = string(fileread(path));
 end
 
 function provenance = build_source_provenance(cfg)
@@ -689,13 +697,17 @@ T = table(decision_item, decision, note);
 end
 
 function gates = build_gate_summary(cfg, sourceProvenance, inputs, preferred)
-phase16CClosureOk = table_has_key_value(inputs.phase16CHandoff, ...
+phase16CClosureOk = handoff_has_key_value(inputs.phase16CHandoff, ...
+    inputs.phase16CHandoffText, ...
     "phase16C_closure", "pass_profile_pseudo_posterior_exploration");
-phase16CWorkflowOk = table_has_key_value(inputs.phase16CHandoff, ...
+phase16CWorkflowOk = handoff_has_key_value(inputs.phase16CHandoff, ...
+    inputs.phase16CHandoffText, ...
     "workflow_integrity", "pass");
-phase16CPseudoPosteriorOk = table_has_key_value(inputs.phase16CHandoff, ...
+phase16CPseudoPosteriorOk = handoff_has_key_value(inputs.phase16CHandoff, ...
+    inputs.phase16CHandoffText, ...
     "pseudo_posterior_used", "true");
-phase16CNextPhaseOk = table_has_key_value(inputs.phase16CHandoff, ...
+phase16CNextPhaseOk = handoff_has_key_value(inputs.phase16CHandoff, ...
+    inputs.phase16CHandoffText, ...
     "next_phase", "phase16D_spatial_model_reduction");
 phase16CConsumed = phase16CClosureOk && phase16CWorkflowOk && ...
     phase16CPseudoPosteriorOk && phase16CNextPhaseOk;
@@ -912,6 +924,21 @@ for k = 1:numel(keyColumns)
     end
 end
 tf = table_contains_key_value_pair(T, keyNeedle, expectedNeedle);
+end
+
+function tf = handoff_has_key_value(T, rawText, key, expected)
+tf = table_has_key_value(T, key, expected);
+if tf
+    return;
+end
+tf = raw_text_has_key_value(rawText, key, expected);
+end
+
+function tf = raw_text_has_key_value(rawText, key, expected)
+text = normalize_lookup_text(rawText);
+keyNeedle = normalize_lookup_text(key);
+expectedNeedle = normalize_lookup_text(expected);
+tf = contains(text, keyNeedle) && contains(text, expectedNeedle);
 end
 
 function tf = table_contains_key_value_pair(T, keyNeedle, expectedNeedle)
