@@ -89,8 +89,14 @@ inputs.phase15EClaims = read_required_table(cfg.phase15E.claimDecisionFile);
 inputs.phase16AHandoff = read_required_table(cfg.phase16A.handoffStatusFile);
 inputs.phase16AGates = read_required_table(cfg.phase16A.gateSummaryFile);
 inputs.phase16BHandoff = read_required_table(cfg.phase16B.handoffStatusFile);
+inputs.phase16BClosure = read_handoff_status_value( ...
+    cfg.phase16B.handoffStatusFile, "phase16B_closure");
 inputs.phase16BGates = read_required_table(cfg.phase16B.gateSummaryFile);
 inputs.phase16CHandoff = read_required_table(cfg.phase16C.handoffStatusFile);
+inputs.phase16CClosure = read_handoff_status_value( ...
+    cfg.phase16C.handoffStatusFile, "phase16C_closure");
+inputs.phase16CDecision = read_handoff_status_value( ...
+    cfg.phase16C.handoffStatusFile, "phase16C_decision");
 inputs.phase16CGates = read_required_table(cfg.phase16C.gateSummaryFile);
 inputs.phase16CRecoverability = read_required_table( ...
     cfg.phase16C.recoverabilityUpdateFile);
@@ -116,6 +122,34 @@ if exist(pathValue, 'file') ~= 2
 end
 T = readtable(pathValue, 'TextType', 'string', ...
     'VariableNamingRule', 'preserve', 'Delimiter', ',');
+end
+
+function value = read_handoff_status_value(pathValue, key)
+raw = fileread(pathValue);
+lines = regexp(raw, '\r\n|\n|\r', 'split');
+keyNeedle = normalize_lookup_text(key);
+value = "";
+for i = 1:numel(lines)
+    line = strtrim(string(lines{i}));
+    if line == ""
+        continue;
+    end
+    commaIdx = strfind(char(line), ',');
+    if numel(commaIdx) < 1
+        continue;
+    end
+    rowKey = extractBefore(line, commaIdx(1));
+    if normalize_lookup_text(rowKey) ~= keyNeedle
+        continue;
+    end
+    if numel(commaIdx) >= 2
+        value = extractBetween(line, commaIdx(1) + 1, commaIdx(2) - 1);
+    else
+        value = extractAfter(line, commaIdx(1));
+    end
+    value = clean_lookup_value(value);
+    return;
+end
 end
 
 function provenance = build_source_provenance(cfg)
@@ -182,8 +216,8 @@ phase = [
 closure = [
     lookup_value(inputs.phase15EHandoff, "phase15E_closure")
     lookup_value(inputs.phase16AHandoff, "phase16A_closure")
-    lookup_value(inputs.phase16BHandoff, "phase16B_closure")
-    lookup_value(inputs.phase16CHandoff, "phase16C_closure")
+    inputs.phase16BClosure
+    inputs.phase16CClosure
     lookup_value(inputs.phase16DHandoff, "phase16D_closure")
     "pending_this_run"
     ];
@@ -446,7 +480,7 @@ summary_status = [
     "structured_support_selected_devices_M0star_sufficient_controls"
     lookup_value(inputs.phase15EHandoff, "phase15E_decision")
     "directionally_supported_but_not_universal"
-    lookup_value(inputs.phase16CHandoff, "phase16C_decision")
+    inputs.phase16CDecision
     lookup_value(inputs.phase16DHandoff, "phase16D_closure")
     "transport_sensitive_region_level_only"
     ];
@@ -500,10 +534,9 @@ phase15EClosed = lookup_equals(lookup_value(inputs.phase15EHandoff, ...
     "pass_read_only_AS006_field_adequacy_assessment");
 phase16AClosed = lookup_starts_with(lookup_value(inputs.phase16AHandoff, ...
     "phase16A_closure"), "pass");
-phase16BClosed = lookup_starts_with(lookup_value(inputs.phase16BHandoff, ...
-    "phase16B_closure"), "pass");
-phase16CClosed = lookup_equals(lookup_value(inputs.phase16CHandoff, ...
-    "phase16C_closure"), "pass_profile_pseudo_posterior_exploration");
+phase16BClosed = lookup_starts_with(inputs.phase16BClosure, "pass");
+phase16CClosed = lookup_equals(inputs.phase16CClosure, ...
+    "pass_profile_pseudo_posterior_exploration");
 phase16DClosed = lookup_equals(lookup_value(inputs.phase16DHandoff, ...
     "phase16D_closure"), "pass_spatial_model_reduction");
 phase15EReachable = lookup_equals(lookup_value(sourceProvenance, ...
