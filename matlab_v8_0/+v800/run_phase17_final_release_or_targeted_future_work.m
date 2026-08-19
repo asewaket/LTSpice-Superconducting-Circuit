@@ -173,7 +173,6 @@ end
 
 function claims = build_final_claim_table(inputs)
 allowed = inputs.phase16EClaims;
-allowed.claim_source = repmat("phase16E_allowed", height(allowed), 1);
 if any(strcmp(allowed.Properties.VariableNames, "claim"))
     allowed.claim_text = allowed.claim;
 elseif any(strcmp(allowed.Properties.VariableNames, "item"))
@@ -181,7 +180,12 @@ elseif any(strcmp(allowed.Properties.VariableNames, "item"))
 else
     allowed.claim_text = string(allowed{:, 1});
 end
-allowed.allowed = true(height(allowed), 1);
+if any(strcmp(allowed.Properties.VariableNames, "allowed_in_manuscript"))
+    allowed.allowed = logical(allowed.allowed_in_manuscript);
+else
+    allowed.allowed = true(height(allowed), 1);
+end
+allowed.claim_source = repmat("phase16E_final_claims", height(allowed), 1);
 
 blocked = inputs.phase16EExcludedClaims;
 blocked.claim_source = repmat("phase16E_blocked", height(blocked), 1);
