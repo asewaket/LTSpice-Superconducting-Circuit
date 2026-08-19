@@ -2038,6 +2038,33 @@ cfg.phase16E.excludeDensePphiFromPrimary = true;
 cfg.phase16E.uniqueWijInferenceProhibited = true;
 cfg.phase16E.sharedQuantitativePredictorClaimAllowed = false;
 
+cfg.phase17.releaseBoundaryManifestFile = fullfile(cfg.outputDir, ...
+    'phase17_release_boundary_manifest.csv');
+cfg.phase17.finalClaimTableFile = fullfile(cfg.outputDir, ...
+    'phase17_final_claim_table.csv');
+cfg.phase17.futureWorkQueueFile = fullfile(cfg.outputDir, ...
+    'phase17_targeted_future_work_queue.csv');
+cfg.phase17.scopePolicyFile = fullfile(cfg.outputDir, ...
+    'phase17_scope_policy.csv');
+cfg.phase17.gateSummaryFile = fullfile(cfg.outputDir, ...
+    'phase17_gate_summary.csv');
+cfg.phase17.handoffStatusFile = fullfile(cfg.outputDir, ...
+    'phase17_handoff_status.csv');
+cfg.phase17.sourceProvenanceFile = fullfile(cfg.outputDir, ...
+    'phase17_source_provenance.csv');
+cfg.phase17.figureBaseFile = fullfile(cfg.outputDir, ...
+    'phase17_final_release_and_future_work_summary');
+cfg.phase17.description = ...
+    'Final release boundary and targeted future-work handoff after Phase 16E';
+cfg.phase17.frozenPhase16EArtifactCommit = "0855ee1";
+cfg.phase17.noNewMechanism = true;
+cfg.phase17.noParameterRetuning = true;
+cfg.phase17.noSolverRerun = true;
+cfg.phase17.closedModelFamily = "Mred_PB_geometry_basis";
+cfg.phase17.primaryFieldModel = "PB";
+cfg.phase17.futureWorkIsOptional = true;
+cfg.phase17.nextPhase = "post_v9_targeted_future_work_or_manuscript_packaging";
+
 cfg.phase5D.calibrationSeeds = (101:160).';
 cfg.phase5D.validationSeeds = (1001:1080).';
 cfg.phase5D.boundaryLambdaW = [0 0.02 0.05 0.10 0.20 0.40 0.70 1.00].';
