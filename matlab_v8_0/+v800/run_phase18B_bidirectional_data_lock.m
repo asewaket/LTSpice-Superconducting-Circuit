@@ -15,6 +15,7 @@ inputs = load_inputs(cfg);
 sourceProvenance = build_source_provenance(cfg);
 
 inputLedgerSchema = build_input_ledger_schema();
+inputLedgerTemplate = build_input_ledger_template(cfg, inputs);
 [inputLedger, inputStatus] = read_optional_input_ledger(cfg, ...
     inputLedgerSchema);
 rawDataLock = build_raw_data_lock(cfg, inputs, inputLedger);
@@ -27,6 +28,7 @@ handoffStatus = build_handoff_status(cfg, gateSummary, inputStatus, ...
     importIntegrityAudit);
 
 writetable(inputLedgerSchema, cfg.phase18B.inputLedgerSchemaFile);
+writetable(inputLedgerTemplate, cfg.phase18B.inputLedgerTemplateFile);
 writetable(rawDataLock, cfg.phase18B.rawDataLockFile);
 writetable(branchCoverage, cfg.phase18B.branchCoverageFile);
 writetable(importIntegrityAudit, cfg.phase18B.importIntegrityAuditFile);
@@ -47,6 +49,7 @@ out = struct();
 out.config = cfg;
 out.inputs = inputs;
 out.inputLedgerSchema = inputLedgerSchema;
+out.inputLedgerTemplate = inputLedgerTemplate;
 out.inputStatus = inputStatus;
 out.rawDataLock = rawDataLock;
 out.branchCoverage = branchCoverage;
@@ -61,6 +64,7 @@ end
 function paths = build_paths(cfg)
 paths = struct();
 paths.inputLedger = cfg.phase18B.inputLedgerFile;
+paths.inputLedgerTemplate = cfg.phase18B.inputLedgerTemplateFile;
 paths.inputLedgerSchema = cfg.phase18B.inputLedgerSchemaFile;
 paths.rawDataLock = cfg.phase18B.rawDataLockFile;
 paths.branchCoverage = cfg.phase18B.branchCoverageFile;
@@ -181,6 +185,53 @@ accepted_values = [
     "stable_identifier"
     ];
 schema = table(field, required, accepted_values);
+end
+
+function template = build_input_ledger_template(cfg, inputs)
+matrix = inputs.phase18ASweepRateMatrix;
+devices = string(matrix.device);
+tiers = string(matrix.sweep_rate_tier);
+channels = ["R1"; "R2"];
+directions = cfg.phase18B.requiredDirections;
+n = numel(devices) * numel(channels) * numel(directions);
+
+device = strings(n, 1);
+raw_file_path = strings(n, 1);
+raw_file_sha256 = strings(n, 1);
+measurement_channel = strings(n, 1);
+sweep_rate_tier = strings(n, 1);
+sweep_rate_A_per_s = NaN(n, 1);
+sweep_direction = strings(n, 1);
+current_axis_A = strings(n, 1);
+temperature_axis_K = strings(n, 1);
+zero_current_index = NaN(n, 1);
+units = strings(n, 1);
+matrix_orientation = strings(n, 1);
+finite_fraction = NaN(n, 1);
+duplicate_point_count = NaN(n, 1);
+missing_point_count = NaN(n, 1);
+run_id = strings(n, 1);
+
+idx = 0;
+for i = 1:numel(devices)
+    for c = 1:numel(channels)
+        for d = 1:numel(directions)
+            idx = idx + 1;
+            device(idx) = devices(i);
+            measurement_channel(idx) = channels(c);
+            sweep_rate_tier(idx) = tiers(i);
+            sweep_direction(idx) = directions(d);
+            run_id(idx) = join([device(idx), sweep_rate_tier(idx), ...
+                measurement_channel(idx), sweep_direction(idx)], "_");
+        end
+    end
+end
+
+template = table(device, raw_file_path, raw_file_sha256, ...
+    measurement_channel, sweep_rate_tier, sweep_rate_A_per_s, ...
+    sweep_direction, current_axis_A, temperature_axis_K, ...
+    zero_current_index, units, matrix_orientation, finite_fraction, ...
+    duplicate_point_count, missing_point_count, run_id);
 end
 
 function [ledger, statusTable] = read_optional_input_ledger(cfg, schema)
