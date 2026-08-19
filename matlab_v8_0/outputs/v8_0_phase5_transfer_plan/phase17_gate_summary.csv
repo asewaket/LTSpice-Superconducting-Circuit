@@ -1,0 +1,14 @@
+gate,outcome,condition,note
+Phase 16E closure consumed,pass,1,Phase 17 consumes the closed Phase 16E result.
+Phase 16E artifact commit reachable,pass,1,The Phase 16E artifact commit is reachable from this run.
+Closed model family retained,pass,1,The reduced model family is unchanged.
+PB retained as field model,pass,1,The monotonic AS006 field baseline remains PB.
+Reduced geometry basis retained,pass,1,The spatial representation remains reduced geometry classes.
+Unique Wij claim remains blocked,pass,1,Unique local W_ij recovery is not promoted.
+Shared quantitative predictor remains blocked,pass,1,A universal quantitative predictor is not promoted.
+Allowed and blocked claims separated,pass,1,Allowed uses and prohibited claims are machine-readable.
+Targeted future work queue emitted,pass,1,Future work is queued without reopening the closed model.
+No new mechanism,pass,1,No new physics class is introduced.
+No parameter retuning,pass,1,No model parameter is retuned.
+No solver rerun,pass,1,No solver or residual campaign is rerun.
+Clean provenance,pass,1,Source tree was clean before artifact generation.

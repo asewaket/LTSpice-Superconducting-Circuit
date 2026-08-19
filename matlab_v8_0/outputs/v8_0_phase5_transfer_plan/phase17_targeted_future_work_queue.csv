@@ -1,0 +1,6 @@
+work_item,priority,status,guardrail
+registered_Raman_spatial_rescore,2,optional_data_dependent,No Raman-transport fitting or unique strain-map claim.
+raw_field_metadata_expansion,1,targeted_if_raw_metadata_available,No electrothermal or hysteresis claim without sweep branches.
+sparse_phase_loop_exploration,3,deferred_after_closed_model,No dense Pphi primary claim or manual period fitting.
+additional_device_field_maps,2,future_experimental_extension,No relabeling of Phase 16E device conclusions.
+manuscript_claim_packaging,1,ready_after_phase17,Use frozen allowed/blocked claim tables.

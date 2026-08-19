@@ -1,0 +1,8 @@
+item,value
+phase17_closure,pass_final_release_future_work_handoff
+workflow_integrity,pass
+release_boundary,closed_after_phase16E
+closed_model_family,Mred_PB_geometry_basis
+preferred_field_model,PB
+future_work_status,optional_targeted_work_only
+next_phase,post_v9_targeted_future_work_or_manuscript_packaging

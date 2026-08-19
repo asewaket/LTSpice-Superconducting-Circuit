@@ -1,0 +1,10 @@
+item,value,note
+phase,phase17_final_release_or_targeted_future_work,"Final release boundary and targeted future-work handoff."
+source_commit_sha,fe6dabb6026d41994cfecae1111426eba6a40c43,"Git commit captured before this runner writes outputs."
+source_tree_sha,f0a5c673e6007ac2201cd772a97ea68ec4ce6a81,"Git tree captured before output generation."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when source tree is fully clean before output generation."
+frozen_phase16E_artifact_commit,0855ee1,"Closed Phase 16E artifact commit."
+frozen_phase16E_artifact_commit_reachable,true,"True when Phase 16E artifact commit is in history."
+provenance_scope,read_only_release_boundary_and_future_work_handoff,"No solver rerun, residual lookahead, new mechanism, or parameter retuning."

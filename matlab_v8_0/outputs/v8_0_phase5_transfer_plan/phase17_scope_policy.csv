@@ -1,0 +1,7 @@
+policy_item,policy_value
+closed_model_family,Mred_PB_geometry_basis
+new_physics,prohibited_in_phase17
+parameter_retuning,prohibited_in_phase17
+solver_rerun,prohibited_in_phase17
+future_work,allowed_only_as_separate_targeted_queue
+claim_boundary,Phase 16E claims are historical frozen input
