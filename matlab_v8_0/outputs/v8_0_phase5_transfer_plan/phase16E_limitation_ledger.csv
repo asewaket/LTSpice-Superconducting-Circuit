@@ -1,0 +1,7 @@
+limitation,status,preserved_as_scientific_result,interpretation
+shared_quantitative_field_predictor,failed,1,"Do not claim transferable quantitative field prediction."
+phase_interference_quantitative_adequacy,false,1,"Pphi remains context, not primary model."
+unique_Wij_recovery,false,1,"Individual link maps remain non-identifiable."
+boundary_coverage_unique_decomposition,failed_expected,1,"Report latent connectivity directions instead."
+microscopic_map_claim,prohibited,1,"Region support is not microscopic probability."
+formal_likelihood_or_posterior,not_claimed,1,"Phase 16C weights are pseudo-objective, not formal posterior."

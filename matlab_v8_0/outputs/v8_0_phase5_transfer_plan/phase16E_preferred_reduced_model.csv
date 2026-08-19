@@ -1,0 +1,2 @@
+model_id,field_component,spatial_representation,preferred_candidate,effective_spatial_dof,structured_support,unique_Wij_recovery,dense_Pphi_primary,retained_components,model_policy
+Mred_PB_geometry_basis,PB,reduced_geometry_class_basis,S4_reduced_basis,3,0.84,0,0,"uniform_background,structured_bottleneck,boundary,coverage_partial,AS005_crack_grouped,Tc_partial",reduced class-level predictor; not a microscopic weak-link map

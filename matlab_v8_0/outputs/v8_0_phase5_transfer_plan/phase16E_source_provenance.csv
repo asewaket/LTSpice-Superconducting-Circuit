@@ -1,0 +1,12 @@
+item,value,note
+phase,phase16E_final_recoverability_claim_freeze,"Final Phase 16 recoverability and claim freeze."
+source_commit_sha,ff57c13726f64047a4debbdec5da5f3db6528e84,"Git commit captured before this runner writes outputs."
+source_tree_sha,8ae901b8d7eba26a713f45b53ae62db256d32dbf,"Git tree captured before output generation."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when source tree is fully clean before output generation."
+frozen_phase15E_artifact_commit,127141b,"Closed Phase 15E AS006 field adequacy artifact commit."
+frozen_phase15E_artifact_commit_reachable,true,"True when Phase 15E artifact commit is in history."
+frozen_phase16D_artifact_commit,8d46ed6,"Closed Phase 16D spatial reduction artifact commit."
+frozen_phase16D_artifact_commit_reachable,true,"True when Phase 16D artifact commit is in history."
+provenance_scope,read_only_phase16_model_claim_freeze,"No solver rerun, residual lookahead, new mechanism, or parameter retuning."

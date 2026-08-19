@@ -1,0 +1,15 @@
+item,status,note
+phase16E_closure,pass_final_recoverability_claim_freeze,Final Phase 16 closure.
+workflow_integrity,pass,All non-scientific gates must pass.
+preferred_field_model,PB,Frozen AS006 field baseline from Phase 15E.
+preferred_spatial_representation,reduced_geometry_class_basis,Frozen reduced spatial representation from Phase 16D.
+preferred_reduced_model,Mred_PB_geometry_basis,Machine-readable final reduced model identifier.
+effective_spatial_dof,3,Preferred model effective spatial degree count.
+structured_connectivity,supported_at_class_level,Structured connectivity may be reported only at class level.
+monotonic_field_suppression,monotonic_field_suppression_supported,AS006 monotonic field suppression claim from Phase 15E.
+unique_Wij_recovery,false,Individual W_ij recovery remains false.
+shared_quantitative_predictor,not_established,No shared quantitative predictor is claimed.
+static_phase_interference,directionally_informative_but_quantitatively_inadequate,Static phase interference retained as limited context.
+topological_claim,prohibited,No topological claim is allowed.
+microscopic_map_claim,prohibited,No microscopic weak-link map is allowed.
+next_phase,phase17_final_release_or_targeted_future_work,Next roadmap stage after Phase 16 claim freeze.

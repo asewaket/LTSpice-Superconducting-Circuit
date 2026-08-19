@@ -1,0 +1,9 @@
+excluded_claim,reason,allowed_future_reopen_trigger
+topological_superconductivity,not modeled or tested,new phase-specific theory and data
+vortex_dynamics,not modeled,field-resolved vortex observables
+electrothermal_memory,not identifiable from available sweep metadata,locked sweep branches and retrapping metadata
+Josephson_phase_dynamics,static phase constraints only,explicit time-dependent RSJ/phase data
+unique_local_strain_map,Raman/mechanical registration insufficient,registered spatial Raman/strain fields
+unique_microscopic_pairing_symmetry,outside model scope,new microscopic measurements
+unique_individual_weak_link_map,Phase 16C-D recoverability failure,new identifiable observables
+universal_quantitative_field_predictor,Phase 15E scientific adequacy failure,new calibrated multimodal predictor
