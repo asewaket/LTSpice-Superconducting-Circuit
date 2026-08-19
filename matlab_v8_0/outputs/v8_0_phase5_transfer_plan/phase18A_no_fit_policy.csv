@@ -1,0 +1,10 @@
+item,status
+model_family,closed_historical_input
+new_mechanism,blocked
+parameter_retuning,blocked
+solver_rerun,blocked
+thermal_feedback_fit,blocked
+sweep_rate_fit,blocked
+probe_relabeling,blocked
+allowed_analysis,metadata_and_protocol_only
+interpretation_limit,future_data_can_test_limitations_not_rewrite_release

@@ -1,0 +1,8 @@
+item,value
+phase18A_closure,pass_bidirectional_sweep_protocol_freeze
+workflow_integrity,pass
+selected_experiment_id,E05_bidirectional_sweep_rate
+selected_measurement,Bidirectional current sweeps with sweep-rate series
+model_status,closed_not_reopened
+future_data_status,protocol_frozen_data_not_yet_acquired
+next_phase,phase18B_acquisition_or_import_of_bidirectional_sweep_rate_data

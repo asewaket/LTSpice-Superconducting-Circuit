@@ -1,0 +1,8 @@
+item,value,note
+phase,phase18A_bidirectional_sweep_protocol,"Protocol freeze for the top Phase 18 near-term measurement."
+source_commit_sha,ee5f7244bc927aae4d121cf6f1f869e27ca2ef0a,"Git commit captured before this runner writes outputs."
+source_tree_sha,2ca8fd32620d95a13be456016da49a79caafae33,"Git tree captured before output generation."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when source tree is fully clean before output generation."
+provenance_scope,protocol_freeze_no_solver_rerun,"No model update, fitting, parameter retuning, or solver execution."

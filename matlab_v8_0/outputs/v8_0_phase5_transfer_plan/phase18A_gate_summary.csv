@@ -1,0 +1,12 @@
+gate,outcome,condition,note
+Phase 18 closure consumed,pass,1,"Phase 18A consumes the closed experimental-design optimization."
+Top-ranked E05 selected,pass,1,"The frozen protocol targets Phase 18 rank-1 near-term experiment."
+Protocol emitted,pass,1,"A machine-readable protocol table is available."
+Sweep-rate matrix emitted,pass,1,"Three sweep-rate tiers are declared for AS001, AS004, and AS006."
+Required metadata schema emitted,pass,1,"The raw-data metadata required for future import is declared."
+Acceptance criteria emitted,pass,1,"Future data lock gates are declared before data inspection."
+No-fit policy emitted,pass,1,"The phase blocks model rescue by extra flexibility."
+No new mechanism,pass,1,"Phase 18A freezes protocol only."
+No parameter retuning,pass,1,"No released model parameter is changed."
+No solver rerun,pass,1,"No transport or field solver is rerun."
+Clean provenance,pass,1,"Source tree was clean before output generation."

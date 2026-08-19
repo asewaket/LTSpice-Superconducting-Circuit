@@ -1,0 +1,10 @@
+device,sweep_rate_tier,current_direction,required_channels,temperature_role,holdout_role,required
+AS001,slow,up_and_down,R1|R2_when_available,lowT_and_transition,rate_transfer_holdout,1
+AS001,nominal,up_and_down,R1|R2_when_available,lowT_and_transition,training_reference,1
+AS001,fast,up_and_down,R1|R2_when_available,lowT_and_transition,rate_transfer_holdout,1
+AS004,slow,up_and_down,R1|R2_when_available,lowT_and_transition,rate_transfer_holdout,1
+AS004,nominal,up_and_down,R1|R2_when_available,lowT_and_transition,training_reference,1
+AS004,fast,up_and_down,R1|R2_when_available,lowT_and_transition,rate_transfer_holdout,1
+AS006,slow,up_and_down,R1|R2_when_available,lowT_transition_and_field_reference,field_context_holdout,1
+AS006,nominal,up_and_down,R1|R2_when_available,lowT_transition_and_field_reference,training_reference,1
+AS006,fast,up_and_down,R1|R2_when_available,lowT_transition_and_field_reference,field_context_holdout,1

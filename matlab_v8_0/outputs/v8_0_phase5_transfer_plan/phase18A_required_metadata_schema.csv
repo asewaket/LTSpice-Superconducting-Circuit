@@ -1,0 +1,16 @@
+field,required,accepted_values
+device_id,1,AS001|AS004|AS006
+raw_file_path,1,absolute_or_repository_relative_path
+raw_file_sha256,1,hex_sha256
+measurement_channel,1,R1|R2|declared_single_channel
+current_axis_A,1,monotonic_or_signed_axis_vector
+temperature_axis_K,1,axis_vector_or_declared_temperature_point
+sweep_direction,1,up|down|bidirectional_segment
+sweep_rate_A_per_s,1,positive_numeric
+source_meter_range,1,declared_instrument_range
+voltage_compliance,1,declared_voltage_limit_or_nan_if_not_set
+field_T,0,numeric; zero_field_for_primary_protocol
+zero_current_index,1,positive_integer
+matrix_orientation,1,current_by_temperature|temperature_by_current
+units,1,A|K|Ohm_or_dVdI_units
+timestamp_or_run_id,1,stable_identifier

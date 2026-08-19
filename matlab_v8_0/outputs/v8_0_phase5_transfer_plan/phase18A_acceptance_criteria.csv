@@ -1,0 +1,11 @@
+criterion,required_result,note
+phase18_recommendation_consumed,pass,Protocol must derive from Phase 18 ranking.
+bidirectional_sweeps_present,pass,Up and down branches are required for hysteresis/retrapping.
+at_least_three_sweep_rates,pass,Rate dependence is the primary new observable.
+R1_R2_channel_identity_locked,pass,R1/R2 cannot become independent model channels.
+temperature_axis_locked,pass,Temperature coordinates must be stable before analysis.
+raw_checksums_recorded,pass,Raw provenance is mandatory.
+no_probe_relabeling,pass,No channel fallback or relabeling is allowed.
+no_parameter_fit,pass,18A freezes design only; no fitting occurs.
+thermal_trigger_predeclared,pass,Criteria for optional 14C-like thermal extension are declared first.
+heldout_rate_policy_declared,pass,One or more sweep-rate tiers must remain held out.
