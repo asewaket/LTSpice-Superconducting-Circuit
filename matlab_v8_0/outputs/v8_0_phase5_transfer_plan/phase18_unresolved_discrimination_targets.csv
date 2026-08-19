@@ -1,0 +1,11 @@
+target_id,ambiguity,target_class,current_status,needed_observable
+T01_boundary_vs_coverage,W_boundary versus W_coverage,connectivity,unresolved_after_phase17,"additional voltage probes or orthogonal current injection"
+T02_boundary_vs_crack,W_boundary versus W_crack,connectivity,unresolved_after_phase17,"crack-aware probes, imaging, or deliberate notch geometry"
+T03_boundary_vs_Ic0,W_boundary versus global Ic0,connectivity_current,unresolved_after_phase17,"multi-current geometry and nonlinear Ic constraints"
+T04_Tc_vs_coverage,Tc heterogeneity versus W_coverage,local_Tc_connectivity,unresolved_after_phase17,"registered Raman plus transport and designed controls"
+T05_absolute_strain_tensor,Absolute/local strain tensor,mechanical,unresolved_after_phase17,"registered polarization Raman and elasticity model"
+T06_microscopic_weak_link_location,Microscopic weak-link locations,spatial_localization,unresolved_after_phase17,"local magnetic/current imaging or dense probe array"
+T07_field_suppression_vs_interference,Conventional field suppression versus limited coherent interference,field_response,unresolved_after_phase17,"field-angle sweeps and held-out AS006 field maps"
+T08_Josephson_vs_vortex_dynamics,Josephson switching versus vortex-mediated dynamics,dynamic_nonlinear,unresolved_after_phase17,"up/down sweeps, sweep-rate dependence, or microwave response"
+T09_order_parameter_symmetry,Order-parameter symmetry,microscopic,unresolved_after_phase17,"phase-sensitive spectroscopy beyond transport-only maps"
+T10_thermal_or_retrapping_dynamics,Electrothermal or retrapping dynamics,dynamic_nonlinear,unresolved_after_phase17,"up/down sweeps with retrapping and sweep-rate metadata"

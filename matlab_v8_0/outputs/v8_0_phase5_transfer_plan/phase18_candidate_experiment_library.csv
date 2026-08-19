@@ -1,0 +1,10 @@
+experiment_id,candidate_measurement,measurement_family,primary_target,experimental_difficulty,near_term_feasible,uses_released_model_only,requires_new_physics,notes
+E01_extra_voltage_probes,Additional voltage-probe configurations,transport_geometry,W_boundary_vs_W_coverage,2,1,1,0,"Most direct low-complexity path to spatial connectivity sensitivity."
+E02_orthogonal_current_injection,Parallel and perpendicular current injection,transport_geometry,W_boundary_vs_W_coverage,2,1,1,0,"Tests boundary bottlenecks by changing current direction."
+E03_designed_stressor_geometries,Purpose-designed stressor/control geometries,device_design,boundary_coverage_crack_controls,3,1,1,0,"Creates clean mechanism-discrimination devices rather than patching fits."
+E04_registered_Raman_transport,Registered Raman plus transport,multimodal_registration,strain_connectivity_coupling,3,1,1,0,"Turns Raman from contextual evidence into a registered mechanical constraint."
+E05_bidirectional_sweep_rate,Bidirectional current sweeps with sweep-rate series,nonlinear_dynamics,thermal_retrapping_identifiability,2,1,1,0,"Makes thermal, retrapping, and hysteretic switching identifiable."
+E06_field_angle_sweep,Field sweep direction and angle dependence,field_response,field_suppression_vs_interference,3,1,1,0,"Separates monotonic suppression, angular anisotropy, and interference."
+E07_microwave_response,Microwave response,phase_dynamics,Josephson_dynamics,5,0,1,0,"Direct Josephson test; high value but not near-term low difficulty."
+E08_local_magnetic_current_imaging,Local magnetic or current imaging,spatial_imaging,weak_link_or_vortex_localization,5,0,1,0,"Powerful localization test; high experimental burden."
+E09_polarization_resolved_Raman,Polarization-resolved registered Raman,mechanical_Raman,strain_tensor,4,1,1,0,"Best route toward strain tensor rather than scalar Raman proxy."

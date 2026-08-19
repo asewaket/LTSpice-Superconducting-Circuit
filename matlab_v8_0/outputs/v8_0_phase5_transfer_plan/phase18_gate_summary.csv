@@ -1,0 +1,14 @@
+gate,outcome,condition,note
+Phase 17 closure consumed,pass,1,Phase 18 consumes the clean Phase 17 release boundary.
+Phase 17 artifact commit reachable,pass,1,The Phase 17 artifact freeze is reachable from this run.
+Released model not reopened,pass,1,The closed model remains historical input.
+Unresolved targets emitted,pass,1,The preserved degeneracies are converted into explicit targets.
+Candidate experiment library emitted,pass,1,The candidate measurement library is available.
+Information gain scores emitted,pass,1,Each candidate experiment receives an information-gain proxy.
+Experiment ranking emitted,pass,1,Candidates are ranked by value per difficulty.
+Recommendations frozen,pass,1,The recommendation handoff is machine-readable.
+No new mechanism,pass,1,Phase 18 does not add model physics.
+No parameter retuning,pass,1,Phase 18 does not retune model parameters.
+No solver rerun,pass,1,Phase 18 does not rerun transport solvers.
+Future work separated from release,pass,1,Future work remains outside the closed release.
+Clean provenance,pass,1,Source tree was clean before output generation.

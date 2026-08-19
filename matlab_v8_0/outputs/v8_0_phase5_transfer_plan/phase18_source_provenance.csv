@@ -1,0 +1,10 @@
+item,value,note
+phase,phase18_experimental_design_optimization,"Experimental-design phase after the closed Phase 17 release boundary."
+source_commit_sha,e1de41b62f081738e154678be55d288f411b4e26,"Git commit captured before this runner writes outputs."
+source_tree_sha,9d17dc8009b0da160d376ddb2e3b38a0206799d4,"Git tree captured before output generation."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when source tree is fully clean before output generation."
+frozen_phase17_artifact_commit,94c9c56,"Clean Phase 17 artifact-freeze commit."
+frozen_phase17_artifact_commit_reachable,true,"True when Phase 17 artifact commit is in history."
+provenance_scope,read_only_design_optimization_no_solver_rerun,"No new mechanism, parameter retuning, solver rerun, or claim reopening."

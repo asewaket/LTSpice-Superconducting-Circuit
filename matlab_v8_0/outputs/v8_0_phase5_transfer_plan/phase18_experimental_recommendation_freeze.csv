@@ -1,0 +1,9 @@
+item,value,note
+phase18_closure,pass_experimental_design_optimization,"Phase 18 ranks experiments without changing the closed model."
+highest_value_near_term,Bidirectional current sweeps with sweep-rate series,"Best near-term option by value-per-difficulty planning score."
+highest_value_transport_only,additional_voltage_probes_or_orthogonal_current_injection,"Transport-only path for spatial-connectivity discrimination."
+highest_value_dynamic_test,bidirectional_current_sweeps_with_sweep_rate,"Dynamic path if sweep-history metadata can be collected."
+highest_value_phase_test,field_angle_sweep_then_microwave_if_needed,"Field-response path before any stronger phase claim."
+highest_value_strain_tensor_test,registered_polarization_Raman_plus_elasticity_model,"Route toward a strain tensor rather than a scalar proxy."
+released_model_status,closed_not_reopened,"Phase 17 release boundary remains historical input."
+next_phase,phase19_quantitative_mechanical_strain_model_if_new_data_available,"Future phase is conditional on new data, not a patch to v9."

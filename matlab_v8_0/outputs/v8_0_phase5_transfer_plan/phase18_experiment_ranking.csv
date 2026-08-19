@@ -1,0 +1,10 @@
+rank,experiment_id,candidate_measurement,primary_target,information_gain_score,experimental_difficulty,value_per_difficulty,near_term_feasible
+1,E05_bidirectional_sweep_rate,Bidirectional current sweeps with sweep-rate series,thermal_retrapping_identifiability,0.40055899181697,2,0.200279495908485,1
+2,E01_extra_voltage_probes,Additional voltage-probe configurations,W_boundary_vs_W_coverage,0.309813216220373,2,0.154906608110187,1
+3,E02_orthogonal_current_injection,Parallel and perpendicular current injection,W_boundary_vs_W_coverage,0.305641944127377,2,0.152820972063689,1
+4,E04_registered_Raman_transport,Registered Raman plus transport,strain_connectivity_coupling,0.400982768150554,3,0.133660922716851,1
+5,E06_field_angle_sweep,Field sweep direction and angle dependence,field_suppression_vs_interference,0.374095926143236,3,0.124698642047745,1
+6,E03_designed_stressor_geometries,Purpose-designed stressor/control geometries,boundary_coverage_crack_controls,0.352771459396876,3,0.117590486465625,1
+7,E09_polarization_resolved_Raman,Polarization-resolved registered Raman,strain_tensor,0.394443395118115,4,0.0986108487795287,1
+8,E07_microwave_response,Microwave response,Josephson_dynamics,0.290222910752307,5,0.0580445821504614,0
+9,E08_local_magnetic_current_imaging,Local magnetic or current imaging,weak_link_or_vortex_localization,0.253704463478776,5,0.0507408926957552,0
