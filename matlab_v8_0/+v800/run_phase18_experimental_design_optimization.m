@@ -284,13 +284,14 @@ J = [
 
 Fcurrent = diag([0.25 0.22 0.20 0.25 0.28 0.22 0.18 0.16 0.12 0.08]);
 Fcurrent = set_pair(Fcurrent, parameter_id, ...
-    "W_boundary", "W_coverage", 0.16);
+    "W_boundary", "W_coverage", 0.10);
 Fcurrent = set_pair(Fcurrent, parameter_id, ...
-    "W_boundary", "W_crack", 0.14);
+    "W_boundary", "W_crack", 0.08);
 Fcurrent = set_pair(Fcurrent, parameter_id, ...
-    "W_boundary", "Ic0", 0.12);
+    "W_boundary", "Ic0", 0.07);
 Fcurrent = set_pair(Fcurrent, parameter_id, ...
-    "Tc_heterogeneity", "W_coverage", 0.11);
+    "Tc_heterogeneity", "W_coverage", 0.07);
+Fcurrent = ensure_spd(Fcurrent, 1e-8);
 
 n = height(library);
 current_condition_number = zeros(n, 1);
@@ -314,7 +315,7 @@ logDetCurrent = logdet_spd(Fcurrent);
 for k = 1:n
     j = J(k, :).';
     strength = 1.0 ./ sqrt(double(library.experimental_difficulty(k)));
-    Fnew = Fcurrent + strength .* (j * j.');
+    Fnew = ensure_spd(Fcurrent + strength .* (j * j.'), 1e-8);
     eigNew = eig((Fnew + Fnew.') ./ 2);
     newCov = inv(Fnew);
 
@@ -360,8 +361,17 @@ rho = C(ia, ib) ./ sqrt(C(ia, ia) .* C(ib, ib));
 end
 
 function y = logdet_spd(A)
-R = chol((A + A.') ./ 2);
+A = ensure_spd(A, 1e-9);
+R = chol(A);
 y = 2 .* sum(log(diag(R)));
+end
+
+function A = ensure_spd(A, minEigenvalue)
+A = (A + A.') ./ 2;
+e = eig(A);
+if min(e) < minEigenvalue
+    A = A + (minEigenvalue - min(e)) .* eye(size(A));
+end
 end
 
 function ranking = build_experiment_ranking(library, informationGain)
