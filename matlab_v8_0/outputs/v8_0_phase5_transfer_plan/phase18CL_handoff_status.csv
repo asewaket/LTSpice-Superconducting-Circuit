@@ -1,0 +1,18 @@
+item,value,note
+phase18CL_scientific_closure,pass_legacy_sweep_rate_context_analysis,Scientific gates exclude clean provenance and should pass before canonical rerun.
+phase18CL_canonical_artifact_freeze,ready,Canonical artifact freeze is ready only after clean pre-run provenance.
+phase18CL_closure,pass_legacy_sweep_rate_context_analysis,Closure distinguishes scientific success from archival provenance.
+legacy_only,true,This is a legacy-only metadata/context phase.
+branch_reconstruction_used,false,No branch reconstruction was performed.
+down_branch_inferred,false,No down branch was inferred.
+model_fitting_used,false,No model parameters were fitted.
+solver_rerun_used,false,No solver was executed.
+primary_device,AS006,AS006 has the largest programmed nominal rate span.
+AS006_legacy_rate_claim,legacy_rate_context_present_but_confounded,AS006 context is interpreted with range confounding preserved.
+AS005_role,supplemental_context_only,AS005 is not promoted to the canonical priority set.
+bidirectional_claim,false,Bidirectional claims remain blocked.
+hysteresis_claim,false,Hysteresis claims remain blocked.
+retrapping_claim,false,Retrapping claims remain blocked.
+thermal_memory_claim,false,Thermal-memory claims remain blocked.
+RSJ_dynamics_claim,false,RSJ or phase-dynamic claims remain blocked.
+next_phase,phase18DL_legacy_dynamic_identifiability_decision,Next decision phase evaluates whether legacy rate context justifies dynamic-model development.

@@ -1,0 +1,13 @@
+component,status,pass,note
+18B-R consumed unchanged,pass,1,"The Phase 18B-R handoff closes as a legacy recovery audit."
+Legacy-only scope preserved,pass,1,"Phase 18C-L uses one-direction legacy context only."
+No branch reconstruction,pass,1,"No curve branch reconstruction is performed."
+No down-branch inference,pass,1,"No down branch is inferred from monotonic ramps."
+No model fitting,pass,1,"No transport or dynamic model parameters are fitted."
+No solver rerun,pass,1,"No solver or current-switching model is rerun."
+Nominal rate labeled inferred/programmed,pass,1,"Rates are explicitly labeled as programmed/inferred nominal sweep rates."
+Range confounding explicitly assessed,pass,1,"Each device receives a rate/range confounding classification."
+AS006 prioritized,pass,1,"AS006 is the primary device because it has the strongest nominal-rate span."
+AS005 supplemental only,pass,1,"AS005 is retained as supplemental context only."
+No hysteresis/retrapping/thermal-memory claim,pass,1,"Hysteresis, retrapping, thermal memory, and RSJ-dynamic claims remain blocked."
+Clean provenance,pass,1,"Canonical artifact freeze requires a clean pre-run worktree."

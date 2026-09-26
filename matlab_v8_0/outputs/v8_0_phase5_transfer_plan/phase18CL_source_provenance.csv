@@ -1,0 +1,9 @@
+item,value,note
+phase,phase18CL_legacy_sweep_rate_dependence_analysis,"Legacy-only readout of programmed/inferred sweep-rate context."
+source_commit_sha,05e090996bc759ac0cc0b856727d6935a782ca24,"Git commit captured before this runner writes outputs."
+source_tree_sha,9ebecf83fd39db621663e358a9aee4ac6cc9ad19,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,legacy_programmed_rate_context_analysis,"This phase does not reconstruct branches, fit a model, or execute a solver."
+source_provenance_policy,Commit source first; rerun from clean source; commit generated artifacts separately.,"Output artifacts may dirty the checkout after pre-run provenance is captured."

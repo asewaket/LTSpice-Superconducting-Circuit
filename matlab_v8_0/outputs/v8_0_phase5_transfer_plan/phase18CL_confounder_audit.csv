@@ -1,0 +1,5 @@
+device,priority_tier,rate_diversity_factor,range_confounding_present,range_confounding_assessed,temperature_metadata_complete,field_metadata_complete,lockin_time_constant_available,preamp_gain_available,run_order_available,confounder_status,note
+AS004,secondary,2,1,1,0,0,0,0,0,rate_strongly_confounded,Legacy metadata do not support hysteresis or retrapping inference.
+AS001,context,1,0,1,0,0,0,0,0,not_testable_single_rate,Legacy metadata do not support hysteresis or retrapping inference.
+AS006,primary,5,1,1,0,0,0,0,0,rate_strongly_confounded,Legacy metadata do not support hysteresis or retrapping inference.
+AS005,supplemental,1.66666666666667,0,1,0,0,0,0,0,supplemental_not_canonical,Legacy metadata do not support hysteresis or retrapping inference.

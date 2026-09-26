@@ -1,0 +1,5 @@
+device,priority_tier,rate_diversity_factor,comparability_class,rate_sensitivity_computed,S_log_rate,legacy_rate_dependence,claim_strength
+AS004,secondary,2,rate_strongly_confounded,0,NaN,confounded,rate_context_confounded
+AS001,context,1,not_comparable_single_nominal_rate,0,NaN,not_testable_single_rate,context_only
+AS006,primary,5,rate_strongly_confounded,0,NaN,confounded,primary_confounded_context
+AS005,supplemental,1.66666666666667,supplemental_rate_context_only,0,NaN,supplemental_not_canonical,context_only

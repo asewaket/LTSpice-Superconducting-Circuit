@@ -1,0 +1,8 @@
+claim,allowed,scope,note
+bidirectional_claim,0,blocked,No down branch or branch-history lock exists in the legacy files.
+hysteresis_claim,0,blocked,No measured up/down branch pair exists.
+retrapping_claim,0,blocked,No retrapping branch is preserved.
+thermal_memory_claim,0,blocked,No thermal memory variable or sweep-history metadata is available.
+RSJ_dynamics_claim,0,blocked,No time-dependent Josephson/RSJ solver is run.
+dynamic_microscopic_origin_claim,0,blocked,Programmed-rate context does not identify microscopic origin.
+legacy_rate_context_claim,1,allowed_context_only,Only programmed/inferred nominal sweep-rate context may be reported.

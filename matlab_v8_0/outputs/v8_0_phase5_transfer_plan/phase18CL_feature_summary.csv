@@ -1,0 +1,7 @@
+feature_name,computed,blocked_reason,allowed_future_use
+I_feature,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.
+transition_width,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.
+low_current_dVdI,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.
+peak_position,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.
+peak_amplitude,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.
+normalized_curve_distance,0,Not computed in 18C-L because legacy scans lack bidirectional branch lock and comparable curve-pair protocol.,Allowed only after canonical raw sweep-rate data lock or a declared legacy curve-loader extension.

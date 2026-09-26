@@ -1,0 +1,5 @@
+device,priority_tier,raw_scan_count,unique_nominal_rate_count,min_nominal_rate_A_per_s,max_nominal_rate_A_per_s,rate_diversity_factor,unique_current_range_count,unique_waittime_count,range_confounding_present,rate_comparison_possible,rate_context_class
+AS004,secondary,9,2,1e-08,2e-08,2,3,1,1,1,rate_strongly_confounded
+AS001,context,5,1,2e-08,2e-08,1,1,1,0,0,not_comparable_single_nominal_rate
+AS006,primary,15,3,4e-09,2e-08,5,7,2,1,1,rate_strongly_confounded
+AS005,supplemental,19,4,2e-08,3.33333333333333e-08,1.66666666666667,1,4,0,1,supplemental_rate_context_only

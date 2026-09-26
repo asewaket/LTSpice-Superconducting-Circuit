@@ -1,0 +1,5 @@
+device,priority_tier,low_rate_A_per_s,high_rate_A_per_s,rate_diversity_factor,curve_metric_available,normalized_curve_distance,feature_current_shift,transition_width_shift,low_current_dVdI_shift,peak_position_shift,metric_status,reason
+AS004,secondary,1e-08,2e-08,2,0,NaN,NaN,NaN,NaN,NaN,not_computed_metadata_only_legacy_audit,"Legacy recovery captured programmed-rate metadata, not branch-locked comparable curve pairs."
+AS001,context,2e-08,2e-08,1,0,NaN,NaN,NaN,NaN,NaN,not_computed_metadata_only_legacy_audit,"Legacy recovery captured programmed-rate metadata, not branch-locked comparable curve pairs."
+AS006,primary,4e-09,2e-08,5,0,NaN,NaN,NaN,NaN,NaN,not_computed_metadata_only_legacy_audit,"Legacy recovery captured programmed-rate metadata, not branch-locked comparable curve pairs."
+AS005,supplemental,2e-08,3.33333333333333e-08,1.66666666666667,0,NaN,NaN,NaN,NaN,NaN,not_computed_metadata_only_legacy_audit,"Legacy recovery captured programmed-rate metadata, not branch-locked comparable curve pairs."
