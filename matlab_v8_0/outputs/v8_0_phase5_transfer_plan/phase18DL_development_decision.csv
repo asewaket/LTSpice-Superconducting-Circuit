@@ -1,0 +1,7 @@
+item,value,note
+phase18DL_decision,do_not_develop_dynamic_model_from_legacy_context,"Global decision made without fitting, branch reconstruction, or solver execution."
+dynamic_model_development_from_legacy_context,blocked,"Development is blocked unless new controlled dynamic-identifiability data are acquired."
+allowed_legacy_use,hypothesis_prioritization_and_new_protocol_design_only,"Legacy programmed-rate diversity can guide future acquisition priorities."
+blocked_claims,bidirectional_hysteresis_retrapping_thermal_memory_RSJ_microscopic_origin,"These claims remain outside the legacy artifact boundary."
+required_new_data,same_device_same_current_range_bidirectional_up_down_multi_rate_time_order_locked_AS006_protocol,"The minimum new-data standard must remove range, branch, and timing confounds."
+recommended_next_scope,freeze_legacy_context_and_design_new_dynamic_identifiability_data,"Proceed by protocol specification, not by dynamic model implementation."

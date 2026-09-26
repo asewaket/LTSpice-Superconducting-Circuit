@@ -1,0 +1,11 @@
+item,value,note
+phase,phase18DL_legacy_dynamic_identifiability_decision,"Legacy dynamic-identifiability decision after Phase 18C-L."
+source_commit_sha,d6d7daabfe7b3f0e4883380032cadf66aac5ffe4,"Git commit captured before this runner writes outputs."
+source_tree_sha,96f7b82128d9612f7d7149185b8d90aa4d0eb01f,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+frozen_phase18CL_artifact_commit,ed68c68139b841d3a440b83e1b0193ccff0b81ca,"Canonical Phase 18C-L artifact-freeze commit consumed by policy."
+frozen_phase18CL_artifact_commit_reachable,true,"True when the frozen Phase 18C-L artifact commit is an ancestor of this run."
+provenance_scope,read_only_decision_after_clean_phase18CL,"No dynamic solver, branch reconstruction, missing branch inference, fitting, or retuning."
+source_provenance_policy,Commit Phase 18D-L source first; rerun from clean source; commit decision artifacts separately.,"Output artifacts may dirty the checkout after pre-run provenance is captured."

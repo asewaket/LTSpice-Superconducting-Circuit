@@ -1,0 +1,10 @@
+item,value,note
+phase18DL_closure,pass_no_dynamic_model_development_from_legacy_context,"Closure is pass only when all decision gates pass."
+phase18DL_decision,do_not_develop_dynamic_model_from_legacy_context,"Global read-only decision from the frozen CL artifacts."
+dynamic_model_development_from_legacy_context,blocked,"Legacy artifacts alone do not justify dynamic model development."
+legacy_context_role,hypothesis_prioritization_and_new_protocol_design_only,"Legacy rate context may guide future experimental protocol design."
+solver_rerun_used,false,"No solver was rerun."
+model_fitting_used,false,"No parameters were fitted."
+branch_reconstruction_used,false,"No branch reconstruction was performed."
+down_branch_inferred,false,"No missing down branch was inferred."
+next_phase,phase18E_targeted_bidirectional_dynamic_protocol_specification,"Next work should specify new controlled data, not reopen legacy dynamic claims."

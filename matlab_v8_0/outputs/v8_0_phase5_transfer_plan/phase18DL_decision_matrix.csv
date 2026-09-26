@@ -1,0 +1,8 @@
+criterion,observed,decision_weight,supports_development,interpretation
+canonical_phase18CL_freeze_consumed,true,required_pass,1,"The CL freeze is canonical and can be consumed."
+primary_AS006_rate_context_present,true,supporting_context_only,0,"AS006 has the strongest nominal-rate span."
+legacy_rate_sensitivity_metric_available,false,required_for_legacy_dynamic_identifiability,0,"No CL rate-sensitivity metric was computed from legacy artifacts."
+primary_context_unconfounded,false,required_for_legacy_dynamic_identifiability,0,"The primary context remains range/metadata confounded."
+dynamic_claims_allowed_by_CL_boundary,false,must_remain_false_without_new_data,0,"CL blocks hysteresis, retrapping, thermal-memory, RSJ, and microscopic dynamic claims."
+new_dynamic_model_development_justified,false,global_decision,0,"Legacy artifacts do not justify dynamic model development."
+legacy_context_useful_for_experiment_design,true,allowed_followup_scope,0,"Legacy rate context can prioritize a future protocol without becoming a dynamic claim."

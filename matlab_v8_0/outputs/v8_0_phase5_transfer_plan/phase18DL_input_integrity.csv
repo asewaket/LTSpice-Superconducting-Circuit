@@ -1,0 +1,8 @@
+component,status,pass,note
+Phase 18C-L closure consumed,pass,1,"Phase 18D-L starts only after the CL legacy sweep-rate analysis closes."
+Phase 18C-L canonical artifact freeze ready,pass,1,"The canonical CL artifact freeze must be ready before the decision."
+Phase 18C-L clean provenance consumed,pass,1,"The consumed CL artifacts must have clean pre-run provenance."
+Phase 18C-L gates all pass,pass,1,"All CL artifact gates must pass before dynamic identifiability is evaluated."
+Phase 18C-L handoff points to Phase 18D-L,pass,1,"The CL handoff explicitly routes to this decision phase."
+Dynamic claims blocked by Phase 18C-L boundary,pass,1,"Legacy artifacts must not already authorize dynamic, hysteresis, retrapping, or thermal-memory claims."
+Phase 18D-L clean provenance,pass,1,"This decision runner must start from a clean source worktree."
