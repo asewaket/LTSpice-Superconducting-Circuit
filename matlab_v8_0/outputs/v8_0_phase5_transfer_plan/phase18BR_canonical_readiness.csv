@@ -1,0 +1,5 @@
+device,canonical_files,up_available,down_available,sweep_rate_available,branch_direction_locked,measured_up_down_branches_available,branch_history_preserved,canonical_bidirectional_lock,canonical_phase18B_ready,limitation
+AS001,0,1,0,1,0,0,0,0,0,nominal_rate_available_but_down_branch_history_missing
+AS004,0,1,0,1,0,0,0,0,0,nominal_rate_available_but_down_branch_history_missing
+AS005,0,1,0,1,0,0,0,0,0,nominal_rate_available_but_down_branch_history_missing
+AS006,0,1,0,1,0,0,0,0,0,nominal_rate_available_but_down_branch_history_missing

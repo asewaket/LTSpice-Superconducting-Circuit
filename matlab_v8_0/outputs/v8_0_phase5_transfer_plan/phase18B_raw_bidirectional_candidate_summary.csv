@@ -1,0 +1,5 @@
+device,raw_file_count_inspected,files_with_inferred_sweep_rate,min_inferred_sweep_rate_A_per_s,max_inferred_sweep_rate_A_per_s,canonical_bidirectional_files,phase18B_status,summary
+AS001,5,5,2e-08,2e-08,0,not_canonical_bidirectional_locked,programmed monotonic ramps found; measured down-branch/retrace metadata not found
+AS004,9,9,1e-08,2e-08,0,not_canonical_bidirectional_locked,programmed monotonic ramps found; measured down-branch/retrace metadata not found
+AS005,19,19,2e-08,3.3333333333333334e-08,0,not_canonical_bidirectional_locked,programmed monotonic ramps found; measured down-branch/retrace metadata not found
+AS006,15,14,4e-09,2e-08,0,not_canonical_bidirectional_locked,programmed monotonic ramps found; measured down-branch/retrace metadata not found

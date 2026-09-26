@@ -1,0 +1,13 @@
+component,status,pass,note,manifest_rows_consumed
+Candidate raw scan audit consumed,pass,1,"Legacy .mat scan audit table is available.",3
+Canonical input ledger consumed,pass,1,"Input ledger exists but all rows remain noncanonical for Phase 18B.",3
+Device summary consumed,pass,1,"Device-level legacy-rate summary exists.",3
+Raw file checksums recorded,pass,1,"SHA-256 hashes are recorded for raw scan candidates.",3
+Programmed current conversion recorded,pass,1,"Current conversion is explicitly inferred from programmed offset voltage and load resistance.",3
+Nominal sweep rates inferred,pass,1,"Sweep rates are programmed/nominal values inferred from acquisition settings.",3
+No model fitting performed,pass,1,"This audit does not fit or execute a transport model.",3
+No proxy substitution used,pass,1,"Legacy monotonic ramps are not substituted for bidirectional branches.",3
+Canonical bidirectional lock not falsely claimed,pass,1,"The phase records canonical Phase 18B as pending, not passed.",3
+Legacy monotonic rate context available,pass,1,"At least one device has usable programmed-rate context.",3
+Future bidirectional measurement requirement preserved,pass,1,"New measured bidirectional data remain required for canonical Phase 18B.",3
+Phase 18B-R recovery audit closure,pass,1,"Phase 18B-R closes as a recovery audit, not as canonical bidirectional validation.",3

@@ -1,0 +1,5 @@
+device,raw_file_count,files_with_nominal_rate,unique_nominal_rate_count,min_nominal_rate_A_per_s,max_nominal_rate_A_per_s,rate_diversity_factor,current_range_varies,legacy_rate_context_available,rate_context_interpretation
+AS004,9,9,2,1e-08,2e-08,2,1,1,programmed_nominal_rate_diversity_range_confounded
+AS001,5,5,1,2e-08,2e-08,1,0,1,single_programmed_nominal_rate_only
+AS006,15,14,3,4e-09,2e-08,5,1,1,programmed_nominal_rate_diversity_range_confounded
+AS005,19,19,4,2e-08,3.33333333333333e-08,1.66666666666667,0,1,programmed_nominal_rate_diversity_available

@@ -1,0 +1,9 @@
+item,value,note
+phase,phase18BR_legacy_bidirectional_recovery_audit,Read-only recovery audit before canonical Phase 18B.
+source_commit_sha,48fbfb8f888e1654cbfddff7addde4ea55adf8a6,Git commit captured before this runner writes outputs.
+source_tree_sha,48121918a8a894bdc3111b223e97d1edd3463087,Git tree captured before this runner writes outputs.
+source_pre_run_tracked_clean,true,Tracked-source cleanliness before output generation.
+source_pre_run_untracked_clean,false,Untracked-source/artifact cleanliness before output generation.
+source_pre_run_clean,false,True only when tracked and untracked source state are clean before output generation.
+provenance_scope,legacy_raw_transport_metadata_audit,This phase audits legacy metadata availability and does not execute model fitting.
+source_provenance_policy,Commit source first; rerun from clean source; commit generated artifacts separately.,Output artifacts may dirty the checkout after pre-run provenance is captured.

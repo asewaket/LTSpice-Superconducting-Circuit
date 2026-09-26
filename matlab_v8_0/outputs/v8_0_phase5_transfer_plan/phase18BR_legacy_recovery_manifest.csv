@@ -1,0 +1,4 @@
+source_name,path,exists,row_count,status,use
+phase18B_raw_bidirectional_candidate_audit,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase18B_raw_bidirectional_candidate_audit.csv,1,48,consumed_read_only,scan-level legacy metadata and checksum evidence
+phase18B_raw_bidirectional_data_input_ledger,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase18B_raw_bidirectional_data_input_ledger.csv,1,48,consumed_read_only,candidate canonical-18B ledger; all current rows remain noncanonical
+phase18B_raw_bidirectional_candidate_summary,/Users/asewaket/Documents/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase18B_raw_bidirectional_candidate_summary.csv,1,4,consumed_read_only,device-level raw-file and nominal-rate diversity summary

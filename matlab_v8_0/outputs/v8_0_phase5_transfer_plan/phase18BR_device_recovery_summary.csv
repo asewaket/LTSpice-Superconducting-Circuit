@@ -1,0 +1,5 @@
+device,raw_file_count_inspected,files_with_inferred_sweep_rate,min_rate,max_rate,rate_diversity_factor,canonical_bidirectional_files,canonical_bidirectional_lock,branch_history_preserved,legacy_monotonic_rate_context_available,strongest_rate_context,phase18A_future_measurement_required,recovery_status
+AS001,5,5,2e-08,2e-08,1,0,0,0,1,0,1,legacy_monotonic_rate_context_only
+AS004,9,9,1e-08,2e-08,2,0,0,0,1,0,1,legacy_monotonic_rate_context_only
+AS005,19,19,2e-08,3.33333333333333e-08,1.66666666666667,0,0,0,1,0,1,legacy_monotonic_rate_context_only
+AS006,15,14,4e-09,2e-08,5,0,0,0,1,1,1,legacy_monotonic_rate_context_only
