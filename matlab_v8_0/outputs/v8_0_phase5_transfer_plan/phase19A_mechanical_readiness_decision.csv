@@ -1,0 +1,9 @@
+item,value,note
+phase18_dynamic_branch_endpoint_consumed,true,"Phase 18D-L closes the legacy dynamics branch before mechanics work begins."
+phase9_raman_disposition_consumed,raman_qualitative_or_registration_unavailable,"Phase 9 already held Raman as qualitative unless registration is available."
+quantitative_2D_registered_device_available,false,"Requires Raman coordinates, transform metadata, Hall-bar frame, boundary frame, and mode identity."
+quantitative_1D_registered_device_available,false,"Requires at least a defensible registered line/axis relation."
+complete_materials_parameter_set_available,false,"Requires thickness, crystal axes, stressor stack, residual stress, substrate stack, elastic constants, and Raman modes."
+strain_tensor_recovery_allowed,false,"No strain tensor is recoverable without quantitative registration and materials closure."
+phase19B_mechanical_forward_model_allowed,specification_only_no_FEM_execution,"Phase 19B should not run FEM from incomplete metadata."
+recommended_next_scope,freeze_readiness_gap_and_archive_required_input_list,"Next scope preserves the readiness gate rather than pretending a tensor is recoverable."

@@ -1,0 +1,8 @@
+item,value,note
+phase19A_closure,pass_readiness_gap_freeze_no_quantitative_strain_tensor,Closure records the readiness state before any FEM or strain inference.
+phase19B_forward_model_status,specification_only_no_FEM_execution,Phase 19B is allowed only if quantitative registration and materials closure exist.
+strain_tensor_recovery_allowed,false,No tensor recovery is claimed from the current canonical artifact set.
+raman_transport_coupling_allowed,false,Raman is not coupled to transport in Phase 19A.
+FEM_execution_allowed,false,FEM execution is blocked unless readiness gates support it.
+legacy_dynamic_model_reopened,false,Phase 18D-L remains closed; dynamic physics is not reopened.
+next_phase,phase19A_required_input_recovery_or_metadata_archive,Next work is input recovery unless the readiness gate passes.

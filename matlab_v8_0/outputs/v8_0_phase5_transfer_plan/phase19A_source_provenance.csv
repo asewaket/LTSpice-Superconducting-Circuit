@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19A_raman_geometry_mechanical_input_audit,"Phase 19A audits whether quantitative mechanics inputs exist."
+source_commit_sha,4eed531ee7465281190e2dfb9a492cef099b3629,"Git commit captured before this runner writes outputs."
+source_tree_sha,f7f911c381e7cd972e46e1b6bcac0b949f5ec3b9,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,readiness_gate_no_FEM_no_strain_tensor_no_transport_coupling,"No FEM, no tensor inversion, no Raman-to-transport fitting, no model update."
+source_provenance_policy,Commit Phase 19A source first; rerun from clean source; commit readiness artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

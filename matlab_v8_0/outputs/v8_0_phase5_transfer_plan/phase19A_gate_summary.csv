@@ -1,0 +1,7 @@
+component,status,pass,note
+Clean provenance,pass,1,"Canonical artifact freeze requires clean pre-run source state."
+Dynamic branch endpoint consumed,pass,1,"Phase 19 starts after Phase 18D-L closes legacy dynamics."
+Registration readiness audited,pass,1,"Per-device registration classes are written without fabricating transforms."
+Materials readiness audited,pass,1,"Per-device material and Raman-physics inputs are written without fabricating constants."
+No premature strain tensor claim,pass,1,"Tensor recovery remains blocked unless registration and materials both close."
+Phase 19B blocked or limited when inputs incomplete,pass,1,"Incomplete inputs route to a gap archive/specification, not FEM execution."

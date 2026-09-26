@@ -1,0 +1,4 @@
+device,mote2_thickness_available,crystal_axis_available,stressor_thickness_available,film_force_or_residual_stress_available,substrate_stack_available,elastic_constants_available,raman_mode_assignment_available,polarization_available,quantitative_mechanics_materials_complete,tensor_component_scope
+AS002,0,0,0,0,0,0,0,0,0,tensor_recovery_blocked
+AS005,0,0,0,0,0,0,0,0,0,tensor_recovery_blocked
+AS006,0,0,0,0,0,0,0,0,0,tensor_recovery_blocked

@@ -1,0 +1,4 @@
+device,registration_class,quantitative_2D_mechanics_allowed,quantitative_1D_mechanics_allowed,geometry_proxy_allowed,strain_tensor_recovery_allowed,reason
+AS002,device_association_only,0,0,0,0,"Only device-level association is available in the canonical artifact set."
+AS005,geometry_registered_only,0,0,1,0,"Geometry context exists, but Raman/device coordinate transform is not quantitative."
+AS006,geometry_registered_only,0,0,1,0,"Geometry context exists, but Raman/device coordinate transform is not quantitative."
