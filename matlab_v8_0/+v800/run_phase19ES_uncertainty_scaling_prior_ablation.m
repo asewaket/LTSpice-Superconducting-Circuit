@@ -402,13 +402,13 @@ mechanicsScreenMixed = any(string(screen.association_status) == ...
     "screen_mixed_or_weak");
 
 if mechanicsScreenSupported
-    transportState = "supported_screen_only";
+    transportState = "supported_screen_only_pending_solver_ablation";
 elseif mechanicsScreenMixed
     transportState = "unresolved_screen_only";
 else
     transportState = "unsupported_or_unresolved_screen_only";
 end
-phase19FSAllowed = mechanicsScreenSupported;
+phase19FSAllowed = false;
 
 item = [
     "phase19ES_uncertainty_complete"
@@ -443,8 +443,8 @@ note = [
     "Mechanics priors are screened against existing device-level transport conclusions only."
     "Randomized spatial control requires a future frozen transport replay."
     "Uniform null control is specified for future replay."
-    "Screening is not equivalent to full transport-solver ablation."
-    "Allowed only if existing-artifact screen already supports transport relevance."
+    "Screening is supportive only if followed by frozen transport-solver ablation."
+    "Blocked until geometry, mechanics, randomized, and uniform priors are solver-replayed."
     ];
 decision = table(item, value, note);
 end
