@@ -1,0 +1,7 @@
+device,geometry_family,localization_factor,shear_factor,gradient_factor,high_gradient_area_fraction,covered_to_uncovered_parallel_contrast,max_gradient_xhat,max_gradient_yhat,distance_of_max_gradient_from_boundary,characteristic_decay_length_xhat,claim_scope
+AS001,continuous_or_control_coverage,1.00000000000002,0.0555555555555568,0,0,NaN,0,0,0.5,NaN,dimensionless_forward_geometry_metric
+AS002,half_coverage_boundary,2.03367118861694,0.724444571519608,5.07418391672102,0.12396694214876,30.0067075176026,0.508333333333333,0,0.0083333333333333,0.0556268619362757,dimensionless_forward_geometry_metric
+AS003,continuous_or_control_coverage,1.00000000000002,0.0555555555555568,0,0,NaN,0,0,0.5,NaN,dimensionless_forward_geometry_metric
+AS004,half_coverage_boundary,2.03367118861694,0.724444571519608,5.07418391672102,0.12396694214876,30.0067075176026,0.508333333333333,0,0.0083333333333333,0.0556268619362757,dimensionless_forward_geometry_metric
+AS005,cracked_coverage,1.34119092535515,0.574067852327965,3.73336841036266,0.158515106354153,NaN,0.625,0.366666666666667,0.125,0.115118278646584,dimensionless_forward_geometry_metric
+AS006,half_coverage_boundary,2.03367118861694,0.724444571519608,5.07418391672102,0.12396694214876,30.0067075176026,0.508333333333333,0,0.0083333333333333,0.0556268619362757,dimensionless_forward_geometry_metric

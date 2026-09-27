@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19DS_forward_mechanical_sensitivity_study,"Phase 19D-S executes a normalized/unit-load mechanics atlas."
+source_commit_sha,7967a83c4cca8882105f81c12c31cc147087df7b,"Git commit captured before this runner writes outputs."
+source_tree_sha,63884217a809bd59708c459b8ad901f2cf85d633,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,normalized_forward_mechanics_no_absolute_device_strain_claims,"No device-specific strain reconstruction, no Raman inversion, no absolute strain validation."
+source_provenance_policy,Commit Phase 19D-S source first; rerun from clean source; commit generated artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

@@ -1,0 +1,9 @@
+item,value,note
+phase19DS_closure,pass_normalized_forward_mechanics_atlas,Closure means dimensionless forward geometry metrics are frozen.
+device_specific_strain_claims_allowed,false,The quantitative device-specific branch remains locked.
+normalized_mechanical_comparison_allowed,true,Normalized unit-load comparisons are allowed and generated.
+absolute_strain_validation_allowed,false,Absolute strain validation remains blocked.
+PDE_toolbox_available,true,Toolbox availability is recorded for future solver-backed FEM.
+full_PDE_FEM_execution_allowed,false,Full PDE/FEM waits for geometry-to-solver validation.
+transport_coupling_candidates_generated,true,H_mech candidates are generated for future weak-link coupling tests.
+next_phase,phase19ES_uncertainty_scaling_and_mechanics_prior_ablation,Next phase should quantify scaling/UQ and compare mechanics priors to geometry/random controls.

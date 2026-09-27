@@ -1,0 +1,10 @@
+item,value,note
+device_specific_strain_claims_allowed,false,"Phase 19A/19B quantitative branch remains locked."
+quantitative_absolute_strain_validation_allowed,false,"No absolute strain is validated against device-specific Raman registration."
+normalized_forward_mechanics_execution_allowed,true,"Dimensionless geometry consequences can be studied now."
+reduced_2D_unit_load_atlas_executed,true,"This phase executes an analytic reduced 2D atlas under unit load."
+PDE_toolbox_available,true,"MATLAB PDE Toolbox availability is recorded, but availability is not validation."
+validated_geometry_to_PDE_solver_available,false,"The canonical branch lacks a verified geometry-to-PDE meshing/solver pipeline."
+full_PDE_FEM_execution_allowed,false,"Full FEM is deferred to a solver-validation subphase."
+parameter_sensitivity_allowed,true,"Uncertain normalized parameters are swept as dimensions of the study."
+transport_coupling_prior_generation_allowed,true,"Mechanics-derived normalized H_mech candidates may be compared to geometry priors later."

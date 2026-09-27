@@ -1,0 +1,9 @@
+component,status,pass,note
+Clean provenance,pass,1,Canonical artifact freeze requires clean pre-run source state.
+Phase 19B specification consumed,pass,1,Phase 19D-S starts after the Phase 19B specification freeze.
+Quantitative device-strain claims remain blocked,pass,1,No AS005/AS006 absolute strain map is claimed.
+Normalized forward mechanics allowed,pass,1,Unit-load dimensionless geometry consequences can be computed now.
+Six-device normalized atlas completed,pass,1,AS001-AS006 all receive reduced normalized mechanics descriptors.
+Parameter sensitivity completed,pass,1,Uncertain reduced parameters are swept instead of hidden.
+Transport-prior candidates allowed,pass,1,H_mech candidates may be used in later ablation against geometry/randomized priors.
+Full PDE/FEM remains separate from reduced atlas,pass,1,PDE Toolbox availability is not treated as a validated solver pipeline.
