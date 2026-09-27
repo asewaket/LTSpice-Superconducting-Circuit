@@ -1,0 +1,7 @@
+component,constitutive_choice,current_status,transport_input_allowed,note
+substrate,linear_elastic_isotropic_or_literature_stack,not_device_bound,0,"Substrate assumptions must be archived as model inputs."
+oxide,linear_elastic_isotropic_literature_constrained,not_device_bound,0,"Oxide constants may be literature constrained but not silent defaults."
+MoTe2_in_plane,anisotropic_linear_elastic_preferred_if_crystal_axis_known,specified_but_not_executable_without_axis_and_constants,0,"MoTe2 anisotropy is the default target; isotropic use must be an explicit ablation."
+MoTe2_out_of_plane,bounded_effective_out_of_plane_response,specified_but_not_primary_first_generation,0,"First target remains in-plane components, not full six-component tensor."
+stressor_or_encapsulation,linear_elastic_residual_stress_or_film_force_input,load_parameter_missing,0,"Residual stress cannot be inferred from transport."
+interface,perfect_bond_to_bounded_slip_sensitivity_family,declared_not_calibrated,0,"Interface-transfer uncertainty is a first-class nuisance parameter."

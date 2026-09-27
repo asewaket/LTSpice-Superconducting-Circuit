@@ -1,0 +1,8 @@
+domain,required_geometry,input_class_now,execution_requirement,note
+substrate,substrate_extent_and_thickness_or_halfspace_policy,unknown_to_be_inferred,required_before_FEM_execution,"May use literature/wafer stack only after traceable device association."
+oxide,oxide_thickness_and_lateral_extent,unknown_to_be_inferred,required_before_FEM_execution,"Oxide stack controls clamping and load transfer."
+MoTe2_flake,flake_polygon_thickness_hallbar_coordinate_frame,unknown_to_be_inferred,required_before_FEM_execution,"MoTe2 thickness and crystal axes are not optional for quantitative strain."
+encapsulation_or_stressor,stressor_polygon_thickness_and_overlap,unknown_to_be_inferred,required_before_FEM_execution,"Stressor thickness plus residual stress sets applied load."
+MoTe2_stressor_interface,registered_interface_footprint_and_transfer_policy,unknown_to_be_inferred,required_before_FEM_execution,"Interface law prevents hidden conversion from geometry to strain."
+AS005_crack_or_relaxation_zone,crack_coordinates_width_orientation_and_tip_location,unknown_to_be_inferred,required_before_FEM_execution,"AS005 crack cannot be treated as a decorative mask in quantitative mechanics."
+AS002_AS006_half_coverage_boundary,boundary_line_coordinates_relative_to_hallbar,unknown_to_be_inferred,required_before_FEM_execution,"Half-coverage boundary must be a quantitative coordinate, not a qualitative label."

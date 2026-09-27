@@ -1,0 +1,8 @@
+term,mathematical_role,input_class_now,execution_status,note
+strain_coupling,sum_ij K_ij_m epsilon_ij(r),literature_constrained_not_device_bound,specified_not_fit,"Raman tensor coefficients require mode identity, crystal axes, and polarization context."
+doping_nuisance,Delta_omega_doping_m(r),unknown_to_be_inferred,specified_not_fit,"Raman shifts must not automatically become strain."
+thickness_nuisance,Delta_omega_thickness_m(r),unknown_to_be_inferred,specified_not_fit,"Thickness shifts can mimic strain response."
+interface_nuisance,Delta_omega_interface_m(r),unknown_to_be_inferred,specified_not_fit,"Interface effects remain nuisance terms."
+optical_interference_nuisance,Delta_omega_optical_m(r),unknown_to_be_inferred,specified_not_fit,"Optical stack effects remain nuisance terms."
+temperature_nuisance,Delta_omega_temperature_m(r),unknown_to_be_inferred,specified_not_fit,"Temperature and laser heating must be bounded."
+calibration_offset,mode_specific_additive_offset,unknown_to_be_inferred,specified_not_fit,"Offsets must be calibrated, not absorbed as strain."

@@ -1,0 +1,9 @@
+item,value,note
+phase19B_closure,pass_specification_only_no_FEM_execution,Closure confirms model architecture is frozen without execution.
+phase19B_status,quantitative_mechanical_model_specification_frozen,The future mechanics contract is written.
+FEM_execution_allowed,false,Execution remains false until all unlock criteria pass.
+strain_tensor_generated,false,No strain tensor or device strain field is generated in Phase 19B.
+first_executable_tensor_scope,epsilon_xx_epsilon_yy_epsilon_xy_after_unlock,First executable generation targets in-plane strain components only.
+raman_forward_model_status,specified_with_nonstrain_nuisance_terms,Raman shifts are not automatically interpreted as strain.
+transport_model_changed,false,Mred_PB_geometry_basis remains unchanged.
+next_phase,phase19C_mechanical_input_and_registration_recovery,Next phase should recover quantitative registration and missing mechanical inputs.

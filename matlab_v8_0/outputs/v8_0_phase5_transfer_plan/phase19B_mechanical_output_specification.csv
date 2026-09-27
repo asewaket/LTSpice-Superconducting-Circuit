@@ -1,0 +1,10 @@
+output,first_generation_allowed,phase19B_status,note
+displacement_field_u_xyz,0,specified_not_generated,Future FEM displacement field; not produced now.
+epsilon_xx,0,specified_not_generated,Primary in-plane target when FEM unlocks.
+epsilon_yy,0,specified_not_generated,Primary in-plane target when FEM unlocks.
+epsilon_xy,0,specified_not_generated,Primary in-plane shear target when FEM unlocks.
+strain_gradient_along_registered_line,0,specified_not_generated,Attainable once quantitative 1D Raman registration exists.
+boundary_response_location,0,specified_not_generated,Attainable once boundary coordinates exist.
+crack_relaxation_profile,0,specified_not_generated,Attainable for AS005 once crack coordinates exist.
+raman_forward_prediction,0,specified_not_generated,Requires Raman nuisance model and registered measurements.
+full_3D_six_component_tensor,0,specified_not_generated,Explicitly outside first executable generation.

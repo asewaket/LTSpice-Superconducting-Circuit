@@ -1,0 +1,8 @@
+feature,specification,allowed_now,required_before_execution,note
+stressor_residual_stress,sigma_res or force-per-width input with uncertainty interval,0,1,"Load magnitude is missing in Phase 19A."
+film_force_boundary_condition,traction boundary applied through stressor footprint,0,1,"Boundary condition cannot be tuned to transport."
+perfect_bond_interface,upper-bound transfer assumption,0,1,"Must be an explicit model branch, not a hidden default."
+bounded_slip_interface,sensitivity family with transfer length or slip compliance,0,1,"Required to bound interface uncertainty."
+AS005_crack,traction-free or relaxed-zone representation with bounded geometry,0,1,"Crack representation is central for AS005."
+AS002_AS006_half_coverage_boundary,registered material-boundary line with finite transition-width sensitivity,0,1,"Half-coverage boundary is central for AS002/AS006."
+mesh_convergence,refine until target fields change below declared tolerance,0,1,"Convergence is part of the future executable standard."

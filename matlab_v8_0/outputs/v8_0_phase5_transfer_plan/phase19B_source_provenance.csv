@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19B_quantitative_mechanical_model_specification,"Phase 19B freezes the future quantitative mechanics model contract."
+source_commit_sha,631c456d3f6624d8f1e6878307d319fa6b789ae1,"Git commit captured before this runner writes outputs."
+source_tree_sha,f651ea010e50d8f2dde5a58349986eeca7182cf1,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,specification_only_no_FEM_no_strain_field_no_raman_inversion,"No mesh, no numerical mechanics solve, no strain tensor, no Raman-to-transport coupling."
+source_provenance_policy,Commit Phase 19B source first; rerun from clean source; commit specification artifacts separately.,"Specification artifacts may dirty the checkout after pre-run provenance is captured."

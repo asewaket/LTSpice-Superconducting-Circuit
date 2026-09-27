@@ -1,0 +1,10 @@
+parameter,status,propagation_target,note
+registration_transform_uncertainty,required_before_execution,epsilon_xx_epsilon_yy_epsilon_xy,"At least one registered device line/map is needed before FEM."
+film_force_or_residual_stress_interval,required_before_execution,strain_magnitude_and_gradient,"Load interval is not recoverable from transport."
+MoTe2_elastic_constants,required_before_execution,anisotropic_strain_response,"Literature values must remain uncertainty intervals unless measured."
+crystal_axis_orientation,required_before_execution,tensor_frame_and_Raman_response,"Unknown axis blocks anisotropic tensor interpretation."
+interface_transfer_parameter,required_before_execution,strain_transfer_amplitude,"Interface transfer is a leading uncertainty, not a footnote."
+layer_thicknesses,required_before_execution,mechanical_stiffness_and_load_transfer,"Thickness uncertainty propagates directly into stiffness."
+crack_geometry,required_before_execution,AS005_relaxation_profile,"Crack localization requires quantitative coordinates."
+raman_tensor_coefficients,required_before_execution,Raman_forward_observable,"Raman coefficients require mode and polarization handling."
+nonstrain_raman_terms,required_before_execution,Raman_recoverability_bounds,"Nuisance terms prevent overclaiming Raman strain."

@@ -1,0 +1,8 @@
+stage,mathematical_form,execution_status,numerical_output_allowed_now,note
+device_stack_and_geometry,"substrate+oxide+MoTe2+encapsulation_or_stressor+crack/boundary geometry",specified_not_executed,0,"Future geometry domains are declared before any meshing."
+residual_stressor_load,"film_force_or_residual_stress_boundary_condition",specified_not_executed,0,"Load magnitude remains an input-recovery requirement."
+interface_transfer,"traction_continuity_or_bounded_slip_transfer_law",specified_not_executed,0,"Interface transfer must be declared before FEM execution."
+elastic_displacement_solution,"solve div(sigma)+f=0 for u(x,y,z)",specified_not_executed,0,"No displacement field is computed in Phase 19B."
+strain_tensor_definition,"epsilon_ij=0.5*(du_i/dx_j+du_j/dx_i)",specified_not_executed,0,"Tensor definition is mathematical only in Phase 19B."
+in_plane_output_subset,"epsilon_xx, epsilon_yy, epsilon_xy",specified_not_executed,0,"First executable generation is limited to in-plane tensor components."
+raman_forward_observable,"Delta_omega_m(r)=sum_ij K_ij_m epsilon_ij(r)+Delta_omega_m_nonstrain(r)",specified_not_executed,0,"Raman shifts are observables with nuisance terms, not direct strain measurements."

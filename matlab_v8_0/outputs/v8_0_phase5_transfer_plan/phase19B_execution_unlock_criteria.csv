@@ -1,0 +1,10 @@
+criterion,current_value,required_value,status,pass,note
+phase19A_readiness_consumed,true,true,pass,1,"19B is specification-only because 19A blocks FEM execution."
+at_least_one_device_quantitative_registration,false,true,fail,0,"1D registration is sufficient for first executable line-scan mechanics."
+mechanical_geometry_complete,false,true,fail,0,"Device, stressor, crack, and half-coverage coordinates must close."
+film_force_input_available,false,true,fail,0,"Applied load must be measured or independently bounded."
+layer_thicknesses_available,false,true,fail,0,"MoTe2 and stressor thicknesses are required."
+minimum_elastic_parameter_set_available,false,true,fail,0,"Elastic constants must be bound as measured or literature-constrained."
+interface_model_declared,true,true,pass,1,"Phase 19B declares the interface family but does not calibrate it."
+uncertain_parameters_bounded,false,true,fail,0,"All leading uncertainty parameters must have intervals before execution."
+FEM_execution_allowed,false,true,fail,0,"FEM execution remains false until every prerequisite passes."
