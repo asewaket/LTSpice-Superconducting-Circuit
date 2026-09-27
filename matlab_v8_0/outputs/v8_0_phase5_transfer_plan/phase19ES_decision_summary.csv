@@ -1,0 +1,11 @@
+item,value,note
+phase19ES_uncertainty_complete,true,"19D-S uncertainty summaries were consumed."
+robust_mechanical_descriptors_identified,true,"At least one descriptor shows robust geometry separation."
+top_mechanical_descriptor,gradient_factor,"Best descriptor by robustness/scaling screen."
+absolute_strain_claims_made,false,"No absolute strain reconstruction or validation is made."
+geometry_prior_tested,planned_as_required_baseline,"Geometry baseline remains mandatory for future ablation."
+mechanics_prior_tested,screened_not_solver_replayed,"Mechanics priors are screened against existing device-level transport conclusions only."
+randomized_prior_tested,planned_not_solver_replayed,"Randomized spatial control requires a future frozen transport replay."
+uniform_prior_tested,planned_not_solver_replayed,"Uniform null control is specified for future replay."
+transport_relevant_mechanical_structure,supported_screen_only_pending_solver_ablation,"Screening is supportive only if followed by frozen transport-solver ablation."
+phase19FS_allowed,false,"Blocked until geometry, mechanics, randomized, and uniform priors are solver-replayed."

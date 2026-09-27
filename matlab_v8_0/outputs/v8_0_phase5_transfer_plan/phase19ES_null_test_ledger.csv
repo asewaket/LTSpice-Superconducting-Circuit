@@ -1,0 +1,4 @@
+test_id,required,executed_in_phase19ES,reason
+spatial_randomization,1,0,Requires frozen transport-prior injection and solver replay.
+geometry_only_baseline,1,0,Required comparator for all mechanics-derived priors.
+uniform_field_control,1,0,Tests spatially structured enhancement against uniform enhancement.

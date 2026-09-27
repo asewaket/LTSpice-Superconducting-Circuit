@@ -1,0 +1,5 @@
+rank,descriptor,screening_score,recommended_role
+1,gradient_factor,2.15223474769889,primary_H3_gradient_candidate
+2,shear_factor,2.03023891597755,primary_H2_shear_candidate
+3,localization_factor,1.61232722839237,supporting_H1_hydrostatic_or_localization_candidate
+4,high_gradient_area_fraction,0.812295081967215,do_not_promote_to_transport_prior

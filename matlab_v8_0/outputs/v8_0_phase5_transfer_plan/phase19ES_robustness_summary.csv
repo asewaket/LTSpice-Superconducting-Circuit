@@ -1,0 +1,5 @@
+descriptor,continuous_control_median,half_coverage_median,cracked_coverage_median,half_gt_continuous,crack_gt_continuous,parameter_sensitive,robustness_status
+localization_factor,1.00000000000002,2.0315495390976,1.33772587857686,true,true,false,robust
+shear_factor,0.0555555555555568,0.724444571519608,0.574067852327965,true,true,false,robust
+gradient_factor,0,5.07418391672101,3.73336841036266,true,true,false,robust
+high_gradient_area_fraction,0,0.12396694214876,0.131689472971142,true,true,true,robust_but_parameter_sensitive

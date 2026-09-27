@@ -1,0 +1,8 @@
+prior_id,definition,role,transport_refit_allowed,note
+H_geometry,"existing geometry/mechanical proxy baseline",baseline,0,Geometry baseline must remain in the comparison.
+H1_hydrostatic,"norm(abs(epsilon_xx+epsilon_yy))",mechanics_candidate,0,Tests deformation magnitude as the relevant structure.
+H2_shear,"norm(abs(epsilon_xy))",mechanics_candidate,0,Tests shear-rich boundaries/cracks.
+H3_gradient,"norm(abs(grad(epsilon_xx+epsilon_yy)))",mechanics_candidate,0,Tests discontinuity/gradient as the relevant structure.
+H4_hybrid_predeclared,"predeclared bounded combination of H1,H2,H3; no free three-parameter optimization",secondary_mechanics_candidate_after_single_terms,0,Only if individual priors show need for combination.
+H_randomized,"spatially shuffled mechanics field preserving value distribution",null_control,0,Tests whether spatial arrangement matters beyond histogram.
+H_uniform,"constant field",null_control,0,Tests uniform enhancement versus spatial structure.

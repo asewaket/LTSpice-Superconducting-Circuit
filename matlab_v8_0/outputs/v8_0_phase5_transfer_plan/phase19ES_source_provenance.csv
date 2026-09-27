@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19ES_uncertainty_scaling_prior_ablation,"Phase 19E-S tests robustness and freezes mechanics-prior ablation logic."
+source_commit_sha,4859061ac8573aded49dae592ef457fe35c5d75e,"Git commit captured before this runner writes outputs."
+source_tree_sha,97e9b5e38328e76c7d1b3fe5e4f6fea650fa6d3d,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,read_only_uncertainty_scaling_and_prior_screen_no_transport_refit,"No mechanics maps, no absolute strain claims, no transport solver refit."
+source_provenance_policy,Commit Phase 19E-S source first; rerun from clean source; commit generated artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

@@ -1,0 +1,11 @@
+item,value,note
+phase19ES_closure,pass_uncertainty_scaling_prior_screen,"Closure means uncertainty/scaling descriptors and ablation logic are frozen."
+robust_mechanical_descriptors_identified,true,"Mechanics descriptors survive bounded uncertainty at the atlas level."
+transport_relevant_mechanical_structure,supported_screen_only_pending_solver_ablation,"Transport relevance is based on existing-artifact screen, not solver replay."
+geometry_prior_tested,planned_as_required_baseline,"Geometry prior remains a required baseline."
+mechanics_prior_tested,screened_not_solver_replayed,"Mechanics prior has been screened but not transport-solver replayed."
+randomized_prior_tested,planned_not_solver_replayed,"Randomized control remains required for solver ablation."
+uniform_prior_tested,planned_not_solver_replayed,"Uniform control remains required for solver ablation."
+absolute_strain_claims_made,false,"No absolute strain claim is made."
+phase19FS_allowed,false,"19F-S requires supported transport relevance."
+next_phase,phase19ES_transport_solver_ablation_replay_or_hold,"If not allowed, run the frozen ablation replay or hold the coupling branch."

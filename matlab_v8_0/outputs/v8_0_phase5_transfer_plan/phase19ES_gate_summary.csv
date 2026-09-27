@@ -1,0 +1,10 @@
+component,status,pass,note
+Clean provenance,pass,1,"Canonical artifact freeze requires clean pre-run source state."
+Phase 19D-S atlas consumed,pass,1,"19E-S starts from frozen normalized mechanics descriptors."
+Uncertainty/scaling summary complete,pass,1,"Sensitivity distributions are summarized from the 19D-S bounded sweep."
+Robust descriptor screen complete,pass,1,"Descriptors are ranked before transport entry."
+Prior families frozen,pass,1,"H_geometry, H1, H2, H3, H4, H_randomized, and H_uniform are frozen."
+Null tests declared,pass,1,"Randomized, geometry, and uniform controls are required."
+Transport ablation plan frozen,pass,1,"Transport solver replay is planned but not silently performed."
+No absolute strain claims,pass,1,"No device-specific strain reconstruction is made."
+Phase 19F-S gate conservative,pass,1,"19F-S is blocked unless transport relevance is supported."
