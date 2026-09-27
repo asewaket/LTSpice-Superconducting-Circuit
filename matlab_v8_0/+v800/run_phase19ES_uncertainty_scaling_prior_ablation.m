@@ -593,8 +593,34 @@ idx = isfinite(x) & isfinite(y);
 if sum(idx) < 3 || std(x(idx)) == 0 || std(y(idx)) == 0
     rho = NaN;
 else
-    rho = corr(x(idx), y(idx), 'Type', 'Spearman');
+    rx = tied_rank(x(idx));
+    ry = tied_rank(y(idx));
+    rx = rx - mean(rx);
+    ry = ry - mean(ry);
+    denom = sqrt(sum(rx.^2) .* sum(ry.^2));
+    if denom == 0
+        rho = NaN;
+    else
+        rho = sum(rx .* ry) ./ denom;
+    end
 end
+end
+
+function ranks = tied_rank(values)
+[sorted, order] = sort(values(:));
+ranks = zeros(size(sorted));
+k = 1;
+while k <= numel(sorted)
+    j = k;
+    while j < numel(sorted) && sorted(j + 1) == sorted(k)
+        j = j + 1;
+    end
+    ranks(k:j) = mean(k:j);
+    k = j + 1;
+end
+out = zeros(size(ranks));
+out(order) = ranks;
+ranks = out;
 end
 
 function status = robustness_status(robust, highSensitivity)
