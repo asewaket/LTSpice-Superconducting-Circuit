@@ -296,7 +296,9 @@ switch modelId
     case "F-S0_mechanics_informed_reference"
         score = grad;
         role = "existing_reference_from_19ESR";
-        note = "Frozen mechanics-informed reference inherited from Phase 19E-S.R.";
+        complexity = "reference_not_coupling_role_test";
+        promoted = false;
+        note = "Frozen mechanics-informed reference inherited from Phase 19E-S.R.; reported as reference, not as a role hypothesis.";
     case "F-S1_H_gradient_to_local_Tc_only"
         score = geom + local_tc_fraction(device) .* delta;
         role = "local_superconducting_strength_only";
