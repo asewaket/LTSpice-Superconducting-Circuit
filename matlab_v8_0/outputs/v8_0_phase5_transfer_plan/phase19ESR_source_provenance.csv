@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19ESR_transport_solver_ablation_replay,"Phase 19E-S.R changes only the upstream prior family."
+source_commit_sha,247970b257351c3d15388dbfb2ea4eb4f600db06,"Git commit captured before this runner writes outputs."
+source_tree_sha,d89f16e1727e284d4bc0604f9c05e6b5daf1ec3c,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,frozen_transport_prior_replay_only_no_refit_no_new_parameters,"No device-specific Tc retuning, weak-link reoptimization, nuisance additions, or label changes."
+source_provenance_policy,Commit Phase 19E-S.R source first; rerun from clean source; commit generated artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

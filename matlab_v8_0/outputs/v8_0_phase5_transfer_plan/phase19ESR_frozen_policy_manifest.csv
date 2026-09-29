@@ -1,0 +1,12 @@
+item,value,note
+transport_model_architecture_frozen,true,"The accepted Phase 6/9 transport architecture is read-only."
+global_superconducting_parameters_frozen,true,"No global superconducting parameter is altered."
+weak_link_rules_frozen,true,"Weak-link rules and topology classes are not reoptimized."
+device_specific_parameters_frozen,true,"No per-device fitting parameter is changed."
+scoring_rules_frozen,true,"Score columns and lower-is-better convention are reused."
+evidence_hierarchy_frozen,true,"RT, metric, probe, and nonlinear evidence roles remain separate."
+only_mechanical_prior_changes,true,"The ablation is an upstream prior replay only."
+new_device_specific_Tc_retuning_allowed,false,"Explicitly prohibited for this gatekeeper phase."
+weak_link_reoptimization_allowed,false,"Explicitly prohibited for this gatekeeper phase."
+new_nuisance_parameters_allowed,false,"Explicitly prohibited for this gatekeeper phase."
+phase6_label_reinterpretation_allowed,false,"Existing model-status labels are protected."

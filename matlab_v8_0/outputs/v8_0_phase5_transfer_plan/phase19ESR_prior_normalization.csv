@@ -1,0 +1,5 @@
+prior_id,definition,normalization_rule,transport_refit_allowed,note
+H_geom,frozen geometry prior used by the accepted structured weak-link context,read_only_existing_geometry_reference,0,"Reference prior for the ablation."
+H_gradient,norm01(frozen Phase 19D-S gradient_normalized candidate selected by Phase 19E-S),common_support_norm01_mean_recorded_no_absolute_strain_units,0,"Uses the descriptor frozen as leading candidate: gradient_factor."
+H_randomized_gradient_ensemble,N=20 deterministic spatial-null shuffles preserving device support and marginal strength proxy,same_support_same_mean_distribution_proxy_spatial_registration_destroyed,0,"Used only as a spatial-null diagnostic, not as a model family."
+H_uniform,constant field matched to each device's frozen mean gradient-prior strength proxy,same_support_mean_matched_constant,0,"Tests global enhancement without spatial organization."

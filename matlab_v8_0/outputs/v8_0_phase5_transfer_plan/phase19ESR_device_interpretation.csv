@@ -1,0 +1,7 @@
+device,phase6_reference_status,mechanics_vs_geometry,mechanics_vs_uniform,mechanics_vs_randomized,p_spatial_null,randomized_median_score,critical_device_support,six_device_transfer_preserved,interpretation
+AS001,mechanistically_unresolved,equivalent,improved,improved_against_spatial_null,0.0476190476190476,0.0332983526034354,0,1,Null/baseline guard passes; mechanics prior does not manufacture strong structure.
+AS002,M0star_sufficient,equivalent,worse,improved_against_spatial_null,0.0476190476190476,0.295339856308936,0,1,M0star-sufficient behavior is preserved; mechanics does not force a structured interpretation.
+AS003,M0star_sufficient,equivalent,worse,improved_against_spatial_null,0.0476190476190476,0.172826684159775,0,1,M0star-sufficient behavior is preserved; mechanics does not force a structured interpretation.
+AS004,mechanistically_unresolved,equivalent,improved,improved_against_spatial_null,0.0476190476190476,0.306222576100232,0,1,Mechanics prior improves score but does not meet critical-device spatial-null threshold.
+AS005,structured_supported,improved,improved,improved_against_spatial_null,0.0476190476190476,0.20112606387482,1,1,Crack-associated device supports spatially registered gradient prior over randomized controls.
+AS006,structured_supported,improved,improved,improved_against_spatial_null,0.0476190476190476,0.183919878376101,1,1,Strong structured device supports spatially registered gradient prior in the richest evidence tier.

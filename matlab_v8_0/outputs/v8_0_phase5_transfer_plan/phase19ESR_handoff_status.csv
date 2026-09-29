@@ -1,0 +1,11 @@
+item,value,note
+phase19ESR_closure,pass_frozen_mechanics_prior_transport_ablation,"Closure is based on frozen gates and the predeclared decision tree."
+transport_model_architecture_frozen,true,"No transport architecture change occurs in this replay."
+only_mechanical_prior_changed,true,"The upstream prior family is the only changed input."
+geometry_prior_tested,true,"Existing geometry reference prior is included."
+mechanics_gradient_prior_tested,true,"Winning 19E-S gradient descriptor is included."
+randomized_prior_ensemble_tested,true,"Spatial null ensemble is included."
+uniform_prior_tested,true,"Mean-matched unstructured control is included."
+transport_relevant_mechanical_structure,supported,"Mechanics-to-transport support state after replay."
+phase19FS_allowed,true,"True only if mechanics beats geometry, uniform, and randomized controls with preserved transfer behavior."
+next_phase,phase19FS_mechanics_informed_model,"Canonical handoff from Phase 19E-S.R."

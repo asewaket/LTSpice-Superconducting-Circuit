@@ -1,0 +1,11 @@
+component,status,pass,note
+Clean provenance,pass,1,"Canonical artifact freeze requires clean pre-run source state."
+Phase 19E-S closure consumed,pass,1,"The replay starts from the completed 19E-S screen."
+19F-S was blocked before replay,pass,1,"This phase is the gatekeeper before any 19F-S opening."
+Frozen gradient descriptor used,pass,1,"The prior is not quietly recomputed or re-ranked."
+Transport model and scoring frozen,pass,1,"No retuning, relabeling, nuisance terms, or score-rule changes are allowed."
+Four required priors declared,pass,1,"Geometry, gradient, randomized, and uniform priors are all present."
+Six-device replay completed,pass,1,"AS001-AS006 are all included."
+Randomized ensemble completed,pass,1,"N=20 deterministic randomized spatial-null controls are written."
+Evidence hierarchy protected,pass,1,"Null/control devices are guarded against manufactured structure."
+Decision recorded,pass,1,"The handoff is driven by the frozen replay result."
