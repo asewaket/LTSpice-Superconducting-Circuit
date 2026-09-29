@@ -708,7 +708,7 @@ bar(categorical(devices), fractions);
 ylim([0 1.1]);
 title('disorder robustness');
 ylabel('weak-link preferred fraction');
-grid(gca, 'on');
+set(gca, 'XGrid', 'on', 'YGrid', 'on');
 
 nexttile;
 bar(categorical(grid.device + "_" + grid.grid_id), ...
@@ -717,7 +717,7 @@ yline(0, 'k-');
 title('grid robustness');
 ylabel('S_W - S_Tc');
 xtickangle(45);
-grid(gca, 'on');
+set(gca, 'XGrid', 'on', 'YGrid', 'on');
 
 nexttile;
 bar(categorical(normRobust.device + "_" + normRobust.normalization_id), ...
@@ -725,7 +725,7 @@ bar(categorical(normRobust.device + "_" + normRobust.normalization_id), ...
 yline(0, 'k-');
 title('normalization robustness');
 xtickangle(45);
-grid(gca, 'on');
+set(gca, 'XGrid', 'on', 'YGrid', 'on');
 
 nexttile;
 T = overlapSummary(overlapSummary.temperature_stage == "transition", :);
@@ -733,7 +733,7 @@ bar(categorical(T.device), T.Z_overlap);
 yline(2, 'r--');
 title('current-overlap null Z');
 ylabel('Z overlap');
-grid(gca, 'on');
+set(gca, 'XGrid', 'on', 'YGrid', 'on');
 
 nexttile;
 bar(categorical(anchor.test_id), ...
@@ -741,7 +741,7 @@ bar(categorical(anchor.test_id), ...
 ylim([0 1.2]);
 title('anchor dependency');
 xtickangle(35);
-grid(gca, 'on');
+set(gca, 'XGrid', 'on', 'YGrid', 'on');
 
 nexttile;
 axis off;
