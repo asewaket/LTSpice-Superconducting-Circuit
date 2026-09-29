@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19GS_final_robustness_and_multiscale_model_freeze,"Phase 19G-S freezes the final multiscale modeling conclusion."
+source_commit_sha,f262246b207bfd0a9fb2428302e9da27cc7cac09,"Git commit captured before this runner writes outputs."
+source_tree_sha,33a488dd2ac3b5384a6d0173c478039be86cd230,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,finite_robustness_checklist_no_new_mechanisms_no_retuning,"No transport-model expansion, no retuning, no absolute strain recovery."
+source_provenance_policy,Commit Phase 19G-S source first; rerun from clean source; commit generated artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

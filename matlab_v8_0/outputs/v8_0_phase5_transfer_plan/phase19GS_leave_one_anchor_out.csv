@@ -1,0 +1,4 @@
+test_id,held_out_anchor,retained_anchor,retained_anchor_delta_score,retained_anchor_overlap_delta,retained_anchor_supports_conclusion,test_scope
+hold_out_AS005,AS005,AS006,-0.062882175516512,0.167177714332518,1,single_anchor_support_without_refit
+hold_out_AS006,AS006,AS005,-0.0523975258031817,0.15472453729514,1,single_anchor_support_without_refit
+both_anchors,none,AS005_AS006,-0.115279701319694,0.321902251627658,1,paired_anchor_support_without_refit

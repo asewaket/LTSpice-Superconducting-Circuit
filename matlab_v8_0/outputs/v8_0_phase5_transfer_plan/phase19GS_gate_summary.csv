@@ -1,0 +1,12 @@
+component,status,pass,note
+Clean provenance,pass,1,"Canonical artifact freeze requires clean pre-run source state."
+Phase 19F-S supported input consumed,pass,1,"19G-S starts from the supported 19F-S integration."
+No new mechanism or absolute strain claim,pass,1,"This phase performs finite robustness checks only."
+Five-family robustness plan declared,pass,1,"Disorder, grid, normalization, overlap-null, and anchor-dependency checks are required."
+Disorder/seed robustness,pass,1,"Weak-link role beats Tc-only in the substantial majority of frozen seed perturbations."
+Grid/coarse-graining robustness,pass,1,"Weak-link role beats Tc-only across coarse, nominal, and fine representations."
+Prior normalization robustness,pass,1,"Weak-link role beats Tc-only across minmax, clipped, rank, and sqrt normalizations."
+Current-overlap randomized null,pass,1,"AS005/AS006 overlap exceeds randomized nulls."
+Leave-one-anchor-out robustness,pass,1,"Each anchor device supports the conclusion without the other."
+AS001-AS003 guards preserved,pass,1,"Negative/control device behavior is preserved."
+Final model freeze recorded,pass,1,"The modeling campaign is frozen as complete."

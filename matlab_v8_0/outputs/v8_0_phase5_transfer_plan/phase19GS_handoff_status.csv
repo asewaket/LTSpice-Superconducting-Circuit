@@ -1,0 +1,9 @@
+item,value,note
+phase19GS_closure,pass_final_multiscale_model_freeze,Final multiscale model freeze passed.
+mechanics_informed_transport_model,supported,Mechanics-informed model support after final robustness checks.
+dominant_supported_role,weak_link_connectivity_dominant,Final mechanistic role statement.
+mechanics_transport_spatial_association,robust,Final spatial-association statement.
+model_development_status,complete,Main modeling campaign status.
+new_transport_mechanisms_recommended,false,Stop expanding the transport model.
+absolute_strain_claims_allowed,false,No absolute strain claim is unlocked.
+next_stage,publication_outputs,Move to publication-quality outputs if passed.

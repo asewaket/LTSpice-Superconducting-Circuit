@@ -1,0 +1,13 @@
+item,value,note
+phase19GS_closure,pass_final_multiscale_model_freeze,Final closure requires all predeclared robustness gates to pass.
+mechanics_informed_transport_model,supported,Final model support state after robustness freeze.
+dominant_supported_role,weak_link_connectivity_dominant,Mechanics primarily acts through weak-link/connectivity structure.
+local_Tc_role,supporting_not_standalone,Local Tc modulation is retained as secondary support.
+mechanics_transport_spatial_association,robust,Spatial association is judged through current-overlap randomized nulls.
+AS005_overlap_Z_transition,24.9768,Transition-stage current-overlap Z for AS005.
+AS006_overlap_Z_transition,27.8063,Transition-stage current-overlap Z for AS006.
+anchor_dependency,AS005_and_AS006_individually_supportive,Leave-one-anchor-out result.
+absolute_strain_recovery,not_claimed,Still not a measured absolute-strain claim.
+quantitative_tensor_inversion,locked,Tensor inversion remains locked.
+model_development_status,complete,Main modeling campaign status.
+next_stage,publication_outputs,Recommended next work.

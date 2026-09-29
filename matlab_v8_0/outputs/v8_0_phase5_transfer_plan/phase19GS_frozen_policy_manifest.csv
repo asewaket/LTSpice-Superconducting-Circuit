@@ -1,0 +1,11 @@
+item,value,note
+phase19GS_goal,final_robustness_and_multiscale_model_freeze,"Finite final validation checklist after Phase 19F-S."
+transport_retuning_allowed,false,"No device-specific, global, or nuisance retuning."
+new_mechanisms_allowed,false,"No new transport or mechanics mechanism is introduced."
+new_nuisance_parameters_allowed,false,"The existing evidence hierarchy remains fixed."
+phase6_relabeling_allowed,false,"Phase 6 labels are protected."
+absolute_strain_claims_allowed,false,"H_gradient remains a normalized mechanics-derived prior, not measured strain."
+quantitative_tensor_inversion_allowed,false,"Tensor inversion remains locked."
+required_mechanistic_result,weak_link_connectivity_dominant,"The 19F-S role result must remain stable."
+required_guard_result,AS001_AS003_preserved,"Negative/control devices must remain guarded."
+required_anchor_result,AS005_AS006_supported,"Both anchor devices must independently support the conclusion."
