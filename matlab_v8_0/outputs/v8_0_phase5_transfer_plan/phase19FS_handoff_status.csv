@@ -1,0 +1,9 @@
+item,value,note
+phase19FS_closure,pass_mechanics_informed_network_integration,Closure follows frozen gates and the predeclared support criteria.
+mechanics_informed_transport_model,supported,Final support status for the mechanics-informed superconducting network.
+transport_architecture_frozen,true,Transport model architecture remains unchanged.
+phase6_reclassification_performed,false,Phase 6 labels are preserved.
+absolute_strain_claims_made,false,No absolute strain or tensor-recovery claim is made.
+dominant_supported_role,weak_link_connectivity_dominant,Role inferred from same-complexity coupling ablation.
+mechanistic_anchor_pair,AS005_AS006,Critical support is carried by crack and half-coverage boundary devices.
+next_phase,phase19GS_robustness_final_freeze,Canonical handoff from Phase 19F-S.

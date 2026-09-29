@@ -1,0 +1,5 @@
+control_id,required,role,status
+geometry_reference,1,baseline accepted prior,consumed_from_phase19ESR
+mechanics_gradient_reference,1,promoted mechanics-informed prior,consumed_from_phase19ESR
+uniform_reference,1,mean-matched unstructured enhancement control,consumed_from_phase19ESR
+randomized_reference,1,spatial-null control from Phase 19E-S.R,consumed_from_phase19ESR

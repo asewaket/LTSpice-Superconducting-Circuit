@@ -1,0 +1,7 @@
+device,phase6_reference_status,geometry_score,mechanics_integrated_score,uniform_score,delta_mechanics_minus_geometry,delta_mechanics_minus_uniform,phase6_status_preserved,guard_behavior_preserved,critical_device_support,interpretation_class
+AS001,mechanistically_unresolved,0.0229850961317359,0.0233850961317359,0.0465676031573097,0.000400000000000001,-0.0231825070255738,1,1,0,negative_control_or_M0star_guard_preserved
+AS002,M0star_sufficient,0.287183228073086,0.287783228073086,0.25502637396495,0.000599999999999989,0.032756854108136,1,1,0,negative_control_or_M0star_guard_preserved
+AS003,M0star_sufficient,0.164670055923925,0.165270055923925,0.159650750202032,0.000599999999999989,0.00561930572189298,1,1,0,negative_control_or_M0star_guard_preserved
+AS004,mechanistically_unresolved,0.307142763587375,0.299987139371275,0.316285312544873,-0.00715562421609961,-0.0162981731735976,1,1,0,unresolved_device_supportive_without_reclassification
+AS005,structured_supported,0.20353048313559,0.151132957332408,0.3241423506695,-0.0523975258031817,-0.173009393337092,1,1,1,mechanics_strengthens_structured_connectivity_anchor
+AS006,structured_supported,0.188468885078234,0.125586709561722,0.376471137487535,-0.062882175516512,-0.250884427925813,1,1,1,mechanics_strengthens_structured_connectivity_anchor

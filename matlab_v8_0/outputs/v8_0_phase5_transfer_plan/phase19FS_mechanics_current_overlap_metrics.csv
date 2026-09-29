@@ -1,0 +1,7 @@
+device,temperature_stage,current_weighted_H_overlap,randomized_mean_overlap,delta_overlap_vs_randomized,overlap_interpretation
+AS005,above_onset,0.286156944893695,0.25844491381599,0.027712031077705,weak_or_unresolved_overlap
+AS005,transition,0.412872610497026,0.257945940371003,0.154926670126023,mechanics_current_overlap_supported
+AS005,low_temperature,0.44354777366527,0.257744823477233,0.185802950188037,mechanics_current_overlap_supported
+AS006,above_onset,0.220310479256904,0.191866242548647,0.0284442367082566,weak_or_unresolved_overlap
+AS006,transition,0.358808009873878,0.190490085911909,0.168317923961969,mechanics_current_overlap_supported
+AS006,low_temperature,0.389804178822949,0.190062452083252,0.199741726739697,mechanics_current_overlap_supported

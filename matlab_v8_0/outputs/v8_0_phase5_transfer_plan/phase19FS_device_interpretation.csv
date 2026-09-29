@@ -1,0 +1,7 @@
+device,phase6_reference_status,phase6_status_preserved,dominant_supported_role,critical_device_support,transition_overlap_delta,article_level_interpretation
+AS001,mechanistically_unresolved,1,weak_link_connectivity_only,0,NaN,Guard behavior is preserved; mechanics does not force a structured interpretation.
+AS002,M0star_sufficient,1,weak_link_connectivity_only,0,NaN,Guard behavior is preserved; mechanics does not force a structured interpretation.
+AS003,M0star_sufficient,1,weak_link_connectivity_only,0,NaN,Guard behavior is preserved; mechanics does not force a structured interpretation.
+AS004,mechanistically_unresolved,1,weak_link_connectivity_only,0,NaN,Mechanics is supportive but the device remains mechanistically unresolved under frozen Phase 6 rules.
+AS005,structured_supported,1,weak_link_connectivity_only,1,0.154926670126023,Crack-associated mechanical-gradient localization supports the structured-connectivity interpretation without relabeling the device. Dominant role: weak_link_connectivity_only; transition overlap delta=0.15493.
+AS006,structured_supported,1,weak_link_connectivity_only,1,0.168317923961969,Half-coverage-boundary mechanical-gradient localization supports the strongest structured-connectivity interpretation. Dominant role: weak_link_connectivity_only; transition overlap delta=0.16832.

@@ -1,0 +1,3 @@
+device,geometry_family,mean_H_gradient,max_H_gradient,mean_Tc_proxy_K,max_Tc_proxy_K,mean_W_proxy,max_W_proxy,claim_scope
+AS005,cracked_coverage,0.265674645516912,1,0.754537703917199,0.85,0.44563045459115,0.98,normalized_not_absolute_strain
+AS006,half_coverage_boundary,0.196918348340236,1,0.745599385284228,0.85,0.45773456005149,0.98,normalized_not_absolute_strain

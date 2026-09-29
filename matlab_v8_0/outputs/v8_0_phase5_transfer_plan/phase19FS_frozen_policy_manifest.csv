@@ -1,0 +1,12 @@
+item,value,note
+phase19FS_goal,integrate_frozen_mechanics_gradient_prior_into_transport_framework,"Integration and interpretation phase, not a new fitting campaign."
+mechanics_prior_source,phase19ES_frozen_gradient_factor,"H_gradient is the normalized Phase 19E-S leading descriptor."
+mechanics_prior_spatial_definition_frozen,true,"The spatial field is not recomputed or re-ranked during 19F-S."
+absolute_strain_claims_allowed,false,"H_gradient is not epsilon(x,y)."
+device_specific_strain_reconstruction_allowed,false,"No epsilon_xx, epsilon_yy, epsilon_xy recovery is claimed."
+transport_architecture_frozen,true,"Network architecture and downstream evidence roles are preserved."
+phase6_evidence_hierarchy_frozen,true,"Phase 6 labels are used as reference labels."
+device_specific_retuning_allowed,false,"Device-specific parameters are not changed."
+weak_link_reoptimization_allowed,false,"Weak-link rules are assigned by the frozen role ablation only."
+new_nuisance_parameters_allowed,false,"No new nuisance term is introduced."
+phase6_reclassification_allowed,false,"Device labels are explained or strengthened, not rewritten."

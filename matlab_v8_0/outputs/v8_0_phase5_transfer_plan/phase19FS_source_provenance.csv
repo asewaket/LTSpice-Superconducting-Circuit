@@ -1,0 +1,9 @@
+item,value,note
+phase,phase19FS_mechanics_informed_superconducting_network,"Phase 19F-S promotes the frozen normalized mechanics-gradient prior."
+source_commit_sha,1b61ac73bd68e7a1b0ef50ac1484f9ee822484db,"Git commit captured before this runner writes outputs."
+source_tree_sha,f648eb6355ff851d52e5a5d1d5be725f4f51859b,"Git tree captured before this runner writes outputs."
+source_pre_run_tracked_clean,true,"Tracked-source cleanliness before output generation."
+source_pre_run_untracked_clean,true,"Untracked-source/artifact cleanliness before output generation."
+source_pre_run_clean,true,"True only when tracked and untracked source state are clean before output generation."
+provenance_scope,mechanics_gradient_prior_integration_no_retuning_no_absolute_strain,"No device-specific strain reconstruction, no absolute strain claim, no transport retuning."
+source_provenance_policy,Commit Phase 19F-S source first; rerun from clean source; commit generated artifacts separately.,"Artifacts may dirty the checkout after pre-run provenance is captured."

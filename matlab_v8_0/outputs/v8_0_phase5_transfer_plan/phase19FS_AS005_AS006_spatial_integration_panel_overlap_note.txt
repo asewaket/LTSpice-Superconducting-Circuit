@@ -1,0 +1,7 @@
+Current-weighted H_gradient overlap metrics:
+AS005 above_onset O=0.286157 delta_random=0.027712
+AS005 transition O=0.412873 delta_random=0.154927
+AS005 low_temperature O=0.443548 delta_random=0.185803
+AS006 above_onset O=0.22031 delta_random=0.0284442
+AS006 transition O=0.358808 delta_random=0.168318
+AS006 low_temperature O=0.389804 delta_random=0.199742
