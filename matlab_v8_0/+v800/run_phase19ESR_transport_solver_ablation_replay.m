@@ -86,7 +86,6 @@ paths.phase19DSMetricSummary = fullfile(outputDir, ...
     'phase19DS_unit_load_metric_summary.csv');
 paths.phase6Matrix = cfg.phase6.sixDeviceEvidenceMatrixFile;
 paths.phase5D2ScoreContext = cfg.phase5D2.realDeviceScoreContextFile;
-paths.phase7BLedger = cfg.phase7B.priorVariantLedgerFile;
 
 paths.frozenPolicy = fullfile(outputDir, ...
     'phase19ESR_frozen_policy_manifest.csv');
@@ -127,7 +126,6 @@ inputs.phase19DSMetricSummary = read_required_table( ...
     paths.phase19DSMetricSummary);
 inputs.phase6Matrix = read_required_table(paths.phase6Matrix);
 inputs.phase5D2ScoreContext = read_required_table(paths.phase5D2ScoreContext);
-inputs.phase7BLedger = read_required_table(paths.phase7BLedger);
 end
 
 function T = read_required_table(pathValue)
