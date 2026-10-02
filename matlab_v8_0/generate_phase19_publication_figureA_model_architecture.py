@@ -148,9 +148,9 @@ def draw_device_hierarchy(ax, phase6, interp) -> None:
     )
 
     interp_by_device = {r["device"]: r for r in interp}
-    x0, y0 = 0.04, 0.75
-    w, h = 0.28, 0.19
-    dx, dy = 0.32, 0.245
+    x0, y0 = 0.04, 0.66
+    w, h = 0.28, 0.16
+    dx, dy = 0.32, 0.205
     for i, row in enumerate(phase6):
         col = i % 3
         rr = i // 3
@@ -172,17 +172,17 @@ def draw_device_hierarchy(ax, phase6, interp) -> None:
             linewidth=lw,
         )
         ax.add_patch(box)
-        ax.text(x + 0.015, y + h - 0.035, dev, fontsize=11, fontweight="bold")
+        ax.text(x + 0.015, y + h - 0.030, dev, fontsize=10.5, fontweight="bold")
         ax.text(
             x + 0.015,
-            y + h - 0.075,
+            y + h - 0.067,
             short_geometry(row["geometry_class"]),
-            fontsize=7.6,
+            fontsize=7.3,
             color="#333333",
         )
         ax.text(
             x + 0.015,
-            y + 0.065,
+            y + 0.050,
             STATUS_LABELS.get(status, status),
             fontsize=8.2,
             fontweight="bold" if is_anchor else "normal",
@@ -191,7 +191,7 @@ def draw_device_hierarchy(ax, phase6, interp) -> None:
         if role == "1":
             ax.text(
                 x + w - 0.012,
-                y + 0.018,
+                y + 0.014,
                 "anchor",
                 fontsize=7.4,
                 color="#5a2d00",
@@ -199,7 +199,7 @@ def draw_device_hierarchy(ax, phase6, interp) -> None:
                 fontweight="bold",
             )
 
-    legend_y = 0.08
+    legend_y = 0.055
     legend = [
         ("unresolved", STATUS_COLORS["mechanistically_unresolved"]),
         ("M0* sufficient", STATUS_COLORS["M0star_sufficient"]),
@@ -339,11 +339,15 @@ def draw_scope_box(ax, policy, final_freeze) -> None:
     draw_panel_label(ax, "d")
     ax.text(0.02, 0.96, "Frozen scope and claim boundary", fontsize=12, fontweight="bold", va="top")
 
+    role = final_freeze.get("dominant_supported_role", "weak_link_connectivity_dominant")
+    role = role.replace("_dominant", "").replace("_", " ")
+    local_tc = final_freeze.get("local_Tc_role", "supporting_not_standalone")
+    local_tc = local_tc.replace("_", " ")
     supported = [
-        "mechanics-informed model: " + final_freeze.get("mechanics_informed_transport_model", "supported"),
-        "dominant role: " + final_freeze.get("dominant_supported_role", "weak_link_connectivity_dominant").replace("_", " "),
-        "local Tc role: " + final_freeze.get("local_Tc_role", "supporting_not_standalone").replace("_", " "),
-        "model status: " + final_freeze.get("model_development_status", "complete"),
+        "model: " + final_freeze.get("mechanics_informed_transport_model", "supported"),
+        "primary role: " + role,
+        "local Tc: " + local_tc,
+        "status: " + final_freeze.get("model_development_status", "complete"),
     ]
     not_claimed = [
         "no absolute strain reconstruction",
