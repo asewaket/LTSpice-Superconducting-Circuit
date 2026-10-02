@@ -1,258 +1,291 @@
-# Mechanics-Informed Superconducting Network: Publication Outline
+# Mechanics-Informed Superconducting Network: Manuscript Scaffold
 
 ## Final Paper-Level Claim
 
-The frozen model supports the following paper-level statement:
+The frozen model supports this manuscript-level statement:
 
-> Mechanical heterogeneity organizes superconducting connectivity. A normalized mechanics-derived gradient field improves the frozen two-dimensional superconducting-network model relative to geometry-only, uniform, and spatially randomized controls. Coupling-role ablations indicate that weak-link connectivity carries the dominant transport-relevant effect, while local Tc modulation provides secondary support.
+> A normalized mechanics-derived gradient field contains transport-relevant spatial information in the device series. Its dominant supported role is to organize weak-link connectivity in the two-dimensional superconducting network, while local Tc modulation provides a secondary contribution.
 
 Required caveat:
 
-> The mechanics calculation identifies transport-relevant normalized spatial structure. It is not an absolute device-specific strain-tensor reconstruction.
+> The mechanics calculation identifies transport-relevant normalized spatial structure. It does not reconstruct the absolute device-specific strain tensor.
 
-## Final Scientific Workflow
+## Final Modeling Narrative
 
-The paper should present the model as a final workflow, not as a phase history:
+The main text should present the model as a compact scientific workflow, not as a phase history:
 
-1. Six-device experimental hierarchy shows nominal film force alone is insufficient.
-2. A two-dimensional superconducting-network framework separates local superconducting strength from connectivity.
-3. Forward mechanics identifies normalized mechanical-gradient localization at boundaries and discontinuities.
-4. Frozen prior ablation shows the mechanics-derived field outperforms geometry-only, uniform, and randomized controls.
-5. Coupling-role ablation shows weak-link connectivity dominates over Tc-only coupling.
-6. Final robustness checks show the conclusion survives disorder, grid/coarse-graining, prior normalization, current-overlap nulls, and anchor-device selection.
+1. The six-device hierarchy shows that nominal film force alone is insufficient.
+2. A geometry-aware two-dimensional superconducting network separates local superconducting strength from connectivity.
+3. Normalized forward mechanics identifies mechanical-gradient localization at boundaries and discontinuities.
+4. A frozen prior ablation shows that this mechanics-derived spatial prior outperforms geometry-only, uniform, and randomized controls.
+5. A coupling-role ablation identifies weak-link connectivity as the dominant supported role, with local Tc modulation secondary.
+6. Robustness checks show that the conclusion survives disorder, coarse-graining, prior normalization, randomized overlap nulls, and anchor-device selection.
 
-## Main Figure Architecture
+The main text should avoid internal phase numbers, exploratory failures, version history, and optimization chronology. Those details belong in Methods, Supplementary Information, or an archival reproducibility appendix.
 
-### Figure 1: Experimental Device Hierarchy
+## Main Modeling Figures
 
-Purpose: establish why nominal film force is insufficient.
+### Figure A: Model Architecture
 
-Suggested panels:
+Purpose: show the final architecture in one visual chain.
 
-- Device/stressor geometry thumbnails for AS001-AS006.
-- Experimental transport summary arranged by device class.
-- Evidence hierarchy: unresolved, M0star-sufficient, structured-supported, strong structured support.
-- Compact statement that AS005 and AS006 become the mechanistic anchor pair, while AS001-AS003 remain guard devices.
+Core panels:
 
-Paper message:
-
-> The device series cannot be explained by a scalar film-force descriptor; geometry, discontinuities, and connectivity must be represented.
-
-### Figure 2: Final Superconducting-Network Architecture
-
-Purpose: introduce the frozen model without implementation history.
-
-Suggested panels:
-
-- Schematic: device geometry -> normalized mechanical localization -> local superconducting landscape and weak-link network -> current redistribution -> four-probe transport.
-- Network cartoon distinguishing local Tc field from weak-link/connectivity field W_ij.
-- Frozen evidence hierarchy and prohibited operations: no retuning, no relabeling, no absolute strain claim.
+- Experimental device/stressor geometry and the six-device hierarchy.
+- Schematic workflow: device geometry -> normalized mechanics prior -> Tc and W_ij fields -> four-probe network.
+- Network cartoon distinguishing local superconducting strength from weak-link connectivity.
+- Scope box: frozen transport architecture, no retuning, no Phase 6 relabeling, no absolute strain reconstruction.
 
 Paper message:
 
-> The model separates local superconducting strength from network connectivity and tests mechanics as an upstream spatial prior under frozen downstream rules.
+> The model tests whether normalized mechanical localization supplies transport-relevant spatial information to a frozen two-dimensional superconducting network.
 
-### Figure 3: Normalized Forward Mechanics
+Recommended source artifacts:
 
-Purpose: show that discontinuities generate robust mechanics-derived spatial structure.
+- `phase6_six_device_evidence_matrix.csv`
+- `phase19FS_frozen_policy_manifest.csv`
+- `phase19GS_final_multiscale_model_freeze.csv`
+- `phase19FS_device_interpretation.csv`
 
-Suggested panels:
+### Figure B: Mechanics Prior Transport Test
 
-- AS005 crack geometry and normalized H_gradient map.
-- AS006 half-coverage boundary geometry and normalized H_gradient map.
-- Descriptor robustness summary showing gradient localization survives bounded uncertainty.
-- Explicit label: normalized mechanics-derived localization, not measured strain.
+Purpose: show that the mechanics prior adds transport-relevant information.
 
-Paper message:
+Core panels:
 
-> Cracks and stressor boundaries generate localized normalized mechanical-gradient structure in the forward model.
-
-### Figure 4: Frozen Prior Ablation
-
-Purpose: demonstrate transport relevance of the mechanics field.
-
-Suggested panels:
-
-- Geometry, mechanics-gradient, uniform, and randomized prior comparison.
-- Aggregate score comparison, lower is better.
-- AS005 and AS006 critical-device contribution.
-- Randomized prior distribution or permutation-style spatial-null diagnostic.
+- Six-device comparison with AS005 and AS006 highlighted.
+- Geometry-only, mechanics-gradient, uniform, and randomized-prior comparison.
+- Critical-device contribution for AS005 and AS006.
+- Compact spatial-null or randomized-control panel showing that the mechanics field is not merely a value distribution.
 
 Paper message:
 
-> The mechanics-derived prior contains transport-relevant spatial information beyond geometry, global enhancement, or the marginal distribution of prior values.
+> The mechanics-derived spatial prior improves the frozen transport description relative to geometry-only, uniform, and randomized controls, with strongest support from AS005 and AS006.
 
-### Figure 5: Mechanics-Informed Network Integration
+Recommended source artifacts:
 
-Purpose: show spatial interpretability and coupling-role result.
+- `phase19ESR_prior_score_replay.csv`
+- `phase19ESR_randomized_spatial_null.csv`
+- `phase19ESR_decision_summary.csv`
+- `phase19FS_six_device_transport_comparison.csv`
 
-Suggested panels:
+### Figure C: Mechanistic Role and Robustness
 
-- AS005: H_gradient, Tc proxy, W proxy, transition current.
-- AS006: H_gradient, Tc proxy, W proxy, transition current.
+Purpose: show what role the mechanics prior plays and why the conclusion is stable.
+
+Core panels:
+
+- AS005 and AS006 spatial integration panel: H_gradient, Tc proxy, W proxy, transition current.
 - Coupling-role ablation: Tc-only, weak-link-only, diagnostic both-channel.
-- Current-weighted mechanics overlap at transition and low temperature.
+- Current-weighted mechanics overlap for AS005 and AS006.
+- Compact robustness panel: disorder, grid, normalization, overlap null, leave-one-anchor-out.
 
 Paper message:
 
-> The dominant transport-relevant role of the mechanics-derived field is weak-link connectivity; local Tc modulation is secondary.
+> The dominant supported role of mechanical localization is weak-link connectivity, not Tc-only modulation, and this conclusion survives the main robustness checks without retuning.
 
-### Figure 6: Final Robustness Freeze
+Recommended source artifacts:
 
-Purpose: demonstrate that the final conclusion is not fragile.
+- `phase19FS_AS005_AS006_spatial_integration_panel.png`
+- `phase19FS_coupling_role_ablation.csv`
+- `phase19FS_mechanics_current_overlap_metrics.csv`
+- `phase19GS_final_robustness_freeze_summary.png`
+- `phase19GS_decision_summary.csv`
 
-Suggested panels:
+## Supplementary Figure Architecture
 
-- Disorder/seed robustness: weak-link role preferred fraction.
-- Grid/coarse-graining robustness: role ordering across coarse, nominal, fine.
-- Prior normalization robustness: min-max, clipped, rank, sqrt variants.
-- Current-overlap randomized-null Z for AS005 and AS006.
-- Leave-one-anchor-out result: AS005 alone and AS006 alone each support the conclusion.
+### Figure S1: Full Six-Device Score Matrix
 
-Paper message:
+Purpose: show all devices under geometry, mechanics, uniform, and randomized/reference controls.
 
-> The mechanics-informed connectivity conclusion survives the main numerical and representation checks without retuning.
+Source artifacts:
 
-## Supplementary Figure Candidates
+- `phase19FS_six_device_transport_comparison.csv`
+- `phase19ESR_prior_score_replay.csv`
 
-### Supplementary Figure S1: Full Six-Device Score Table
+### Figure S2: Mechanics Descriptor Selection
 
-Include all six devices under geometry, mechanics, uniform, and randomized/reference controls.
+Purpose: justify H_gradient as the promoted normalized mechanics prior.
 
-### Supplementary Figure S2: Descriptor Ranking and Uncertainty Screen
+Source artifacts:
 
-Show why H_gradient, rather than hydrostatic or shear-only descriptors, was selected as the final mechanics prior.
+- `phase19ES_descriptor_ranking.csv`
+- `phase19ES_scaling_summary.csv`
+- `phase19ES_prior_family_freeze.csv`
 
-### Supplementary Figure S3: Full Current-Overlap Null Distributions
+### Figure S3: Current-Overlap Null Distributions
 
-Show randomized overlap histograms for AS005 and AS006 at transition and low-temperature stages.
+Purpose: show randomized overlap distributions for AS005 and AS006.
 
-### Supplementary Figure S4: Full Coupling-Role Ledger
+Source artifacts:
 
-Show F-S0 reference, Tc-only, weak-link-only, and diagnostic both-channel rows for all devices.
+- `phase19GS_current_overlap_null_distribution.csv`
+- `phase19GS_current_overlap_null_summary.csv`
 
-### Supplementary Figure S5: Guard-Device Behavior
+### Figure S4: Full Coupling-Role Ledger
 
-Show that AS001-AS003 are not forced into structured-connectivity conclusions by adding mechanics.
+Purpose: show F-S0 reference, Tc-only, weak-link-only, and diagnostic both-channel rows for all devices.
+
+Source artifact:
+
+- `phase19FS_coupling_role_ablation.csv`
+
+### Figure S5: Guard-Device Preservation
+
+Purpose: show that AS001-AS003 are not forced into structured-connectivity interpretations.
+
+Source artifacts:
+
+- `phase19FS_device_interpretation.csv`
+- `phase19GS_final_multiscale_model_freeze.csv`
+
+### Figure S6: Numerical Robustness Details
+
+Purpose: keep disorder, grid, normalization, and leave-one-anchor-out ledgers out of the main figure while preserving auditability.
+
+Source artifacts:
+
+- `phase19GS_disorder_seed_robustness.csv`
+- `phase19GS_grid_coarse_graining_robustness.csv`
+- `phase19GS_prior_normalization_robustness.csv`
+- `phase19GS_leave_one_anchor_out.csv`
 
 ## Modeling Section Outline
 
-### 1. Motivation: Film Force Is Not a Sufficient Descriptor
+### 3.x Multiscale Modeling of Mechanically Structured Superconductivity
 
-State that the six-device comparison motivates a spatial model. Avoid describing the phase history. The key point is that the data require geometry and connectivity, not merely a scalar stressor descriptor.
+Opening task:
 
-### 2. Frozen Two-Dimensional Superconducting Network
+Introduce the modeling section as a test of whether geometry-derived mechanical heterogeneity helps explain the six-device transport hierarchy. State that the model is not intended to reconstruct absolute strain.
 
-Describe the accepted network architecture:
+### 3.x.1 Geometry-Aware Superconducting Network
 
-- local superconducting landscape represented by Tc(x,y)-like fields;
-- weak-link/connectivity represented by W_ij;
-- four-probe transport obtained from the two-dimensional network;
-- evidence hierarchy fixed before mechanics integration.
+Purpose:
 
-State explicitly that later mechanics tests do not retune this architecture.
+Describe the frozen two-dimensional superconducting-network architecture.
 
-### 3. Normalized Forward Mechanics Prior
+Must include:
 
-Introduce H_gradient as a normalized mechanics-derived localization prior. Recommended language:
+- local superconducting strength and weak-link connectivity are distinct fields;
+- the four-probe response is computed from the network;
+- the device hierarchy and evidence rules are fixed before mechanics integration;
+- downstream retuning is not used to make the mechanics prior work.
 
-> We use H_gradient(x,y) as a normalized descriptor of mechanics-derived localization. It is not interpreted as the measured strain tensor.
+Figure callout:
 
-Explain why AS005 and AS006 are the anchor cases:
+Use Figure A.
 
-- AS005: accidental crack/discontinuity.
-- AS006: designed half-coverage boundary.
+### 3.x.2 Normalized Forward-Mechanics Prior
 
-### 4. Frozen Prior Ablation
+Purpose:
 
-Describe the four controls:
+Introduce the normalized mechanics-derived gradient field as an upstream spatial prior.
 
-- geometry reference;
+Must include:
+
+- H_gradient is a normalized mechanics-derived localization descriptor;
+- AS005 and AS006 are complementary anchor cases: crack/discontinuity and half-coverage boundary;
+- H_gradient is not epsilon(x,y), and not a measured strain tensor.
+
+Figure callout:
+
+Use Figure A or the first panel of Figure B, depending on layout.
+
+### 3.x.3 Mechanics-Prior Transport Test
+
+Purpose:
+
+Show that the mechanics prior contains transport-relevant spatial information under frozen downstream rules.
+
+Must include:
+
+- geometry-only reference;
 - mechanics-gradient prior;
-- uniform mean-matched prior;
-- spatially randomized mechanics prior.
+- uniform control;
+- spatially randomized control;
+- AS005/AS006 critical-device contribution.
 
-State that the downstream transport rules are frozen. The scientific question is whether spatial organization in the mechanics prior matters.
+Figure callout:
 
-### 5. Coupling-Role Ablation
+Use Figure B.
 
-Describe the comparison among:
+### 3.x.4 Weak-Link Connectivity as the Dominant Supported Role
 
-- Tc-only mechanics coupling;
-- weak-link/connectivity-only mechanics coupling;
-- diagnostic both-channel coupling.
+Purpose:
 
-Final interpretation:
+Interpret how the mechanics prior enters the network.
 
-> Weak-link/connectivity coupling retains the primary explanatory benefit, while Tc-only coupling is supporting but not sufficient.
+Must include:
 
-### 6. Current-Weighted Mechanics Overlap
+- Tc-only coupling is supporting but not sufficient;
+- weak-link/connectivity coupling retains the dominant explanatory benefit;
+- diagnostic both-channel coupling is not promoted as the primary claim because it has greater interpretive freedom;
+- current-overlap metrics show that current preferentially samples mechanics-localized regions during transition and low-temperature stages.
 
-Define the interpretable overlap metric:
+Figure callout:
 
-```text
-O(T) = sum_ij H_gradient,ij * |I_ij(T)| / sum_ij |I_ij(T)|
-```
+Use Figure C.
 
-Then compare the observed overlap to randomized mechanics fields.
+### 3.x.5 Robustness and Model Scope
 
-Paper-facing statement:
+Purpose:
 
-> During the transition and low-temperature stages, current preferentially samples regions with high mechanics-derived localization relative to randomized controls.
+Close model development and define the claim boundary.
 
-### 7. Final Robustness and Freeze
+Must include:
 
-Summarize the five robustness families:
+- conclusion survives disorder, coarse-graining, prior normalization, randomized overlap nulls, and leave-one-anchor-out checks;
+- AS001-AS003 guard behavior is preserved;
+- no absolute strain reconstruction is claimed;
+- no new transport mechanism is proposed after the freeze;
+- optional AS005/AS006 3D PDE visualization is a publication enhancement, not unfinished core science.
 
-- disorder/seed;
-- grid/coarse-graining;
-- prior normalization;
-- current-overlap randomized null;
-- leave-one-anchor-out.
+Figure callout:
 
-Conclude:
-
-> Because all five robustness families preserve the same conclusion without retuning, model development is frozen and subsequent work focuses on publication outputs.
+Use the robustness panel of Figure C.
 
 ## Claims Ledger
 
 ### Supported
 
-- Mechanical-gradient structure is transport relevant under frozen downstream rules.
-- Weak-link/connectivity coupling is the dominant supported role.
+- Nominal film force alone is insufficient to organize the six-device transport hierarchy.
+- Normalized mechanical-gradient localization is transport relevant under frozen downstream rules.
+- The mechanics-derived prior outperforms geometry-only, uniform, and randomized controls.
+- Weak-link connectivity is the dominant supported role of the mechanics prior.
 - Local Tc modulation is secondary/supporting.
 - AS005 and AS006 independently support the final interpretation.
 - AS001-AS003 preserve guard behavior.
-- The final result is robust to seed, grid, normalization, overlap-null, and anchor-dependency checks.
+- The final conclusion is robust to disorder, grid/coarse-graining, prior normalization, current-overlap nulls, and anchor-device selection.
 
 ### Not Claimed
 
 - Absolute device-specific strain reconstruction.
 - Quantitative epsilon_xx, epsilon_yy, epsilon_xy tensor inversion.
 - Microscopic proof that strain gradients cause weak links.
+- Direct proof of a pairing mechanism controlled by |grad epsilon|.
 - A new transport mechanism beyond the frozen superconducting-network architecture.
 - Retuned device-specific superconducting parameters.
 
 ## Targeted 3D PDE Decision
 
-The 3D PDE visualization should be optional and narrow. It should be included only if it clarifies the paper without reopening model development.
+The central paper is supportable without 3D PDE. A targeted 3D calculation should be included only if it gives a visually and scientifically clearer answer to this focused question:
+
+> Does the boundary/crack-associated normalized mechanical-gradient localization identified by the reduced mechanics model persist through the layered geometry of AS005 and AS006?
 
 Recommended scope:
 
 - AS005 and AS006 only.
-- Visualize whether the established normalized gradient/localization feature persists in a layered 3D representation.
-- Plot only quantities tied to the frozen mechanism: normalized epsilon_xx, normalized epsilon_yy, |epsilon_xy|, |grad epsilon|, and optionally u_z.
+- Plot quantities tied to the frozen mechanism: normalized epsilon_xx, normalized epsilon_yy, |epsilon_xy|, |grad epsilon|, and optionally u_z.
+- Do not add transport parameters, new coupling roles, or absolute strain claims.
 
 Recommended placement:
 
-- Main text only if visually decisive and compact.
-- Otherwise supplementary validation.
-
-Do not use 3D PDE to introduce new fitting parameters, new transport roles, or absolute strain claims.
+- Main text only if compact and decisive.
+- Otherwise Supplementary Information.
 
 ## Final Stop Condition
 
-The modeling campaign should be treated as complete:
+The modeling campaign should remain frozen:
 
 ```ini
 model_development_status = complete
