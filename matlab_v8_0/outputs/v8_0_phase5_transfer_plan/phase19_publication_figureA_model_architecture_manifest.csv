@@ -1,0 +1,10 @@
+item,value
+figure_id,Figure A
+output_png,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase19_publication_figureA_model_architecture.png
+output_pdf,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase19_publication_figureA_model_architecture.pdf
+source_phase6,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase6_six_device_evidence_matrix.csv
+source_device_interpretation,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase19FS_device_interpretation.csv
+source_final_freeze,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase19GS_final_multiscale_model_freeze.csv
+source_policy,/Users/asewaket/.codex/worktrees/phase18cl-freeze/LTSpice Superconducting Circuit/matlab_v8_0/outputs/v8_0_phase5_transfer_plan/phase19FS_frozen_policy_manifest.csv
+claim_scope,paper_facing_architecture_no_phase_history
+absolute_strain_claims,not_claimed
